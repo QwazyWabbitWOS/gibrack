@@ -130,7 +130,11 @@ is loaded.
 */
 void InitGame (void)
 {
-	gi.dprintf ("==== InitGame ====\n");
+#ifdef	_WIN32
+	_CrtMemCheckpoint(&startup1);
+#endif
+
+	gi.dprintf ("==== InitGame %s ====\n", GAMEVERSION);
 
 	gun_x = gi.cvar ("gun_x", "0", 0);
 	gun_y = gi.cvar ("gun_y", "0", 0);

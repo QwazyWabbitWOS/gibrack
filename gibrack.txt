@@ -1,0 +1,130 @@
+============================
+ModName: Gibrack
+
+Author: Saar "Titanium" Korren
+
+Sounds: Yes
+Models: Yes
+Maps  : Yes(if thats how you call them)
+Cfgs  : Yes(but try to make your own)
+Code  : Yes
+Beta  : Not even...
+============================
+
+===================
+General Description
+===================
+
+GibRack is a mod I have been working on. I don't have a modeller yet, so I didn't quite
+make any items or weapons yet, however i have already successfully made a few features.
+
+================
+General Features
+================
+
+Severe Monster AI Improvement - its going to be hard
+
+Improved Item Ejection When Dying - when you die instead of just throughing your weapon you throw everything
+
+Head Shots - four times the damage
+
+Blood - shoot an enemy with a bullet and his gut will appear on the opposite wall or the floor
+
+Controllable Turrets - when a turret_driver dies it becomes a turret_seat(see map items)
+
+Better Obituary - obituary messages for any death of player or monster from any reason at any game mode
+
+Visible Bullets - thats for the gl players, you can see bullets flying, software users may be able to look closely enough
+
+Coop Exit - in coop all players must exit the level before the level changes, and from the same exit
+
+Weapons tweaking - inhanced power for some weapons, and go-through-wall charging railgun
+
+Wall climbing - player can now climb almost any ledge or crack in a wall, hold jump to grab, press forward to climb
+
+========
+Bindings
+========
+
+chasecam - it's not the standard old chasecam, although it serves the same porpuse, try it and see
+
++use - bind it, it works with some of the features
+
+======
+C_Vars
+======
+
+set lives <-1,0-9> s - in single player and coop it allowes you to respawn in the same situation you died as long as you have lives left, 0 disable, -1 infinite
+
+set coop-
+1-"Cooperative", the standard
+2-"Quick-Run", all the rules of coop, exapt scoring is made by kill/secret/goal ratio minus time
+
+set deathmatch-
+1-"FragFest", the standard
+2-"DeathMatch"(literaly), you get a limited amount of lives(see #4), when you run out you go to intermission, until only one player/team remains, infinite lives are not allowed, 0 lives to make realistic killing
+3-"Fox-Hunt", the level+scoring rules of coop, level exit rules of deathmatch, lives act like in "DeathMatch", infinite allowed, killing another player brings special penalty(see set foxhunt_penalty)
+
+set foxhunt_penalty <0-inf> s - the score penalty for killing a player in fox-hunt, a negative number would mean a reward for such killing and is therefore not advised (default=10)
+
+set gibflags -
+1-Real Damage-all damage is 4 times stronger, even from monsters, quad is disabled(too strong)
+2-Coop Respawn-in single player when you die(and finish your lives) you respawn like in coop
+4-With Monsters-for deathmatch with monsters, monsters don't count as frags
+8-Must Use-doors, buttons, and step on platforms must be activated with +use(see bindings)
+16-Must Look-when activating doors, and buttons you must look at them(don't open with your back)
+
+set teamplay <0/1> s - enable/disable gibrack style teamplay(see set team)
+
+set team <teamname> u - much more useful than model/skin teams
+
+=============
+Maps Included
+=============
+
+Two levels to demonstrate other features - gang.bsp and actor.bsp (in gang.bsp make the light guard shoot one of the enforcers and see what happens)
+
+=========
+Map Items
+=========
+
+item_irgoggles - "ir goggles" - makes it easier to find living objects in dark or light
+
+item_powerscreen - "power screen" - implemented what id had already created
+
+item_adrenaline - exept for the old functionality if lives is enabled(not 0) it adds another life even if you have max
+
+turret_seat - replace a turret_driver in your map to this and players will be able to control the turret, +use to fire(see bindings)
+
+====
+Cfgs
+====
+
+coop2.cfg - sets up "Quick-Run" mode(does not start a server)
+cpsrv.cfg - starts level 1, good after setting up coop or "Fox-Hunt"
+dmsrv.cfg - starts deathmatch level 1, good after setting up deathmatch
+dthmatch.cfg - sets up "DeathMatch"(does not start a server)
+foxhunt.cfg - sets up "Fox-Hunt"(does not start a server)
+fragfest.cfg - sets up "FragFest"(does not start a server)
+lives9.cfg - sets 9 lives(max)
+livesinf.cfg - infinite lives(chicken)
+realdmg.cfg - sets Real Damage(does not work with usekey.cfg)
+usekey.cfg - bind kp_ins as +use and sets Must Use and Must Look(does not work with realdmg.cfg)
+
+============
+Future Plans
+============
+
+New weapons, enemys, items, and perhaps maps.
+
+Backpacks - each backpack has its own propeties, like jetpack, auto grappling hook, shield and more.
+
+Grappling assembly with 2 hooks, one is an arrow with a rope(standard), and the other a ninja rope, if both are shot at 2 directions u can use the grapple to slide from one to another.
+
+Swinging Grapple.
+
+==========
+Epiloge :)
+==========
+
+These are only a few of the features available, experiement for more.

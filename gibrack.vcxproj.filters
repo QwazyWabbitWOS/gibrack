@@ -245,4 +245,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="gibrack.txt" />
+  </ItemGroup>
 </Project>
