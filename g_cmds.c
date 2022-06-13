@@ -1378,6 +1378,8 @@ void ClientCommand(edict_t* ent)
 		Cmd_PrevTEntColor_f(ent);
 	else if (Q_stricmp(cmd, "showtent") == 0)
 		Cmd_ShowTEnt_f(ent);
+	else if (Q_stricmp(cmd, "flashlight") == 0)
+		Cmd_Flashlight(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f(ent, false, true);
 }
