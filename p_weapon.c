@@ -11,7 +11,7 @@ static byte		is_silenced;
 void weapon_grenade_fire (edict_t *ent);
 
 // SLUGFILLER--move to q_shared?
-static void P_ProjectSource (gclient_t *client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
+void P_ProjectSource (gclient_t *client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
 {
 	vec3_t	_distance;
 
@@ -933,7 +933,7 @@ void Weapon_HyperBlaster_Fire (edict_t *ent)
 		}
 		else
 		{
-			rotation = (ent->client->ps.gunframe - 5) * 2*M_PI/6;
+			rotation = (ent->client->ps.gunframe - 5.0) * 2.0 * M_PI / 6.0;
 			offset[0] = -4;
 			offset[1] = -2-2 * sin(rotation);
 			offset[2] = 2 * cos(rotation);

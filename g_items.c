@@ -126,6 +126,12 @@ void DoRespawn (edict_t *ent)
 	int			i, num;
 	edict_t		*touch[MAX_EDICTS], *hit;
 
+	if (ent == NULL)
+	{
+		gi.dprintf("NULL ent passed to %s\n", __func__);
+		return;
+	}
+
 	num = gi.BoxEdicts (ent->absmin, ent->absmax, touch, MAX_EDICTS, AREA_TRIGGERS);
 
 	for (i=0 ; i<num ; i++)
@@ -149,21 +155,26 @@ void DoRespawn (edict_t *ent)
 
 		master = ent->teammaster;
 
-		for (count = 0, ent = master; ent; ent = ent->chain, count++)
-			;
+		count = 0;
+		for (ent = master; ent; ent = ent->chain)
+			count++;
 
-		choice = rand() % count;
+		choice = count ? rand() % count : 0;
 
-		for (count = 0, ent = master; count < choice; ent = ent->chain, count++)
-			;
+		count = 0;
+		for (ent = master; count < choice; ent = ent->chain)
+			count++;
 	}
 
-	ent->svflags &= ~SVF_NOCLIENT;
-	ent->solid = SOLID_TRIGGER;
-	gi.linkentity (ent);
+	if (ent)
+	{
+		ent->svflags &= ~SVF_NOCLIENT;
+		ent->solid = SOLID_TRIGGER;
+		gi.linkentity(ent);
 
-	// send an effect
-	ent->s.event = EV_ITEM_RESPAWN;
+		// send an effect
+		ent->s.event = EV_ITEM_RESPAWN;
+	}
 }
 
 void SetRespawn (edict_t *ent, float delay)
@@ -1104,7 +1115,11 @@ void PrecacheItem (gitem_t *it)
 
 		len = s-start;
 		if (len >= MAX_QPATH || len < 5)
-			gi.error ("PrecacheItem: %s has bad precache string", it->classname);
+		{
+			gi.error("PrecacheItem: %s has bad precache string", it->classname);
+			return;
+		}
+		
 		memcpy (data, start, len);
 		data[len] = 0;
 		if (*s)

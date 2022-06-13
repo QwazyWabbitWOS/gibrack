@@ -497,7 +497,7 @@ void soldier_fire (edict_t *self, int flash_number)
 	else
 	{
 		if (!(self->monsterinfo.aiflags & AI_HOLD_FRAME))
-			self->monsterinfo.pausetime = level.time + (3 + rand() % 8) * FRAMETIME;
+			self->monsterinfo.pausetime = level.time + (3.0f + rand() % 8) * FRAMETIME;
 
 		monster_fire_bullet (self, start, aim, 8, 16, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, flash_index, false);
 

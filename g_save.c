@@ -175,6 +175,7 @@ void InitGame (void)
 	spectator_password = gi.cvar ("spectator_password", "", CVAR_USERINFO);
 	needpass = gi.cvar ("needpass", "0", CVAR_SERVERINFO);
 	filterban = gi.cvar ("filterban", "1", 0);
+	flashlightmode = gi.cvar("flashlightmode", "1", 0); //QW 1 = bright white, 0 = hyperblaster glow
 
 	g_select_empty = gi.cvar ("g_select_empty", "0", CVAR_ARCHIVE);
 
@@ -457,9 +458,10 @@ void WriteGame (char *filename, qboolean autosave)
 		SaveClientData ();
 
 	f = fopen (filename, "wb");
-	if (!f)
-		gi.error ("Couldn't open %s", filename);
-
+	if (!f) {
+		gi.error("Couldn't open %s", filename);
+		return;
+	}
 	memset (str, 0, sizeof(str));
 	strcpy (str, __DATE__);
 	fwrite (str, sizeof(str), 1, f);
@@ -478,13 +480,15 @@ void ReadGame (char *filename)
 {
 	FILE	*f;
 	int		i;
-	char	str[16];
+	char	str[16] = { 0 };
 
 	gi.FreeTags (TAG_GAME);
 
 	f = fopen (filename, "rb");
-	if (!f)
-		gi.error ("Couldn't open %s", filename);
+	if (!f) {
+		gi.error("Couldn't open %s", filename);
+		return;
+	}
 
 	fread (str, sizeof(str), 1, f);
 	if (strcmp (str, __DATE__))
@@ -623,9 +627,10 @@ void WriteLevel (char *filename)
 	void	*base;
 
 	f = fopen (filename, "wb");
-	if (!f)
-		gi.error ("Couldn't open %s", filename);
-
+	if (!f) {
+		gi.error("Couldn't open %s", filename);
+		return;
+	}
 	// write out edict size for checking
 	i = sizeof(edict_t);
 	fwrite (&i, sizeof(i), 1, f);

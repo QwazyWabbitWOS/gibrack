@@ -1,7 +1,7 @@
 
 #include "g_local.h"
 
-typedef struct
+typedef struct spawn_s
 {
 	char	*name;
 	void	(*spawn)(edict_t *ent);
@@ -345,7 +345,7 @@ void ED_ParseField (char *key, char *value, edict_t *ent)
 	field_t	*f;
 	byte	*b;
 	float	v;
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 
 	for (f=fields ; f->name ; f++)
 	{
@@ -362,10 +362,12 @@ void ED_ParseField (char *key, char *value, edict_t *ent)
 				*(char **)(b+f->ofs) = ED_NewString (value);
 				break;
 			case F_VECTOR:
-				sscanf (value, "%f %f %f", &vec[0], &vec[1], &vec[2]);
-				((float *)(b+f->ofs))[0] = vec[0];
-				((float *)(b+f->ofs))[1] = vec[1];
-				((float *)(b+f->ofs))[2] = vec[2];
+				if (sscanf(value, "%f %f %f", &vec[0], &vec[1], &vec[2]) != 3) {
+					gi.dprintf("WARNING: Vector field incomplete in %s, map: %s, field: %s\n", __func__, level.mapname, f->name);
+				}
+				((float*)(b + f->ofs))[0] = vec[0];
+				((float*)(b + f->ofs))[1] = vec[1];
+				((float*)(b + f->ofs))[2] = vec[2];
 				break;
 			case F_INT:
 				*(int *)(b+f->ofs) = atoi(value);
@@ -380,6 +382,8 @@ void ED_ParseField (char *key, char *value, edict_t *ent)
 				((float *)(b+f->ofs))[2] = 0;
 				break;
 			case F_IGNORE:
+				break;
+			default:
 				break;
 			}
 			return;
@@ -511,7 +515,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	float		skill_level;
 	float		lives_value;
 
-	skill_level = floor (skill->value);
+	skill_level = floorf (skill->value);
 	if (skill_level < 0)
 		skill_level = 0;
 	if (skill_level > 3)
@@ -520,7 +524,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 		gi.cvar_forceset("skill", va("%f", skill_level));
 
 	// SLUGFILLER--lives clipping
-	lives_value = floor (lives->value);
+	lives_value = floorf (lives->value);
 	if (((deathmatch->value == 2) && lives_value < 0) || 
 		(deathmatch->value && deathmatch->value != 2 && deathmatch->value != 3))
 		lives_value = 0;
@@ -563,7 +567,9 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 		entities = ED_ParseEdict (entities, ent);
 
 		// yet another map hack
-		if (!Q_stricmp(level.mapname, "command") && !Q_stricmp(ent->classname, "trigger_once") && !Q_stricmp(ent->model, "*27"))
+		if (ent && !Q_stricmp(level.mapname, "command") &&
+			!Q_stricmp(ent->classname, "trigger_once") &&
+			!Q_stricmp(ent->model, "*27"))
 			ent->spawnflags &= ~SPAWNFLAG_NOT_HARD;
 
 		// remove things (except the world) from different skill levels or deathmatch
@@ -932,7 +938,7 @@ void SP_worldspawn (edict_t *ent)
 	// status bar program
 	if (deathmatch->value && deathmatch->value != 2 && deathmatch->value != 3)
 		gi.configstring (CS_STATUSBAR, dm_statusbar);
-	else if (floor(lives->value) > 0)
+	else if (floorf(lives->value) > 0)
 		gi.configstring (CS_STATUSBAR, single_statusbar_lives);
 	else
 		gi.configstring (CS_STATUSBAR, single_statusbar);

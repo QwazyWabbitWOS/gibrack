@@ -10,53 +10,53 @@ Returns true if the inflictor can directly damage the target.  Used for
 explosions and melee attacks.
 ============
 */
-qboolean CanDamage (edict_t *targ, edict_t *inflictor)
+qboolean CanDamage(edict_t* targ, edict_t* inflictor)
 {
-	vec3_t	dest;
+	vec3_t	dest = { 0 };
 	trace_t	trace;
 
-// bmodels need special checking because their origin is 0,0,0
+	// bmodels need special checking because their origin is 0,0,0
 	if (targ->movetype == MOVETYPE_PUSH)
 	{
-		VectorAdd (targ->absmin, targ->absmax, dest);
-		VectorScale (dest, 0.5, dest);
-		trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
+		VectorAdd(targ->absmin, targ->absmax, dest);
+		VectorScale(dest, 0.5, dest);
+		trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
 		if (trace.fraction == 1.0)
 			return true;
 		if (trace.ent == targ)
 			return true;
 		return false;
 	}
-	
-	trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, targ->s.origin, inflictor, MASK_SOLID);
+
+	trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, targ->s.origin, inflictor, MASK_SOLID);
 	if (trace.fraction == 1.0)
 		return true;
 
-	VectorCopy (targ->s.origin, dest);
+	VectorCopy(targ->s.origin, dest);
 	dest[0] += 15.0;
 	dest[1] += 15.0;
-	trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
+	trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
 	if (trace.fraction == 1.0)
 		return true;
 
-	VectorCopy (targ->s.origin, dest);
+	VectorCopy(targ->s.origin, dest);
 	dest[0] += 15.0;
 	dest[1] -= 15.0;
-	trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
+	trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
 	if (trace.fraction == 1.0)
 		return true;
 
-	VectorCopy (targ->s.origin, dest);
+	VectorCopy(targ->s.origin, dest);
 	dest[0] -= 15.0;
 	dest[1] += 15.0;
-	trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
+	trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
 	if (trace.fraction == 1.0)
 		return true;
 
-	VectorCopy (targ->s.origin, dest);
+	VectorCopy(targ->s.origin, dest);
 	dest[0] -= 15.0;
 	dest[1] -= 15.0;
-	trace = gi.trace (inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
+	trace = gi.trace(inflictor->s.origin, vec3_origin, vec3_origin, dest, inflictor, MASK_SOLID);
 	if (trace.fraction == 1.0)
 		return true;
 
@@ -284,12 +284,12 @@ static int CheckPowerArmor (edict_t *ent, vec3_t point, vec3_t normal, int damag
 	return save;
 }
 
-static int CheckArmor (edict_t *ent, vec3_t point, vec3_t normal, int damage, int te_sparks, int dflags)
+static int CheckArmor(edict_t* ent, vec3_t point, vec3_t normal, int damage, int te_sparks, int dflags)
 {
-	gclient_t	*client;
+	gclient_t* client;
 	int			save;
 	int			index;
-	gitem_t		*armor;
+	gitem_t* armor;
 
 	if (!damage)
 		return 0;
@@ -302,16 +302,16 @@ static int CheckArmor (edict_t *ent, vec3_t point, vec3_t normal, int damage, in
 	if (dflags & DAMAGE_NO_ARMOR)
 		return 0;
 
-	index = ArmorIndex (ent);
+	index = ArmorIndex(ent);
 	if (!index)
 		return 0;
 
-	armor = GetItemByIndex (index);
+	armor = GetItemByIndex(index);
 
 	if (dflags & DAMAGE_ENERGY)
-		save = ceil(((gitem_armor_t *)armor->info)->energy_protection*damage);
+		save = (int)ceilf(((gitem_armor_t*)armor->info)->energy_protection * damage);
 	else
-		save = ceil(((gitem_armor_t *)armor->info)->normal_protection*damage);
+		save = (int)ceilf(((gitem_armor_t*)armor->info)->normal_protection * damage);
 	if (save >= client->pers.inventory[index])
 		save = client->pers.inventory[index];
 
@@ -319,7 +319,7 @@ static int CheckArmor (edict_t *ent, vec3_t point, vec3_t normal, int damage, in
 		return 0;
 
 	client->pers.inventory[index] -= save;
-	SpawnDamage (te_sparks, point, normal, save);
+	SpawnDamage(te_sparks, point, normal, save);
 
 	return save;
 }

@@ -22,7 +22,7 @@ _CrtMemState startup1;	// memory diagnostics
 #include "game.h"
 
 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"gibrack"
+#define	GAMEVERSION	"Gibrack"
 
 // protocol bytes that can be directly added to messages
 #define	svc_muzzleflash		1
@@ -67,7 +67,7 @@ _CrtMemState startup1;	// memory diagnostics
 #define	PAINTIME		0.2
 
 
-#define	FRAMETIME		0.1
+#define	FRAMETIME		0.1f
 
 // memory tags to allow dynamic memory to be cleaned up
 #define	TAG_GAME	765		// clear when unloading the dll
@@ -544,6 +544,7 @@ extern	cvar_t	*needpass;
 extern	cvar_t	*g_select_empty;
 extern	cvar_t	*dedicated;
 
+extern	cvar_t* flashlightmode; //QW/ mode for flashlight code.
 extern	cvar_t	*filterban;
 
 extern	cvar_t	*sv_gravity;
@@ -769,7 +770,7 @@ void CopyToBodyQue (edict_t *self);
 void respawn (edict_t *ent);
 qboolean BeginIntermission (edict_t *targ, edict_t *activator);
 void PutClientInServer (edict_t *ent);
-void InitClientPersistant (gclient_t *client);
+void InitClientPersistent (gclient_t *client);
 void InitClientResp (gclient_t *client);
 void InitBodyQue (void);
 void ClientBeginServerFrame (edict_t *ent);
@@ -810,9 +811,10 @@ void ValidateSelectedItem (edict_t *ent);
 void DeathmatchScoreboardMessage (edict_t *client, edict_t *killer);
 
 //
-// g_pweapon.c
+// p_weapon.c
 //
 void PlayerNoise(edict_t *who, vec3_t where, int type);
+void P_ProjectSource(gclient_t* client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result);
 
 //
 // m_move.c
@@ -972,12 +974,17 @@ struct gclient_s
 	int			breather_sound;
 
 	int			machinegun_shots;	// for weapon raising
+	int			silencer_shots;
 
 	// animation vars
 	int			anim_end;
 	int			anim_priority;
 	qboolean	anim_duck;
 	qboolean	anim_run;
+
+	// flashlight
+	edict_t* flashlight;
+	int		flashtype;
 
 	int			grenade_time;
 	int			grenade_charging;

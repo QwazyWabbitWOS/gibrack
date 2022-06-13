@@ -78,8 +78,8 @@ void turret_breach_fire (edict_t *self)
 void turret_breach_think (edict_t *self)
 {
 	edict_t	*ent;
-	vec3_t	current_angles;
-	vec3_t	delta;
+	vec3_t	current_angles = { 0 };
+	vec3_t	delta = { 0 };
 
 	VectorCopy (self->s.angles, current_angles);
 	AnglesNormalize(current_angles);
@@ -98,17 +98,17 @@ void turret_breach_think (edict_t *self)
 	{
 		float	dmin, dmax;
 
-		dmin = fabs(self->pos1[YAW] - self->move_angles[YAW]);
+		dmin = fabsf(self->pos1[YAW] - self->move_angles[YAW]);
 		if (dmin < -180)
 			dmin += 360;
 		else if (dmin > 180)
 			dmin -= 360;
-		dmax = fabs(self->pos2[YAW] - self->move_angles[YAW]);
+		dmax = fabsf(self->pos2[YAW] - self->move_angles[YAW]);
 		if (dmax < -180)
 			dmax += 360;
 		else if (dmax > 180)
 			dmax -= 360;
-		if (fabs(dmin) < fabs(dmax))
+		if (fabsf(dmin) < fabs(dmax))
 			self->move_angles[YAW] = self->pos1[YAW];
 		else
 			self->move_angles[YAW] = self->pos2[YAW];
@@ -147,8 +147,8 @@ void turret_breach_think (edict_t *self)
 		float	angle;
 		float	target_z;
 		float	diff;
-		vec3_t	target;
-		vec3_t	dir;
+		vec3_t	target = { 0 };
+		vec3_t	dir = { 0 };
 
 		// angular is easy, just copy ours
 		self->owner->avelocity[0] = self->avelocity[0];
@@ -308,8 +308,8 @@ qboolean FindTarget (edict_t *self);
 
 void turret_driver_think (edict_t *self)
 {
-	vec3_t	target;
-	vec3_t	dir;
+	vec3_t	target = { 0 };
+	vec3_t	dir = { 0 };
 	float	reaction_time;
 
 	// SLUGFILLER--fire rate is determind by skill-in hard the turret driver
@@ -364,7 +364,7 @@ void turret_driver_think (edict_t *self)
 
 void turret_driver_link (edict_t *self)
 {
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	edict_t	*ent;
 
 	// SLUGFILLER--this is a better place to handle the ai
@@ -512,7 +512,7 @@ void turret_seat_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface
 
 void turret_seat_link (edict_t *self)
 {
-	vec3_t vec;
+	vec3_t vec = { 0 };
 	edict_t *ent;
 
 	self->target_ent = G_PickTarget (self->target);
