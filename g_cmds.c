@@ -809,30 +809,30 @@ void Cmd_Wave_f(edict_t* ent)
 Cmd_Say_f
 ==================
 */
-void Cmd_Say_f(edict_t* ent, qboolean team, qboolean arg0)
+void Cmd_Say_f(edict_t* ent, qboolean say_team, qboolean arg0)
 {
 	int		i, j;
 	edict_t* other;
 	char* p;
-	char	text[2048];
+	char	text[MAX_LAYOUT_LENGTH];
 	gclient_t* cl;
 
 	if (gi.argc() < 2 && !arg0)
 		return;
 
 	if (!((int)(dmflags->value) & (DF_MODELTEAMS | DF_SKINTEAMS)))
-		team = false;
+		say_team = false;
 
-	if (team)
+	if (say_team)
 		Com_sprintf(text, sizeof(text), "(%s): ", ent->client->pers.netname);
 	else
 		Com_sprintf(text, sizeof(text), "%s: ", ent->client->pers.netname);
 
 	if (arg0)
 	{
-		strcat(text, gi.argv(0));
-		strcat(text, " ");
-		strcat(text, gi.args());
+		Com_strcat(text, sizeof(text), gi.argv(0));
+		Com_strcat(text, sizeof(text), " ");
+		Com_strcat(text, sizeof(text), gi.args());
 	}
 	else
 	{
@@ -843,14 +843,14 @@ void Cmd_Say_f(edict_t* ent, qboolean team, qboolean arg0)
 			p++;
 			p[strlen(p) - 1] = 0;
 		}
-		strcat(text, p);
+		Com_strcat(text, sizeof(text), p);
 	}
 
 	// don't let text be too long for malicious reasons
 	if (strlen(text) > 150)
 		text[150] = 0;
 
-	strcat(text, "\n");
+	Com_strcat(text, sizeof(text), "\n");
 
 	if (flood_msgs->value) {
 		cl = ent->client;
@@ -885,7 +885,7 @@ void Cmd_Say_f(edict_t* ent, qboolean team, qboolean arg0)
 			continue;
 		if (!other->client)
 			continue;
-		if (team)
+		if (say_team)
 		{
 			if (!OnSameTeam(ent, other))
 				continue;
@@ -897,31 +897,43 @@ void Cmd_Say_f(edict_t* ent, qboolean team, qboolean arg0)
 void Cmd_PlayerList_f(edict_t* ent)
 {
 	int i;
-	char st[80];
-	char text[1400];
-	edict_t* e2;
+	char string[80];
+	char text[MAX_LAYOUT_LENGTH] = { 0 };
+	edict_t* ed = NULL;
+	/* connect time, ping, score, name */
 
-	// connect time, ping, score, name
-	*text = 0;
-	for (i = 0, e2 = g_edicts + 1; i < maxclients->value; i++, e2++) {
-		if (!e2->inuse)
+	// Start with a nice header.
+	Com_sprintf(string, sizeof string, "%s\n", "entry ping score      name");
+	Q_strncatz(text, sizeof text, string);
+	Com_sprintf(string, sizeof string, "%s\n", "----- ---- -----  -------------");
+	Q_strncatz(text, sizeof text, string);
+
+	for (i = 0, ed = g_edicts + 1; i < maxclients->value; i++, ed++) {
+		if (!ed->inuse)
 			continue;
 
-		Com_sprintf(st, sizeof(st), "%02d:%02d %4d %3d %s%s\n",
-			(level.framenum - e2->client->resp.enterframe) / 600,
-			((level.framenum - e2->client->resp.enterframe) % 600) / 10,
-			e2->client->ping,
-			e2->client->resp.score,
-			e2->client->pers.netname,
-			e2->client->resp.spectator ? " (spectator)" : "");
-		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
-			sprintf(text + strlen(text), "And more...\n");
-			gi.cprintf(ent, PRINT_HIGH, "%s", text);
+		Com_sprintf(string, sizeof string, "%02d:%02d %3d %4d    %-s %-12s\n",
+			(level.framenum - ed->client->resp.enterframe) / 600,
+			((level.framenum - ed->client->resp.enterframe) % 600) / 10,
+			ed->client->ping,
+			ed->client->resp.score,
+			ed->client->pers.netname,
+			ed->client->resp.spectator ? "(spectator)" : "");
+
+		// While we might think we have the full frame to use
+		// we can't take all of it for a console message, or it
+		// gets dropped. 1000 seems a hard limit here.
+		// The number of lines listed will depend on
+		// lengths of names and spectator status. //QW//
+		if (strlen(text) + strlen(string) > 1000)
+		{
+			Q_strncatz(text, sizeof text, "And more...\n");
+			gi.cprintf(ent, PRINT_HIGH, "%s\n", text);
 			return;
 		}
-		strcat(text, st);
+		Q_strncatz(text, sizeof text, string);
 	}
-	gi.cprintf(ent, PRINT_HIGH, "%s", text);
+	gi.cprintf(ent, PRINT_HIGH, "%s\n", text);
 }
 
 temp_event_t tent = TE_GUNSHOT;

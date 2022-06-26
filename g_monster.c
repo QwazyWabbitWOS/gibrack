@@ -9,77 +9,77 @@
 // and we can mess it up based on skill.  Spread should be for normal
 // and we can tighten or loosen based on skill.  We could muck with
 // the damages too, but I'm not sure that's such a good idea.
-void monster_fire_bullet (edict_t *self, vec3_t start, vec3_t dir, int damage, int kick, int hspread, int vspread, int flashtype, qboolean chain)
+void monster_fire_bullet(edict_t* self, vec3_t start, vec3_t dir, int damage, int kick, int hspread, int vspread, int flashtype, qboolean chain)
 {
 	if (chain)
-		fire_bullet (self, start, dir, damage, kick, hspread, vspread, MOD_CHAINGUN);
+		fire_bullet(self, start, dir, damage, kick, hspread, vspread, MOD_CHAINGUN);
 	else
-		fire_bullet (self, start, dir, damage, kick, hspread, vspread, MOD_MACHINEGUN);
+		fire_bullet(self, start, dir, damage, kick, hspread, vspread, MOD_MACHINEGUN);
 
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
 }
 
-void monster_fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int flashtype)
+void monster_fire_shotgun(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int flashtype)
 {
-	fire_shotgun (self, start, aimdir, damage, kick, hspread, vspread, count, MOD_SHOTGUN);
+	fire_shotgun(self, start, aimdir, damage, kick, hspread, vspread, count, MOD_SHOTGUN);
 
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
 }
 
-void monster_fire_blaster (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, int flashtype, int effect, qboolean hyper)
+void monster_fire_blaster(edict_t* self, vec3_t start, vec3_t dir, int damage, int speed, int flashtype, int effect, qboolean hyper)
 {
-	fire_blaster (self, start, dir, damage, speed, effect, hyper);
+	fire_blaster(self, start, dir, damage, speed, effect, hyper);
 
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
-}	
-
-void monster_fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int flashtype)
-{
-	fire_grenade (self, start, aimdir, damage, speed, 2.5, damage+40);
-
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
 }
 
-void monster_fire_rocket (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, int flashtype)
+void monster_fire_grenade(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int speed, int flashtype)
 {
-	fire_rocket (self, start, dir, damage, speed, damage+20, damage+20);
+	fire_grenade(self, start, aimdir, damage, speed, 2.5, damage + 40);
 
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
-}	
-
-void monster_fire_railgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int flashtype)
-{
-	fire_rail (self, start, aimdir, damage, kick, 300);
-
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
 }
 
-void monster_fire_bfg (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int kick, float damage_radius, int flashtype)
+void monster_fire_rocket(edict_t* self, vec3_t start, vec3_t dir, int damage, int speed, int flashtype)
 {
-	fire_bfg (self, start, aimdir, damage, speed, damage_radius);
+	fire_rocket(self, start, dir, damage, speed, damage + 20, damage + 20);
 
-	gi.WriteByte (svc_muzzleflash2);
-	gi.WriteShort (self - g_edicts);
-	gi.WriteByte (flashtype);
-	gi.multicast (start, MULTICAST_PVS);
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
+}
+
+void monster_fire_railgun(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick, int flashtype)
+{
+	fire_rail(self, start, aimdir, damage, kick, 300);
+
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
+}
+
+void monster_fire_bfg(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int speed, int kick, float damage_radius, int flashtype)
+{
+	fire_bfg(self, start, aimdir, damage, speed, damage_radius);
+
+	gi.WriteByte(svc_muzzleflash2);
+	gi.WriteShort(self - g_edicts);
+	gi.WriteByte(flashtype);
+	gi.multicast(start, MULTICAST_PVS);
 }
 
 
@@ -88,23 +88,23 @@ void monster_fire_bfg (edict_t *self, vec3_t start, vec3_t aimdir, int damage, i
 // Monster utility functions
 //
 
-static void M_FliesOff (edict_t *self)
+static void M_FliesOff(edict_t* self)
 {
 	self->s.effects &= ~EF_FLIES;
 	self->s.sound = 0;
 }
 
-static void M_FliesOn (edict_t *self)
+static void M_FliesOn(edict_t* self)
 {
 	if (self->waterlevel)
 		return;
 	self->s.effects |= EF_FLIES;
-	self->s.sound = gi.soundindex ("infantry/inflies1.wav");
+	self->s.sound = gi.soundindex("infantry/inflies1.wav");
 	self->think = M_FliesOff;
 	self->nextthink = level.time + 60;
 }
 
-void M_FlyCheck (edict_t *self)
+void M_FlyCheck(edict_t* self)
 {
 	if (self->waterlevel)
 		return;
@@ -117,12 +117,12 @@ void M_FlyCheck (edict_t *self)
 }
 
 
-void M_CheckGround (edict_t *ent)
+void M_CheckGround(edict_t* ent)
 {
 	vec3_t		point;
 	trace_t		trace;
 
-	if (ent->flags & (FL_SWIM|FL_FLY))
+	if (ent->flags & (FL_SWIM | FL_FLY))
 		return;
 
 	if (ent->velocity[2] > 100)
@@ -131,27 +131,27 @@ void M_CheckGround (edict_t *ent)
 		return;
 	}
 
-// if the hull point one-quarter unit down is solid the entity is on ground
+	// if the hull point one-quarter unit down is solid the entity is on ground
 	point[0] = ent->s.origin[0];
 	point[1] = ent->s.origin[1];
 	point[2] = ent->s.origin[2] - 0.25;
 
-	trace = gi.trace (ent->s.origin, ent->mins, ent->maxs, point, ent, MASK_MONSTERSOLID);
+	trace = gi.trace(ent->s.origin, ent->mins, ent->maxs, point, ent, MASK_MONSTERSOLID);
 
 	// check steepness
-	if ( trace.plane.normal[2] < 0.7 && !trace.startsolid)
+	if (trace.plane.normal[2] < 0.7 && !trace.startsolid)
 	{
 		ent->groundentity = NULL;
 		return;
 	}
 
-//	ent->groundentity = trace.ent;
-//	ent->groundentity_linkcount = trace.ent->linkcount;
-//	if (!trace.startsolid && !trace.allsolid)
-//		VectorCopy (trace.endpos, ent->s.origin);
+	//	ent->groundentity = trace.ent;
+	//	ent->groundentity_linkcount = trace.ent->linkcount;
+	//	if (!trace.startsolid && !trace.allsolid)
+	//		VectorCopy (trace.endpos, ent->s.origin);
 	if (!trace.startsolid && !trace.allsolid)
 	{
-		VectorCopy (trace.endpos, ent->s.origin);
+		VectorCopy(trace.endpos, ent->s.origin);
 		ent->groundentity = trace.ent;
 		ent->groundentity_linkcount = trace.ent->linkcount;
 		ent->velocity[2] = 0;
@@ -159,18 +159,18 @@ void M_CheckGround (edict_t *ent)
 }
 
 
-void M_CatagorizePosition (edict_t *ent)
+void M_CatagorizePosition(edict_t* ent)
 {
 	vec3_t		point;
 	int			cont;
 
-//
-// get waterlevel
-//
+	//
+	// get waterlevel
+	//
 	point[0] = ent->s.origin[0];
 	point[1] = ent->s.origin[1];
-	point[2] = ent->s.origin[2] + ent->mins[2] + 1;	
-	cont = gi.pointcontents (point);
+	point[2] = ent->s.origin[2] + ent->mins[2] + 1;
+	cont = gi.pointcontents(point);
 
 	if (!(cont & MASK_WATER))
 	{
@@ -182,19 +182,19 @@ void M_CatagorizePosition (edict_t *ent)
 	ent->watertype = cont;
 	ent->waterlevel = 1;
 	point[2] += 26;
-	cont = gi.pointcontents (point);
+	cont = gi.pointcontents(point);
 	if (!(cont & MASK_WATER))
 		return;
 
 	ent->waterlevel = 2;
 	point[2] += 22;
-	cont = gi.pointcontents (point);
+	cont = gi.pointcontents(point);
 	if (cont & MASK_WATER)
 		ent->waterlevel = 3;
 }
 
 
-void M_WorldEffects (edict_t *ent)
+void M_WorldEffects(edict_t* ent)
 {
 	int		dmg;
 
@@ -213,7 +213,7 @@ void M_WorldEffects (edict_t *ent)
 					dmg = 2 + 2 * floorf(level.time - ent->air_finished);
 					if (dmg > 15)
 						dmg = 15;
-					T_Damage (ent, world, world, vec3_origin, ent->s.origin, vec3_origin, dmg, 0, 0, DAMAGE_NO_ARMOR | DAMAGE_NO_BLOOD, MOD_WATER);
+					T_Damage(ent, world, world, vec3_origin, ent->s.origin, vec3_origin, dmg, 0, 0, DAMAGE_NO_ARMOR | DAMAGE_NO_BLOOD, MOD_WATER);
 					ent->pain_debounce_time = level.time + 1;
 				}
 			}
@@ -231,18 +231,18 @@ void M_WorldEffects (edict_t *ent)
 					dmg = 2 + 2 * floorf(level.time - ent->air_finished);
 					if (dmg > 15)
 						dmg = 15;
-					T_Damage (ent, world, world, vec3_origin, ent->s.origin, vec3_origin, dmg, 0, 0, DAMAGE_NO_ARMOR | DAMAGE_NO_BLOOD, MOD_WATER);
+					T_Damage(ent, world, world, vec3_origin, ent->s.origin, vec3_origin, dmg, 0, 0, DAMAGE_NO_ARMOR | DAMAGE_NO_BLOOD, MOD_WATER);
 					ent->pain_debounce_time = level.time + 1;
 				}
 			}
 		}
 	}
-	
+
 	if (ent->waterlevel == 0)
 	{
 		if (ent->flags & FL_INWATER)
-		{	
-			gi.sound (ent, CHAN_BODY, gi.soundindex("player/watr_out.wav"), 1, ATTN_NORM, 0);
+		{
+			gi.sound(ent, CHAN_BODY, gi.soundindex("player/watr_out.wav"), 1, ATTN_NORM, 0);
 			ent->flags &= ~FL_INWATER;
 		}
 		return;
@@ -253,7 +253,7 @@ void M_WorldEffects (edict_t *ent)
 		if (ent->damage_debounce_time < level.time)
 		{
 			ent->damage_debounce_time = level.time + 0.2;
-			T_Damage (ent, world, world, vec3_origin, ent->s.origin, vec3_origin, 10*ent->waterlevel, 10*ent->waterlevel, 0, DAMAGE_NO_BLOOD, MOD_LAVA);
+			T_Damage(ent, world, world, vec3_origin, ent->s.origin, vec3_origin, 10 * ent->waterlevel, 10 * ent->waterlevel, 0, DAMAGE_NO_BLOOD, MOD_LAVA);
 		}
 	}
 	if ((ent->watertype & CONTENTS_SLIME) && !(ent->flags & FL_IMMUNE_SLIME))
@@ -261,23 +261,23 @@ void M_WorldEffects (edict_t *ent)
 		if (ent->damage_debounce_time < level.time)
 		{
 			ent->damage_debounce_time = level.time + 1;
-			T_Damage (ent, world, world, vec3_origin, ent->s.origin, vec3_origin, 4*ent->waterlevel, 4*ent->waterlevel, 0, DAMAGE_NO_BLOOD, MOD_SLIME);
+			T_Damage(ent, world, world, vec3_origin, ent->s.origin, vec3_origin, 4 * ent->waterlevel, 4 * ent->waterlevel, 0, DAMAGE_NO_BLOOD, MOD_SLIME);
 		}
 	}
-	
-	if ( !(ent->flags & FL_INWATER) )
-	{	
+
+	if (!(ent->flags & FL_INWATER))
+	{
 		if (!(ent->svflags & SVF_DEADMONSTER))
 		{
 			if (ent->watertype & CONTENTS_LAVA)
 				if (random() <= 0.5)
-					gi.sound (ent, CHAN_BODY, gi.soundindex("player/lava1.wav"), 1, ATTN_NORM, 0);
+					gi.sound(ent, CHAN_BODY, gi.soundindex("player/lava1.wav"), 1, ATTN_NORM, 0);
 				else
-					gi.sound (ent, CHAN_BODY, gi.soundindex("player/lava2.wav"), 1, ATTN_NORM, 0);
+					gi.sound(ent, CHAN_BODY, gi.soundindex("player/lava2.wav"), 1, ATTN_NORM, 0);
 			else if (ent->watertype & CONTENTS_SLIME)
-				gi.sound (ent, CHAN_BODY, gi.soundindex("player/watr_in.wav"), 1, ATTN_NORM, 0);
+				gi.sound(ent, CHAN_BODY, gi.soundindex("player/watr_in.wav"), 1, ATTN_NORM, 0);
 			else if (ent->watertype & CONTENTS_WATER)
-				gi.sound (ent, CHAN_BODY, gi.soundindex("player/watr_in.wav"), 1, ATTN_NORM, 0);
+				gi.sound(ent, CHAN_BODY, gi.soundindex("player/watr_in.wav"), 1, ATTN_NORM, 0);
 		}
 
 		ent->flags |= FL_INWATER;
@@ -286,32 +286,32 @@ void M_WorldEffects (edict_t *ent)
 }
 
 
-void M_droptofloor (edict_t *ent)
+void M_droptofloor(edict_t* ent)
 {
 	vec3_t		end;
 	trace_t		trace;
 
 	ent->s.origin[2] += 1;
-	VectorCopy (ent->s.origin, end);
+	VectorCopy(ent->s.origin, end);
 	end[2] -= 256;
-	
-	trace = gi.trace (ent->s.origin, ent->mins, ent->maxs, end, ent, MASK_MONSTERSOLID);
+
+	trace = gi.trace(ent->s.origin, ent->mins, ent->maxs, end, ent, MASK_MONSTERSOLID);
 
 	if (trace.fraction == 1 || trace.allsolid)
 		return;
 
-	VectorCopy (trace.endpos, ent->s.origin);
+	VectorCopy(trace.endpos, ent->s.origin);
 
-	gi.linkentity (ent);
-	M_CheckGround (ent);
-	M_CatagorizePosition (ent);
+	gi.linkentity(ent);
+	M_CheckGround(ent);
+	M_CatagorizePosition(ent);
 }
 
 
-void M_SetEffects (edict_t *ent)
+void M_SetEffects(edict_t* ent)
 {
-	ent->s.effects &= ~(EF_COLOR_SHELL|EF_POWERSCREEN);
-	ent->s.renderfx &= ~(RF_SHELL_RED|RF_SHELL_GREEN|RF_SHELL_BLUE);
+	ent->s.effects &= ~(EF_COLOR_SHELL | EF_POWERSCREEN);
+	ent->s.renderfx &= ~(RF_SHELL_RED | RF_SHELL_GREEN | RF_SHELL_BLUE);
 
 	if (ent->monsterinfo.aiflags & AI_RESURRECTING)
 	{
@@ -337,9 +337,9 @@ void M_SetEffects (edict_t *ent)
 }
 
 
-void M_MoveFrame (edict_t *self)
+void M_MoveFrame(edict_t* self)
 {
-	mmove_t	*move;
+	mmove_t* move;
 	int		index;
 
 	move = self->monsterinfo.currentmove;
@@ -356,7 +356,7 @@ void M_MoveFrame (edict_t *self)
 		{
 			if (move->endfunc)
 			{
-				move->endfunc (self);
+				move->endfunc(self);
 
 				// regrab move, endfunc is very likely to change it
 				move = self->monsterinfo.currentmove;
@@ -385,25 +385,25 @@ void M_MoveFrame (edict_t *self)
 
 	index = self->s.frame - move->firstframe;
 	if (!(self->monsterinfo.aiflags & AI_HOLD_FRAME))
-		M_walkmove (self, self->s.angles[YAW], move->frame[index].dist);
+		M_walkmove(self, self->s.angles[YAW], move->frame[index].dist);
 
 	if (move->frame[index].thinkfunc)
-		move->frame[index].thinkfunc (self);
+		move->frame[index].thinkfunc(self);
 }
 
 
-void monster_think (edict_t *self)
+void monster_think(edict_t* self)
 {
-	M_MoveFrame (self);
-	M_RunThink (self);
+	M_MoveFrame(self);
+	M_RunThink(self);
 	if (self->linkcount != self->monsterinfo.linkcount)
 	{
 		self->monsterinfo.linkcount = self->linkcount;
-		M_CheckGround (self);
+		M_CheckGround(self);
 	}
-	M_CatagorizePosition (self);
-	M_WorldEffects (self);
-	M_SetEffects (self);
+	M_CatagorizePosition(self);
+	M_WorldEffects(self);
+	M_SetEffects(self);
 }
 
 
@@ -414,7 +414,7 @@ monster_use
 Using a monster makes it angry at the current activator
 ================
 */
-void monster_use (edict_t *self, edict_t *other, edict_t *activator)
+void monster_use(edict_t* self, edict_t* other, edict_t* activator)
 {
 	if (self->enemy)
 		return;
@@ -424,38 +424,38 @@ void monster_use (edict_t *self, edict_t *other, edict_t *activator)
 		return;
 	if (!(activator->client) && !(activator->monsterinfo.aiflags & AI_GOOD_GUY))
 		return;
-	
-// delay reaction so if the monster is teleported, its sound is still heard
+
+	// delay reaction so if the monster is teleported, its sound is still heard
 	self->enemy = activator;
 	// SLUGFILLER--it's his own fault
 	self->chain = NULL;
-	VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-	FoundTarget (self);
+	VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+	FoundTarget(self);
 }
 
 
-void monster_start_go (edict_t *self);
+void monster_start_go(edict_t* self);
 
 
-void monster_triggered_spawn (edict_t *self)
+void monster_triggered_spawn(edict_t* self)
 {
 	self->s.origin[2] += 1;
-	KillBox (self);
+	KillBox(self);
 
 	self->solid = SOLID_BBOX;
 	self->movetype = MOVETYPE_STEP;
 	self->svflags &= ~SVF_NOCLIENT;
 	self->air_finished = level.time + 12;
-	gi.linkentity (self);
+	gi.linkentity(self);
 
-	monster_start_go (self);
+	monster_start_go(self);
 
 	if (self->enemy && !(self->spawnflags & 1) && !(self->enemy->flags & FL_NOTARGET))
 	{
 		// SLUGFILLER--it's his own fault
 		self->chain = NULL;
-		VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-		FoundTarget (self);
+		VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+		FoundTarget(self);
 	}
 	else
 	{
@@ -463,7 +463,7 @@ void monster_triggered_spawn (edict_t *self)
 	}
 }
 
-void monster_triggered_spawn_use (edict_t *self, edict_t *other, edict_t *activator)
+void monster_triggered_spawn_use(edict_t* self, edict_t* other, edict_t* activator)
 {
 	// we have a one frame delay here so we don't telefrag the guy who activated us
 	self->think = monster_triggered_spawn;
@@ -473,7 +473,7 @@ void monster_triggered_spawn_use (edict_t *self, edict_t *other, edict_t *activa
 	self->use = monster_use;
 }
 
-void monster_triggered_start (edict_t *self)
+void monster_triggered_start(edict_t* self)
 {
 	self->solid = SOLID_NOT;
 	self->movetype = MOVETYPE_NONE;
@@ -482,12 +482,12 @@ void monster_triggered_start (edict_t *self)
 	self->use = monster_triggered_spawn_use;
 }
 
-void ED_CallSpawn (edict_t *ent);
+void ED_CallSpawn(edict_t* ent);
 
-void monster_respawn (edict_t *self) {
+void monster_respawn(edict_t* self) {
 	trace_t tr;
-	edict_t *respawner;
-	edict_t *targcheck;
+	edict_t* respawner;
+	edict_t* targcheck;
 
 	// Create source teleportation
 	respawner = G_Spawn();
@@ -495,13 +495,13 @@ void monster_respawn (edict_t *self) {
 	VectorCopy(self->s.origin, respawner->s.origin);
 	VectorCopy(self->s.origin, respawner->s.old_origin);
 	VectorCopy(self->s.angles, respawner->s.angles);
-	respawner->nextthink = level.time+0.1;
+	respawner->nextthink = level.time + 0.1;
 	respawner->think = G_FreeEdict;
-	gi.linkentity (respawner);
+	gi.linkentity(respawner);
 
 	// Reinit monster;
 	respawner = self->mynoise;
-	G_InitEdict (self);
+	G_InitEdict(self);
 	self->mynoise = respawner;
 	self->classname = respawner->classname;
 	VectorCopy(respawner->s.origin, self->s.origin);
@@ -519,33 +519,33 @@ void monster_respawn (edict_t *self) {
 		if (targcheck) {
 			if (strcmp(targcheck->classname, "point_combat") == 0)
 				self->combattarget = respawner->target;
-			else if (strcmp (targcheck->classname, "path_corner") == 0)
+			else if (strcmp(targcheck->classname, "path_corner") == 0)
 				self->target = respawner->target;
 		}
 	}
-	ED_CallSpawn (self);
+	ED_CallSpawn(self);
 	if (self->nextthink > 0)
 	{
 		self->nextthink = 0;
-		self->think (self);
+		self->think(self);
 	}
-	
+
 	// Create destination teleportation and telefrag
 	self->s.event = EV_PLAYER_TELEPORT;
 	self->s.origin[2] += 1;
 	self->s.old_origin[2] += 1;
 	while (1)
 	{
-		tr = gi.trace (self->s.origin, self->mins, self->maxs, self->s.origin, self, MASK_PLAYERSOLID);
+		tr = gi.trace(self->s.origin, self->mins, self->maxs, self->s.origin, self, MASK_PLAYERSOLID);
 		if (!tr.ent)
 			break;
 
 		// nail it
 		if (!tr.ent->client)
-			T_Damage (tr.ent, self, self, vec3_origin, self->s.origin, vec3_origin, 100000, 100000, 0, DAMAGE_NO_PROTECTION | DAMAGE_NO_BLOOD, MOD_TELEFRAG);
+			T_Damage(tr.ent, self, self, vec3_origin, self->s.origin, vec3_origin, 100000, 100000, 0, DAMAGE_NO_PROTECTION | DAMAGE_NO_BLOOD, MOD_TELEFRAG);
 		// it's a player - nail us
 		else
-			T_Damage (self, tr.ent, tr.ent, vec3_origin, tr.ent->s.origin, vec3_origin, 100000, 100000, 0, DAMAGE_NO_PROTECTION | DAMAGE_NO_BLOOD, MOD_TELEFRAG);
+			T_Damage(self, tr.ent, tr.ent, vec3_origin, tr.ent->s.origin, vec3_origin, 100000, 100000, 0, DAMAGE_NO_PROTECTION | DAMAGE_NO_BLOOD, MOD_TELEFRAG);
 
 		// we've failed, let's leave it at that
 		if (tr.ent->solid)
@@ -553,7 +553,7 @@ void monster_respawn (edict_t *self) {
 	}
 }
 
-void monster_respawner_think (edict_t *self) {
+void monster_respawner_think(edict_t* self) {
 	// Owner may have been removed - in that case, spawn a new one
 	if (!self->owner || self->owner->mynoise != self) {
 		self->owner = G_Spawn();
@@ -570,7 +570,7 @@ SLUGFILLER--monster_dead_dead
 Causes the monster ai to stop
 ==========================
 */
-void monster_dead_dead (edict_t *self)
+void monster_dead_dead(edict_t* self)
 {
 	self->nextthink = 0;
 }
@@ -583,23 +583,23 @@ When a monster dies, it fires all of its targets with the current
 enemy as activator.
 ================
 */
-void monster_death_use (edict_t *self)
+void monster_death_use(edict_t* self)
 {
-	self->flags &= ~(FL_FLY|FL_SWIM);
+	self->flags &= ~(FL_FLY | FL_SWIM);
 	// SLUGFILLER--last chance
 	if (self->monsterinfo.aiflags & AI_DUCKED)
-		self->monsterinfo.unduck (self);
+		self->monsterinfo.unduck(self);
 	self->monsterinfo.aiflags &= AI_GOOD_GUY;
 
 	if (self->mynoise) {
 		// Respawn in 10 seconds
 		self->mynoise->think = monster_respawner_think;
-		self->mynoise->nextthink = level.time+10;
+		self->mynoise->nextthink = level.time + 10;
 	}
 
 	if (self->item)
 	{
-		Drop_Item (self, self->item);
+		Drop_Item(self, self->item);
 		self->item = NULL;
 	}
 
@@ -609,17 +609,17 @@ void monster_death_use (edict_t *self)
 	if (!self->target)
 		return;
 
-	G_UseTargets (self, self->enemy);
+	G_UseTargets(self, self->enemy);
 }
 
 
 //============================================================================
 
-qboolean monster_start (edict_t *self)
+qboolean monster_start(edict_t* self)
 {
 	if (deathmatch->value && deathmatch->value != 3 && !((int)(gibflags->value) & GF_WITH_MONSTERS))
 	{
-		G_FreeEdict (self);
+		G_FreeEdict(self);
 		return false;
 	}
 
@@ -627,7 +627,7 @@ qboolean monster_start (edict_t *self)
 	{
 		self->spawnflags &= ~4;
 		self->spawnflags |= 1;
-//		gi.dprintf("fixed spawnflags on %s at %s\n", self->classname, vtos(self->s.origin));
+		//		gi.dprintf("fixed spawnflags on %s at %s\n", self->classname, vtos(self->s.origin));
 	}
 
 	if (!(self->monsterinfo.aiflags & AI_GOOD_GUY))
@@ -648,8 +648,8 @@ qboolean monster_start (edict_t *self)
 
 	if (!self->monsterinfo.checkattack)
 		self->monsterinfo.checkattack = M_CheckAttack;
-	VectorCopy (self->s.origin, self->s.old_origin);
-	VectorCopy (self->s.angles, self->aimangles);
+	VectorCopy(self->s.origin, self->s.old_origin);
+	VectorCopy(self->s.angles, self->aimangles);
 	self->ideal_yaw = self->s.angles[YAW];
 
 	if (deathmatch->value) {
@@ -660,8 +660,8 @@ qboolean monster_start (edict_t *self)
 	if ((deathmatch->value == 3 || skill->value == 3) && !(self->monsterinfo.aiflags & AI_GOOD_GUY) && !self->mynoise) {
 		self->mynoise = G_Spawn();
 		self->mynoise->classname = self->classname;
-		VectorCopy (self->s.origin, self->mynoise->s.origin);
-		VectorCopy (self->s.angles, self->mynoise->s.angles);
+		VectorCopy(self->s.origin, self->mynoise->s.origin);
+		VectorCopy(self->s.angles, self->mynoise->s.angles);
 		self->mynoise->target = self->target;
 		self->mynoise->combattarget = self->combattarget;
 		self->mynoise->owner = self;
@@ -669,7 +669,7 @@ qboolean monster_start (edict_t *self)
 
 	if (st.item)
 	{
-		self->item = FindItemByClassname (st.item);
+		self->item = FindItemByClassname(st.item);
 		if (!self->item)
 			gi.dprintf("%s at %s has bad item: %s\n", self->classname, vtos(self->s.origin), st.item);
 	}
@@ -681,7 +681,7 @@ qboolean monster_start (edict_t *self)
 	return true;
 }
 
-void monster_start_go (edict_t *self)
+void monster_start_go(edict_t* self)
 {
 	vec3_t	v;
 
@@ -693,12 +693,12 @@ void monster_start_go (edict_t *self)
 	{
 		qboolean	notcombat;
 		qboolean	fixup;
-		edict_t		*target;
+		edict_t* target;
 
 		target = NULL;
 		notcombat = false;
 		fixup = false;
-		while ((target = G_Find (target, FOFS(targetname), self->target)) != NULL)
+		while ((target = G_Find(target, FOFS(targetname), self->target)) != NULL)
 		{
 			if (strcmp(target->classname, "point_combat") == 0)
 			{
@@ -719,10 +719,10 @@ void monster_start_go (edict_t *self)
 	// validate combattarget
 	if (self->combattarget)
 	{
-		edict_t		*target;
+		edict_t* target;
 
 		target = NULL;
-		while ((target = G_Find (target, FOFS(targetname), self->combattarget)) != NULL)
+		while ((target = G_Find(target, FOFS(targetname), self->combattarget)) != NULL)
 		{
 			if (strcmp(target->classname, "point_combat") != 0)
 			{
@@ -739,17 +739,17 @@ void monster_start_go (edict_t *self)
 		self->goalentity = self->movetarget = G_PickTarget(self->target);
 		if (!self->movetarget)
 		{
-			gi.dprintf ("%s can't find target %s at %s\n", self->classname, self->target, vtos(self->s.origin));
+			gi.dprintf("%s can't find target %s at %s\n", self->classname, self->target, vtos(self->s.origin));
 			self->target = NULL;
 			self->monsterinfo.pausetime = 0;
-			self->monsterinfo.stand (self);
+			self->monsterinfo.stand(self);
 		}
-		else if (strcmp (self->movetarget->classname, "path_corner") == 0)
+		else if (strcmp(self->movetarget->classname, "path_corner") == 0)
 		{
-			VectorSubtract (self->goalentity->s.origin, self->s.origin, v);
+			VectorSubtract(self->goalentity->s.origin, self->s.origin, v);
 			self->ideal_pitch = self->s.angles[PITCH] = 0;
 			self->ideal_yaw = self->s.angles[YAW] = vectoyaw(v);
-			self->monsterinfo.walk (self);
+			self->monsterinfo.walk(self);
 			self->target = NULL;
 		}
 		else
@@ -758,13 +758,13 @@ void monster_start_go (edict_t *self)
 				self->target = NULL;
 			self->goalentity = self->movetarget = NULL;
 			self->monsterinfo.pausetime = 0;
-			self->monsterinfo.stand (self);
+			self->monsterinfo.stand(self);
 		}
 	}
 	else
 	{
 		self->monsterinfo.pausetime = 0;
-		self->monsterinfo.stand (self);
+		self->monsterinfo.stand(self);
 	}
 
 	self->think = monster_think;
@@ -772,73 +772,73 @@ void monster_start_go (edict_t *self)
 }
 
 
-void walkmonster_start_go (edict_t *self)
+void walkmonster_start_go(edict_t* self)
 {
 	if (!(self->spawnflags & 2) && level.time < 1)
 	{
-		M_droptofloor (self);
+		M_droptofloor(self);
 
 		if (self->groundentity)
-			if (!M_walkmove (self, 0, 0))
-				gi.dprintf ("%s in solid at %s\n", self->classname, vtos(self->s.origin));
+			if (!M_walkmove(self, 0, 0))
+				gi.dprintf("%s in solid at %s\n", self->classname, vtos(self->s.origin));
 	}
-	
+
 	if (!self->yaw_speed)
 		self->yaw_speed = 14;
-	self->viewheight = (self->headmins[2]+self->headmaxs[2])/2;
+	self->viewheight = (self->headmins[2] + self->headmaxs[2]) / 2;
 
-	monster_start_go (self);
+	monster_start_go(self);
 
 	if (self->spawnflags & 2)
-		monster_triggered_start (self);
+		monster_triggered_start(self);
 }
 
-void walkmonster_start (edict_t *self)
+void walkmonster_start(edict_t* self)
 {
 	self->think = walkmonster_start_go;
-	monster_start (self);
+	monster_start(self);
 }
 
 
-void flymonster_start_go (edict_t *self)
+void flymonster_start_go(edict_t* self)
 {
-	if (!M_walkmove (self, 0, 0))
-		gi.dprintf ("%s in solid at %s\n", self->classname, vtos(self->s.origin));
+	if (!M_walkmove(self, 0, 0))
+		gi.dprintf("%s in solid at %s\n", self->classname, vtos(self->s.origin));
 
 	if (!self->yaw_speed)
 		self->yaw_speed = 10;
-	self->viewheight = (self->headmins[2]+self->headmaxs[2])/2;
+	self->viewheight = (self->headmins[2] + self->headmaxs[2]) / 2;
 
-	monster_start_go (self);
+	monster_start_go(self);
 
 	if (self->spawnflags & 2)
-		monster_triggered_start (self);
+		monster_triggered_start(self);
 }
 
 
-void flymonster_start (edict_t *self)
+void flymonster_start(edict_t* self)
 {
 	self->flags |= FL_FLY;
 	self->think = flymonster_start_go;
-	monster_start (self);
+	monster_start(self);
 }
 
 
-void swimmonster_start_go (edict_t *self)
+void swimmonster_start_go(edict_t* self)
 {
 	if (!self->yaw_speed)
 		self->yaw_speed = 10;
-	self->viewheight = (self->headmins[2]+self->headmaxs[2])/2;
+	self->viewheight = (self->headmins[2] + self->headmaxs[2]) / 2;
 
-	monster_start_go (self);
+	monster_start_go(self);
 
 	if (self->spawnflags & 2)
-		monster_triggered_start (self);
+		monster_triggered_start(self);
 }
 
-void swimmonster_start (edict_t *self)
+void swimmonster_start(edict_t* self)
 {
 	self->flags |= FL_SWIM;
 	self->think = swimmonster_start_go;
-	monster_start (self);
+	monster_start(self);
 }

@@ -2,7 +2,7 @@
 
 #include "g_local.h"
 
-extern cvar_t	*maxclients;
+extern cvar_t* maxclients;
 
 qboolean	enemy_vis;
 qboolean	enemy_infront;
@@ -13,9 +13,8 @@ float		enemy_yaw;
 //============================================================================
 
 // SLUGFILLER--enable both ducking and sliding to avoid projectiles
-void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float eta, trace_t *tr, qboolean must)
+void M_MonsterDodge(edict_t* self, edict_t* inflictor, edict_t* attacker, float eta, trace_t* tr, qboolean must)
 {
-	float		r = random();
 	float		height;
 	qboolean	ducker = false;
 	qboolean	dodger = false;
@@ -43,8 +42,8 @@ void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float
 			// that's what caused us to try to kill him
 			self->chain = attacker->chain;
 		}
-		VectorCopy (inflictor->s.origin, self->monsterinfo.last_sighting);
-		FoundTarget (self);
+		VectorCopy(inflictor->s.origin, self->monsterinfo.last_sighting);
+		FoundTarget(self);
 	}
 
 	// too soon or too late
@@ -52,7 +51,7 @@ void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float
 		return;
 
 	if (ducker && !(self->monsterinfo.aiflags & AI_DUCKED) && anim < MANIM_MELEE)
-		height = self->absmax[2]-32;
+		height = self->absmax[2] - 32;
 	else
 		height = self->absmax[2];
 
@@ -67,22 +66,22 @@ void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float
 		{
 			vec3_t right, diff;
 
-			AngleVectors (self->s.angles, NULL, right, NULL);
-			VectorSubtract (tr->endpos, self->s.origin, diff);
+			AngleVectors(self->s.angles, NULL, right, NULL);
+			VectorSubtract(tr->endpos, self->s.origin, diff);
 
 			if (!(self->monsterinfo.aiflags & AI_DODGE_MUST))
 			{
-				if (DotProduct (right, diff) < 0)
+				if (DotProduct(right, diff) < 0)
 					self->monsterinfo.lefty = 0;
 				else
 					self->monsterinfo.lefty = 1;
 			}
-			yaw = ((self->monsterinfo.lefty)?90:-90);
-			if (!M_CheckMove (self, self->s.angles[YAW] + yaw, 32))
+			yaw = ((self->monsterinfo.lefty) ? 90 : -90);
+			if (!M_CheckMove(self, self->s.angles[YAW] + yaw, 32))
 			{
-				if (!M_CheckMove (self, self->s.angles[YAW] - yaw, 32))
+				if (!M_CheckMove(self, self->s.angles[YAW] - yaw, 32))
 				{
-					if (!M_CheckMove (self, self->s.angles[YAW] + yaw, 8))
+					if (!M_CheckMove(self, self->s.angles[YAW] + yaw, 8))
 						self->monsterinfo.lefty = !self->monsterinfo.lefty;
 				}
 				else
@@ -104,10 +103,10 @@ void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float
 					self->monsterinfo.unduck(self);
 
 				if (anim <= MANIM_DUCK && anim != MANIM_RUN)
-					self->monsterinfo.run (self);
+					self->monsterinfo.run(self);
 			}
 			else if (anim < MANIM_DUCK && anim != MANIM_RUN)
-				self->monsterinfo.run (self);
+				self->monsterinfo.run(self);
 
 			self->monsterinfo.aiflags |= AI_DODGING;
 			if (must)
@@ -121,11 +120,11 @@ void M_MonsterDodge (edict_t *self, edict_t *inflictor, edict_t *attacker, float
 	{
 		// get down
 		if (anim != MANIM_DUCK && anim < MANIM_MELEE)
-			self->monsterinfo.duck (self, attacker, eta);
+			self->monsterinfo.duck(self, attacker, eta);
 	}
 }
 
-void monster_duck_down (edict_t *self)
+void monster_duck_down(edict_t* self)
 {
 	if (self->monsterinfo.aiflags & AI_DUCKED)
 		return;
@@ -135,10 +134,10 @@ void monster_duck_down (edict_t *self)
 	self->headmaxs[2] -= 32;
 	self->viewheight -= 32;
 	self->takedamage = DAMAGE_YES;
-	gi.linkentity (self);
+	gi.linkentity(self);
 }
 
-void monster_duck_hold (edict_t *self)
+void monster_duck_hold(edict_t* self)
 {
 	if (level.time >= self->monsterinfo.pausetime)
 		self->monsterinfo.aiflags &= ~AI_HOLD_FRAME;
@@ -146,7 +145,7 @@ void monster_duck_hold (edict_t *self)
 		self->monsterinfo.aiflags |= AI_HOLD_FRAME;
 }
 
-void monster_duck_up (edict_t *self)
+void monster_duck_up(edict_t* self)
 {
 	if (!(self->monsterinfo.aiflags & AI_DUCKED))
 		return;
@@ -156,7 +155,7 @@ void monster_duck_up (edict_t *self)
 	self->headmaxs[2] += 32;
 	self->viewheight += 32;
 	self->takedamage = DAMAGE_AIM;
-	gi.linkentity (self);
+	gi.linkentity(self);
 }
 
 //============================================================================
@@ -202,13 +201,13 @@ returns the range catagorization of an entity reletive to self
 3	only triggered by damage
 =============
 */
-int range (edict_t *self, edict_t *other)
+int range(edict_t* self, edict_t* other)
 {
 	vec3_t	v;
 	float	len;
 
-	VectorSubtract (self->s.origin, other->s.origin, v);
-	len = VectorLength (v);
+	VectorSubtract(self->s.origin, other->s.origin, v);
+	len = VectorLength(v);
 	if (len < MELEE_DISTANCE)
 		return RANGE_MELEE;
 	if (len < 500)
@@ -225,18 +224,18 @@ visible
 returns 1 if the entity is visible to self, even if not infront ()
 =============
 */
-qboolean visible (edict_t *self, edict_t *other)
+qboolean visible(edict_t* self, edict_t* other)
 {
 	vec3_t	spot1;
 	vec3_t	spot2;
 	trace_t	trace;
 
-	VectorCopy (self->s.origin, spot1);
+	VectorCopy(self->s.origin, spot1);
 	spot1[2] += self->viewheight;
-	VectorCopy (other->s.origin, spot2);
+	VectorCopy(other->s.origin, spot2);
 	spot2[2] += other->viewheight;
-	trace = gi.trace (spot1, vec3_origin, vec3_origin, spot2, self, MASK_OPAQUE);
-	
+	trace = gi.trace(spot1, vec3_origin, vec3_origin, spot2, self, MASK_OPAQUE);
+
 	if (trace.fraction == 1.0)
 		return true;
 	return false;
@@ -250,16 +249,16 @@ infront
 returns 1 if the entity is in front (in sight) of self
 =============
 */
-qboolean infront (edict_t *self, edict_t *other)
+qboolean infront(edict_t* self, edict_t* other)
 {
 	vec3_t	vec;
 	float	dot;
 	vec3_t	forward;
 
-	AngleVectors (self->aimangles, forward, NULL, NULL);
-	VectorSubtract (other->s.origin, self->s.origin, vec);
-	VectorNormalize (vec);
-	dot = DotProduct (vec, forward);
+	AngleVectors(self->aimangles, forward, NULL, NULL);
+	VectorSubtract(other->s.origin, self->s.origin, vec);
+	VectorNormalize(vec);
+	dot = DotProduct(vec, forward);
 
 	if (dot > 0.3)
 		return true;
@@ -269,28 +268,28 @@ qboolean infront (edict_t *self, edict_t *other)
 
 //============================================================================
 
-void HuntTarget (edict_t *self)
+void HuntTarget(edict_t* self)
 {
 	self->goalentity = self->enemy;
 	if (self->monsterinfo.aiflags & AI_STAND_GROUND)
-		self->monsterinfo.stand (self);
+		self->monsterinfo.stand(self);
 	else
-		self->monsterinfo.run (self);
+		self->monsterinfo.run(self);
 	// SLUGFILLER--don't wait a while before first attack
 	// shoot first, ask questions later
 }
 
-void FoundTarget (edict_t *self)
+void FoundTarget(edict_t* self)
 {
 	self->show_hostile = level.time + 1;		// wake up other monsters
 
 	// SLUGFILLER--reinforce them before they reinforce us
 	if (!(self->monsterinfo.aiflags & AI_SOUND_TARGET))
-		Reinforce (self);
+		Reinforce(self);
 
 	if (!self->combattarget)
 	{
-		HuntTarget (self);
+		HuntTarget(self);
 		return;
 	}
 
@@ -298,7 +297,7 @@ void FoundTarget (edict_t *self)
 	if (!self->movetarget)
 	{
 		self->goalentity = self->movetarget = self->enemy;
-		HuntTarget (self);
+		HuntTarget(self);
 		gi.dprintf("%s at %s, combattarget %s not found\n", self->classname, vtos(self->s.origin), self->combattarget);
 		return;
 	}
@@ -312,20 +311,20 @@ void FoundTarget (edict_t *self)
 	self->monsterinfo.pausetime = 0;
 
 	// run for it
-	self->monsterinfo.run (self);
+	self->monsterinfo.run(self);
 }
 
 // SLUGFILLER--if another monster hurts us, were calling friends for help
-void Reinforce (edict_t *self)
+void Reinforce(edict_t* self)
 {
-	edict_t	*ent;
+	edict_t* ent;
 	int		r;
 
 	// SLUGFILLER--were already telling other monsters about clients so
 	if (self->enemy->client)
 		return;
 
-	for (ent = g_edicts ; ent < &g_edicts[globals.num_edicts] ; ent++)
+	for (ent = g_edicts; ent < &g_edicts[globals.num_edicts]; ent++)
 	{
 		if (ent == self)
 			continue;
@@ -352,12 +351,12 @@ void Reinforce (edict_t *self)
 		if (strcmp(self->classname, ent->classname) != 0)
 			continue;
 
-		r = range (ent, self);
+		r = range(ent, self);
 
 		if (r == RANGE_FAR)
 			continue;
 
-		if (!visible (ent, self) && !visible (ent, self->enemy))
+		if (!visible(ent, self) && !visible(ent, self->enemy))
 			continue;
 
 		ent->enemy = self->enemy;
@@ -368,14 +367,14 @@ void Reinforce (edict_t *self)
 		// caused us to attack that monster
 		ent->chain = self->chain;
 
-		if (visible (ent, self->enemy))
-			VectorCopy (self->enemy->s.origin, ent->monsterinfo.last_sighting);
+		if (visible(ent, self->enemy))
+			VectorCopy(self->enemy->s.origin, ent->monsterinfo.last_sighting);
 		else
-			VectorCopy (self->s.origin, ent->monsterinfo.last_sighting);
-		FoundTarget (ent);
+			VectorCopy(self->s.origin, ent->monsterinfo.last_sighting);
+		FoundTarget(ent);
 
-		if (visible (ent, self->enemy) && ent->monsterinfo.sight)
-			ent->monsterinfo.sight (ent, ent->enemy);
+		if (visible(ent, self->enemy) && ent->monsterinfo.sight)
+			ent->monsterinfo.sight(ent, ent->enemy);
 	}
 }
 
@@ -393,9 +392,9 @@ that monsters that see the impact will respond as if they had seen the
 player.
 ============
 */
-qboolean FindTarget (edict_t *self)
+qboolean FindTarget(edict_t* self)
 {
-	edict_t		*client;
+	edict_t* client;
 	int			r, i;
 	vec3_t	temp;
 
@@ -418,7 +417,7 @@ qboolean FindTarget (edict_t *self)
 	// SLUGFILLER--totaly revised code, removing hacks, old behavior remains
 
 	// SLUGFILLER--search for a client
-	for (i=0 ; i<maxclients->value ; i++)
+	for (i = 0; i < maxclients->value; i++)
 	{
 		client = g_edicts + 1 + i;
 
@@ -434,7 +433,7 @@ qboolean FindTarget (edict_t *self)
 		if (client->flags & FL_NOTARGET)
 			continue;
 
-		r = range (self, client);
+		r = range(self, client);
 
 		if (r == RANGE_FAR)
 			continue;
@@ -442,11 +441,11 @@ qboolean FindTarget (edict_t *self)
 		if (client->light_level <= 5)
 			continue;
 
-		if (!visible (self, client))
+		if (!visible(self, client))
 			continue;
 
 		if (r == RANGE_NEAR || r == RANGE_MID)
-			if (!infront (self, client))
+			if (!infront(self, client))
 				continue;
 
 		self->monsterinfo.aiflags &= ~AI_SOUND_TARGET;
@@ -458,17 +457,17 @@ qboolean FindTarget (edict_t *self)
 
 		// TITANIUM--we looked for that target ourselves
 		self->chain = NULL;
-		VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-		FoundTarget (self);
+		VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+		FoundTarget(self);
 
 		if (self->monsterinfo.sight)
-			self->monsterinfo.sight (self, self->enemy);
+			self->monsterinfo.sight(self, self->enemy);
 
 		return true;
 	}
 
 	// SLUGFILLER--search for an angry monster
-	for (client = g_edicts ; client < &g_edicts[globals.num_edicts] ; client++)
+	for (client = g_edicts; client < &g_edicts[globals.num_edicts]; client++)
 	{
 		if (client == self)
 			continue;
@@ -494,28 +493,28 @@ qboolean FindTarget (edict_t *self)
 		if (client->enemy->flags & FL_NOTARGET)
 			continue;
 
-		r = range (self, client);
+		r = range(self, client);
 
 		if (r == RANGE_FAR)
 			continue;
 
-		if ((!visible (self, client) || (self->spawnflags & 1)) && !visible (self, client->enemy))
+		if ((!visible(self, client) || (self->spawnflags & 1)) && !visible(self, client->enemy))
 			continue;
 
 		if (r == RANGE_NEAR)
 		{
-			if (client->show_hostile < level.time && !infront (self, client))
+			if (client->show_hostile < level.time && !infront(self, client))
 				continue;
 		}
 		else if (r == RANGE_MID)
 		{
-			if (!infront (self, client))
+			if (!infront(self, client))
 				continue;
 		}
 
 		// SLUGFILLER--we looked for that target ourselves
 		self->chain = NULL;
-		if (visible (self, client->enemy))
+		if (visible(self, client->enemy))
 		{
 			self->monsterinfo.aiflags &= ~AI_SOUND_TARGET;
 
@@ -524,30 +523,30 @@ qboolean FindTarget (edict_t *self)
 
 			self->enemy = client->enemy;
 
-			VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-			FoundTarget (self);
+			VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+			FoundTarget(self);
 
 			if (self->monsterinfo.sight)
-				self->monsterinfo.sight (self, self->enemy);
+				self->monsterinfo.sight(self, self->enemy);
 		}
 		else
 		{
 			self->enemy = client;
 			self->monsterinfo.aiflags |= AI_SOUND_TARGET;
 
-			VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-			FoundTarget (self);
+			VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+			FoundTarget(self);
 		}
 		return true;
 	}
 
 	// SLUGFILLER--heared something
-	for (client = g_edicts ; client < &g_edicts[globals.num_edicts] ; client++)
+	for (client = g_edicts; client < &g_edicts[globals.num_edicts]; client++)
 	{
 		if (!client->inuse)
 			return false;
 
-		if (strcmp (client->classname, "player_noise1") != 0 && (self->enemy || (self->spawnflags & 1) || strcmp (client->classname, "player_noise2") != 0))
+		if (strcmp(client->classname, "player_noise1") != 0 && (self->enemy || (self->spawnflags & 1) || strcmp(client->classname, "player_noise2") != 0))
 			continue;
 
 		if (client->owner->flags & FL_NOTARGET)
@@ -555,7 +554,7 @@ qboolean FindTarget (edict_t *self)
 
 		if (self->spawnflags & 1)
 		{
-			if (!visible (self, client))
+			if (!visible(self, client))
 				return false;
 		}
 		else
@@ -564,7 +563,7 @@ qboolean FindTarget (edict_t *self)
 				return false;
 		}
 
-		VectorSubtract (client->s.origin, self->s.origin, temp);
+		VectorSubtract(client->s.origin, self->s.origin, temp);
 
 		if (VectorLength(temp) > 1000)	// too far to hear
 		{
@@ -578,7 +577,7 @@ qboolean FindTarget (edict_t *self)
 
 		self->ideal_pitch = 0;
 		self->ideal_yaw = vectoyaw(temp);
-		M_ChangeAngles (self);
+		M_ChangeAngles(self);
 
 		// hunt the sound for a bit; hopefully find the real player
 		self->monsterinfo.aiflags |= AI_SOUND_TARGET;
@@ -586,8 +585,8 @@ qboolean FindTarget (edict_t *self)
 
 		// SLUGFILLER--we looked for that target ourselves
 		self->chain = NULL;
-		VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
-		FoundTarget (self);
+		VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
+		FoundTarget(self);
 
 		return true;
 	}
@@ -604,7 +603,7 @@ FacingIdeal
 
 ============
 */
-qboolean FacingIdeal(edict_t *self)
+qboolean FacingIdeal(edict_t* self)
 {
 	float	delta;
 
@@ -617,7 +616,7 @@ qboolean FacingIdeal(edict_t *self)
 
 //=============================================================================
 
-qboolean M_CheckAttack (edict_t *self)
+qboolean M_CheckAttack(edict_t* self)
 {
 	vec3_t		spot1, spot2;
 	float		chance;
@@ -626,23 +625,23 @@ qboolean M_CheckAttack (edict_t *self)
 
 	if (self->enemy->health > 0)
 	{
-	// see if any entities are in the way of the shot
-		VectorCopy (self->s.origin, spot1);
+		// see if any entities are in the way of the shot
+		VectorCopy(self->s.origin, spot1);
 		spot1[2] += self->viewheight;
-		VectorCopy (self->enemy->s.origin, spot2);
+		VectorCopy(self->enemy->s.origin, spot2);
 		spot2[2] += self->enemy->viewheight;
 
-		tr = gi.trace (spot1, NULL, NULL, spot2, self, CONTENTS_SOLID|CONTENTS_MONSTER|CONTENTS_SLIME|CONTENTS_LAVA|CONTENTS_WINDOW);
+		tr = gi.trace(spot1, NULL, NULL, spot2, self, CONTENTS_SOLID | CONTENTS_MONSTER | CONTENTS_SLIME | CONTENTS_LAVA | CONTENTS_WINDOW);
 
 		// do we have a clear shot?
 		if (tr.ent != self->enemy)
 			return false;
 
 		// SLUGFILLER--is the enemy on sight?
-		if (!infront (self, self->enemy))
+		if (!infront(self, self->enemy))
 			return false;
 	}
-	
+
 	// melee attack
 	if (enemy_range == RANGE_MELEE)
 	{
@@ -654,12 +653,12 @@ qboolean M_CheckAttack (edict_t *self)
 			self->monsterinfo.attack_state = AS_MISSILE;
 		return true;
 	}
-	
+
 	// SLUGFILLER--melee monsters charge the enemy rather than shooting him
-		
+
 	if (level.time < self->monsterinfo.attack_finished)
 		return false;
-		
+
 	if (enemy_range == RANGE_FAR)
 		return false;
 
@@ -694,7 +693,7 @@ qboolean M_CheckAttack (edict_t *self)
 	else if (skill->value >= 2)
 		chance *= 2;
 
-	if (random () < chance)
+	if (random() < chance)
 	{
 		// SLUGFILLER--fire
 		if (is_sliding)
@@ -703,7 +702,7 @@ qboolean M_CheckAttack (edict_t *self)
 			self->monsterinfo.attack_state = AS_MISSILE;
 		else
 			self->monsterinfo.attack_state = AS_MELEE;
-		self->monsterinfo.attack_finished = level.time + 2*random();
+		self->monsterinfo.attack_finished = level.time + 2 * random();
 		return true;
 	}
 
@@ -722,22 +721,22 @@ ai_run_slide
 Strafe sideways, but stay at aproximately the same range
 =============
 */
-void ai_run_slide(edict_t *self, float distance)
+void ai_run_slide(edict_t* self, float distance)
 {
 	float	ofs;
-	
+
 	if (self->monsterinfo.lefty)
 		ofs = 90;
 	else
 		ofs = -90;
-	
-	if (M_walkmove (self, self->s.angles[YAW] + ofs, distance))
+
+	if (M_walkmove(self, self->s.angles[YAW] + ofs, distance))
 		return;
 
 	if (self->monsterinfo.aiflags & AI_DODGE_MUST)
 	{
 		self->monsterinfo.lefty = 1 - self->monsterinfo.lefty;
-		if (M_walkmove (self, self->s.angles[YAW] - ofs, distance))
+		if (M_walkmove(self, self->s.angles[YAW] - ofs, distance))
 			return;
 	}
 
@@ -757,7 +756,7 @@ ai_checkenemy
 Makes sure that there's a valid, living enemy
 =============
 */
-qboolean ai_checkenemy (edict_t *self)
+qboolean ai_checkenemy(edict_t* self)
 {
 	vec3_t		temp;
 	qboolean	hesDeadJim;
@@ -771,7 +770,7 @@ qboolean ai_checkenemy (edict_t *self)
 			return false;
 	}
 
-// see if the enemy is dead
+	// see if the enemy is dead
 	hesDeadJim = false;
 	if ((!self->enemy) || (!self->enemy->inuse) || ((self->enemy->client) && (self->enemy->client->resp.exitframe)))
 	{
@@ -807,11 +806,11 @@ qboolean ai_checkenemy (edict_t *self)
 		// SLUGFILLER--if sees dead foe, replacement is in order
 		self->enemy = NULL;
 		// SLUGFILLER--if dead guy was a monster, chase last fought client
-		if (self->oldenemy && self->oldenemy->inuse && (!self->oldenemy->client || !self->oldenemy->client->resp.exitframe) && self->oldenemy->health > 0 && visible (self, self->oldenemy))
+		if (self->oldenemy && self->oldenemy->inuse && (!self->oldenemy->client || !self->oldenemy->client->resp.exitframe) && self->oldenemy->health > 0 && visible(self, self->oldenemy))
 		{
 			self->enemy = self->oldenemy;
 			self->oldenemy = NULL;
-			HuntTarget (self);
+			HuntTarget(self);
 		}
 		return false;
 	}
@@ -825,12 +824,12 @@ qboolean ai_checkenemy (edict_t *self)
 	if (enemy_vis)
 	{
 		self->monsterinfo.search_time = level.time + 5;
-		VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
+		VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
 	}
 
 	enemy_infront = infront(self, self->enemy);
 	enemy_range = range(self, self->enemy);
-	VectorSubtract (self->enemy->s.origin, self->s.origin, temp);
+	VectorSubtract(self->enemy->s.origin, self->s.origin, temp);
 	temp[2] += self->enemy->viewheight - self->viewheight;
 	enemy_pitch = vectopitch(temp);
 	enemy_yaw = vectoyaw(temp);
@@ -848,25 +847,25 @@ Decides if we're going to attack or do something else
 used by ai_run and ai_stand
 =============
 */
-qboolean ai_checkattack (edict_t *self)
+qboolean ai_checkattack(edict_t* self)
 {
 	qboolean	retval;
 
 	// check enemy availability
-	if (!ai_checkenemy (self))
+	if (!ai_checkenemy(self))
 		return false;
 
-	retval = self->monsterinfo.checkattack (self);
-	
+	retval = self->monsterinfo.checkattack(self);
+
 	return retval;
 }
 
 
-void M_RunThink (edict_t *self)
+void M_RunThink(edict_t* self)
 {
 	vec3_t		v;
-	edict_t		*tempgoal;
-	edict_t		*save;
+	edict_t* tempgoal;
+	edict_t* save;
 	qboolean	new;
 	float		d1, d2;
 	trace_t		tr;
@@ -886,7 +885,7 @@ void M_RunThink (edict_t *self)
 	// if we're going to a combat point, just proceed
 	if (self->monsterinfo.aiflags & AI_COMBAT_POINT)
 	{
-		M_MoveToGoal (self, dist);
+		M_MoveToGoal(self, dist);
 		return;
 	}
 
@@ -899,7 +898,7 @@ void M_RunThink (edict_t *self)
 			{
 				if (self->monsterinfo.idle_time)
 				{
-					self->monsterinfo.search (self);
+					self->monsterinfo.search(self);
 					self->monsterinfo.idle_time = level.time + 15 + random() * 15;
 				}
 				else
@@ -910,7 +909,7 @@ void M_RunThink (edict_t *self)
 			if (animtype == MANIM_RUN || animtype == MANIM_STAND)
 			{
 				self->goalentity = self->movetarget;
-				self->monsterinfo.walk (self);
+				self->monsterinfo.walk(self);
 			}
 		}
 		else
@@ -919,7 +918,7 @@ void M_RunThink (edict_t *self)
 			{
 				if (self->monsterinfo.idle_time)
 				{
-					self->monsterinfo.idle (self);
+					self->monsterinfo.idle(self);
 					self->monsterinfo.idle_time = level.time + 15 + random() * 15;
 				}
 				else
@@ -930,14 +929,14 @@ void M_RunThink (edict_t *self)
 			if (animtype == MANIM_RUN || animtype == MANIM_WALK)
 			{
 				self->monsterinfo.pausetime = 0;
-				self->monsterinfo.stand (self);
+				self->monsterinfo.stand(self);
 			}
 		}
 	}
 
 	// SLUGFILLER--search for other enemies
-	if (!ai_checkenemy (self))
-		FindTarget (self);
+	if (!ai_checkenemy(self))
+		FindTarget(self);
 	else
 	{
 		self->ideal_pitch = enemy_pitch;
@@ -956,7 +955,7 @@ void M_RunThink (edict_t *self)
 	if (!self->monsterinfo.attack_state && animtype != MANIM_MELEE && animtype != MANIM_MISSILE && animtype != MANIM_DUCK)
 	{
 		self->monsterinfo.aiflags &= ~AI_SLIDING;
-		ai_checkattack (self);
+		ai_checkattack(self);
 	}
 
 	// SLUGFILLER--always slide if dodging
@@ -970,7 +969,7 @@ void M_RunThink (edict_t *self)
 		{
 			if (FacingIdeal(self))
 			{
-				self->monsterinfo.attack (self);
+				self->monsterinfo.attack(self);
 				self->monsterinfo.attack_state = AS_NONE;
 			}
 		}
@@ -978,7 +977,7 @@ void M_RunThink (edict_t *self)
 		{
 			if (FacingIdeal(self) && range(self, self->enemy) == RANGE_MELEE)
 			{
-				self->monsterinfo.melee (self);
+				self->monsterinfo.melee(self);
 				self->monsterinfo.attack_state = AS_NONE;
 			}
 		}
@@ -986,7 +985,7 @@ void M_RunThink (edict_t *self)
 
 	if (self->monsterinfo.aiflags & AI_SLIDING)
 	{
-		ai_run_slide (self, dist);
+		ai_run_slide(self, dist);
 	}
 
 	if (enemy_vis)
@@ -995,8 +994,8 @@ void M_RunThink (edict_t *self)
 		{
 			// SLUGFILLER--either charging the enemy, or trying to get near it
 			if (animtype == MANIM_STAND)
-				self->monsterinfo.run (self);
-			M_MoveToGoal (self, dist);
+				self->monsterinfo.run(self);
+			M_MoveToGoal(self, dist);
 		}
 		else if (range(self, self->enemy) == RANGE_NEAR)
 		{
@@ -1004,24 +1003,24 @@ void M_RunThink (edict_t *self)
 			if (self->monsterinfo.aiflags & AI_SLIDING)
 			{
 				if (animtype == MANIM_STAND)
-					self->monsterinfo.run (self);
+					self->monsterinfo.run(self);
 			}
 			else
 			{
 				if (animtype == MANIM_RUN)
-					self->monsterinfo.stand (self);
+					self->monsterinfo.stand(self);
 			}
-			M_ChangeAngles (self);
+			M_ChangeAngles(self);
 		}
 		else
 		{
 			// SLUGFILLER--too close, and we're not attacking, better step back
-			M_MoveToGoal (self, -dist);
+			M_MoveToGoal(self, -dist);
 		}
 		self->monsterinfo.aiflags &= ~AI_LOST_SIGHT;
-		VectorCopy (self->enemy->s.origin, self->monsterinfo.last_sighting);
+		VectorCopy(self->enemy->s.origin, self->monsterinfo.last_sighting);
 		if (!(self->monsterinfo.aiflags & AI_SOUND_TARGET))
-			Reinforce (self);	// SLUGFILLER--pick up some help on the way
+			Reinforce(self);	// SLUGFILLER--pick up some help on the way
 		return;
 	}
 
@@ -1034,7 +1033,7 @@ void M_RunThink (edict_t *self)
 	{
 		// SLUGFILLER--when walking use walkspeed instead of speed
 		if (self->goalentity)
-			M_MoveToGoal (self, self->monsterinfo.walkspeed);
+			M_MoveToGoal(self, self->monsterinfo.walkspeed);
 		return;
 	}
 
@@ -1066,16 +1065,16 @@ void M_RunThink (edict_t *self)
 	if (self->monsterinfo.aiflags & AI_PURSUE_NEXT)
 	{
 		self->monsterinfo.aiflags &= ~AI_PURSUE_NEXT;
-//		dprint("reached current goal: "); dprint(vtos(self.origin)); dprint(" "); dprint(vtos(self.last_sighting)); dprint(" "); dprint(ftos(vlen(self.origin - self.last_sighting))); dprint("\n");
+		//		dprint("reached current goal: "); dprint(vtos(self.origin)); dprint(" "); dprint(vtos(self.last_sighting)); dprint(" "); dprint(ftos(vlen(self.origin - self.last_sighting))); dprint("\n");
 
-		// give ourself more time since we got this far
+				// give ourself more time since we got this far
 		self->monsterinfo.search_time = level.time + 5;
 
 		if (self->monsterinfo.aiflags & AI_PURSUE_TEMP)
 		{
-//			dprint("was temp goal; retrying original\n");
+			//			dprint("was temp goal; retrying original\n");
 			self->monsterinfo.aiflags &= ~AI_PURSUE_TEMP;
-			VectorCopy (self->monsterinfo.saved_goal, self->monsterinfo.last_sighting);
+			VectorCopy(self->monsterinfo.saved_goal, self->monsterinfo.last_sighting);
 			new = true;
 		}
 		else if (self->monsterinfo.aiflags & AI_PURSUIT_LAST_SEEN)
@@ -1086,7 +1085,7 @@ void M_RunThink (edict_t *self)
 		}
 	}
 
-	VectorSubtract (self->s.origin, self->monsterinfo.last_sighting, v);
+	VectorSubtract(self->s.origin, self->monsterinfo.last_sighting, v);
 	d1 = VectorLength(v);
 	if (d1 <= dist)
 	{
@@ -1094,75 +1093,75 @@ void M_RunThink (edict_t *self)
 		dist = d1;
 	}
 
-	VectorCopy (self->monsterinfo.last_sighting, self->goalentity->s.origin);
+	VectorCopy(self->monsterinfo.last_sighting, self->goalentity->s.origin);
 
 	if (new)
 	{
-//		gi.dprintf("checking for course correction\n");
+		//		gi.dprintf("checking for course correction\n");
 
 		tr = gi.trace(self->s.origin, self->mins, self->maxs, self->monsterinfo.last_sighting, self, MASK_PLAYERSOLID);
 		if (tr.fraction < 1)
 		{
-			VectorSubtract (self->goalentity->s.origin, self->s.origin, v);
+			VectorSubtract(self->goalentity->s.origin, self->s.origin, v);
 			d1 = VectorLength(v);
 			center = tr.fraction;
-			d2 = d1 * ((center+1)/2);
+			d2 = d1 * ((center + 1) / 2);
 			self->s.angles[PITCH] = self->ideal_pitch = 0;
 			self->s.angles[YAW] = self->ideal_yaw = vectoyaw(v);
 			AngleVectors(self->s.angles, v_forward, v_right, NULL);
 
 			VectorSet(v, d2, -16, 0);
-			G_ProjectSource (self->s.origin, v, v_forward, v_right, left_target);
+			G_ProjectSource(self->s.origin, v, v_forward, v_right, left_target);
 			tr = gi.trace(self->s.origin, self->mins, self->maxs, left_target, self, MASK_PLAYERSOLID);
 			left = tr.fraction;
 
 			VectorSet(v, d2, 16, 0);
-			G_ProjectSource (self->s.origin, v, v_forward, v_right, right_target);
+			G_ProjectSource(self->s.origin, v, v_forward, v_right, right_target);
 			tr = gi.trace(self->s.origin, self->mins, self->maxs, right_target, self, MASK_PLAYERSOLID);
 			right = tr.fraction;
 
-			center = (d1*center)/d2;
+			center = (d1 * center) / d2;
 			if (left >= center && left > right)
 			{
 				if (left < 1)
 				{
 					VectorSet(v, d2 * left * 0.5, -16, 0);
-					G_ProjectSource (self->s.origin, v, v_forward, v_right, left_target);
-//					gi.dprintf("incomplete path, go part way and adjust again\n");
+					G_ProjectSource(self->s.origin, v, v_forward, v_right, left_target);
+					//					gi.dprintf("incomplete path, go part way and adjust again\n");
 				}
-				VectorCopy (self->monsterinfo.last_sighting, self->monsterinfo.saved_goal);
+				VectorCopy(self->monsterinfo.last_sighting, self->monsterinfo.saved_goal);
 				self->monsterinfo.aiflags |= AI_PURSUE_TEMP;
-				VectorCopy (left_target, self->goalentity->s.origin);
-				VectorCopy (left_target, self->monsterinfo.last_sighting);
-				VectorSubtract (self->goalentity->s.origin, self->s.origin, v);
+				VectorCopy(left_target, self->goalentity->s.origin);
+				VectorCopy(left_target, self->monsterinfo.last_sighting);
+				VectorSubtract(self->goalentity->s.origin, self->s.origin, v);
 				self->s.angles[PITCH] = self->ideal_pitch = 0;
 				self->s.angles[YAW] = self->ideal_yaw = vectoyaw(v);
-//				gi.dprintf("adjusted left\n");
-//				debug_drawline(self.origin, self.last_sighting, 152);
+				//				gi.dprintf("adjusted left\n");
+				//				debug_drawline(self.origin, self.last_sighting, 152);
 			}
 			else if (right >= center && right > left)
 			{
 				if (right < 1)
 				{
 					VectorSet(v, d2 * right * 0.5, 16, 0);
-					G_ProjectSource (self->s.origin, v, v_forward, v_right, right_target);
-//					gi.dprintf("incomplete path, go part way and adjust again\n");
+					G_ProjectSource(self->s.origin, v, v_forward, v_right, right_target);
+					//					gi.dprintf("incomplete path, go part way and adjust again\n");
 				}
-				VectorCopy (self->monsterinfo.last_sighting, self->monsterinfo.saved_goal);
+				VectorCopy(self->monsterinfo.last_sighting, self->monsterinfo.saved_goal);
 				self->monsterinfo.aiflags |= AI_PURSUE_TEMP;
-				VectorCopy (right_target, self->goalentity->s.origin);
-				VectorCopy (right_target, self->monsterinfo.last_sighting);
-				VectorSubtract (self->goalentity->s.origin, self->s.origin, v);
+				VectorCopy(right_target, self->goalentity->s.origin);
+				VectorCopy(right_target, self->monsterinfo.last_sighting);
+				VectorSubtract(self->goalentity->s.origin, self->s.origin, v);
 				self->s.angles[PITCH] = self->ideal_pitch = 0;
 				self->s.angles[YAW] = self->ideal_yaw = vectoyaw(v);
-//				gi.dprintf("adjusted right\n");
-//				debug_drawline(self.origin, self.last_sighting, 152);
+				//				gi.dprintf("adjusted right\n");
+				//				debug_drawline(self.origin, self.last_sighting, 152);
 			}
 		}
-//		else gi.dprintf("course was fine\n");
+		//		else gi.dprintf("course was fine\n");
 	}
 
-	M_MoveToGoal (self, dist);
+	M_MoveToGoal(self, dist);
 
 	G_FreeEdict(tempgoal);
 

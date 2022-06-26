@@ -10,7 +10,7 @@ INTERMISSION
 ======================================================================
 */
 
-void MoveClientToIntermission (edict_t *ent)
+void MoveClientToIntermission(edict_t* ent)
 {
 	int n;
 
@@ -19,18 +19,18 @@ void MoveClientToIntermission (edict_t *ent)
 	if (coop->value)
 	{
 		// SLUGFILLER--got out of the level
-		gi.WriteByte (svc_muzzleflash);
-		gi.WriteShort (ent-g_edicts);
-		gi.WriteByte (MZ_LOGOUT);
-		gi.multicast (ent->s.origin, MULTICAST_PVS);
+		gi.WriteByte(svc_muzzleflash);
+		gi.WriteShort(ent - g_edicts);
+		gi.WriteByte(MZ_LOGOUT);
+		gi.multicast(ent->s.origin, MULTICAST_PVS);
 	}
 
 	ent->client->showscores = true;
-	VectorCopy (level.intermission_origin, ent->s.origin);
-	ent->client->ps.pmove.origin[0] = level.intermission_origin[0]*8;
-	ent->client->ps.pmove.origin[1] = level.intermission_origin[1]*8;
-	ent->client->ps.pmove.origin[2] = level.intermission_origin[2]*8;
-	VectorCopy (level.intermission_angle, ent->client->ps.viewangles);
+	VectorCopy(level.intermission_origin, ent->s.origin);
+	ent->client->ps.pmove.origin[0] = level.intermission_origin[0] * 8;
+	ent->client->ps.pmove.origin[1] = level.intermission_origin[1] * 8;
+	ent->client->ps.pmove.origin[2] = level.intermission_origin[2] * 8;
+	VectorCopy(level.intermission_angle, ent->client->ps.viewangles);
 	ent->client->ps.pmove.pm_type = PM_FREEZE;
 	ent->client->ps.gunindex = 0;
 	ent->client->ps.blend[3] = 0;
@@ -52,26 +52,26 @@ void MoveClientToIntermission (edict_t *ent)
 
 	// add the layout
 
-	DeathmatchScoreboardMessage (ent, NULL);
-	gi.unicast (ent, true);
+	DeathmatchScoreboardMessage(ent, NULL);
+	gi.unicast(ent, true);
 }
 
-qboolean BeginIntermission (edict_t *targ, edict_t *activator)
+qboolean BeginIntermission(edict_t* targ, edict_t* activator)
 {
 	int		i, n;
-	edict_t	*client;
+	edict_t* client;
 
 	if (activator && activator->client && activator->client->resp.exitframe)
 		return false;		// already activated
-	
+
 	if (coop->value)
 	{
 		if (!level.changemap)
 			level.changemap = targ->map;
 		else if (strcmp(level.changemap, targ->map) != 0)
 			return false;
-		MoveClientToIntermission (activator);
-		for (i=0 ; i<maxclients->value ; i++)
+		MoveClientToIntermission(activator);
+		for (i = 0; i < maxclients->value; i++)
 		{
 			client = g_edicts + 1 + i;
 			if (!client->inuse)
@@ -85,7 +85,7 @@ qboolean BeginIntermission (edict_t *targ, edict_t *activator)
 	game.autosaved = false;
 
 	// respawn any dead clients
-	for (i=0 ; i<maxclients->value ; i++)
+	for (i = 0; i < maxclients->value; i++)
 	{
 		client = g_edicts + 1 + i;
 		if (!client->inuse)
@@ -103,7 +103,7 @@ qboolean BeginIntermission (edict_t *targ, edict_t *activator)
 	{
 		if (coop->value)
 		{
-			for (i=0 ; i<maxclients->value ; i++)
+			for (i = 0; i < maxclients->value; i++)
 			{
 				client = g_edicts + 1 + i;
 				if (!client->inuse)
@@ -132,7 +132,7 @@ qboolean BeginIntermission (edict_t *targ, edict_t *activator)
 		return true;
 
 	// move all clients to the intermission point
-	for (i=0 ; i<maxclients->value ; i++)
+	for (i = 0; i < maxclients->value; i++)
 	{
 		client = g_edicts + 1 + i;
 		if (!client->inuse)
@@ -141,156 +141,165 @@ qboolean BeginIntermission (edict_t *targ, edict_t *activator)
 			continue;
 		if (deathmatch->value && client->movetype != MOVETYPE_NOCLIP)
 			CopyToBodyQue(client);
-		MoveClientToIntermission (client);
+		MoveClientToIntermission(client);
 	}
 
 	return true;
 }
 
+void TeamplayScoreboardMessage(edict_t* ent, edict_t* killer, char* string)
+{
+	int		i, j, k, l;
+	char* sortedteam[MAX_CLIENTS] = { 0 };
+	int		sorted[MAX_CLIENTS] = { 0 };
+	int		sortedscores[MAX_CLIENTS] = { 0 };
+	int		score = 0, total, lasttotal, totalteams, noteamclients;
+	edict_t* cl_ent;
+	char* cl_team;
 
-char *ClientTeam (edict_t *ent);
+	// SLUGFILLER--sort the teams by total score
+	total = 0;
+	totalteams = 0;
+	for (i = 0; i < game.maxclients; i++)
+	{
+		cl_ent = g_edicts + 1 + i;
+		if (!cl_ent->inuse || game.clients[i].resp.spectator)
+			continue;
+		cl_team = ClientTeam(cl_ent);
+		if (*cl_team)
+		{
+			// SLUGFILLER--was cl_team already evaluated?
+			for (j = 0; j < totalteams; j++)
+			{
+				if (strcmp(cl_team, sortedteam[j]) == 0)
+					break;
+			}
+			if (j < totalteams)
+				continue;
+			// SLUGFILLER--calculate total score
+			score = 0;
+			for (k = i; k < game.maxclients; k++)
+			{
+				cl_ent = g_edicts + 1 + i;
+				if (!cl_ent->inuse || game.clients[i].resp.spectator || strcmp(cl_team, ClientTeam(cl_ent)) != 0)
+					continue;
+				if (deathmatch->value != 2)
+					score += game.clients[i].resp.score;
+				else if (!game.clients[i].pers.lives)
+					score += game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
+				else
+					score += level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives * (level.framenum + 1);
+			}
+		}
+		else if (deathmatch->value != 2)
+			score += game.clients[i].resp.score;
+		else if (!game.clients[i].pers.lives)
+			score += game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
+		else
+			score += level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives * (level.framenum + 1);
+		for (j = 0; j < totalteams; j++)
+		{
+			if (score > sortedscores[j])
+				break;
+		}
+		for (k = totalteams; k > j; k--)
+		{
+			sortedteam[k] = sortedteam[k - 1];
+			sortedscores[k] = sortedscores[k - 1];
+		}
+		sortedteam[j] = cl_team;
+		sortedscores[j] = score;
+		totalteams++;
+	}
+
+	noteamclients = 0;
+
+	lasttotal = total = 0;
+	// SLUGFILLER--sort the clients by teams
+	for (l = 0; l < totalteams; l++)
+	{
+		if (!(*sortedteam[l]))
+		{
+			k = noteamclients;
+			for (i = 0; i < game.maxclients; i++)
+			{
+				cl_ent = g_edicts + 1 + i;
+				if (!cl_ent->inuse || game.clients[i].resp.spectator || *ClientTeam(cl_ent))
+					continue;
+				if (k)
+					k--;
+				else
+					break;
+			}
+			noteamclients++;
+			sorted[total] = i;
+			sortedscores[total] = score;
+			lasttotal = ++total;
+			continue;
+		}
+		// sort the cl_team's clients by score
+		for (i = 0; i < game.maxclients; i++)
+		{
+			cl_ent = g_edicts + 1 + i;
+			if (!cl_ent->inuse || game.clients[i].resp.spectator || strcmp(sortedteam[l], ClientTeam(cl_ent)) != 0)
+				continue;
+			if (deathmatch->value != 2)
+				score = game.clients[i].resp.score;
+			else if (!game.clients[i].pers.lives)
+				score = game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
+			else
+				score = level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives * (level.framenum + 1);
+			for (j = lasttotal; j < total; j++)
+			{
+				if (score > sortedscores[j])
+					break;
+			}
+			for (k = total; k > j; k--)
+			{
+				sorted[k] = sorted[k - 1];
+				sortedscores[k] = sortedscores[k - 1];
+			}
+			sorted[j] = i;
+			sortedscores[j] = score;
+			total++;
+		}
+		lasttotal = total;
+	}
+}
+
+
+char* ClientTeam(edict_t* ent);
 /*
 ==================
 DeathmatchScoreboardMessage
 
 ==================
 */
-void DeathmatchScoreboardMessage (edict_t *ent, edict_t *killer)
+void DeathmatchScoreboardMessage(edict_t* ent, edict_t* killer)
 {
-	char	entry[1024];
-	char	string[1400];
+	char	entry[1024] = { 0 };
+	char	string[1400] = { 0 };
 	int		stringlength;
-	int		i, j, k, l;
-	char	*sortedteam[MAX_CLIENTS];
-	int		sorted[MAX_CLIENTS];
-	int		sortedscores[MAX_CLIENTS];
-	int		score = 0, total, lasttotal, totalteams, noteamclients;
+	int		i, j, k;
+	int		sorted[MAX_CLIENTS] = { 0 };
+	int		sortedscores[MAX_CLIENTS] = { 0 };
+	int		score = 0, total = 0;
 	int		picnum;
 	int		x, y;
-	gclient_t	*cl;
-	edict_t		*cl_ent;
-	char	*team;
-	char	*tag;
+	gclient_t* cl;
+	edict_t* cl_ent;
+	char* tag;
 	qboolean	teampl;
 
 	teampl = (teamplay->value || ((int)(dmflags->value) & DF_MODELTEAMS) || ((int)(dmflags->value) & DF_SKINTEAMS));
 
 	if (teampl)
-	{
-		// SLUGFILLER--sort the teams by total score
-		total = 0;
-		totalteams = 0;
-		for (i=0 ; i<game.maxclients ; i++)
-		{
-			cl_ent = g_edicts + 1 + i;
-			if (!cl_ent->inuse || game.clients[i].resp.spectator)
-				continue;
-			team = ClientTeam (cl_ent);
-			if (*team)
-			{
-				// SLUGFILLER--was team already evaluated?
-				for (j=0 ; j<totalteams ; j++)
-				{
-					if (strcmp(team, sortedteam[j]) == 0)
-						break;
-				}
-				if (j<totalteams)
-					continue;
-				// SLUGFILLER--calculate total score
-				score = 0;
-				for (k=i ; k<game.maxclients ; k++)
-				{
-					cl_ent = g_edicts + 1 + i;
-					if (!cl_ent->inuse || game.clients[i].resp.spectator || strcmp(team, ClientTeam(cl_ent)) != 0)
-						continue;
-					if (deathmatch->value != 2)
-						score += game.clients[i].resp.score;
-					else if (!game.clients[i].pers.lives)
-						score += game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
-					else
-						score += level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives*(level.framenum+1);
-				}
-			}
-			else if (deathmatch->value != 2)
-				score += game.clients[i].resp.score;
-			else if (!game.clients[i].pers.lives)
-				score += game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
-			else
-				score += level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives*(level.framenum+1);
-			for (j=0 ; j<totalteams ; j++)
-			{
-				if (score > sortedscores[j])
-					break;
-			}
-			for (k=totalteams ; k>j ; k--)
-			{
-				sortedteam[k] = sortedteam[k-1];
-				sortedscores[k] = sortedscores[k-1];
-			}
-			sortedteam[j] = team;
-			sortedscores[j] = score;
-			totalteams++;
-		}
-
-		noteamclients = 0;
-
-		lasttotal = total = 0;
-		// SLUGFILLER--sort the clients by teams
-		for (l=0 ; l<totalteams ; l++)
-		{
-			if (!(*sortedteam[l]))
-			{
-				k = noteamclients;
-				for (i=0 ; i<game.maxclients ; i++)
-				{
-					cl_ent = g_edicts + 1 + i;
-					if (!cl_ent->inuse || game.clients[i].resp.spectator || *ClientTeam(cl_ent))
-						continue;
-					if (k)
-						k--;
-					else
-						break;
-				}
-				noteamclients++;
-				sorted[total] = i;
-				sortedscores[total] = score;
-				lasttotal = ++total;
-				continue;
-			}
-			// sort the team's clients by score
-			for (i=0 ; i<game.maxclients ; i++)
-			{
-				cl_ent = g_edicts + 1 + i;
-				if (!cl_ent->inuse || game.clients[i].resp.spectator || strcmp(sortedteam[l], ClientTeam(cl_ent)) != 0)
-					continue;
-				if (deathmatch->value != 2)
-					score = game.clients[i].resp.score;
-				else if (!game.clients[i].pers.lives)
-					score = game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
-				else
-					score = level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives*(level.framenum+1);
-				for (j=lasttotal ; j<total ; j++)
-				{
-					if (score > sortedscores[j])
-						break;
-				}
-				for (k=total ; k>j ; k--)
-				{
-					sorted[k] = sorted[k-1];
-					sortedscores[k] = sortedscores[k-1];
-				}
-				sorted[j] = i;
-				sortedscores[j] = score;
-				total++;
-			}
-			lasttotal = total;
-		}
-	}
+		TeamplayScoreboardMessage(ent, killer, string);
 	else
 	{
 		// sort the clients by score
 		total = 0;
-		for (i=0 ; i<game.maxclients ; i++)
+		for (i = 0; i < game.maxclients; i++)
 		{
 			cl_ent = g_edicts + 1 + i;
 			if (!cl_ent->inuse || game.clients[i].resp.spectator)
@@ -300,16 +309,16 @@ void DeathmatchScoreboardMessage (edict_t *ent, edict_t *killer)
 			else if (!game.clients[i].pers.lives)
 				score = game.clients[i].resp.exitframe - game.clients[i].resp.enterframe;
 			else
-				score = level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives*(level.framenum+1);
-			for (j=0 ; j<total ; j++)
+				score = level.framenum - game.clients[i].resp.enterframe + game.clients[i].pers.lives * (level.framenum + 1);
+			for (j = 0; j < total; j++)
 			{
 				if (score > sortedscores[j])
 					break;
 			}
-			for (k=total ; k>j ; k--)
+			for (k = total; k > j; k--)
 			{
-				sorted[k] = sorted[k-1];
-				sortedscores[k] = sortedscores[k-1];
+				sorted[k] = sorted[k - 1];
+				sortedscores[k] = sortedscores[k - 1];
 			}
 			sorted[j] = i;
 			sortedscores[j] = score;
@@ -326,14 +335,14 @@ void DeathmatchScoreboardMessage (edict_t *ent, edict_t *killer)
 	if (total > 12)
 		total = 12;
 
-	for (i=0 ; i<total ; i++)
+	for (i = 0; i < total; i++)
 	{
 		cl = &game.clients[sorted[i]];
 		cl_ent = g_edicts + 1 + sorted[i];
 
-		picnum = gi.imageindex ("i_fixme");
-		x = (i>=6) ? 160 : 0;
-		y = 32 + 32 * (i%6);
+		picnum = gi.imageindex("i_fixme");
+		x = (i >= 6) ? 160 : 0;
+		y = 32 + 32 * (i % 6);
 
 		// add a dogtag
 		if (cl_ent == ent)
@@ -344,33 +353,33 @@ void DeathmatchScoreboardMessage (edict_t *ent, edict_t *killer)
 			tag = NULL;
 		if (tag)
 		{
-			Com_sprintf (entry, sizeof(entry),
-				"xv %i yv %i picn %s ",x+32, y, tag);
+			Com_sprintf(entry, sizeof(entry),
+				"xv %i yv %i picn %s ", x + 32, y, tag);
 			j = (int)strlen(entry);
 			if (stringlength + j > 1024)
 				break;
-			strcpy (string + stringlength, entry);
+			strcpy(string + stringlength, entry);
 			stringlength += j;
 		}
 
 		// send the layout
 		if (deathmatch->value != 2)
-			Com_sprintf (entry, sizeof(entry),
+			Com_sprintf(entry, sizeof(entry),
 				"client %i %i %i %i %i %i ",
-				x, y, sorted[i], cl->resp.score, cl->ping, (level.framenum - cl->resp.enterframe)/600);
+				x, y, sorted[i], cl->resp.score, cl->ping, (level.framenum - cl->resp.enterframe) / 600);
 		else
-			Com_sprintf (entry, sizeof(entry),
+			Com_sprintf(entry, sizeof(entry),
 				"client %i %i %i %i %i %i ",
-				x, y, sorted[i], cl->pers.lives, cl->ping, (level.framenum - cl->resp.enterframe)/600);
+				x, y, sorted[i], cl->pers.lives, cl->ping, (level.framenum - cl->resp.enterframe) / 600);
 		j = (int)strlen(entry);
 		if (stringlength + j > 1024)
 			break;
-		strcpy (string + stringlength, entry);
+		strcpy(string + stringlength, entry);
 		stringlength += j;
 	}
 
-	gi.WriteByte (svc_layout);
-	gi.WriteString (string);
+	gi.WriteByte(svc_layout);
+	gi.WriteString(string);
 }
 
 
@@ -382,10 +391,10 @@ Draw instead of help message.
 Note that it isn't that hard to overflow the 1400 byte message limit!
 ==================
 */
-void DeathmatchScoreboard (edict_t *ent)
+void DeathmatchScoreboard(edict_t* ent)
 {
-	DeathmatchScoreboardMessage (ent, ent->enemy);
-	gi.unicast (ent, true);
+	DeathmatchScoreboardMessage(ent, ent->enemy);
+	gi.unicast(ent, true);
 }
 
 
@@ -396,7 +405,7 @@ Cmd_Score_f
 Display the scoreboard
 ==================
 */
-void Cmd_Score_f (edict_t *ent)
+void Cmd_Score_f(edict_t* ent)
 {
 	ent->client->showinventory = false;
 	ent->client->showhelp = false;
@@ -408,7 +417,7 @@ void Cmd_Score_f (edict_t *ent)
 	}
 
 	ent->client->showscores = true;
-	DeathmatchScoreboard (ent);
+	DeathmatchScoreboard(ent);
 }
 
 
@@ -419,10 +428,10 @@ HelpComputer
 Draw help computer.
 ==================
 */
-void HelpComputer (edict_t *ent)
+void HelpComputer(edict_t* ent)
 {
 	char	string[1024];
-	char	*sk;
+	char* sk;
 
 	if (skill->value == 0)
 		sk = "easy";
@@ -434,25 +443,25 @@ void HelpComputer (edict_t *ent)
 		sk = "hard+";
 
 	// send the layout
-	Com_sprintf (string, sizeof(string),
+	Com_sprintf(string, sizeof(string),
 		"xv 32 yv 8 picn help "			// background
 		"xv 202 yv 12 string2 \"%s\" "		// skill
 		"xv 0 yv 24 cstring2 \"%s\" "		// level name
 		"xv 0 yv 54 cstring2 \"%s\" "		// help 1
 		"xv 0 yv 110 cstring2 \"%s\" "		// help 2
 		"xv 50 yv 164 string2 \" kills     goals    secrets\" "
-		"xv 50 yv 172 string2 \"%3i/%3i     %i/%i       %i/%i\" ", 
+		"xv 50 yv 172 string2 \"%3i/%3i     %i/%i       %i/%i\" ",
 		sk,
 		level.level_name,
 		game.helpmessage1,
 		game.helpmessage2,
-		level.killed_monsters, level.total_monsters, 
+		level.killed_monsters, level.total_monsters,
 		level.found_goals, level.total_goals,
 		level.found_secrets, level.total_secrets);
 
-	gi.WriteByte (svc_layout);
-	gi.WriteString (string);
-	gi.unicast (ent, true);
+	gi.WriteByte(svc_layout);
+	gi.WriteString(string);
+	gi.unicast(ent, true);
 }
 
 
@@ -463,12 +472,12 @@ Cmd_Help_f
 Display the current help message
 ==================
 */
-void Cmd_Help_f (edict_t *ent)
+void Cmd_Help_f(edict_t* ent)
 {
 	// this is for backwards compatability
 	if (deathmatch->value)
 	{
-		Cmd_Score_f (ent);
+		Cmd_Score_f(ent);
 		return;
 	}
 
@@ -483,7 +492,7 @@ void Cmd_Help_f (edict_t *ent)
 
 	ent->client->showhelp = true;
 	ent->client->pers.helpchanged = 0;
-	HelpComputer (ent);
+	HelpComputer(ent);
 }
 
 
@@ -494,11 +503,11 @@ void Cmd_Help_f (edict_t *ent)
 G_SetStats
 ===============
 */
-void G_SetStats (edict_t *ent)
+void G_SetStats(edict_t* ent)
 {
-	gitem_t		*item;
+	gitem_t* item;
 	int			powerups;
-	int			index, cells;
+	int			index, cells = 0;
 	int			power_armor_type;
 
 	//
@@ -518,39 +527,39 @@ void G_SetStats (edict_t *ent)
 	else
 	{
 		item = &itemlist[ent->client->ammo_index];
-		ent->client->ps.stats[STAT_AMMO_ICON] = gi.imageindex (item->icon);
+		ent->client->ps.stats[STAT_AMMO_ICON] = gi.imageindex(item->icon);
 		ent->client->ps.stats[STAT_AMMO] = ent->client->pers.inventory[ent->client->ammo_index];
 	}
-	
+
 	//
 	// armor
 	//
-	power_armor_type = PowerArmorType (ent);
+	power_armor_type = PowerArmorType(ent);
 	if (power_armor_type)
 	{
-		cells = ent->client->pers.inventory[ITEM_INDEX(FindItem ("cells"))];
+		cells = ent->client->pers.inventory[ITEM_INDEX(FindItem("cells"))];
 		if (cells == 0)
 		{	// ran out of cells for power armor
-			ent->client->pers.itemused[ITEM_INDEX(FindItem ("Power Shield"))] = false;
-			ent->client->pers.itemused[ITEM_INDEX(FindItem ("Power Screen"))] = false;
+			ent->client->pers.itemused[ITEM_INDEX(FindItem("Power Shield"))] = false;
+			ent->client->pers.itemused[ITEM_INDEX(FindItem("Power Screen"))] = false;
 			gi.sound(ent, CHAN_ITEM, gi.soundindex("misc/power2.wav"), 1, ATTN_NORM, 0);
 			power_armor_type = 0;;
 		}
 	}
 
-	index = ArmorIndex (ent);
-	if (power_armor_type && (!index || (level.framenum & 8) ) )
+	index = ArmorIndex(ent);
+	if (power_armor_type && (!index || (level.framenum & 8)))
 	{	// flash between power armor and other armor icon
 		if (power_armor_type == POWER_ARMOR_SHIELD)
-			ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex ("i_powershield");
+			ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex("i_powershield");
 		else
-			ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex ("i_powerscreen");
+			ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex("i_powerscreen");
 		ent->client->ps.stats[STAT_ARMOR] = cells;
 	}
 	else if (index)
 	{
-		item = GetItemByIndex (index);
-		ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex (item->icon);
+		item = GetItemByIndex(index);
+		ent->client->ps.stats[STAT_ARMOR_ICON] = gi.imageindex(item->icon);
 		ent->client->ps.stats[STAT_ARMOR] = ent->client->pers.inventory[index];
 	}
 	else
@@ -600,11 +609,11 @@ void G_SetStats (edict_t *ent)
 			powerups--;
 			if (powerups)
 				continue;
-			ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex (itemlist[index].icon);
+			ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex(itemlist[index].icon);
 			if (itemlist[index].flags & IT_TIMED)
-				ent->client->ps.stats[STAT_TIMER] = (ent->client->pers.inventory[index] % (itemlist[index].quantity+1))/10;
+				ent->client->ps.stats[STAT_TIMER] = (ent->client->pers.inventory[index] % (itemlist[index].quantity + 1)) / 10;
 			else
-				ent->client->ps.stats[STAT_TIMER] = ent->client->pers.inventory[index] % (itemlist[index].quantity+1);
+				ent->client->ps.stats[STAT_TIMER] = ent->client->pers.inventory[index] % (itemlist[index].quantity + 1);
 			break;
 		}
 	}
@@ -615,7 +624,7 @@ void G_SetStats (edict_t *ent)
 	if (ent->client->pers.selected_item == -1)
 		ent->client->ps.stats[STAT_SELECTED_ICON] = 0;
 	else
-		ent->client->ps.stats[STAT_SELECTED_ICON] = gi.imageindex (itemlist[ent->client->pers.selected_item].icon);
+		ent->client->ps.stats[STAT_SELECTED_ICON] = gi.imageindex(itemlist[ent->client->pers.selected_item].icon);
 
 	ent->client->ps.stats[STAT_SELECTED_ITEM] = ent->client->pers.selected_item;
 
@@ -631,15 +640,15 @@ void G_SetStats (edict_t *ent)
 			ent->client->ps.stats[STAT_LAYOUTS] |= 1;
 		if (ent->client->showinventory && ent->client->pers.health > 0)
 		{
-			gi.WriteByte (svc_inventory);
-			for (index=0 ; index<MAX_ITEMS ; index++)
+			gi.WriteByte(svc_inventory);
+			for (index = 0; index < MAX_ITEMS; index++)
 			{
 				if (itemlist[index].flags & IT_POWERUP)
-					gi.WriteShort ((short)ceil((float)ent->client->pers.inventory[index]/itemlist[index].quantity));
+					gi.WriteShort((short)ceil((float)ent->client->pers.inventory[index] / itemlist[index].quantity));
 				else
-					gi.WriteShort (ent->client->pers.inventory[index]);
+					gi.WriteShort(ent->client->pers.inventory[index]);
 			}
-			gi.unicast (ent, true);
+			gi.unicast(ent, true);
 
 			ent->client->ps.stats[STAT_LAYOUTS] |= 2;
 		}
@@ -650,15 +659,15 @@ void G_SetStats (edict_t *ent)
 			ent->client->ps.stats[STAT_LAYOUTS] |= 1;
 		if (ent->client->showinventory && ent->client->pers.health > 0)
 		{
-			gi.WriteByte (svc_inventory);
-			for (index=0 ; index<MAX_ITEMS ; index++)
+			gi.WriteByte(svc_inventory);
+			for (index = 0; index < MAX_ITEMS; index++)
 			{
 				if (itemlist[index].flags & IT_POWERUP)
-					gi.WriteShort ((short)ceil((float)ent->client->pers.inventory[index]/itemlist[index].quantity));
+					gi.WriteShort((short)ceil((float)ent->client->pers.inventory[index] / itemlist[index].quantity));
 				else
-					gi.WriteShort (ent->client->pers.inventory[index]);
+					gi.WriteShort(ent->client->pers.inventory[index]);
 			}
-			gi.unicast (ent, true);
+			gi.unicast(ent, true);
 
 			ent->client->ps.stats[STAT_LAYOUTS] |= 2;
 		}
@@ -672,11 +681,11 @@ void G_SetStats (edict_t *ent)
 	//
 	// help icon / current weapon if not shown
 	//
-	if (ent->client->pers.helpchanged && (level.framenum&8) )
-		ent->client->ps.stats[STAT_HELPICON] = gi.imageindex ("i_help");
-	else if ( (ent->client->pers.hand == CENTER_HANDED || ent->client->ps.fov > 91)
+	if (ent->client->pers.helpchanged && (level.framenum & 8))
+		ent->client->ps.stats[STAT_HELPICON] = gi.imageindex("i_help");
+	else if ((ent->client->pers.hand == CENTER_HANDED || ent->client->ps.fov > 91)
 		&& ent->client->pers.weapon)
-		ent->client->ps.stats[STAT_HELPICON] = gi.imageindex (ent->client->pers.weapon->icon);
+		ent->client->ps.stats[STAT_HELPICON] = gi.imageindex(ent->client->pers.weapon->icon);
 	else
 		ent->client->ps.stats[STAT_HELPICON] = 0;
 
@@ -700,10 +709,10 @@ void G_SetStats (edict_t *ent)
 G_CheckChaseStats
 ===============
 */
-void G_CheckChaseStats (edict_t *ent)
+void G_CheckChaseStats(edict_t* ent)
 {
 	int i;
-	gclient_t *cl;
+	gclient_t* cl;
 
 	for (i = 1; i <= maxclients->value; i++) {
 		cl = g_edicts[i].client;
@@ -719,12 +728,12 @@ void G_CheckChaseStats (edict_t *ent)
 G_SetSpectatorStats
 ===============
 */
-void G_SetSpectatorStats (edict_t *ent)
+void G_SetSpectatorStats(edict_t* ent)
 {
-	gclient_t *cl = ent->client;
+	gclient_t* cl = ent->client;
 
 	if (!cl->chase_target)
-		G_SetStats (ent);
+		G_SetStats(ent);
 
 	cl->ps.stats[STAT_SPECTATOR] = 1;
 
@@ -736,8 +745,8 @@ void G_SetSpectatorStats (edict_t *ent)
 		cl->ps.stats[STAT_LAYOUTS] |= 2;
 
 	if (cl->chase_target && cl->chase_target->inuse)
-		cl->ps.stats[STAT_CHASE] = CS_PLAYERSKINS + 
-			(cl->chase_target - g_edicts) - 1;
+		cl->ps.stats[STAT_CHASE] = CS_PLAYERSKINS +
+		(cl->chase_target - g_edicts) - 1;
 	else
 		cl->ps.stats[STAT_CHASE] = 0;
 }

@@ -185,10 +185,27 @@ void Com_PageInMemory (byte *buffer, int size);
 
 //=============================================
 
+// fast "C" macros
+#define Q_isupper(c)    ((c) >= 'A' && (c) <= 'Z')
+#define Q_islower(c)    ((c) >= 'a' && (c) <= 'z')
+#define Q_isdigit(c)    ((c) >= '0' && (c) <= '9')
+#define Q_isalpha(c)    (Q_isupper(c) || Q_islower(c))
+#define Q_isalnum(c)    (Q_isalpha(c) || Q_isdigit(c))
+#define Q_isprint(c)    ((c) >= 32 && (c) < 127)
+#define Q_isgraph(c)    ((c) > 32 && (c) < 127)
+#define Q_isspace(c)    (c == ' ' || c == '\f' || c == '\n' || \
+                         c == '\r' || c == '\t' || c == '\v')
+
+int Q_tolower(int c);
+
 // portable case insensitive compare
 int Q_stricmp(const char* s1, const char* s2);
-int Q_strcasecmp (char *s1, char *s2);
-int Q_strncasecmp (char *s1, char *s2, int n);
+int Q_strnicmp(const char* s1, const char* s2, size_t count);
+size_t Q_strncpyz(char* dst, size_t dstSize, const char* src);
+size_t Q_strncatz(char* dst, size_t dstSize, const char* src);
+void Com_sprintf(char* dest, int size, char* fmt, ...);
+size_t Com_strcpy(char* dest, size_t destSize, const char* src);// MrG{DRGN} Function Replacements TY Knightmare!
+size_t Com_strcat(char* dest, size_t destSize, const char* src);
 
 //=============================================
 
@@ -210,6 +227,7 @@ char	*va(char *format, ...);
 #define	MAX_INFO_KEY		64
 #define	MAX_INFO_VALUE		64
 #define	MAX_INFO_STRING		512
+#define MAX_LAYOUT_LENGTH	1400
 
 char *Info_ValueForKey (char *s, char *key);
 void Info_RemoveKey (char *s, char *key);

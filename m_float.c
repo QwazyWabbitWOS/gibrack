@@ -19,26 +19,26 @@ static int	sound_pain2;
 static int	sound_sight;
 
 
-void floater_sight (edict_t *self, edict_t *other)
+void floater_sight(edict_t* self, edict_t* other)
 {
-	gi.sound (self, CHAN_VOICE, sound_sight, 1, ATTN_NORM, 0);
+	gi.sound(self, CHAN_VOICE, sound_sight, 1, ATTN_NORM, 0);
 }
 
-void floater_idle (edict_t *self)
+void floater_idle(edict_t* self)
 {
-	gi.sound (self, CHAN_VOICE, sound_idle, 1, ATTN_IDLE, 0);
+	gi.sound(self, CHAN_VOICE, sound_idle, 1, ATTN_IDLE, 0);
 }
 
 
 //void floater_stand1 (edict_t *self);
-void floater_dead (edict_t *self);
-void floater_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage, vec3_t point);
-void floater_run (edict_t *self);
-void floater_wham (edict_t *self);
-void floater_zap (edict_t *self);
+void floater_dead(edict_t* self);
+void floater_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, vec3_t point);
+void floater_run(edict_t* self);
+void floater_wham(edict_t* self);
+void floater_zap(edict_t* self);
 
 
-void floater_fire_blaster (edict_t *self)
+void floater_fire_blaster(edict_t* self)
 {
 	vec3_t	start;
 	vec3_t	forward, right;
@@ -49,16 +49,16 @@ void floater_fire_blaster (edict_t *self)
 		effect = EF_HYPERBLASTER;
 	else
 		effect = 0;
-	AngleVectors (self->s.angles, forward, right, NULL);
-	G_ProjectSource (self->s.origin, monster_flash_offset[MZ2_FLOAT_BLASTER_1], forward, right, start);
+	AngleVectors(self->s.angles, forward, right, NULL);
+	G_ProjectSource(self->s.origin, monster_flash_offset[MZ2_FLOAT_BLASTER_1], forward, right, start);
 
-	AngleVectors (self->aimangles, dir, NULL, NULL);
+	AngleVectors(self->aimangles, dir, NULL, NULL);
 
-	monster_fire_blaster (self, start, dir, 5, 1000, MZ2_FLOAT_BLASTER_1, effect, true);
+	monster_fire_blaster(self, start, dir, 5, 1000, MZ2_FLOAT_BLASTER_1, effect, true);
 }
 
 
-mframe_t floater_frames_stand1 [] =
+mframe_t floater_frames_stand1[] =
 {
 	MANIM_STAND, 0, NULL,
 	MANIM_STAND, 0, NULL,
@@ -113,9 +113,9 @@ mframe_t floater_frames_stand1 [] =
 	MANIM_STAND, 0, NULL,
 	MANIM_STAND, 0, NULL
 };
-mmove_t	floater_move_stand1 = {FRAME_stand101, FRAME_stand152, floater_frames_stand1, NULL};
+mmove_t	floater_move_stand1 = { FRAME_stand101, FRAME_stand152, floater_frames_stand1, NULL };
 
-mframe_t floater_frames_stand2 [] =
+mframe_t floater_frames_stand2[] =
 {
 	MANIM_STAND, 0, NULL,
 	MANIM_STAND, 0, NULL,
@@ -170,52 +170,52 @@ mframe_t floater_frames_stand2 [] =
 	MANIM_STAND, 0, NULL,
 	MANIM_STAND, 0, NULL
 };
-mmove_t	floater_move_stand2 = {FRAME_stand201, FRAME_stand252, floater_frames_stand2, NULL};
+mmove_t	floater_move_stand2 = { FRAME_stand201, FRAME_stand252, floater_frames_stand2, NULL };
 
-void floater_stand (edict_t *self)
+void floater_stand(edict_t* self)
 {
-	if (random() <= 0.5)		
+	if (random() <= 0.5)
 		self->monsterinfo.currentmove = &floater_move_stand1;
 	else
 		self->monsterinfo.currentmove = &floater_move_stand2;
 }
 
-mframe_t floater_frames_activate [] =
+mframe_t floater_frames_activate[] =
 {
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
-	MANIM_RUN,	0,	NULL,	
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
+	MANIM_RUN,	0,	NULL,
 	MANIM_RUN,	0,	NULL
 };
-mmove_t floater_move_activate = {FRAME_actvat01, FRAME_actvat31, floater_frames_activate, NULL};
+mmove_t floater_move_activate = { FRAME_actvat01, FRAME_actvat31, floater_frames_activate, NULL };
 
-mframe_t floater_frames_attack1 [] =
+mframe_t floater_frames_attack1[] =
 {
 	MANIM_MISSILE,	0,	NULL,			// Blaster attack
 	MANIM_MISSILE,	0,	NULL,
@@ -232,9 +232,9 @@ mframe_t floater_frames_attack1 [] =
 	MANIM_MISSILE,	0,	NULL,
 	MANIM_MISSILE,	0,	NULL			//							-- LOOP Ends
 };
-mmove_t floater_move_attack1 = {FRAME_attak101, FRAME_attak114, floater_frames_attack1, floater_run};
+mmove_t floater_move_attack1 = { FRAME_attak101, FRAME_attak114, floater_frames_attack1, floater_run };
 
-mframe_t floater_frames_attack2 [] =
+mframe_t floater_frames_attack2[] =
 {
 	MANIM_MELEE,	0,	NULL,			// Claws
 	MANIM_MELEE,	0,	NULL,
@@ -262,9 +262,9 @@ mframe_t floater_frames_attack2 [] =
 	MANIM_MELEE,	0,	NULL,
 	MANIM_MELEE,	0,	NULL
 };
-mmove_t floater_move_attack2 = {FRAME_attak201, FRAME_attak225, floater_frames_attack2, floater_run};
+mmove_t floater_move_attack2 = { FRAME_attak201, FRAME_attak225, floater_frames_attack2, floater_run };
 
-mframe_t floater_frames_attack3 [] =
+mframe_t floater_frames_attack3[] =
 {
 	MANIM_MELEE,	0,	NULL,
 	MANIM_MELEE,	0,	NULL,
@@ -301,9 +301,9 @@ mframe_t floater_frames_attack3 [] =
 	MANIM_MELEE,	0,	NULL,
 	MANIM_MELEE,	0,	NULL
 };
-mmove_t floater_move_attack3 = {FRAME_attak301, FRAME_attak334, floater_frames_attack3, floater_run};
+mmove_t floater_move_attack3 = { FRAME_attak301, FRAME_attak334, floater_frames_attack3, floater_run };
 
-mframe_t floater_frames_death [] =
+mframe_t floater_frames_death[] =
 {
 	MANIM_DEATH,	0,	NULL,
 	MANIM_DEATH,	0,	NULL,
@@ -319,9 +319,9 @@ mframe_t floater_frames_death [] =
 	MANIM_DEATH,	0,	NULL,
 	MANIM_DEATH,	0,	NULL
 };
-mmove_t floater_move_death = {FRAME_death01, FRAME_death13, floater_frames_death, floater_dead};
+mmove_t floater_move_death = { FRAME_death01, FRAME_death13, floater_frames_death, floater_dead };
 
-mframe_t floater_frames_pain1 [] =
+mframe_t floater_frames_pain1[] =
 {
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL,
@@ -331,9 +331,9 @@ mframe_t floater_frames_pain1 [] =
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL
 };
-mmove_t floater_move_pain1 = {FRAME_pain101, FRAME_pain107, floater_frames_pain1, floater_run};
+mmove_t floater_move_pain1 = { FRAME_pain101, FRAME_pain107, floater_frames_pain1, floater_run };
 
-mframe_t floater_frames_pain2 [] =
+mframe_t floater_frames_pain2[] =
 {
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL,
@@ -344,9 +344,9 @@ mframe_t floater_frames_pain2 [] =
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL
 };
-mmove_t floater_move_pain2 = {FRAME_pain201, FRAME_pain208, floater_frames_pain2, floater_run};
+mmove_t floater_move_pain2 = { FRAME_pain201, FRAME_pain208, floater_frames_pain2, floater_run };
 
-mframe_t floater_frames_pain3 [] =
+mframe_t floater_frames_pain3[] =
 {
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL,
@@ -361,9 +361,9 @@ mframe_t floater_frames_pain3 [] =
 	MANIM_MISC,	0,	NULL,
 	MANIM_MISC,	0,	NULL
 };
-mmove_t floater_move_pain3 = {FRAME_pain301, FRAME_pain312, floater_frames_pain3, floater_run};
+mmove_t floater_move_pain3 = { FRAME_pain301, FRAME_pain312, floater_frames_pain3, floater_run };
 
-mframe_t floater_frames_walk [] =
+mframe_t floater_frames_walk[] =
 {
 	MANIM_WALK, 0, NULL,
 	MANIM_WALK, 0, NULL,
@@ -418,9 +418,9 @@ mframe_t floater_frames_walk [] =
 	MANIM_WALK, 0, NULL,
 	MANIM_WALK, 0, NULL
 };
-mmove_t	floater_move_walk = {FRAME_stand101, FRAME_stand152, floater_frames_walk, NULL};
+mmove_t	floater_move_walk = { FRAME_stand101, FRAME_stand152, floater_frames_walk, NULL };
 
-mframe_t floater_frames_run [] =
+mframe_t floater_frames_run[] =
 {
 	MANIM_RUN, 0, NULL,
 	MANIM_RUN, 0, NULL,
@@ -475,9 +475,9 @@ mframe_t floater_frames_run [] =
 	MANIM_RUN, 0, NULL,
 	MANIM_RUN, 0, NULL
 };
-mmove_t	floater_move_run = {FRAME_stand101, FRAME_stand152, floater_frames_run, NULL};
+mmove_t	floater_move_run = { FRAME_stand101, FRAME_stand152, floater_frames_run, NULL };
 
-void floater_run (edict_t *self)
+void floater_run(edict_t* self)
 {
 	if (self->monsterinfo.aiflags & AI_STAND_GROUND)
 		self->monsterinfo.currentmove = &floater_move_stand1;
@@ -485,19 +485,19 @@ void floater_run (edict_t *self)
 		self->monsterinfo.currentmove = &floater_move_run;
 }
 
-void floater_walk (edict_t *self)
+void floater_walk(edict_t* self)
 {
 	self->monsterinfo.currentmove = &floater_move_walk;
 }
 
-void floater_wham (edict_t *self)
+void floater_wham(edict_t* self)
 {
-	static	vec3_t	aim = {MELEE_DISTANCE, 0, 0};
-	gi.sound (self, CHAN_WEAPON, sound_attack3, 1, ATTN_NORM, 0);
-	fire_hit (self, aim, 5 + rand() % 6, -10);
+	static	vec3_t	aim = { MELEE_DISTANCE, 0, 0 };
+	gi.sound(self, CHAN_WEAPON, sound_attack3, 1, ATTN_NORM, 0);
+	fire_hit(self, aim, 5 + rand() % 6, -10);
 }
 
-void floater_zap (edict_t *self)
+void floater_zap(edict_t* self)
 {
 	vec3_t	forward, right;
 	vec3_t	origin;
@@ -505,47 +505,47 @@ void floater_zap (edict_t *self)
 	vec3_t	offset;
 	trace_t	tr;
 
-	VectorSubtract (self->enemy->s.origin, self->s.origin, dir);
+	VectorSubtract(self->enemy->s.origin, self->s.origin, dir);
 
-	AngleVectors (self->s.angles, forward, right, NULL);
+	AngleVectors(self->s.angles, forward, right, NULL);
 	//FIXME use a flash and replace these two lines with the commented one
-	VectorSet (offset, 18.5, -0.9, 10);
-	G_ProjectSource (self->s.origin, offset, forward, right, origin);
-//	G_ProjectSource (self->s.origin, monster_flash_offset[flash_number], forward, right, origin);
+	VectorSet(offset, 18.5, -0.9, 10);
+	G_ProjectSource(self->s.origin, offset, forward, right, origin);
+	//	G_ProjectSource (self->s.origin, monster_flash_offset[flash_number], forward, right, origin);
 
-	gi.sound (self, CHAN_WEAPON, sound_attack2, 1, ATTN_NORM, 0);
+	gi.sound(self, CHAN_WEAPON, sound_attack2, 1, ATTN_NORM, 0);
 
 	//FIXME use the flash, Luke
-	gi.WriteByte (svc_temp_entity);
-	gi.WriteByte (TE_SPLASH);
-	gi.WriteByte (32);
-	gi.WritePosition (origin);
-	gi.WriteDir (dir);
-	gi.WriteByte (1);	//sparks
-	gi.multicast (origin, MULTICAST_PVS);
+	gi.WriteByte(svc_temp_entity);
+	gi.WriteByte(TE_SPLASH);
+	gi.WriteByte(32);
+	gi.WritePosition(origin);
+	gi.WriteDir(dir);
+	gi.WriteByte(1);	//sparks
+	gi.multicast(origin, MULTICAST_PVS);
 
 	// SLUGFILLER--don't always hit, do some checks first
 	// check for max distance
-	VectorSubtract (origin, self->enemy->s.origin, dir);
+	VectorSubtract(origin, self->enemy->s.origin, dir);
 	if (VectorLength(dir) > MELEE_DISTANCE)
 		return;
 
 	// check attack path
-	tr = gi.trace (origin, NULL, NULL, self->enemy->s.origin, self, MASK_SHOT);
+	tr = gi.trace(origin, NULL, NULL, self->enemy->s.origin, self, MASK_SHOT);
 	if (tr.fraction != 1.0 && tr.ent != self->enemy)
 		return;
 
-	T_Damage (self->enemy, self, self, dir, self->enemy->s.origin, vec3_origin, 5 + rand() % 6, 0, -10, DAMAGE_ENERGY, MOD_UNKNOWN);
+	T_Damage(self->enemy, self, self, dir, self->enemy->s.origin, vec3_origin, 5 + rand() % 6, 0, -10, DAMAGE_ENERGY, MOD_UNKNOWN);
 }
 
-void floater_attack(edict_t *self)
+void floater_attack(edict_t* self)
 {
 	self->pain_debounce_time = level.time + 1.5;
 	self->monsterinfo.currentmove = &floater_move_attack1;
 }
 
 
-void floater_melee(edict_t *self)
+void floater_melee(edict_t* self)
 {
 	if (random() < 0.5)
 	{
@@ -560,7 +560,7 @@ void floater_melee(edict_t *self)
 }
 
 
-void floater_pain (edict_t *self, edict_t *other, float kick, int damage)
+void floater_pain(edict_t* self, edict_t* other, float kick, int damage)
 {
 	int		n;
 
@@ -577,64 +577,64 @@ void floater_pain (edict_t *self, edict_t *other, float kick, int damage)
 	n = (rand() + 1) % 3;
 	if (n == 0)
 	{
-		gi.sound (self, CHAN_VOICE, sound_pain1, 1, ATTN_NORM, 0);
+		gi.sound(self, CHAN_VOICE, sound_pain1, 1, ATTN_NORM, 0);
 		self->monsterinfo.currentmove = &floater_move_pain1;
 	}
 	else
 	{
-		gi.sound (self, CHAN_VOICE, sound_pain2, 1, ATTN_NORM, 0);
+		gi.sound(self, CHAN_VOICE, sound_pain2, 1, ATTN_NORM, 0);
 		self->monsterinfo.currentmove = &floater_move_pain2;
 	}
 }
 
-void floater_dead (edict_t *self)
+void floater_dead(edict_t* self)
 {
 	self->flags |= FL_NO_KNOCKBACK;
 
-	VectorSet (self->mins, -16, -16, -24);
-	VectorSet (self->maxs, 16, 16, -8);
+	VectorSet(self->mins, -16, -16, -24);
+	VectorSet(self->maxs, 16, 16, -8);
 	self->movetype = MOVETYPE_TOSS;
 	self->svflags |= SVF_DEADMONSTER;
 	self->nextthink = 0;
 	self->clipmask = MASK_SOLID;
-	gi.linkentity (self);
+	gi.linkentity(self);
 }
 
-void floater_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage, vec3_t point)
+void floater_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, vec3_t point)
 {
-	gi.sound (self, CHAN_VOICE, sound_death1, 1, ATTN_NORM, 0);
+	gi.sound(self, CHAN_VOICE, sound_death1, 1, ATTN_NORM, 0);
 	BecomeExplosion1(self);
 }
 
 /*QUAKED monster_floater (1 .5 0) (-16 -16 -24) (16 16 32) Ambush Trigger_Spawn Sight
 */
-void SP_monster_floater (edict_t *self)
+void SP_monster_floater(edict_t* self)
 {
 	if (deathmatch->value && deathmatch->value != 3 && !((int)(gibflags->value) & GF_WITH_MONSTERS))
 	{
-		G_FreeEdict (self);
+		G_FreeEdict(self);
 		return;
 	}
 
-	sound_attack2 = gi.soundindex ("floater/fltatck2.wav");
-	sound_attack3 = gi.soundindex ("floater/fltatck3.wav");
-	sound_death1 = gi.soundindex ("floater/fltdeth1.wav");
-	sound_idle = gi.soundindex ("floater/fltidle1.wav");
-	sound_pain1 = gi.soundindex ("floater/fltpain1.wav");
-	sound_pain2 = gi.soundindex ("floater/fltpain2.wav");
-	sound_sight = gi.soundindex ("floater/fltsght1.wav");
+	sound_attack2 = gi.soundindex("floater/fltatck2.wav");
+	sound_attack3 = gi.soundindex("floater/fltatck3.wav");
+	sound_death1 = gi.soundindex("floater/fltdeth1.wav");
+	sound_idle = gi.soundindex("floater/fltidle1.wav");
+	sound_pain1 = gi.soundindex("floater/fltpain1.wav");
+	sound_pain2 = gi.soundindex("floater/fltpain2.wav");
+	sound_sight = gi.soundindex("floater/fltsght1.wav");
 
-	gi.soundindex ("floater/fltatck1.wav");
+	gi.soundindex("floater/fltatck1.wav");
 
-	self->s.sound = gi.soundindex ("floater/fltsrch1.wav");
+	self->s.sound = gi.soundindex("floater/fltsrch1.wav");
 
 	self->movetype = MOVETYPE_STEP;
 	self->solid = SOLID_BBOX;
-	self->s.modelindex = gi.modelindex ("models/monsters/float/tris.md2");
-	VectorSet (self->mins, -24, -24, -24);
-	VectorSet (self->maxs, 24, 24, 32);
-	VectorSet (self->headmins, 10, -24, -8);
-	VectorSet (self->headmaxs, 24, 24, 32);
+	self->s.modelindex = gi.modelindex("models/monsters/float/tris.md2");
+	VectorSet(self->mins, -24, -24, -24);
+	VectorSet(self->maxs, 24, 24, 32);
+	VectorSet(self->headmins, 10, -24, -8);
+	VectorSet(self->headmaxs, 24, 24, 32);
 
 	self->health = 200;
 	self->gib_health = 280;
@@ -655,7 +655,7 @@ void SP_monster_floater (edict_t *self)
 	self->monsterinfo.speed = 13;
 	self->monsterinfo.walkspeed = 5;
 
-	gi.linkentity (self);
+	gi.linkentity(self);
 
 	if (random() <= 0.5)
 		self->monsterinfo.currentmove = &floater_move_stand1;
@@ -664,5 +664,5 @@ void SP_monster_floater (edict_t *self)
 
 	self->monsterinfo.scale = MODEL_SCALE;
 
-	flymonster_start (self);
+	flymonster_start(self);
 }
