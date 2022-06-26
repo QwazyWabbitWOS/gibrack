@@ -602,367 +602,367 @@ void insane_onground(edict_t* self);
 
 mframe_t insane_frames_stand_normal[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, insane_checkdown
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, insane_checkdown}
 };
 mmove_t insane_move_stand_normal = { FRAME_stand60, FRAME_stand65, insane_frames_stand_normal, insane_stand };
 
 mframe_t insane_frames_stand_insane[] =
 {
-	MANIM_STAND,	0,	insane_shake,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox16,
-	MANIM_STAND,	0,	fix_bbox17,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox16,
-	MANIM_STAND,	0,	fix_bbox17,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox16,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox18,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox19,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox20,
-	MANIM_STAND,	0,	fix_bbox21,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	fix_bbox22,
-	MANIM_STAND,	0,	fix_bbox23,
-	MANIM_STAND,	0,	fix_bbox24,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	NULL,
-	MANIM_STAND,	0,	insane_checkdown
+	{MANIM_STAND,	0,	insane_shake},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox16},
+	{MANIM_STAND,	0,	fix_bbox17},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox16},
+	{MANIM_STAND,	0,	fix_bbox17},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox16},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox18},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox19},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox20},
+	{MANIM_STAND,	0,	fix_bbox21},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	fix_bbox22},
+	{MANIM_STAND,	0,	fix_bbox23},
+	{MANIM_STAND,	0,	fix_bbox24},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	NULL},
+	{MANIM_STAND,	0,	insane_checkdown}
 };
 mmove_t insane_move_stand_insane = { FRAME_stand65, FRAME_stand94, insane_frames_stand_insane, insane_stand };
 
 mframe_t insane_frames_uptodown[] =
 {
-	MANIM_STAND,	0,		fix_bbox1,
-	MANIM_STAND,	0,		fix_bbox2,
-	MANIM_STAND,	0,		fix_bbox3,
-	MANIM_STAND,	0,		fix_bbox4,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox5,
-	MANIM_STAND,	0,		fix_bbox6,
-	MANIM_STAND,	0,		insane_moan,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
+	{MANIM_STAND,	0,		fix_bbox1},
+	{MANIM_STAND,	0,		fix_bbox2},
+	{MANIM_STAND,	0,		fix_bbox3},
+	{MANIM_STAND,	0,		fix_bbox4},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox5},
+	{MANIM_STAND,	0,		fix_bbox6},
+	{MANIM_STAND,	0,		insane_moan},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
 
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox7,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox8,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox7},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox8},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
 
-	MANIM_STAND,	2.7,	NULL,
-	MANIM_STAND,	4.1,	NULL,
-	MANIM_STAND,	6,		NULL,
-	MANIM_STAND,	7.6,	fix_bbox9,
-	MANIM_STAND,	3.6,	NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		insane_fist,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
+	{MANIM_STAND,	2.7,	NULL},
+	{MANIM_STAND,	4.1,	NULL},
+	{MANIM_STAND,	6,		NULL},
+	{MANIM_STAND,	7.6,	fix_bbox9},
+	{MANIM_STAND,	3.6,	NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		insane_fist},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
 
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		insane_fist,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox10,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		insane_fist},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox10},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL}
 };
 mmove_t insane_move_uptodown = { FRAME_stand1, FRAME_stand40, insane_frames_uptodown, insane_onground };
 
 
 mframe_t insane_frames_downtoup[] =
 {
-	MANIM_STAND,	-0.7,	NULL,		// 41
-	MANIM_STAND,	-1.2,	NULL,		// 42
-	MANIM_STAND,	-1.5,	NULL,		// 43
-	MANIM_STAND,	-4.5,	NULL,		// 44
-	MANIM_STAND,	-3.5,	NULL,		// 45
-	MANIM_STAND,	-0.2,	NULL,		// 46
-	MANIM_STAND,	0,		NULL,		// 47
-	MANIM_STAND,	-1.3,	NULL,		// 48
-	MANIM_STAND,	-3,		fix_bbox11,	// 49
-	MANIM_STAND,	-2,		NULL,		// 50
-	MANIM_STAND,	0,		fix_bbox12,	// 51
-	MANIM_STAND,	0,		fix_bbox13,	// 52
-	MANIM_STAND,	0,		fix_bbox14,	// 53
-	MANIM_STAND,	-3.3,	fix_bbox15,	// 54
-	MANIM_STAND,	-1.6,	NULL,		// 55
-	MANIM_STAND,	-0.3,	NULL,		// 56
-	MANIM_STAND,	0,		NULL,		// 57
-	MANIM_STAND,	0,		NULL,		// 58
-	MANIM_STAND,	0,		NULL		// 59
+	{MANIM_STAND,	-0.7,	NULL},		// 41
+	{MANIM_STAND,	-1.2,	NULL},		// 42
+	{MANIM_STAND,	-1.5,	NULL},		// 43
+	{MANIM_STAND,	-4.5,	NULL},		// 44
+	{MANIM_STAND,	-3.5,	NULL},		// 45
+	{MANIM_STAND,	-0.2,	NULL},		// 46
+	{MANIM_STAND,	0,		NULL},		// 47
+	{MANIM_STAND,	-1.3,	NULL},		// 48
+	{MANIM_STAND,	-3,		fix_bbox11},	// 49
+	{MANIM_STAND,	-2,		NULL},		// 50
+	{MANIM_STAND,	0,		fix_bbox12},	// 51
+	{MANIM_STAND,	0,		fix_bbox13},	// 52
+	{MANIM_STAND,	0,		fix_bbox14},	// 53
+	{MANIM_STAND,	-3.3,	fix_bbox15},	// 54
+	{MANIM_STAND,	-1.6,	NULL},		// 55
+	{MANIM_STAND,	-0.3,	NULL},		// 56
+	{MANIM_STAND,	0,		NULL},		// 57
+	{MANIM_STAND,	0,		NULL},		// 58
+	{MANIM_STAND,	0,		NULL}		// 59
 };
 mmove_t insane_move_downtoup = { FRAME_stand41, FRAME_stand59, insane_frames_downtoup, insane_stand };
 
 mframe_t insane_frames_jumpdown[] =
 {
-	MANIM_WALK,	-1.8,	fix_bbox16,
-	MANIM_WALK,	9.5,	fix_bbox25,
-	MANIM_WALK,	3.1,	fix_bbox26,
-	MANIM_WALK,	5.1,	fix_bbox10,
-	MANIM_WALK,	-2,	NULL
+	{MANIM_WALK,	-1.8,	fix_bbox16},
+	{MANIM_WALK,	9.5,	fix_bbox25},
+	{MANIM_WALK,	3.1,	fix_bbox26},
+	{MANIM_WALK,	5.1,	fix_bbox10},
+	{MANIM_WALK,	-2,	NULL}
 };
 mmove_t insane_move_jumpdown = { FRAME_stand96, FRAME_stand100, insane_frames_jumpdown, insane_onground };
 
 
 mframe_t insane_frames_down[] =
 {
-	MANIM_STAND,	0,		NULL,			// 100
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox27,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox28,
-	MANIM_STAND,	0,		NULL,			// 110
-	MANIM_STAND,	-1.7,	fix_bbox29,
-	MANIM_STAND,	-1.6,	fix_bbox30,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox28,
-	MANIM_STAND,	0,		insane_fist,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,			// 120
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,			// 130
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		insane_moan,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,			// 140
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		fix_bbox31,			// 150
-	MANIM_STAND,	0.5,	fix_bbox32,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	-0.2,	insane_scream,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0.2,	NULL,
-	MANIM_STAND,	0.4,	NULL,
-	MANIM_STAND,	0.6,	NULL,
-	MANIM_STAND,	0.8,	fix_bbox33,
-	MANIM_STAND,	0.7,	fix_bbox34,
-	MANIM_STAND,	0,		insane_checkup	// 160
+	{MANIM_STAND,	0,		NULL},			// 100
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox27},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox28},
+	{MANIM_STAND,	0,		NULL},			// 110
+	{MANIM_STAND,	-1.7,	fix_bbox29},
+	{MANIM_STAND,	-1.6,	fix_bbox30},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox28},
+	{MANIM_STAND,	0,		insane_fist},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},			// 120
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},			// 130
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		insane_moan},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},			// 140
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		fix_bbox31},			// 150
+	{MANIM_STAND,	0.5,	fix_bbox32},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	-0.2,	insane_scream},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0.2,	NULL},
+	{MANIM_STAND,	0.4,	NULL},
+	{MANIM_STAND,	0.6,	NULL},
+	{MANIM_STAND,	0.8,	fix_bbox33},
+	{MANIM_STAND,	0.7,	fix_bbox34},
+	{MANIM_STAND,	0,		insane_checkup}	// 160
 };
 mmove_t insane_move_down = { FRAME_stand100, FRAME_stand160, insane_frames_down, insane_onground };
 
 mframe_t insane_frames_walk_normal[] =
 {
-	MANIM_WALK,	-2,		insane_scream,
-	MANIM_WALK,	0.5,	NULL,
-	MANIM_WALK,	1.5,	NULL,
-	MANIM_WALK,	-0.3,	NULL,
-	MANIM_WALK,	0.3,	NULL,
-	MANIM_WALK,	0.4,	NULL,
-	MANIM_WALK,	0.2,	NULL,
-	MANIM_WALK,	2.2,	NULL,
-	MANIM_WALK,	3.6,	NULL,
-	MANIM_WALK,	1.3,	NULL,
-	MANIM_WALK,	0.4,	NULL,
-	MANIM_WALK,	-1.1,	NULL,
-	MANIM_WALK,	-2,		NULL
+	{MANIM_WALK,	-2,		insane_scream},
+	{MANIM_WALK,	0.5,	NULL},
+	{MANIM_WALK,	1.5,	NULL},
+	{MANIM_WALK,	-0.3,	NULL},
+	{MANIM_WALK,	0.3,	NULL},
+	{MANIM_WALK,	0.4,	NULL},
+	{MANIM_WALK,	0.2,	NULL},
+	{MANIM_WALK,	2.2,	NULL},
+	{MANIM_WALK,	3.6,	NULL},
+	{MANIM_WALK,	1.3,	NULL},
+	{MANIM_WALK,	0.4,	NULL},
+	{MANIM_WALK,	-1.1,	NULL},
+	{MANIM_WALK,	-2,		NULL}
 };
 mmove_t insane_move_walk_normal = { FRAME_walk27, FRAME_walk39, insane_frames_walk_normal, insane_walk };
 mmove_t insane_move_run_normal = { FRAME_walk27, FRAME_walk39, insane_frames_walk_normal, insane_run };
 
 mframe_t insane_frames_walk_insane[] =
 {
-	MANIM_WALK,	-2,		insane_scream,		// walk 1
-	MANIM_WALK,	1.4,	NULL,		// walk 2
-	MANIM_WALK,	1.6,	NULL,		// 3
-	MANIM_WALK,	0.9,	NULL,		// 4
-	MANIM_WALK,	0.2,	NULL,		// 5
-	MANIM_WALK,	0.6,	NULL,		// 6
-	MANIM_WALK,	-2,		NULL,		// 7
-	MANIM_WALK,	-1.3,	NULL,		// 8
-	MANIM_WALK,	2.8,	NULL,		// 9
-	MANIM_WALK,	3.3,	NULL,		// 10
-	MANIM_WALK,	-0.9,	NULL,		// 11
-	MANIM_WALK,	0,		NULL,		// 12
-	MANIM_WALK,	-1.5,	fix_bbox35,	// 13
-	MANIM_WALK,	-2,		fix_bbox36,	// 14
-	MANIM_WALK,	-2,		NULL,		// 15
-	MANIM_WALK,	2.9,	fix_bbox37,	// 16
-	MANIM_WALK,	4.7,	fix_bbox38,	// 17
-	MANIM_WALK,	1.8,	fix_bbox39,	// 18
-	MANIM_WALK,	0,		NULL,		// 19
-	MANIM_WALK,	-1.8,	fix_bbox40,	// 20
-	MANIM_WALK,	-2,		fix_bbox41,	// 21
-	MANIM_WALK,	1.4,	NULL,		// 22
-	MANIM_WALK,	5.4,	NULL,		// 23
-	MANIM_WALK,	3,		NULL,		// 24
-	MANIM_WALK,	-0.2,	NULL,		// 25
-	MANIM_WALK,	-2,		fix_bbox42	// 26
+	{MANIM_WALK,	-2,		insane_scream},		// walk 1
+	{MANIM_WALK,	1.4,	NULL},		// walk 2
+	{MANIM_WALK,	1.6,	NULL},		// 3
+	{MANIM_WALK,	0.9,	NULL},		// 4
+	{MANIM_WALK,	0.2,	NULL},		// 5
+	{MANIM_WALK,	0.6,	NULL},		// 6
+	{MANIM_WALK,	-2,		NULL},		// 7
+	{MANIM_WALK,	-1.3,	NULL},		// 8
+	{MANIM_WALK,	2.8,	NULL},		// 9
+	{MANIM_WALK,	3.3,	NULL},		// 10
+	{MANIM_WALK,	-0.9,	NULL},		// 11
+	{MANIM_WALK,	0,		NULL},		// 12
+	{MANIM_WALK,	-1.5,	fix_bbox35},	// 13
+	{MANIM_WALK,	-2,		fix_bbox36},	// 14
+	{MANIM_WALK,	-2,		NULL},		// 15
+	{MANIM_WALK,	2.9,	fix_bbox37},	// 16
+	{MANIM_WALK,	4.7,	fix_bbox38},	// 17
+	{MANIM_WALK,	1.8,	fix_bbox39},	// 18
+	{MANIM_WALK,	0,		NULL},		// 19
+	{MANIM_WALK,	-1.8,	fix_bbox40},	// 20
+	{MANIM_WALK,	-2,		fix_bbox41},	// 21
+	{MANIM_WALK,	1.4,	NULL},		// 22
+	{MANIM_WALK,	5.4,	NULL},		// 23
+	{MANIM_WALK,	3,		NULL},		// 24
+	{MANIM_WALK,	-0.2,	NULL},		// 25
+	{MANIM_WALK,	-2,		fix_bbox42}	// 26
 };
 mmove_t insane_move_walk_insane = { FRAME_walk1, FRAME_walk26, insane_frames_walk_insane, insane_walk };
 mmove_t insane_move_run_insane = { FRAME_walk1, FRAME_walk26, insane_frames_walk_insane, insane_run };
 
 mframe_t insane_frames_stand_pain[] =
 {
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL}
 };
 mmove_t insane_move_stand_pain = { FRAME_st_pain2, FRAME_st_pain12, insane_frames_stand_pain, insane_run };
 
 mframe_t insane_frames_stand_death[] =
 {
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL}
 };
 mmove_t insane_move_stand_death = { FRAME_st_death2, FRAME_st_death18, insane_frames_stand_death, insane_dead };
 
 mframe_t insane_frames_crawl[] =
 {
-	MANIM_WALK,	-2,		insane_scream,
-	MANIM_WALK,	-0.5,	NULL,
-	MANIM_WALK,	0.1,	NULL,
-	MANIM_WALK,	1.6,	NULL,
-	MANIM_WALK,	0,		NULL,
-	MANIM_WALK,	-1.1,	NULL,
-	MANIM_WALK,	1,		NULL,
-	MANIM_WALK,	1.4,	NULL,
-	MANIM_WALK,	0.4,	NULL
+	{MANIM_WALK,	-2,		insane_scream},
+	{MANIM_WALK,	-0.5,	NULL},
+	{MANIM_WALK,	0.1,	NULL},
+	{MANIM_WALK,	1.6,	NULL},
+	{MANIM_WALK,	0,		NULL},
+	{MANIM_WALK,	-1.1,	NULL},
+	{MANIM_WALK,	1,		NULL},
+	{MANIM_WALK,	1.4,	NULL},
+	{MANIM_WALK,	0.4,	NULL}
 };
 mmove_t insane_move_crawl = { FRAME_crawl1, FRAME_crawl9, insane_frames_crawl, NULL };
 mmove_t insane_move_runcrawl = { FRAME_crawl1, FRAME_crawl9, insane_frames_crawl, NULL };
 
 mframe_t insane_frames_crawl_pain[] =
 {
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		fix_bbox43,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		fix_bbox10
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		fix_bbox43},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		fix_bbox10}
 };
 mmove_t insane_move_crawl_pain = { FRAME_cr_pain2, FRAME_cr_pain10, insane_frames_crawl_pain, insane_run };
 
 mframe_t insane_frames_crawl_death[] =
 {
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL,
-	MANIM_DEATH,	0,		NULL
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL},
+	{MANIM_DEATH,	0,		NULL}
 };
 mmove_t insane_move_crawl_death = { FRAME_cr_death10, FRAME_cr_death16, insane_frames_crawl_death, insane_dead };
 
 mframe_t insane_frames_cross[] =
 {
-	MANIM_STAND,	0,		insane_moan,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL,
-	MANIM_STAND,	0,		NULL
+	{MANIM_STAND,	0,		insane_moan},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL},
+	{MANIM_STAND,	0,		NULL}
 };
 mmove_t insane_move_cross = { FRAME_cross1, FRAME_cross15, insane_frames_cross, insane_cross };
 
 mframe_t insane_frames_struggle_cross[] =
 {
-	MANIM_MISC,	0,		insane_scream,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL,
-	MANIM_MISC,	0,		NULL
+	{MANIM_MISC,	0,		insane_scream},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL},
+	{MANIM_MISC,	0,		NULL}
 };
 mmove_t insane_move_struggle_cross = { FRAME_cross16, FRAME_cross30, insane_frames_struggle_cross, insane_cross };
 
@@ -1062,10 +1062,12 @@ void insane_checkdown(edict_t* self)
 	if (self->spawnflags & 32)				// Always stand
 		return;
 	if (random() < 0.3)
+	{
 		if (random() < 0.5)
 			self->monsterinfo.currentmove = &insane_move_uptodown;
 		else
 			self->monsterinfo.currentmove = &insane_move_jumpdown;
+	}
 }
 
 void insane_checkup(edict_t* self)

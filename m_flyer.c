@@ -48,152 +48,152 @@ void flyer_pop_blades(edict_t* self)
 
 mframe_t flyer_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t	flyer_move_stand = { FRAME_stand01, FRAME_stand45, flyer_frames_stand, NULL };
 
 
 mframe_t flyer_frames_walk[] =
 {
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL}
 };
 mmove_t	flyer_move_walk = { FRAME_stand01, FRAME_stand45, flyer_frames_walk, NULL };
 
 mframe_t flyer_frames_run[] =
 {
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL}
 };
 mmove_t	flyer_move_run = { FRAME_stand01, FRAME_stand45, flyer_frames_run, NULL };
 
@@ -217,24 +217,24 @@ void flyer_stand(edict_t* self)
 
 mframe_t flyer_frames_start[] =
 {
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	flyer_nextmove
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	flyer_nextmove}
 };
 mmove_t flyer_move_start = { FRAME_start01, FRAME_start06, flyer_frames_start, NULL };
 
 mframe_t flyer_frames_stop[] =
 {
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	NULL,
-		MANIM_MISC, 0,	flyer_nextmove
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	NULL},
+		{MANIM_MISC, 0,	flyer_nextmove}
 };
 mmove_t flyer_move_stop = { FRAME_stop01, FRAME_stop07, flyer_frames_stop, NULL };
 
@@ -251,96 +251,96 @@ void flyer_start(edict_t* self)
 
 mframe_t flyer_frames_rollright[] =
 {
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL}
 };
 mmove_t flyer_move_rollright = { FRAME_rollr01, FRAME_rollr09, flyer_frames_rollright, NULL };
 
 mframe_t flyer_frames_rollleft[] =
 {
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL}
 };
 mmove_t flyer_move_rollleft = { FRAME_rollf01, FRAME_rollf09, flyer_frames_rollleft, NULL };
 
 mframe_t flyer_frames_pain3[] =
 {
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL}
 };
 mmove_t flyer_move_pain3 = { FRAME_pain301, FRAME_pain304, flyer_frames_pain3, flyer_run };
 
 mframe_t flyer_frames_pain2[] =
 {
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL}
 };
 mmove_t flyer_move_pain2 = { FRAME_pain201, FRAME_pain204, flyer_frames_pain2, flyer_run };
 
 mframe_t flyer_frames_pain1[] =
 {
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL,
-		MANIM_MISC, 0, NULL
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL},
+		{MANIM_MISC, 0, NULL}
 };
 mmove_t flyer_move_pain1 = { FRAME_pain101, FRAME_pain109, flyer_frames_pain1, flyer_run };
 
 mframe_t flyer_frames_defense[] =
 {
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,		// Hold this frame
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},		// Hold this frame
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL}
 };
 mmove_t flyer_move_defense = { FRAME_defens01, FRAME_defens06, flyer_frames_defense, NULL };
 
 mframe_t flyer_frames_bankright[] =
 {
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL}
 };
 mmove_t flyer_move_bankright = { FRAME_bankr01, FRAME_bankr07, flyer_frames_bankright, NULL };
 
 mframe_t flyer_frames_bankleft[] =
 {
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL,
-		MANIM_RUN, 0, NULL
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL},
+		{MANIM_RUN, 0, NULL}
 };
 mmove_t flyer_move_bankleft = { FRAME_bankl01, FRAME_bankl07, flyer_frames_bankleft, NULL };
 
@@ -377,23 +377,23 @@ void flyer_fireright(edict_t* self)
 
 mframe_t flyer_frames_attack2[] =
 {
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, -10, flyer_fireleft,			// left gun
-		MANIM_MISSILE, -10, flyer_fireright,		// right gun
-		MANIM_MISSILE, -10, flyer_fireleft,			// left gun
-		MANIM_MISSILE, -10, flyer_fireright,		// right gun
-		MANIM_MISSILE, -10, flyer_fireleft,			// left gun
-		MANIM_MISSILE, -10, flyer_fireright,		// right gun
-		MANIM_MISSILE, -10, flyer_fireleft,			// left gun
-		MANIM_MISSILE, -10, flyer_fireright,		// right gun
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL,
-		MANIM_MISSILE, 0, NULL
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, -10, flyer_fireleft},			// left gun
+		{MANIM_MISSILE, -10, flyer_fireright},		// right gun
+		{MANIM_MISSILE, -10, flyer_fireleft},			// left gun
+		{MANIM_MISSILE, -10, flyer_fireright},		// right gun
+		{MANIM_MISSILE, -10, flyer_fireleft},			// left gun
+		{MANIM_MISSILE, -10, flyer_fireright},		// right gun
+		{MANIM_MISSILE, -10, flyer_fireleft},			// left gun
+		{MANIM_MISSILE, -10, flyer_fireright},		// right gun
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL},
+		{MANIM_MISSILE, 0, NULL}
 };
 mmove_t flyer_move_attack2 = { FRAME_attak201, FRAME_attak217, flyer_frames_attack2, flyer_run };
 
@@ -418,38 +418,38 @@ void flyer_slash_right(edict_t* self)
 
 mframe_t flyer_frames_start_melee[] =
 {
-		MANIM_MELEE, 0, flyer_pop_blades,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL
+		{MANIM_MELEE, 0, flyer_pop_blades},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL}
 };
 mmove_t flyer_move_start_melee = { FRAME_attak101, FRAME_attak106, flyer_frames_start_melee, flyer_loop_melee };
 
 mframe_t flyer_frames_end_melee[] =
 {
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL}
 };
 mmove_t flyer_move_end_melee = { FRAME_attak119, FRAME_attak121, flyer_frames_end_melee, flyer_run };
 
 
 mframe_t flyer_frames_loop_melee[] =
 {
-		MANIM_MELEE, 0, NULL,		// Loop Start
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, flyer_slash_left,		// Left Wing Strike
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, flyer_slash_right,	// Right Wing Strike
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL		// Loop Ends
+		{MANIM_MELEE, 0, NULL},		// Loop Start
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, flyer_slash_left},		// Left Wing Strike
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, flyer_slash_right},	// Right Wing Strike
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL}		// Loop Ends
 
 };
 mmove_t flyer_move_loop_melee = { FRAME_attak107, FRAME_attak118, flyer_frames_loop_melee, flyer_check_melee };

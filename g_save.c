@@ -273,6 +273,7 @@ void WriteField1(FILE* f, field_t* field, byte* base)
 		*(int*)p = index;
 		break;
 
+
 		//relative to data segment
 	case F_MMOVE:
 		if (*(byte**)p == NULL)
@@ -305,6 +306,8 @@ void WriteField2(FILE* f, field_t* field, byte* base)
 			len = (int)strlen(*(char**)p) + 1;
 			fwrite(*(char**)p, len, 1, f);
 		}
+		break;
+	default:
 		break;
 	}
 }
@@ -622,7 +625,7 @@ void WriteLevel(char* filename)
 	int		i;
 	edict_t* ent;
 	FILE* f;
-	void* base;
+	void	(*base)(void);
 
 	f = fopen(filename, "wb");
 	if (!f) {
@@ -634,7 +637,7 @@ void WriteLevel(char* filename)
 	fwrite(&i, sizeof(i), 1, f);
 
 	// write out a function pointer for checking
-	base = (void*)InitGame;
+	base = InitGame;
 	fwrite(&base, sizeof(base), 1, f);
 
 	// write out level_locals_t

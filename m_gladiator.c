@@ -44,13 +44,13 @@ void gladiator_cleaver_swing(edict_t* self)
 
 mframe_t gladiator_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t gladiator_move_stand = { FRAME_stand1, FRAME_stand7, gladiator_frames_stand, NULL };
 
@@ -62,22 +62,22 @@ void gladiator_stand(edict_t* self)
 
 mframe_t gladiator_frames_walk[] =
 {
-	MANIM_WALK, 8,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, -1, NULL,
-	MANIM_WALK, -2, NULL,
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, -7, NULL,
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, 1,  NULL,
-	MANIM_WALK, 5,  NULL,
-	MANIM_WALK, 1,  NULL,
-	MANIM_WALK, -2, NULL,
-	MANIM_WALK, -2, NULL,
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, -6, NULL,
-	MANIM_WALK, 1,  NULL
+	{MANIM_WALK, 8,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, -1, NULL},
+	{MANIM_WALK, -2, NULL},
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, -7, NULL},
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, 1,  NULL},
+	{MANIM_WALK, 5,  NULL},
+	{MANIM_WALK, 1,  NULL},
+	{MANIM_WALK, -2, NULL},
+	{MANIM_WALK, -2, NULL},
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, -6, NULL},
+	{MANIM_WALK, 1,  NULL}
 };
 mmove_t gladiator_move_walk = { FRAME_walk1, FRAME_walk16, gladiator_frames_walk, NULL };
 
@@ -89,12 +89,12 @@ void gladiator_walk(edict_t* self)
 
 mframe_t gladiator_frames_run[] =
 {
-	MANIM_RUN, 4,	NULL,
-	MANIM_RUN, -4,	NULL,
-	MANIM_RUN, -4,	NULL,
-	MANIM_RUN, 3,	NULL,
-	MANIM_RUN, -6,	NULL,
-	MANIM_RUN, -5,	NULL
+	{MANIM_RUN, 4,	NULL},
+	{MANIM_RUN, -4,	NULL},
+	{MANIM_RUN, -4,	NULL},
+	{MANIM_RUN, 3,	NULL},
+	{MANIM_RUN, -6,	NULL},
+	{MANIM_RUN, -5,	NULL}
 };
 mmove_t gladiator_move_run = { FRAME_run1, FRAME_run6, gladiator_frames_run, NULL };
 
@@ -120,23 +120,23 @@ void GaldiatorMelee(edict_t* self)
 
 mframe_t gladiator_frames_attack_melee[] =
 {
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, gladiator_cleaver_swing,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, GaldiatorMelee,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, gladiator_cleaver_swing,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, GaldiatorMelee,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, gladiator_cleaver_swing},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, GaldiatorMelee},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, gladiator_cleaver_swing},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, GaldiatorMelee},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL}
 };
 mmove_t gladiator_move_attack_melee = { FRAME_melee1, FRAME_melee17, gladiator_frames_attack_melee, gladiator_run };
 
@@ -164,15 +164,15 @@ void GladiatorGun(edict_t* self)
 
 mframe_t gladiator_frames_attack_gun[] =
 {
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, GladiatorGun,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL,
-	MANIM_MISSILE,	0, NULL
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, GladiatorGun},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL},
+	{MANIM_MISSILE,	0, NULL}
 };
 mmove_t gladiator_move_attack_gun = { FRAME_attack1, FRAME_attack9, gladiator_frames_attack_gun, gladiator_run };
 
@@ -197,24 +197,24 @@ void gladiator_attack(edict_t* self)
 
 mframe_t gladiator_frames_pain[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t gladiator_move_pain = { FRAME_pain1, FRAME_pain6, gladiator_frames_pain, gladiator_run };
 
 mframe_t gladiator_frames_pain_air[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t gladiator_move_pain_air = { FRAME_painup1, FRAME_painup7, gladiator_frames_pain_air, gladiator_run };
 
@@ -263,28 +263,28 @@ void gladiator_dead(edict_t* self)
 
 mframe_t gladiator_frames_death[] =
 {
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, gladiator_dead,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, gladiator_dead},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL}
 };
 mmove_t gladiator_move_death = { FRAME_death1, FRAME_death22, gladiator_frames_death, monster_dead_dead };
 

@@ -676,6 +676,7 @@ void T_Damage(edict_t* targ, edict_t* inflictor, edict_t* attacker, vec3_t dir, 
 		}
 
 		if (!(dflags & DAMAGE_NO_BLOOD))
+		{
 			if ((targ->svflags & SVF_MONSTER) || (client))
 			{
 				vec3_t	vec, forward, right, up;
@@ -694,6 +695,7 @@ void T_Damage(edict_t* targ, edict_t* inflictor, edict_t* attacker, vec3_t dir, 
 			}
 			else
 				SpawnDamage(te_sparks, point, normal, take);
+		}
 
 		targ->health -= take;
 		targ->gib_health -= gib_damage;

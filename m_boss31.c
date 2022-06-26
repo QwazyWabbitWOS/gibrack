@@ -63,57 +63,57 @@ void jorg_death_hit(edict_t* self);
 
 mframe_t jorg_frames_stand[] =
 {
-	MANIM_STAND, 0, jorg_idle,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 10
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 20
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 30
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 19, NULL,
-	MANIM_STAND, 11, jorg_step_left,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 6, NULL,
-	MANIM_STAND, 9, jorg_step_right,
-	MANIM_STAND, 0, NULL,		// 40
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, -2, NULL,
-	MANIM_STAND, -17, jorg_step_left,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, -12, NULL,		// 50
-	MANIM_STAND, -14, jorg_step_right	// 51
+	{MANIM_STAND, 0, jorg_idle},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 10
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 20
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 30
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 19, NULL},
+	{MANIM_STAND, 11, jorg_step_left},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 6, NULL},
+	{MANIM_STAND, 9, jorg_step_right},
+	{MANIM_STAND, 0, NULL},		// 40
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, -2, NULL},
+	{MANIM_STAND, -17, jorg_step_left},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, -12, NULL},		// 50
+	{MANIM_STAND, -14, jorg_step_right}	// 51
 };
 mmove_t	jorg_move_stand = { FRAME_stand01, FRAME_stand51, jorg_frames_stand, NULL };
 
@@ -146,20 +146,20 @@ void jorg_stand(edict_t* self)
 
 mframe_t jorg_frames_run[] =
 {
-	MANIM_RUN, 5,	jorg_step_left,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, 0,	NULL,
-	MANIM_RUN, -4,	NULL,
-	MANIM_RUN, -2,	NULL,
-	MANIM_RUN, 21,	jorg_step_right,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, -12,	NULL,
-	MANIM_RUN, -3,	NULL,
-	MANIM_RUN, -3,	NULL,
-	MANIM_RUN, -3,	NULL
+	{MANIM_RUN, 5,	jorg_step_left},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, 0,	NULL},
+	{MANIM_RUN, -4,	NULL},
+	{MANIM_RUN, -2,	NULL},
+	{MANIM_RUN, 21,	jorg_step_right},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, -12,	NULL},
+	{MANIM_RUN, -3,	NULL},
+	{MANIM_RUN, -3,	NULL},
+	{MANIM_RUN, -3,	NULL}
 };
 mmove_t	jorg_move_run = { FRAME_walk06, FRAME_walk19, jorg_frames_run, NULL };
 
@@ -169,41 +169,41 @@ mmove_t	jorg_move_run = { FRAME_walk06, FRAME_walk19, jorg_frames_run, NULL };
 
 mframe_t jorg_frames_start_walk[] =
 {
-	MANIM_WALK,	-7,	NULL,
-	MANIM_WALK,	-6,	NULL,
-	MANIM_WALK,	-5,	NULL,
-	MANIM_WALK,	-3,	NULL,
-	MANIM_WALK,	3,	NULL
+	{MANIM_WALK,	-7,	NULL},
+	{MANIM_WALK,	-6,	NULL},
+	{MANIM_WALK,	-5,	NULL},
+	{MANIM_WALK,	-3,	NULL},
+	{MANIM_WALK,	3,	NULL}
 };
 mmove_t jorg_move_start_walk = { FRAME_walk01, FRAME_walk05, jorg_frames_start_walk, NULL };
 
 mframe_t jorg_frames_walk[] =
 {
-	MANIM_WALK, 5,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, 0,	NULL,
-	MANIM_WALK, -4,	NULL,
-	MANIM_WALK, -2,	NULL,
-	MANIM_WALK, 21,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, -12,	NULL,
-	MANIM_WALK, -3,	NULL,
-	MANIM_WALK, -3,	NULL,
-	MANIM_WALK, -3,	NULL
+	{MANIM_WALK, 5,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, 0,	NULL},
+	{MANIM_WALK, -4,	NULL},
+	{MANIM_WALK, -2,	NULL},
+	{MANIM_WALK, 21,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, -12,	NULL},
+	{MANIM_WALK, -3,	NULL},
+	{MANIM_WALK, -3,	NULL},
+	{MANIM_WALK, -3,	NULL}
 };
 mmove_t	jorg_move_walk = { FRAME_walk06, FRAME_walk19, jorg_frames_walk, NULL };
 
 mframe_t jorg_frames_end_walk[] =
 {
-	MANIM_WALK,	-1,	NULL,
-	MANIM_WALK,	-12,	NULL,
-	MANIM_WALK,	-12,	NULL,
-	MANIM_WALK,	-12,	NULL,
-	MANIM_WALK,	-4,	NULL,
-	MANIM_WALK,	-20,	NULL
+	{MANIM_WALK,	-1,		NULL},
+	{MANIM_WALK,	-12,	NULL},
+	{MANIM_WALK,	-12,	NULL},
+	{MANIM_WALK,	-12,	NULL},
+	{MANIM_WALK,	-4,		NULL},
+	{MANIM_WALK,	-20,	NULL}
 };
 mmove_t jorg_move_end_walk = { FRAME_walk20, FRAME_walk25, jorg_frames_end_walk, NULL };
 
@@ -222,153 +222,153 @@ void jorg_run(edict_t* self)
 
 mframe_t jorg_frames_pain3[] =
 {
-	MANIM_MISC,	-28,	NULL,
-	MANIM_MISC,	-6,	NULL,
-	MANIM_MISC,	-3,	jorg_step_left,
-	MANIM_MISC,	-9,	NULL,
-	MANIM_MISC,	0,	jorg_step_right,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	-7,	NULL,
-	MANIM_MISC,	1,	NULL,
-	MANIM_MISC,	-11,	NULL,
-	MANIM_MISC,	-4,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	10,	NULL,
-	MANIM_MISC,	11,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	10,	NULL,
-	MANIM_MISC,	3,	NULL,
-	MANIM_MISC,	10,	NULL,
-	MANIM_MISC,	7,	jorg_step_left,
-	MANIM_MISC,	17,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	jorg_step_right
+	{MANIM_MISC,	-28,	NULL},
+	{MANIM_MISC,	-6,	NULL},
+	{MANIM_MISC,	-3,	jorg_step_left},
+	{MANIM_MISC,	-9,	NULL},
+	{MANIM_MISC,	0,	jorg_step_right},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	-7,	NULL},
+	{MANIM_MISC,	1,	NULL},
+	{MANIM_MISC,	-11,	NULL},
+	{MANIM_MISC,	-4,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	10,	NULL},
+	{MANIM_MISC,	11,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	10,	NULL},
+	{MANIM_MISC,	3,	NULL},
+	{MANIM_MISC,	10,	NULL},
+	{MANIM_MISC,	7,	jorg_step_left},
+	{MANIM_MISC,	17,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	jorg_step_right}
 };
 mmove_t jorg_move_pain3 = { FRAME_pain301, FRAME_pain325, jorg_frames_pain3, jorg_run };
 
 mframe_t jorg_frames_pain2[] =
 {
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL}
 };
 mmove_t jorg_move_pain2 = { FRAME_pain201, FRAME_pain203, jorg_frames_pain2, jorg_run };
 
 mframe_t jorg_frames_pain1[] =
 {
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL}
 };
 mmove_t jorg_move_pain1 = { FRAME_pain101, FRAME_pain103, jorg_frames_pain1, jorg_run };
 
 mframe_t jorg_frames_death1[] =
 {
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,		// 10
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,		// 20
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,		// 30
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,		// 40
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	MakronToss,
-	MANIM_DEATH,	0,	BossExplode		// 50
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},		// 10
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},		// 20
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},		// 30
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},		// 40
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	MakronToss},
+	{MANIM_DEATH,	0,	BossExplode}		// 50
 };
 mmove_t jorg_move_death = { FRAME_death01, FRAME_death50, jorg_frames_death1, jorg_dead };
 
 mframe_t jorg_frames_attack2[] =
 {
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	jorgBFG,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	jorgBFG},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t jorg_move_attack2 = { FRAME_attak201, FRAME_attak213, jorg_frames_attack2, jorg_run };
 
 mframe_t jorg_frames_start_attack1[] =
 {
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t jorg_move_start_attack1 = { FRAME_attak101, FRAME_attak108, jorg_frames_start_attack1, jorg_attack1 };
 
 mframe_t jorg_frames_attack1[] =
 {
-	MANIM_MISSILE,	0,	jorg_firebullet,
-	MANIM_MISSILE,	0,	jorg_firebullet,
-	MANIM_MISSILE,	0,	jorg_firebullet,
-	MANIM_MISSILE,	0,	jorg_firebullet,
-	MANIM_MISSILE,	0,	jorg_firebullet,
-	MANIM_MISSILE,	0,	jorg_firebullet
+	{MANIM_MISSILE,	0,	jorg_firebullet},
+	{MANIM_MISSILE,	0,	jorg_firebullet},
+	{MANIM_MISSILE,	0,	jorg_firebullet},
+	{MANIM_MISSILE,	0,	jorg_firebullet},
+	{MANIM_MISSILE,	0,	jorg_firebullet},
+	{MANIM_MISSILE,	0,	jorg_firebullet}
 };
 mmove_t jorg_move_attack1 = { FRAME_attak109, FRAME_attak114, jorg_frames_attack1, jorg_reattack1 };
 
 mframe_t jorg_frames_end_attack1[] =
 {
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t jorg_move_end_attack1 = { FRAME_attak115, FRAME_attak118, jorg_frames_end_attack1, jorg_run };
 
@@ -457,7 +457,7 @@ void jorg_pain(edict_t* self, edict_t* other, float kick, int damage)
 			self->monsterinfo.currentmove = &jorg_move_pain3;
 		}
 	}
-};
+}
 
 void jorgBFG(edict_t* self)
 {
@@ -503,7 +503,7 @@ void jorg_firebullet(edict_t* self)
 {
 	jorg_firebullet_left(self);
 	jorg_firebullet_right(self);
-};
+}
 
 void jorg_attack(edict_t* self)
 {

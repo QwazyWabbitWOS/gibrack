@@ -267,13 +267,16 @@ void turret_driver_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int
 	edict_t* ent;
 	float	angle;
 
+	// level the gun
+	self->target_ent->move_angles[0] = 0;
+
 	// SLUGFILLER--stop the ai
 	self->prethink = NULL;
 
 	// SLUGFILLER--stop the gun
-	VectorCopy(self->target_ent->s.angles, self->target_ent->move_angles);
-	for (ent = self->target_ent->teammaster; ent; ent = ent->teamchain)
-		VectorClear(ent->avelocity);
+	//VectorCopy(self->target_ent->s.angles, self->target_ent->move_angles);
+	//for (ent = self->target_ent->teammaster; ent; ent = ent->teamchain)
+	//	VectorClear(ent->avelocity);
 
 	// remove the driver from the end of them team chain
 	for (ent = self->target_ent->teammaster; ent->teamchain != self; ent = ent->teamchain)
@@ -311,6 +314,9 @@ void turret_driver_think(edict_t* self)
 	vec3_t	target = { 0 };
 	vec3_t	dir = { 0 };
 	float	reaction_time;
+
+	if (!self)
+		return;
 
 	// SLUGFILLER--fire rate is determind by skill-in hard the turret driver
 	// actually shoots faster than the player

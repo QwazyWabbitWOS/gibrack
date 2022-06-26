@@ -819,7 +819,7 @@ void P_CheckClimbJump(edict_t* ent, qboolean climb)
 			}
 		}
 	}
-};
+}
 
 
 /*

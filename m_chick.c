@@ -44,36 +44,36 @@ void ChickMoan(edict_t* self)
 
 mframe_t chick_frames_fidget[] =
 {
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  ChickMoan,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  ChickMoan},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL}
 };
 mmove_t chick_move_fidget = { FRAME_stand201, FRAME_stand230, chick_frames_fidget, chick_stand };
 
@@ -87,36 +87,36 @@ void chick_fidget(edict_t* self)
 
 mframe_t chick_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, chick_fidget,
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, chick_fidget}
 
 };
 mmove_t chick_move_stand = { FRAME_stand101, FRAME_stand130, chick_frames_stand, NULL };
@@ -128,31 +128,31 @@ void chick_stand(edict_t* self)
 
 mframe_t chick_frames_start_run[] =
 {
-	MANIM_RUN, -8,  NULL,
-	MANIM_RUN, -9,  NULL,
-	MANIM_RUN, -9,	 NULL,
-	MANIM_RUN, -10, NULL,
-	MANIM_RUN, -10, NULL,
-	MANIM_RUN, -9,  NULL,
-	MANIM_RUN, -8,  NULL,
-	MANIM_RUN, -6,  NULL,
-	MANIM_RUN, -3,	 NULL,
-	MANIM_RUN, -6,	 NULL
+	{MANIM_RUN, -8,  NULL},
+	{MANIM_RUN, -9,  NULL},
+	{MANIM_RUN, -9,	 NULL},
+	{MANIM_RUN, -10, NULL},
+	{MANIM_RUN, -10, NULL},
+	{MANIM_RUN, -9,  NULL},
+	{MANIM_RUN, -8,  NULL},
+	{MANIM_RUN, -6,  NULL},
+	{MANIM_RUN, -3,	 NULL},
+	{MANIM_RUN, -6,	 NULL}
 };
 mmove_t chick_move_start_run = { FRAME_walk01, FRAME_walk10, chick_frames_start_run, chick_run };
 
 mframe_t chick_frames_run[] =
 {
-	MANIM_RUN, -3,	NULL,
-	MANIM_RUN, -1,  NULL,
-	MANIM_RUN, 4, NULL,
-	MANIM_RUN, -4,  NULL,
-	MANIM_RUN, -2,  NULL,
-	MANIM_RUN, -5,  NULL,
-	MANIM_RUN, 2, NULL,
-	MANIM_RUN, -4,  NULL,
-	MANIM_RUN, 0,  NULL,
-	MANIM_RUN, -2,  NULL
+	{MANIM_RUN, -3,	NULL},
+	{MANIM_RUN, -1,  NULL},
+	{MANIM_RUN, 4, NULL},
+	{MANIM_RUN, -4,  NULL},
+	{MANIM_RUN, -2,  NULL},
+	{MANIM_RUN, -5,  NULL},
+	{MANIM_RUN, 2, NULL},
+	{MANIM_RUN, -4,  NULL},
+	{MANIM_RUN, 0,  NULL},
+	{MANIM_RUN, -2,  NULL}
 
 };
 
@@ -160,16 +160,16 @@ mmove_t chick_move_run = { FRAME_walk11, FRAME_walk20, chick_frames_run, NULL };
 
 mframe_t chick_frames_walk[] =
 {
-	MANIM_WALK, -3,	 NULL,
-	MANIM_WALK, -1,  NULL,
-	MANIM_WALK, 4, NULL,
-	MANIM_WALK, -4,  NULL,
-	MANIM_WALK, -2,  NULL,
-	MANIM_WALK, -5,  NULL,
-	MANIM_WALK, 2, NULL,
-	MANIM_WALK, -4,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, -2,  NULL
+	{MANIM_WALK, -3,	 NULL},
+	{MANIM_WALK, -1,  NULL},
+	{MANIM_WALK, 4, NULL},
+	{MANIM_WALK, -4,  NULL},
+	{MANIM_WALK, -2,  NULL},
+	{MANIM_WALK, -5,  NULL},
+	{MANIM_WALK, 2, NULL},
+	{MANIM_WALK, -4,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, -2,  NULL}
 };
 
 mmove_t chick_move_walk = { FRAME_walk11, FRAME_walk20, chick_frames_walk, NULL };
@@ -200,47 +200,47 @@ void chick_run(edict_t* self)
 
 mframe_t chick_frames_pain1[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t chick_move_pain1 = { FRAME_pain101, FRAME_pain105, chick_frames_pain1, chick_run };
 
 mframe_t chick_frames_pain2[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t chick_move_pain2 = { FRAME_pain201, FRAME_pain205, chick_frames_pain2, chick_run };
 
 mframe_t chick_frames_pain3[] =
 {
-	MANIM_MISC, 0,		NULL,
-	MANIM_MISC, 0,		NULL,
-	MANIM_MISC, -6,	NULL,
-	MANIM_MISC, 3,		NULL,
-	MANIM_MISC, 11,	NULL,
-	MANIM_MISC, 3,		NULL,
-	MANIM_MISC, 0,		NULL,
-	MANIM_MISC, 0,		NULL,
-	MANIM_MISC, 4,		NULL,
-	MANIM_MISC, 1,		NULL,
-	MANIM_MISC, 0,		NULL,
-	MANIM_MISC, -3,	NULL,
-	MANIM_MISC, -4,	NULL,
-	MANIM_MISC, 5,		NULL,
-	MANIM_MISC, 7,		NULL,
-	MANIM_MISC, -2,	NULL,
-	MANIM_MISC, 3,		NULL,
-	MANIM_MISC, -5,	NULL,
-	MANIM_MISC, -2,	NULL,
-	MANIM_MISC, -8,	NULL,
-	MANIM_MISC, 2,		NULL
+	{MANIM_MISC, 0,		NULL},
+	{MANIM_MISC, 0,		NULL},
+	{MANIM_MISC, -6,	NULL},
+	{MANIM_MISC, 3,		NULL},
+	{MANIM_MISC, 11,	NULL},
+	{MANIM_MISC, 3,		NULL},
+	{MANIM_MISC, 0,		NULL},
+	{MANIM_MISC, 0,		NULL},
+	{MANIM_MISC, 4,		NULL},
+	{MANIM_MISC, 1,		NULL},
+	{MANIM_MISC, 0,		NULL},
+	{MANIM_MISC, -3,	NULL},
+	{MANIM_MISC, -4,	NULL},
+	{MANIM_MISC, 5,		NULL},
+	{MANIM_MISC, 7,		NULL},
+	{MANIM_MISC, -2,	NULL},
+	{MANIM_MISC, 3,		NULL},
+	{MANIM_MISC, -5,	NULL},
+	{MANIM_MISC, -2,	NULL},
+	{MANIM_MISC, -8,	NULL},
+	{MANIM_MISC, 2,		NULL}
 };
 mmove_t chick_move_pain3 = { FRAME_pain301, FRAME_pain321, chick_frames_pain3, chick_run };
 
@@ -289,46 +289,46 @@ void chick_dead(edict_t* self)
 
 mframe_t chick_frames_death2[] =
 {
-	MANIM_DEATH, -6, NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, -1,  NULL,
-	MANIM_DEATH, -5, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, -1,  NULL,
-	MANIM_DEATH, -2,  NULL,
-	MANIM_DEATH, 1,  NULL,
-	MANIM_DEATH, 10, NULL,
-	MANIM_DEATH, 2,  NULL,
-	MANIM_DEATH, 3,  NULL,
-	MANIM_DEATH, 1,  NULL,
-	MANIM_DEATH, 2, NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 3,  NULL,
-	MANIM_DEATH, 3,  NULL,
-	MANIM_DEATH, 1,  NULL,
-	MANIM_DEATH, -3,  NULL,
-	MANIM_DEATH, -5, NULL,
-	MANIM_DEATH, 4, NULL,
-	MANIM_DEATH, 15, NULL,
-	MANIM_DEATH, 14, chick_dead,
-	MANIM_DEATH, 1, NULL
+	{MANIM_DEATH, -6, NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, -1,  NULL},
+	{MANIM_DEATH, -5, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, -1,  NULL},
+	{MANIM_DEATH, -2,  NULL},
+	{MANIM_DEATH, 1,  NULL},
+	{MANIM_DEATH, 10, NULL},
+	{MANIM_DEATH, 2,  NULL},
+	{MANIM_DEATH, 3,  NULL},
+	{MANIM_DEATH, 1,  NULL},
+	{MANIM_DEATH, 2, NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 3,  NULL},
+	{MANIM_DEATH, 3,  NULL},
+	{MANIM_DEATH, 1,  NULL},
+	{MANIM_DEATH, -3,  NULL},
+	{MANIM_DEATH, -5, NULL},
+	{MANIM_DEATH, 4, NULL},
+	{MANIM_DEATH, 15, NULL},
+	{MANIM_DEATH, 14, chick_dead},
+	{MANIM_DEATH, 1, NULL}
 };
 mmove_t chick_move_death2 = { FRAME_death201, FRAME_death223, chick_frames_death2, monster_dead_dead };
 
 mframe_t chick_frames_death1[] =
 {
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  chick_dead,
-	MANIM_DEATH, -7, NULL,
-	MANIM_DEATH, 4,  NULL,
-	MANIM_DEATH, 11, NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL,
-	MANIM_DEATH, 0,  NULL
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  chick_dead},
+	{MANIM_DEATH, -7, NULL},
+	{MANIM_DEATH, 4,  NULL},
+	{MANIM_DEATH, 11, NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL},
+	{MANIM_DEATH, 0,  NULL}
 
 };
 mmove_t chick_move_death1 = { FRAME_death101, FRAME_death112, chick_frames_death1, monster_dead_dead };
@@ -377,13 +377,13 @@ void chick_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage,
 
 mframe_t chick_frames_duck[] =
 {
-	MANIM_DUCK, 0, monster_duck_down,
-	MANIM_DUCK, 1, NULL,
-	MANIM_DUCK, 4, monster_duck_hold,
-	MANIM_DUCK, -4,  NULL,
-	MANIM_DUCK, -5,  monster_duck_up,
-	MANIM_DUCK, 3, NULL,
-	MANIM_DUCK, 1,  NULL
+	{MANIM_DUCK, 0, monster_duck_down},
+	{MANIM_DUCK, 1, NULL},
+	{MANIM_DUCK, 4, monster_duck_hold},
+	{MANIM_DUCK, -4,  NULL},
+	{MANIM_DUCK, -5,  monster_duck_up},
+	{MANIM_DUCK, 3, NULL},
+	{MANIM_DUCK, 1,  NULL}
 };
 mmove_t chick_move_duck = { FRAME_duck01, FRAME_duck07, chick_frames_duck, chick_run };
 
@@ -430,50 +430,50 @@ void ChickReload(edict_t* self)
 
 mframe_t chick_frames_start_attack1[] =
 {
-	MANIM_MISSILE, 0,	Chick_PreAttack1,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 4,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -3,  NULL,
-	MANIM_MISSILE, 3,	NULL,
-	MANIM_MISSILE, 5,	NULL,
-	MANIM_MISSILE, 7,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 0,	chick_attack1
+	{MANIM_MISSILE, 0,	Chick_PreAttack1},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 4,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -3,  NULL},
+	{MANIM_MISSILE, 3,	NULL},
+	{MANIM_MISSILE, 5,	NULL},
+	{MANIM_MISSILE, 7,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 0,	chick_attack1}
 };
 mmove_t chick_move_start_attack1 = { FRAME_attak101, FRAME_attak113, chick_frames_start_attack1, NULL };
 
 
 mframe_t chick_frames_attack1[] =
 {
-	MANIM_MISSILE, 19,	ChickRocket,
-	MANIM_MISSILE, -6,	NULL,
-	MANIM_MISSILE, -5,	NULL,
-	MANIM_MISSILE, -2,	NULL,
-	MANIM_MISSILE, -7,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 1,	NULL,
-	MANIM_MISSILE, 10,	ChickReload,
-	MANIM_MISSILE, 4,	NULL,
-	MANIM_MISSILE, 5,	NULL,
-	MANIM_MISSILE, 6,	NULL,
-	MANIM_MISSILE, 6,	NULL,
-	MANIM_MISSILE, 4,	NULL,
-	MANIM_MISSILE, 3,	chick_rerocket
+	{MANIM_MISSILE, 19,	ChickRocket},
+	{MANIM_MISSILE, -6,	NULL},
+	{MANIM_MISSILE, -5,	NULL},
+	{MANIM_MISSILE, -2,	NULL},
+	{MANIM_MISSILE, -7,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 1,	NULL},
+	{MANIM_MISSILE, 10,	ChickReload},
+	{MANIM_MISSILE, 4,	NULL},
+	{MANIM_MISSILE, 5,	NULL},
+	{MANIM_MISSILE, 6,	NULL},
+	{MANIM_MISSILE, 6,	NULL},
+	{MANIM_MISSILE, 4,	NULL},
+	{MANIM_MISSILE, 3,	chick_rerocket}
 
 };
 mmove_t chick_move_attack1 = { FRAME_attak114, FRAME_attak127, chick_frames_attack1, NULL };
 
 mframe_t chick_frames_end_attack1[] =
 {
-	MANIM_MISSILE, -3,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -6,	NULL,
-	MANIM_MISSILE, -4,	NULL,
-	MANIM_MISSILE, -2,  NULL
+	{MANIM_MISSILE, -3,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -6,	NULL},
+	{MANIM_MISSILE, -4,	NULL},
+	{MANIM_MISSILE, -2,  NULL}
 };
 mmove_t chick_move_end_attack1 = { FRAME_attak128, FRAME_attak132, chick_frames_end_attack1, chick_run };
 
@@ -502,24 +502,24 @@ void chick_attack1(edict_t* self)
 
 mframe_t chick_frames_slash[] =
 {
-	MANIM_MELEE, 1,	NULL,
-	MANIM_MELEE, 7,	ChickSlash,
-	MANIM_MELEE, -7,	NULL,
-	MANIM_MELEE, 1,	NULL,
-	MANIM_MELEE, -1,	NULL,
-	MANIM_MELEE, 1,	NULL,
-	MANIM_MELEE, 0,	NULL,
-	MANIM_MELEE, 1,	NULL,
-	MANIM_MELEE, -2,	chick_reslash
+	{MANIM_MELEE, 1,	NULL},
+	{MANIM_MELEE, 7,	ChickSlash},
+	{MANIM_MELEE, -7,	NULL},
+	{MANIM_MELEE, 1,	NULL},
+	{MANIM_MELEE, -1,	NULL},
+	{MANIM_MELEE, 1,	NULL},
+	{MANIM_MELEE, 0,	NULL},
+	{MANIM_MELEE, 1,	NULL},
+	{MANIM_MELEE, -2,	chick_reslash}
 };
 mmove_t chick_move_slash = { FRAME_attak204, FRAME_attak212, chick_frames_slash, NULL };
 
 mframe_t chick_frames_end_slash[] =
 {
-	MANIM_MELEE, -6,	NULL,
-	MANIM_MELEE, -1,	NULL,
-	MANIM_MELEE, -6,	NULL,
-	MANIM_MELEE, 0,	NULL
+	{MANIM_MELEE, -6,	NULL},
+	{MANIM_MELEE, -1,	NULL},
+	{MANIM_MELEE, -6,	NULL},
+	{MANIM_MELEE, 0,	NULL}
 };
 mmove_t chick_move_end_slash = { FRAME_attak213, FRAME_attak216, chick_frames_end_slash, chick_run };
 
@@ -529,6 +529,7 @@ void chick_reslash(edict_t* self)
 	if (self->enemy->health > 0)
 	{
 		if (range(self, self->enemy) == RANGE_MELEE)
+		{
 			if (random() <= 0.9)
 			{
 				self->pain_debounce_time = level.time + 1;
@@ -541,6 +542,7 @@ void chick_reslash(edict_t* self)
 				self->monsterinfo.currentmove = &chick_move_end_slash;
 				return;
 			}
+		}
 	}
 	self->pain_debounce_time = level.time + 0.5;
 	self->monsterinfo.currentmove = &chick_move_end_slash;
@@ -555,9 +557,9 @@ void chick_slash(edict_t* self)
 
 mframe_t chick_frames_start_slash[] =
 {
-	MANIM_MELEE, 1,	NULL,
-	MANIM_MELEE, 8,	NULL,
-	MANIM_MELEE, 3,	NULL
+	{MANIM_MELEE, 1,	NULL},
+	{MANIM_MELEE, 8,	NULL},
+	{MANIM_MELEE, 3,	NULL}
 };
 mmove_t chick_move_start_slash = { FRAME_attak201, FRAME_attak203, chick_frames_start_slash, chick_slash };
 

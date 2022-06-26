@@ -53,66 +53,66 @@ void makron_taunt(edict_t* self)
 
 mframe_t makron_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 10
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 20
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 30
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 40
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 50
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL		// 60
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 10
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 20
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 30
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 40
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 50
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}		// 60
 };
 mmove_t	makron_move_stand = { FRAME_stand201, FRAME_stand260, makron_frames_stand, NULL };
 
@@ -123,16 +123,16 @@ void makron_stand(edict_t* self)
 
 mframe_t makron_frames_run[] =
 {
-	MANIM_RUN, -6,	makron_step_left,
-	MANIM_RUN, 3,	NULL,
-	MANIM_RUN, -1,	NULL,
-	MANIM_RUN, -1,	NULL,
-	MANIM_RUN, -1,	makron_step_right,
-	MANIM_RUN, -3,	NULL,
-	MANIM_RUN, 3,	NULL,
-	MANIM_RUN, 0,	NULL,
-	MANIM_RUN, -3,	NULL,
-	MANIM_RUN, 3,	NULL
+	{MANIM_RUN, -6,	makron_step_left},
+	{MANIM_RUN, 3,	NULL},
+	{MANIM_RUN, -1,	NULL},
+	{MANIM_RUN, -1,	NULL},
+	{MANIM_RUN, -1,	makron_step_right},
+	{MANIM_RUN, -3,	NULL},
+	{MANIM_RUN, 3,	NULL},
+	{MANIM_RUN, 0,	NULL},
+	{MANIM_RUN, -3,	NULL},
+	{MANIM_RUN, 3,	NULL}
 };
 mmove_t	makron_move_run = { FRAME_walk204, FRAME_walk213, makron_frames_run, NULL };
 
@@ -169,16 +169,16 @@ void makron_prerailgun(edict_t* self)
 
 mframe_t makron_frames_walk[] =
 {
-	MANIM_WALK, -6,	makron_step_left,
-	MANIM_WALK, 3,	NULL,
-	MANIM_WALK, -1,	NULL,
-	MANIM_WALK, -1,	NULL,
-	MANIM_WALK, -1,	makron_step_right,
-	MANIM_WALK, -3,	NULL,
-	MANIM_WALK, 3,	NULL,
-	MANIM_WALK, 0,	NULL,
-	MANIM_WALK, -3,	NULL,
-	MANIM_WALK, 3,	NULL
+	{MANIM_WALK, -6,	makron_step_left},
+	{MANIM_WALK, 3,	NULL},
+	{MANIM_WALK, -1,	NULL},
+	{MANIM_WALK, -1,	NULL},
+	{MANIM_WALK, -1,	makron_step_right},
+	{MANIM_WALK, -3,	NULL},
+	{MANIM_WALK, 3,	NULL},
+	{MANIM_WALK, 0,	NULL},
+	{MANIM_WALK, -3,	NULL},
+	{MANIM_WALK, 3,	NULL}
 };
 mmove_t	makron_move_walk = { FRAME_walk204, FRAME_walk213, makron_frames_run, NULL };
 
@@ -197,194 +197,194 @@ void makron_run(edict_t* self)
 
 mframe_t makron_frames_pain6[] =
 {
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,		// 10
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	makron_popup,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,		// 20
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	makron_taunt,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},		// 10
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	makron_popup},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},		// 20
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	makron_taunt},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL}
 };
 mmove_t makron_move_pain6 = { FRAME_pain601, FRAME_pain627, makron_frames_pain6, makron_run };
 
 mframe_t makron_frames_pain5[] =
 {
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL}
 };
 mmove_t makron_move_pain5 = { FRAME_pain501, FRAME_pain504, makron_frames_pain5, makron_run };
 
 mframe_t makron_frames_pain4[] =
 {
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	0,	NULL
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	0,	NULL}
 };
 mmove_t makron_move_pain4 = { FRAME_pain401, FRAME_pain404, makron_frames_pain4, makron_run };
 
 mframe_t makron_frames_death2[] =
 {
-	MANIM_DEATH,	-15,	NULL,
-	MANIM_DEATH,	3,	NULL,
-	MANIM_DEATH,	-12,	NULL,
-	MANIM_DEATH,	0,	makron_step_left,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 10
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	11,	NULL,
-	MANIM_DEATH,	12,	NULL,
-	MANIM_DEATH,	11,	makron_step_right,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 20
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 30
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	5,	NULL,
-	MANIM_DEATH,	7,	NULL,
-	MANIM_DEATH,	6,	makron_step_left,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	-1,	NULL,
-	MANIM_DEATH,	2,	NULL,			// 40
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 50
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	-6,	NULL,
-	MANIM_DEATH,	-4,	NULL,
-	MANIM_DEATH,	-6,	makron_step_right,
-	MANIM_DEATH,	-4,	NULL,
-	MANIM_DEATH,	-4,	makron_step_left,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 60
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	-2,	NULL,
-	MANIM_DEATH,	-5,	NULL,
-	MANIM_DEATH,	-3,	makron_step_right,
-	MANIM_DEATH,	-8,	NULL,
-	MANIM_DEATH,	-3,	makron_step_left,
-	MANIM_DEATH,	-7,	NULL,
-	MANIM_DEATH,	-4,	NULL,
-	MANIM_DEATH,	-4,	makron_step_right,			// 70
-	MANIM_DEATH,	-6,	NULL,
-	MANIM_DEATH,	-7,	NULL,
-	MANIM_DEATH,	0,	makron_step_left,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 80
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	-2,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	2,	NULL,
-	MANIM_DEATH,	0,	NULL,			// 90
-	MANIM_DEATH,	27,	makron_hit,
-	MANIM_DEATH,	26,	NULL,
-	MANIM_DEATH,	0,	makron_brainsplorch,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL			// 95
+	{MANIM_DEATH,	-15,	NULL},
+	{MANIM_DEATH,	3,	NULL},
+	{MANIM_DEATH,	-12,	NULL},
+	{MANIM_DEATH,	0,	makron_step_left},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 10
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	11,	NULL},
+	{MANIM_DEATH,	12,	NULL},
+	{MANIM_DEATH,	11,	makron_step_right},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 20
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 30
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	5,	NULL},
+	{MANIM_DEATH,	7,	NULL},
+	{MANIM_DEATH,	6,	makron_step_left},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	-1,	NULL},
+	{MANIM_DEATH,	2,	NULL},			// 40
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 50
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	-6,	NULL},
+	{MANIM_DEATH,	-4,	NULL},
+	{MANIM_DEATH,	-6,	makron_step_right},
+	{MANIM_DEATH,	-4,	NULL},
+	{MANIM_DEATH,	-4,	makron_step_left},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 60
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	-2,	NULL},
+	{MANIM_DEATH,	-5,	NULL},
+	{MANIM_DEATH,	-3,	makron_step_right},
+	{MANIM_DEATH,	-8,	NULL},
+	{MANIM_DEATH,	-3,	makron_step_left},
+	{MANIM_DEATH,	-7,	NULL},
+	{MANIM_DEATH,	-4,	NULL},
+	{MANIM_DEATH,	-4,	makron_step_right},			// 70
+	{MANIM_DEATH,	-6,	NULL},
+	{MANIM_DEATH,	-7,	NULL},
+	{MANIM_DEATH,	0,	makron_step_left},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 80
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	-2,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	2,	NULL},
+	{MANIM_DEATH,	0,	NULL},			// 90
+	{MANIM_DEATH,	27,	makron_hit},
+	{MANIM_DEATH,	26,	NULL},
+	{MANIM_DEATH,	0,	makron_brainsplorch},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL}			// 95
 };
 mmove_t makron_move_death2 = { FRAME_death201, FRAME_death295, makron_frames_death2, makron_dead };
 
 mframe_t makron_frames_death3[] =
 {
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL}
 };
 mmove_t makron_move_death3 = { FRAME_death301, FRAME_death320, makron_frames_death3, NULL };
 
 mframe_t makron_frames_sight[] =
 {
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL,
-	MANIM_RUN,	0,	NULL
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL},
+	{MANIM_RUN,	0,	NULL}
 };
 mmove_t makron_move_sight = { FRAME_active01, FRAME_active13, makron_frames_sight, makron_run };
 
@@ -405,66 +405,66 @@ void makronBFG(edict_t* self)
 
 mframe_t makron_frames_attack3[] =
 {
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	makronBFG,		// FIXME: BFG Attack here
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	makronBFG},		// FIXME: BFG Attack here
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t makron_move_attack3 = { FRAME_attak301, FRAME_attak308, makron_frames_attack3, makron_run };
 
 mframe_t makron_frames_attack4[] =
 {
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	MakronHyperblaster,		// fire
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	MakronHyperblaster},		// fire
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t makron_move_attack4 = { FRAME_attak401, FRAME_attak426, makron_frames_attack4, makron_run };
 
 mframe_t makron_frames_attack5[] =
 {
-	MANIM_MISSILE,	0,	makron_prerailgun,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	MakronRailgun,		// Fire railgun
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL,
-	MANIM_MISSILE,	0,	NULL
+	{MANIM_MISSILE,	0,	makron_prerailgun},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	MakronRailgun},		// Fire railgun
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL},
+	{MANIM_MISSILE,	0,	NULL}
 };
 mmove_t makron_move_attack5 = { FRAME_attak501, FRAME_attak516, makron_frames_attack5, makron_run };
 
@@ -541,7 +541,8 @@ void makron_pain(edict_t* self, edict_t* other, float kick, int damage)
 	}
 	else
 	{
-		if (damage <= 150)
+		if (damage <= 150) 
+		{
 			if (random() <= 0.45)
 			{
 				gi.sound(self, CHAN_VOICE, sound_pain6, 1, ATTN_NONE, 0);
@@ -553,13 +554,14 @@ void makron_pain(edict_t* self, edict_t* other, float kick, int damage)
 					gi.sound(self, CHAN_VOICE, sound_pain6, 1, ATTN_NONE, 0);
 					self->monsterinfo.currentmove = &makron_move_pain6;
 				}
+		}
 	}
-};
+}
 
 void makron_sight(edict_t* self, edict_t* other)
 {
 	self->monsterinfo.currentmove = &makron_move_sight;
-};
+}
 
 void makron_attack(edict_t* self)
 {

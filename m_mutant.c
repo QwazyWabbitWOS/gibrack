@@ -62,62 +62,62 @@ void mutant_swing(edict_t* self)
 
 mframe_t mutant_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 10
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 10
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 20
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 20
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 30
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 30
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 40
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 40
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,		// 50
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},		// 50
 
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t mutant_move_stand = { FRAME_stand101, FRAME_stand151, mutant_frames_stand, NULL };
 
@@ -139,19 +139,19 @@ void mutant_idle_loop(edict_t* self)
 
 mframe_t mutant_frames_idle[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,					// scratch loop start
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, mutant_idle_loop,		// scratch loop end
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},					// scratch loop start
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, mutant_idle_loop},		// scratch loop end
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t mutant_move_idle = { FRAME_stand152, FRAME_stand164, mutant_frames_idle, mutant_stand };
 
@@ -170,18 +170,18 @@ void mutant_walk(edict_t* self);
 
 mframe_t mutant_frames_walk[] =
 {
-	MANIM_WALK,	-5,		NULL,
-	MANIM_WALK,	-7,		NULL,
-	MANIM_WALK,	-3,		NULL,
-	MANIM_WALK,	2,		NULL,
-	MANIM_WALK,	5,		NULL,
-	MANIM_WALK,	2,		NULL,
-	MANIM_WALK,	-8,		NULL,
-	MANIM_WALK,	-3,		NULL,
-	MANIM_WALK,	-2,		NULL,
-	MANIM_WALK,	8,		NULL,
-	MANIM_WALK,	7,		NULL,
-	MANIM_WALK,	-2,		NULL
+	{MANIM_WALK,	-5,		NULL},
+	{MANIM_WALK,	-7,		NULL},
+	{MANIM_WALK,	-3,		NULL},
+	{MANIM_WALK,	2,		NULL},
+	{MANIM_WALK,	5,		NULL},
+	{MANIM_WALK,	2,		NULL},
+	{MANIM_WALK,	-8,		NULL},
+	{MANIM_WALK,	-3,		NULL},
+	{MANIM_WALK,	-2,		NULL},
+	{MANIM_WALK,	8,		NULL},
+	{MANIM_WALK,	7,		NULL},
+	{MANIM_WALK,	-2,		NULL}
 };
 mmove_t mutant_move_walk = { FRAME_walk05, FRAME_walk16, mutant_frames_walk, NULL };
 
@@ -192,10 +192,10 @@ void mutant_walk_loop(edict_t* self)
 
 mframe_t mutant_frames_start_walk[] =
 {
-	MANIM_WALK,	-3,		NULL,
-	MANIM_WALK,	-3,		NULL,
-	MANIM_WALK,	-10,		NULL,
-	MANIM_WALK,	-7,		NULL
+	{MANIM_WALK,	-3,		NULL},
+	{MANIM_WALK,	-3,		NULL},
+	{MANIM_WALK,	-10,	NULL},
+	{MANIM_WALK,	-7,		NULL}
 };
 mmove_t mutant_move_start_walk = { FRAME_walk01, FRAME_walk04, mutant_frames_start_walk, mutant_walk_loop };
 
@@ -211,12 +211,12 @@ void mutant_walk(edict_t* self)
 
 mframe_t mutant_frames_run[] =
 {
-	MANIM_RUN,	15,		NULL,
-	MANIM_RUN,	15,		mutant_step,
-	MANIM_RUN,	-1,		NULL,
-	MANIM_RUN,	-20,		mutant_step,
-	MANIM_RUN,	-8,		NULL,
-	MANIM_RUN,	-15,		NULL
+	{MANIM_RUN,	15,		NULL},
+	{MANIM_RUN,	15,		mutant_step},
+	{MANIM_RUN,	-1,		NULL},
+	{MANIM_RUN,	-20,	mutant_step},
+	{MANIM_RUN,	-8,		NULL},
+	{MANIM_RUN,	-15,	NULL}
 };
 mmove_t mutant_move_run = { FRAME_run03, FRAME_run08, mutant_frames_run, NULL };
 
@@ -266,13 +266,13 @@ void mutant_check_refire(edict_t* self)
 
 mframe_t mutant_frames_attack[] =
 {
-	MANIM_MELEE,	0,	NULL,
-	MANIM_MELEE,	0,	NULL,
-	MANIM_MELEE,	0,	mutant_hit_left,
-	MANIM_MELEE,	0,	NULL,
-	MANIM_MELEE,	0,	NULL,
-	MANIM_MELEE,	0,	mutant_hit_right,
-	MANIM_MELEE,	0,	mutant_check_refire
+	{MANIM_MELEE,	0,	NULL},
+	{MANIM_MELEE,	0,	NULL},
+	{MANIM_MELEE,	0,	mutant_hit_left},
+	{MANIM_MELEE,	0,	NULL},
+	{MANIM_MELEE,	0,	NULL},
+	{MANIM_MELEE,	0,	mutant_hit_right},
+	{MANIM_MELEE,	0,	mutant_check_refire}
 };
 mmove_t mutant_move_attack = { FRAME_attack09, FRAME_attack15, mutant_frames_attack, mutant_run };
 
@@ -356,14 +356,14 @@ void mutant_check_landing(edict_t* self)
 
 mframe_t mutant_frames_jump[] =
 {
-	MANIM_MELEE,	 0,	NULL,
-	MANIM_MELEE,	17,	NULL,
-	MANIM_MELEE,	15,	mutant_jump_takeoff,
-	MANIM_MELEE,	15,	NULL,
-	MANIM_MELEE,	15,	mutant_check_landing,
-	MANIM_MELEE,	 0,	NULL,
-	MANIM_MELEE,	 3,	NULL,
-	MANIM_MELEE,	 0,	NULL
+	{MANIM_MELEE,	 0,	NULL},
+	{MANIM_MELEE,	17,	NULL},
+	{MANIM_MELEE,	15,	mutant_jump_takeoff},
+	{MANIM_MELEE,	15,	NULL},
+	{MANIM_MELEE,	15,	mutant_check_landing},
+	{MANIM_MELEE,	 0,	NULL},
+	{MANIM_MELEE,	 3,	NULL},
+	{MANIM_MELEE,	 0,	NULL}
 };
 mmove_t mutant_move_jump = { FRAME_attack01, FRAME_attack08, mutant_frames_jump, mutant_run };
 
@@ -464,38 +464,38 @@ qboolean mutant_checkattack(edict_t* self)
 
 mframe_t mutant_frames_pain1[] =
 {
-	MANIM_MISC,	4,	NULL,
-	MANIM_MISC,	-3,	NULL,
-	MANIM_MISC,	-8,	NULL,
-	MANIM_MISC,	2,	NULL,
-	MANIM_MISC,	5,	NULL
+	{MANIM_MISC,	4,	NULL},
+	{MANIM_MISC,	-3,	NULL},
+	{MANIM_MISC,	-8,	NULL},
+	{MANIM_MISC,	2,	NULL},
+	{MANIM_MISC,	5,	NULL}
 };
 mmove_t mutant_move_pain1 = { FRAME_pain101, FRAME_pain105, mutant_frames_pain1, mutant_run };
 
 mframe_t mutant_frames_pain2[] =
 {
-	MANIM_MISC,	-24,NULL,
-	MANIM_MISC,	11,	NULL,
-	MANIM_MISC,	5,	NULL,
-	MANIM_MISC,	-2,	NULL,
-	MANIM_MISC,	6,	NULL,
-	MANIM_MISC,	4,	NULL
+	{MANIM_MISC,	-24,NULL},
+	{MANIM_MISC,	11,	NULL},
+	{MANIM_MISC,	5,	NULL},
+	{MANIM_MISC,	-2,	NULL},
+	{MANIM_MISC,	6,	NULL},
+	{MANIM_MISC,	4,	NULL}
 };
 mmove_t mutant_move_pain2 = { FRAME_pain201, FRAME_pain206, mutant_frames_pain2, mutant_run };
 
 mframe_t mutant_frames_pain3[] =
 {
-	MANIM_MISC,	-22,NULL,
-	MANIM_MISC,	3,	NULL,
-	MANIM_MISC,	3,	NULL,
-	MANIM_MISC,	2,	NULL,
-	MANIM_MISC,	1,	NULL,
-	MANIM_MISC,	1,	NULL,
-	MANIM_MISC,	6,	NULL,
-	MANIM_MISC,	3,	NULL,
-	MANIM_MISC,	2,	NULL,
-	MANIM_MISC,	0,	NULL,
-	MANIM_MISC,	1,	NULL
+	{MANIM_MISC,	-22,NULL},
+	{MANIM_MISC,	3,	NULL},
+	{MANIM_MISC,	3,	NULL},
+	{MANIM_MISC,	2,	NULL},
+	{MANIM_MISC,	1,	NULL},
+	{MANIM_MISC,	1,	NULL},
+	{MANIM_MISC,	6,	NULL},
+	{MANIM_MISC,	3,	NULL},
+	{MANIM_MISC,	2,	NULL},
+	{MANIM_MISC,	0,	NULL},
+	{MANIM_MISC,	1,	NULL}
 };
 mmove_t mutant_move_pain3 = { FRAME_pain301, FRAME_pain311, mutant_frames_pain3, mutant_run };
 
@@ -551,30 +551,30 @@ void mutant_dead(edict_t* self)
 
 mframe_t mutant_frames_death1[] =
 {
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	mutant_dead,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	mutant_dead},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL}
 };
 mmove_t mutant_move_death1 = { FRAME_death101, FRAME_death109, mutant_frames_death1, M_FlyCheck };
 
 mframe_t mutant_frames_death2[] =
 {
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	mutant_dead,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL,
-	MANIM_DEATH,	0,	NULL
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	mutant_dead},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL},
+	{MANIM_DEATH,	0,	NULL}
 };
 mmove_t mutant_move_death2 = { FRAME_death201, FRAME_death210, mutant_frames_death2, M_FlyCheck };
 

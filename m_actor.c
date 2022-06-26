@@ -20,49 +20,49 @@ char* actor_names[MAX_ACTOR_NAMES] =
 
 mframe_t actor_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
 
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t actor_move_stand = { FRAME_stand01, FRAME_stand20, actor_frames_stand, NULL };
 
@@ -78,12 +78,12 @@ void actor_stand(edict_t* self)
 
 mframe_t actor_frames_walk[] =
 {
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL,
-	MANIM_WALK, 0, NULL
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL},
+	{MANIM_WALK, 0, NULL}
 };
 mmove_t actor_move_walk = { FRAME_run1, FRAME_run6, actor_frames_walk, NULL };
 
@@ -95,12 +95,12 @@ void actor_walk(edict_t* self)
 
 mframe_t actor_frames_run[] =
 {
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
 };
 mmove_t actor_move_run = { FRAME_run1, FRAME_run6, actor_frames_run, NULL };
 
@@ -127,67 +127,67 @@ void actor_run(edict_t* self)
 
 mframe_t actor_frames_pain1[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t actor_move_pain1 = { FRAME_pain101, FRAME_pain104, actor_frames_pain1, actor_run };
 
 mframe_t actor_frames_pain2[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t actor_move_pain2 = { FRAME_pain201, FRAME_pain204, actor_frames_pain2, actor_run };
 
 mframe_t actor_frames_pain3[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t actor_move_pain3 = { FRAME_pain301, FRAME_pain304, actor_frames_pain3, actor_run };
 
 mframe_t actor_frames_flipoff[] =
 {
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL}
 };
 mmove_t actor_move_flipoff = { FRAME_flip01, FRAME_flip12, actor_frames_flipoff, actor_run };
 
 mframe_t actor_frames_taunt[] =
 {
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL}
 };
 mmove_t actor_move_taunt = { FRAME_taunt01, FRAME_taunt17, actor_frames_taunt, actor_run };
 
@@ -261,26 +261,26 @@ void actor_dead(edict_t* self)
 
 mframe_t actor_frames_death[] =
 {
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL}
 };
 mmove_t actor_move_death1 = { FRAME_death101, FRAME_death106, actor_frames_death, actor_dead };
 mmove_t actor_move_death2 = { FRAME_death201, FRAME_death206, actor_frames_death, actor_dead };
 
 mframe_t actor_frames_death3[] =
 {
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL}
 };
 mmove_t actor_move_death3 = { FRAME_death301, FRAME_death308, actor_frames_death3, actor_dead };
 
@@ -341,14 +341,14 @@ void actor_fire(edict_t* self)
 
 mframe_t actor_frames_attack[] =
 {
-	MANIM_MISSILE, 0, actorMachineGun,
-	MANIM_MISSILE, 0, actor_fire,
-	MANIM_MISSILE, 0, NULL,
-	MANIM_MISSILE, 0, NULL,
-	MANIM_MISSILE, 0, NULL,
-	MANIM_MISSILE, 0, NULL,
-	MANIM_MISSILE, 0, NULL,
-	MANIM_MISSILE, 0, NULL
+	{MANIM_MISSILE, 0, actorMachineGun},
+	{MANIM_MISSILE, 0, actor_fire},
+	{MANIM_MISSILE, 0, NULL},
+	{MANIM_MISSILE, 0, NULL},
+	{MANIM_MISSILE, 0, NULL},
+	{MANIM_MISSILE, 0, NULL},
+	{MANIM_MISSILE, 0, NULL},
+	{MANIM_MISSILE, 0, NULL}
 };
 mmove_t actor_move_attack = { FRAME_attack1, FRAME_attack8, actor_frames_attack, actor_run };
 

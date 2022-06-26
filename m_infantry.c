@@ -28,28 +28,28 @@ static int	sound_idle;
 
 mframe_t infantry_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t infantry_move_stand = { FRAME_stand50, FRAME_stand71, infantry_frames_stand, NULL };
 
@@ -75,55 +75,55 @@ void infantry_fidget_up(edict_t* self)
 
 mframe_t infantry_frames_fidget[] =
 {
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 3,  NULL,
-	MANIM_STAND, 6,  NULL,
-	MANIM_STAND, 3,  infantry_fidget_down,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, -2, NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 1,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, 0,  NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, -1, NULL,
-	MANIM_STAND, 0,  infantry_fidget_up,
-	MANIM_STAND, -3, NULL,
-	MANIM_STAND, -2, NULL,
-	MANIM_STAND, -3, NULL,
-	MANIM_STAND, -3, NULL,
-	MANIM_STAND, -2, NULL
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 3,  NULL},
+	{MANIM_STAND, 6,  NULL},
+	{MANIM_STAND, 3,  infantry_fidget_down},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, -2, NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 1,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, 0,  NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, -1, NULL},
+	{MANIM_STAND, 0,  infantry_fidget_up},
+	{MANIM_STAND, -3, NULL},
+	{MANIM_STAND, -2, NULL},
+	{MANIM_STAND, -3, NULL},
+	{MANIM_STAND, -3, NULL},
+	{MANIM_STAND, -2, NULL}
 };
 mmove_t infantry_move_fidget = { FRAME_stand01, FRAME_stand49, infantry_frames_fidget, infantry_stand };
 
@@ -135,18 +135,18 @@ void infantry_fidget(edict_t* self)
 
 mframe_t infantry_frames_walk[] =
 {
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL,
-	MANIM_WALK, 0,  NULL
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL},
+	{MANIM_WALK, 0,  NULL}
 };
 mmove_t infantry_move_walk = { FRAME_walk03, FRAME_walk14, infantry_frames_walk, NULL };
 
@@ -157,14 +157,14 @@ void infantry_walk(edict_t* self)
 
 mframe_t infantry_frames_run[] =
 {
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0,  NULL,
-	MANIM_RUN, 0,  NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0, NULL,
-	MANIM_RUN, 0,  NULL,
-	MANIM_RUN, 0,  NULL
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0,  NULL},
+	{MANIM_RUN, 0,  NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0, NULL},
+	{MANIM_RUN, 0,  NULL},
+	{MANIM_RUN, 0,  NULL}
 };
 mmove_t infantry_move_run = { FRAME_run01, FRAME_run08, infantry_frames_run, NULL };
 
@@ -179,31 +179,31 @@ void infantry_run(edict_t* self)
 
 mframe_t infantry_frames_pain1[] =
 {
-	MANIM_MISC, -3, NULL,
-	MANIM_MISC, -2, NULL,
-	MANIM_MISC, -1, NULL,
-	MANIM_MISC, -2, NULL,
-	MANIM_MISC, -1, NULL,
-	MANIM_MISC, 1,  NULL,
-	MANIM_MISC, -1, NULL,
-	MANIM_MISC, 1,  NULL,
-	MANIM_MISC, 6,  NULL,
-	MANIM_MISC, 2,  NULL
+	{MANIM_MISC, -3, NULL},
+	{MANIM_MISC, -2, NULL},
+	{MANIM_MISC, -1, NULL},
+	{MANIM_MISC, -2, NULL},
+	{MANIM_MISC, -1, NULL},
+	{MANIM_MISC, 1,  NULL},
+	{MANIM_MISC, -1, NULL},
+	{MANIM_MISC, 1,  NULL},
+	{MANIM_MISC, 6,  NULL},
+	{MANIM_MISC, 2,  NULL}
 };
 mmove_t infantry_move_pain1 = { FRAME_pain101, FRAME_pain110, infantry_frames_pain1, infantry_run };
 
 mframe_t infantry_frames_pain2[] =
 {
-	MANIM_MISC, -3, NULL,
-	MANIM_MISC, -3, NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, -1, NULL,
-	MANIM_MISC, -2, NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 0,  NULL,
-	MANIM_MISC, 2,  NULL,
-	MANIM_MISC, 5,  NULL,
-	MANIM_MISC, 2,  NULL
+	{MANIM_MISC, -3, NULL},
+	{MANIM_MISC, -3, NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, -1, NULL},
+	{MANIM_MISC, -2, NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 0,  NULL},
+	{MANIM_MISC, 2,  NULL},
+	{MANIM_MISC, 5,  NULL},
+	{MANIM_MISC, 2,  NULL}
 };
 mmove_t infantry_move_pain2 = { FRAME_pain201, FRAME_pain210, infantry_frames_pain2, infantry_run };
 
@@ -248,18 +248,18 @@ void infantry_pain(edict_t* self, edict_t* other, float kick, int damage)
 
 vec3_t	aimangles[] =
 {
-	0.0, 5.0, 0.0,
-	10.0, 15.0, 0.0,
-	20.0, 25.0, 0.0,
-	25.0, 35.0, 0.0,
-	30.0, 40.0, 0.0,
-	30.0, 45.0, 0.0,
-	25.0, 50.0, 0.0,
-	20.0, 40.0, 0.0,
-	15.0, 35.0, 0.0,
-	40.0, 35.0, 0.0,
-	70.0, 35.0, 0.0,
-	90.0, 35.0, 0.0
+	{0.0, 5.0, 0.0 },
+	{10.0, 15.0, 0.0},
+	{20.0, 25.0, 0.0},
+	{25.0, 35.0, 0.0},
+	{30.0, 40.0, 0.0},
+	{30.0, 45.0, 0.0},
+	{25.0, 50.0, 0.0},
+	{20.0, 40.0, 0.0},
+	{15.0, 35.0, 0.0},
+	{40.0, 35.0, 0.0},
+	{70.0, 35.0, 0.0},
+	{90.0, 35.0, 0.0}
 };
 
 void InfantryMachineGun(edict_t* self)
@@ -332,71 +332,71 @@ void InfantryMachineGunBlood(edict_t* self)
 
 mframe_t infantry_frames_death1[] =
 {
-	MANIM_DEATH, -4, InfantryBlood,
-	MANIM_DEATH, 0,  InfantryBlood,
-	MANIM_DEATH, 0,  InfantryBlood,
-	MANIM_DEATH, -1, InfantryBlood,
-	MANIM_DEATH, -4, InfantryBlood,
-	MANIM_DEATH, 0,  InfantryBlood,
-	MANIM_DEATH, 0,  InfantryBlood,
-	MANIM_DEATH, 0,  InfantryBlood,
-	MANIM_DEATH, -1, InfantryBlood,
-	MANIM_DEATH, 3,  InfantryBlood,
-	MANIM_DEATH, 1,  InfantryBlood,
-	MANIM_DEATH, 1,  InfantryBlood,
-	MANIM_DEATH, -2, NULL,
-	MANIM_DEATH, 2,  NULL,
-	MANIM_DEATH, 2,  NULL,
-	MANIM_DEATH, 9,  NULL,
-	MANIM_DEATH, 9,  NULL,
-	MANIM_DEATH, 5,  infantry_dead,
-	MANIM_DEATH, -3, NULL,
-	MANIM_DEATH, -3, NULL
+	{MANIM_DEATH, -4, InfantryBlood},
+	{MANIM_DEATH, 0,  InfantryBlood},
+	{MANIM_DEATH, 0,  InfantryBlood},
+	{MANIM_DEATH, -1, InfantryBlood},
+	{MANIM_DEATH, -4, InfantryBlood},
+	{MANIM_DEATH, 0,  InfantryBlood},
+	{MANIM_DEATH, 0,  InfantryBlood},
+	{MANIM_DEATH, 0,  InfantryBlood},
+	{MANIM_DEATH, -1, InfantryBlood},
+	{MANIM_DEATH, 3,  InfantryBlood},
+	{MANIM_DEATH, 1,  InfantryBlood},
+	{MANIM_DEATH, 1,  InfantryBlood},
+	{MANIM_DEATH, -2, NULL},
+	{MANIM_DEATH, 2,  NULL},
+	{MANIM_DEATH, 2,  NULL},
+	{MANIM_DEATH, 9,  NULL},
+	{MANIM_DEATH, 9,  NULL},
+	{MANIM_DEATH, 5,  infantry_dead},
+	{MANIM_DEATH, -3, NULL},
+	{MANIM_DEATH, -3, NULL}
 };
 mmove_t infantry_move_death1 = { FRAME_death101, FRAME_death120, infantry_frames_death1, M_FlyCheck };
 
 // Off with his head
 mframe_t infantry_frames_death2[] =
 {
-	MANIM_DEATH, 0,   InfantryBlood,
-	MANIM_DEATH, 1,   InfantryBlood,
-	MANIM_DEATH, 5,   InfantryBlood,
-	MANIM_DEATH, -1,  InfantryBlood,
-	MANIM_DEATH, 0,   InfantryBlood,
-	MANIM_DEATH, 1,   InfantryBlood,
-	MANIM_DEATH, 1,   InfantryBlood,
-	MANIM_DEATH, 4,   InfantryBlood,
-	MANIM_DEATH, 3,   InfantryBlood,
-	MANIM_DEATH, 0,   InfantryBlood,
-	MANIM_DEATH, -2,  InfantryMachineGunBlood,
-	MANIM_DEATH, -2,  InfantryMachineGunBlood,
-	MANIM_DEATH, -3,  InfantryMachineGunBlood,
-	MANIM_DEATH, -1,  InfantryMachineGunBlood,
-	MANIM_DEATH, -2,  InfantryMachineGunBlood,
-	MANIM_DEATH, 0,   InfantryMachineGunBlood,
-	MANIM_DEATH, 2,   InfantryMachineGunBlood,
-	MANIM_DEATH, 2,   InfantryMachineGunBlood,
-	MANIM_DEATH, 3,   InfantryMachineGunBlood,
-	MANIM_DEATH, -10, InfantryMachineGun,
-	MANIM_DEATH, -7,  InfantryMachineGun,
-	MANIM_DEATH, -8,  InfantryMachineGun,
-	MANIM_DEATH, -6,  infantry_dead,
-	MANIM_DEATH, 4,   NULL,
-	MANIM_DEATH, 0,   NULL
+	{MANIM_DEATH, 0,   InfantryBlood},
+	{MANIM_DEATH, 1,   InfantryBlood},
+	{MANIM_DEATH, 5,   InfantryBlood},
+	{MANIM_DEATH, -1,  InfantryBlood},
+	{MANIM_DEATH, 0,   InfantryBlood},
+	{MANIM_DEATH, 1,   InfantryBlood},
+	{MANIM_DEATH, 1,   InfantryBlood},
+	{MANIM_DEATH, 4,   InfantryBlood},
+	{MANIM_DEATH, 3,   InfantryBlood},
+	{MANIM_DEATH, 0,   InfantryBlood},
+	{MANIM_DEATH, -2,  InfantryMachineGunBlood},
+	{MANIM_DEATH, -2,  InfantryMachineGunBlood},
+	{MANIM_DEATH, -3,  InfantryMachineGunBlood},
+	{MANIM_DEATH, -1,  InfantryMachineGunBlood},
+	{MANIM_DEATH, -2,  InfantryMachineGunBlood},
+	{MANIM_DEATH, 0,   InfantryMachineGunBlood},
+	{MANIM_DEATH, 2,   InfantryMachineGunBlood},
+	{MANIM_DEATH, 2,   InfantryMachineGunBlood},
+	{MANIM_DEATH, 3,   InfantryMachineGunBlood},
+	{MANIM_DEATH, -10, InfantryMachineGun},
+	{MANIM_DEATH, -7,  InfantryMachineGun},
+	{MANIM_DEATH, -8,  InfantryMachineGun},
+	{MANIM_DEATH, -6,  infantry_dead},
+	{MANIM_DEATH, 4,   NULL},
+	{MANIM_DEATH, 0,   NULL}
 };
 mmove_t infantry_move_death2 = { FRAME_death201, FRAME_death225, infantry_frames_death2, M_FlyCheck };
 
 mframe_t infantry_frames_death3[] =
 {
-	MANIM_DEATH, 0,   NULL,
-	MANIM_DEATH, 0,   NULL,
-	MANIM_DEATH, 0,   infantry_dead,
-	MANIM_DEATH, -6,  NULL,
-	MANIM_DEATH, -11, NULL,
-	MANIM_DEATH, -3,  NULL,
-	MANIM_DEATH, -11, NULL,
-	MANIM_DEATH, 0,   NULL,
-	MANIM_DEATH, 0,   NULL
+	{MANIM_DEATH, 0,   NULL},
+	{MANIM_DEATH, 0,   NULL},
+	{MANIM_DEATH, 0,   infantry_dead},
+	{MANIM_DEATH, -6,  NULL},
+	{MANIM_DEATH, -11, NULL},
+	{MANIM_DEATH, -3,  NULL},
+	{MANIM_DEATH, -11, NULL},
+	{MANIM_DEATH, 0,   NULL},
+	{MANIM_DEATH, 0,   NULL}
 };
 mmove_t infantry_move_death3 = { FRAME_death301, FRAME_death309, infantry_frames_death3, M_FlyCheck };
 
@@ -467,11 +467,11 @@ void infantry_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int dama
 
 mframe_t infantry_frames_duck[] =
 {
-	MANIM_DUCK, -2, monster_duck_down,
-	MANIM_DUCK, -5, monster_duck_hold,
-	MANIM_DUCK, 3,  NULL,
-	MANIM_DUCK, 4,  monster_duck_up,
-	MANIM_DUCK, 0,  NULL
+	{MANIM_DUCK, -2, monster_duck_down},
+	{MANIM_DUCK, -5, monster_duck_hold},
+	{MANIM_DUCK, 3,  NULL},
+	{MANIM_DUCK, 4,  monster_duck_up},
+	{MANIM_DUCK, 0,  NULL}
 };
 mmove_t infantry_move_duck = { FRAME_duck01, FRAME_duck05, infantry_frames_duck, infantry_run };
 
@@ -504,21 +504,21 @@ void infantry_fire(edict_t* self)
 
 mframe_t infantry_frames_attack1[] =
 {
-	MANIM_MISSILE, 4,  NULL,
-	MANIM_MISSILE, -1, NULL,
-	MANIM_MISSILE, -1, NULL,
-	MANIM_MISSILE, 0,  infantry_cock_gun,
-	MANIM_MISSILE, -1, NULL,
-	MANIM_MISSILE, 1,  NULL,
-	MANIM_MISSILE, 1,  NULL,
-	MANIM_MISSILE, 2,  NULL,
-	MANIM_MISSILE, -2, NULL,
-	MANIM_MISSILE, -3, NULL,
-	MANIM_MISSILE, 1,  infantry_fire,
-	MANIM_MISSILE, 5,  NULL,
-	MANIM_MISSILE, -1, NULL,
-	MANIM_MISSILE, -2, NULL,
-	MANIM_MISSILE, -3, NULL
+	{MANIM_MISSILE, 4,  NULL},
+	{MANIM_MISSILE, -1, NULL},
+	{MANIM_MISSILE, -1, NULL},
+	{MANIM_MISSILE, 0,  infantry_cock_gun},
+	{MANIM_MISSILE, -1, NULL},
+	{MANIM_MISSILE, 1,  NULL},
+	{MANIM_MISSILE, 1,  NULL},
+	{MANIM_MISSILE, 2,  NULL},
+	{MANIM_MISSILE, -2, NULL},
+	{MANIM_MISSILE, -3, NULL},
+	{MANIM_MISSILE, 1,  infantry_fire},
+	{MANIM_MISSILE, 5,  NULL},
+	{MANIM_MISSILE, -1, NULL},
+	{MANIM_MISSILE, -2, NULL},
+	{MANIM_MISSILE, -3, NULL}
 };
 mmove_t infantry_move_attack1 = { FRAME_attak101, FRAME_attak115, infantry_frames_attack1, infantry_run };
 
@@ -539,14 +539,14 @@ void infantry_smack(edict_t* self)
 
 mframe_t infantry_frames_attack2[] =
 {
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, infantry_swing,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, infantry_smack,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, infantry_swing},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, infantry_smack},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL}
 };
 mmove_t infantry_move_attack2 = { FRAME_attak201, FRAME_attak208, infantry_frames_attack2, infantry_run };
 

@@ -18,6 +18,7 @@
     <None Include="game.def">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="GNUmakefile" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="g_local.h">

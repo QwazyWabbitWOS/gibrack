@@ -66,34 +66,34 @@ void parasite_search(edict_t* self)
 
 mframe_t parasite_frames_start_fidget[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t parasite_move_start_fidget = { FRAME_stand18, FRAME_stand21, parasite_frames_start_fidget, parasite_do_fidget };
 
 mframe_t parasite_frames_fidget [] =
 {	
-	MANIM_STAND, 0, parasite_scratch,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_scratch,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, parasite_scratch},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_scratch},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t parasite_move_fidget = { FRAME_stand22, FRAME_stand27, parasite_frames_fidget, parasite_refidget };
 
 mframe_t parasite_frames_end_fidget[] =
 {
-	MANIM_STAND, 0, parasite_scratch,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, parasite_scratch},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t parasite_move_end_fidget = { FRAME_stand28, FRAME_stand35, parasite_frames_end_fidget, parasite_stand };
 
@@ -123,23 +123,23 @@ void parasite_idle(edict_t* self)
 
 mframe_t parasite_frames_stand[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, parasite_tap
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, parasite_tap}
 };
 mmove_t	parasite_move_stand = { FRAME_stand01, FRAME_stand17, parasite_frames_stand, parasite_stand };
 
@@ -151,31 +151,31 @@ void parasite_stand(edict_t* self)
 
 mframe_t parasite_frames_run[] =
 {
-	MANIM_RUN, 5, NULL,
-	MANIM_RUN, 5, NULL,
-	MANIM_RUN, -3, NULL,
-	MANIM_RUN, -6, NULL,
-	MANIM_RUN, -1, NULL,
-	MANIM_RUN, 3, NULL,
-	MANIM_RUN, 0, NULL
+	{MANIM_RUN, 5, NULL},
+	{MANIM_RUN, 5, NULL},
+	{MANIM_RUN, -3, NULL},
+	{MANIM_RUN, -6, NULL},
+	{MANIM_RUN, -1, NULL},
+	{MANIM_RUN, 3, NULL},
+	{MANIM_RUN, 0, NULL}
 };
 mmove_t parasite_move_run = { FRAME_run03, FRAME_run09, parasite_frames_run, NULL };
 
 mframe_t parasite_frames_start_run[] =
 {
-	MANIM_RUN, -25,	NULL,
-	MANIM_RUN, 5, NULL,
+	{MANIM_RUN, -25,	NULL},
+	{MANIM_RUN, 5, NULL},
 };
 mmove_t parasite_move_start_run = { FRAME_run01, FRAME_run02, parasite_frames_start_run, parasite_run };
 
 mframe_t parasite_frames_stop_run[] =
 {
-	MANIM_RUN, -5, NULL,
-	MANIM_RUN, -5,	NULL,
-	MANIM_RUN, -13, NULL,
-	MANIM_RUN, -15, NULL,
-	MANIM_RUN, -25,  NULL,
-	MANIM_RUN, -25,  NULL
+	{MANIM_RUN, -5, NULL},
+	{MANIM_RUN, -5,	NULL},
+	{MANIM_RUN, -13, NULL},
+	{MANIM_RUN, -15, NULL},
+	{MANIM_RUN, -25,  NULL},
+	{MANIM_RUN, -25,  NULL}
 };
 mmove_t parasite_move_stop_run = { FRAME_run10, FRAME_run15, parasite_frames_stop_run, NULL };
 
@@ -198,31 +198,31 @@ void parasite_run(edict_t* self)
 
 mframe_t parasite_frames_walk[] =
 {
-	MANIM_WALK, 5, NULL,
-	MANIM_WALK, 5, NULL,
-	MANIM_WALK, -3, NULL,
-	MANIM_WALK, -6, NULL,
-	MANIM_WALK, -1, NULL,
-	MANIM_WALK, 3, NULL,
-	MANIM_WALK, 0, NULL
+	{MANIM_WALK, 5, NULL},
+	{MANIM_WALK, 5, NULL},
+	{MANIM_WALK, -3, NULL},
+	{MANIM_WALK, -6, NULL},
+	{MANIM_WALK, -1, NULL},
+	{MANIM_WALK, 3, NULL},
+	{MANIM_WALK, 0, NULL}
 };
 mmove_t parasite_move_walk = { FRAME_run03, FRAME_run09, parasite_frames_walk, parasite_walk };
 
 mframe_t parasite_frames_start_walk[] =
 {
-	MANIM_WALK, -25,	NULL,
-	MANIM_WALK, 5, parasite_walk
+	{MANIM_WALK, -25,	NULL},
+	{MANIM_WALK, 5, parasite_walk}
 };
 mmove_t parasite_move_start_walk = { FRAME_run01, FRAME_run02, parasite_frames_start_walk, NULL };
 
 mframe_t parasite_frames_stop_walk[] =
 {
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, -5, NULL,
-	MANIM_WALK, -13, NULL,
-	MANIM_WALK, -15, NULL,
-	MANIM_WALK, -25,  NULL,
-	MANIM_WALK, -25,  NULL
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, -5, NULL},
+	{MANIM_WALK, -13, NULL},
+	{MANIM_WALK, -15, NULL},
+	{MANIM_WALK, -25,  NULL},
+	{MANIM_WALK, -25,  NULL}
 };
 mmove_t parasite_move_stop_walk = { FRAME_run10, FRAME_run15, parasite_frames_stop_walk, NULL };
 
@@ -239,17 +239,17 @@ void parasite_walk(edict_t* self)
 
 mframe_t parasite_frames_pain1[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0,	NULL,
-	MANIM_MISC, 0,	NULL,
-	MANIM_MISC, 0,	NULL,
-	MANIM_MISC, 0,	NULL,
-	MANIM_MISC, 6,	NULL,
-	MANIM_MISC, 16, NULL,
-	MANIM_MISC, -6, NULL,
-	MANIM_MISC, -7, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0,	NULL},
+	{MANIM_MISC, 0,	NULL},
+	{MANIM_MISC, 0,	NULL},
+	{MANIM_MISC, 0,	NULL},
+	{MANIM_MISC, 6,	NULL},
+	{MANIM_MISC, 16, NULL},
+	{MANIM_MISC, -6, NULL},
+	{MANIM_MISC, -7, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t parasite_move_pain1 = { FRAME_pain101, FRAME_pain111, parasite_frames_pain1, parasite_start_run };
 
@@ -396,62 +396,62 @@ void parasite_drain_attack(edict_t* self)
 
 mframe_t parasite_frames_drain[] =
 {
-	MANIM_MISSILE, 0,	parasite_launch,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 15,	parasite_drain_attack,			// Target hits
-	MANIM_MISSILE, 0,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, 0,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, 0,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, 0,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, -2,  parasite_drain_attack,			// drain
-	MANIM_MISSILE, -2,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, -3,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, -2,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, 0,	parasite_drain_attack,			// drain
-	MANIM_MISSILE, -1,  parasite_drain_attack,			// drain
-	MANIM_MISSILE, 0,	parasite_reel_in,				// let go
-	MANIM_MISSILE, -2,	NULL,
-	MANIM_MISSILE, -2,	NULL,
-	MANIM_MISSILE, -3,	NULL,
-	MANIM_MISSILE, 0,	NULL
+	{MANIM_MISSILE, 0,	parasite_launch},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 15,	parasite_drain_attack},			// Target hits
+	{MANIM_MISSILE, 0,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, 0,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, 0,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, 0,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, -2,  parasite_drain_attack},			// drain
+	{MANIM_MISSILE, -2,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, -3,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, -2,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, 0,	parasite_drain_attack},			// drain
+	{MANIM_MISSILE, -1,  parasite_drain_attack},			// drain
+	{MANIM_MISSILE, 0,	parasite_reel_in},				// let go
+	{MANIM_MISSILE, -2,	NULL},
+	{MANIM_MISSILE, -2,	NULL},
+	{MANIM_MISSILE, -3,	NULL},
+	{MANIM_MISSILE, 0,	NULL}
 };
 mmove_t parasite_move_drain = { FRAME_drain01, FRAME_drain18, parasite_frames_drain, parasite_start_run };
 
 
 mframe_t parasite_frames_break[] =
 {
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -3,	NULL,
-	MANIM_MISSILE, 1,	NULL,
-	MANIM_MISSILE, 2,	NULL,
-	MANIM_MISSILE, -3,	NULL,
-	MANIM_MISSILE, 1,	NULL,
-	MANIM_MISSILE, 1,	NULL,
-	MANIM_MISSILE, 3,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -18,	NULL,
-	MANIM_MISSILE, 3,	NULL,
-	MANIM_MISSILE, 9,	NULL,
-	MANIM_MISSILE, 6,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -18,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 8,	NULL,
-	MANIM_MISSILE, 9,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, -18,	NULL,
-	MANIM_MISSILE, 0,	NULL,
-	MANIM_MISSILE, 0,	NULL,		// airborne
-	MANIM_MISSILE, 0,	NULL,		// airborne
-	MANIM_MISSILE, 0,	NULL,		// slides
-	MANIM_MISSILE, 0,	NULL,		// slides
-	MANIM_MISSILE, 0,	NULL,		// slides
-	MANIM_MISSILE, 0,	NULL,		// slides
-	MANIM_MISSILE, 4,	NULL,
-	MANIM_MISSILE, 11,	NULL,
-	MANIM_MISSILE, -2,	NULL,
-	MANIM_MISSILE, -5,	NULL,
-	MANIM_MISSILE, 1,	NULL
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -3,	NULL},
+	{MANIM_MISSILE, 1,	NULL},
+	{MANIM_MISSILE, 2,	NULL},
+	{MANIM_MISSILE, -3,	NULL},
+	{MANIM_MISSILE, 1,	NULL},
+	{MANIM_MISSILE, 1,	NULL},
+	{MANIM_MISSILE, 3,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -18,	NULL},
+	{MANIM_MISSILE, 3,	NULL},
+	{MANIM_MISSILE, 9,	NULL},
+	{MANIM_MISSILE, 6,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -18,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 8,	NULL},
+	{MANIM_MISSILE, 9,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, -18,	NULL},
+	{MANIM_MISSILE, 0,	NULL},
+	{MANIM_MISSILE, 0,	NULL},		// airborne
+	{MANIM_MISSILE, 0,	NULL},		// airborne
+	{MANIM_MISSILE, 0,	NULL},		// slides
+	{MANIM_MISSILE, 0,	NULL},		// slides
+	{MANIM_MISSILE, 0,	NULL},		// slides
+	{MANIM_MISSILE, 0,	NULL},		// slides
+	{MANIM_MISSILE, 4,	NULL},
+	{MANIM_MISSILE, 11,	NULL},
+	{MANIM_MISSILE, -2,	NULL},
+	{MANIM_MISSILE, -5,	NULL},
+	{MANIM_MISSILE, 1,	NULL}
 };
 mmove_t parasite_move_break = { FRAME_break01, FRAME_break32, parasite_frames_break, parasite_start_run };
 
@@ -489,13 +489,13 @@ void parasite_dead(edict_t* self)
 
 mframe_t parasite_frames_death[] =
 {
-	MANIM_DEATH, 0,	 NULL,
-	MANIM_DEATH, 0,	 NULL,
-	MANIM_DEATH, 0,	 NULL,
-	MANIM_DEATH, 0,	 parasite_dead,
-	MANIM_DEATH, 0,	 NULL,
-	MANIM_DEATH, 0,	 NULL,
-	MANIM_DEATH, 0,	 NULL
+	{MANIM_DEATH, 0,	 NULL},
+	{MANIM_DEATH, 0,	 NULL},
+	{MANIM_DEATH, 0,	 NULL},
+	{MANIM_DEATH, 0,	 parasite_dead},
+	{MANIM_DEATH, 0,	 NULL},
+	{MANIM_DEATH, 0,	 NULL},
+	{MANIM_DEATH, 0,	 NULL}
 };
 mmove_t parasite_move_death = { FRAME_death101, FRAME_death107, parasite_frames_death, monster_dead_dead };
 

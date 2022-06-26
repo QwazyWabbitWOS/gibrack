@@ -31,11 +31,11 @@ void berserk_search(edict_t* self)
 void berserk_fidget(edict_t* self);
 mframe_t berserk_frames_stand[] =
 {
-	MANIM_STAND, 0, berserk_fidget,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, berserk_fidget},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t berserk_move_stand = { FRAME_stand1, FRAME_stand5, berserk_frames_stand, NULL };
 
@@ -46,26 +46,26 @@ void berserk_stand(edict_t* self)
 
 mframe_t berserk_frames_stand_fidget[] =
 {
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL,
-	MANIM_STAND, 0, NULL
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL},
+	{MANIM_STAND, 0, NULL}
 };
 mmove_t berserk_move_stand_fidget = { FRAME_standb1, FRAME_standb20, berserk_frames_stand_fidget, berserk_stand };
 
@@ -83,18 +83,18 @@ void berserk_fidget(edict_t* self)
 
 mframe_t berserk_frames_walk[] =
 {
-	MANIM_WALK, 3.1, NULL,
-	MANIM_WALK, 0.3, NULL,
-	MANIM_WALK, -1.1, NULL,
-	MANIM_WALK, 0.7, NULL,
-	MANIM_WALK, 0.0, NULL,
-	MANIM_WALK, 2.2, NULL,
-	MANIM_WALK, 1.2, NULL,
-	MANIM_WALK, 2.1, NULL,
-	MANIM_WALK, -1.1, NULL,
-	MANIM_WALK, -1.3, NULL,
-	MANIM_WALK, -1.3, NULL,
-	MANIM_WALK, -1.2, NULL
+	{MANIM_WALK, 3.1, NULL},
+	{MANIM_WALK, 0.3, NULL},
+	{MANIM_WALK, -1.1, NULL},
+	{MANIM_WALK, 0.7, NULL},
+	{MANIM_WALK, 0.0, NULL},
+	{MANIM_WALK, 2.2, NULL},
+	{MANIM_WALK, 1.2, NULL},
+	{MANIM_WALK, 2.1, NULL},
+	{MANIM_WALK, -1.1, NULL},
+	{MANIM_WALK, -1.3, NULL},
+	{MANIM_WALK, -1.3, NULL},
+	{MANIM_WALK, -1.2, NULL}
 };
 mmove_t berserk_move_walk = { FRAME_walkc1, FRAME_walkc11, berserk_frames_walk, NULL };
 
@@ -130,12 +130,12 @@ void()	berserk_runb12	=[	$r_att12 ,	berserk_runb7	] {ai_run(19);};
 
 mframe_t berserk_frames_run1[] =
 {
-	MANIM_RUN, 2, NULL,
-	MANIM_RUN, -8, NULL,
-	MANIM_RUN, 2, NULL,
-	MANIM_RUN, 6, NULL,
-	MANIM_RUN, -1, NULL,
-	MANIM_RUN, 0, NULL
+	{MANIM_RUN, 2, NULL},
+	{MANIM_RUN, -8, NULL},
+	{MANIM_RUN, 2, NULL},
+	{MANIM_RUN, 6, NULL},
+	{MANIM_RUN, -1, NULL},
+	{MANIM_RUN, 0, NULL}
 };
 mmove_t berserk_move_run1 = { FRAME_run1, FRAME_run6, berserk_frames_run1, NULL };
 
@@ -162,14 +162,14 @@ void berserk_swing(edict_t* self)
 
 mframe_t berserk_frames_attack_spike[] =
 {
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, berserk_swing,
-		MANIM_MELEE, 0, berserk_attack_spike,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL,
-		MANIM_MELEE, 0, NULL
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, berserk_swing},
+		{MANIM_MELEE, 0, berserk_attack_spike},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL},
+		{MANIM_MELEE, 0, NULL}
 };
 mmove_t berserk_move_attack_spike = { FRAME_att_c1, FRAME_att_c8, berserk_frames_attack_spike, berserk_run };
 
@@ -184,18 +184,18 @@ void berserk_attack_club(edict_t* self)
 
 mframe_t berserk_frames_attack_club[] =
 {
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, berserk_swing,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, berserk_attack_club,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, berserk_swing},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, berserk_attack_club},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL}
 };
 mmove_t berserk_move_attack_club = { FRAME_att_c9, FRAME_att_c20, berserk_frames_attack_club, berserk_run };
 
@@ -210,20 +210,20 @@ void berserk_strike(edict_t* self)
 
 mframe_t berserk_frames_attack_strike[] =
 {
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, berserk_swing,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, berserk_strike,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 0, NULL,
-	MANIM_MELEE, 9.7, NULL,
-	MANIM_MELEE, 13.6, NULL
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, berserk_swing},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, berserk_strike},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 0, NULL},
+	{MANIM_MELEE, 9.7, NULL},
+	{MANIM_MELEE, 13.6, NULL}
 };
 
 mmove_t berserk_move_attack_strike = { FRAME_att_c21, FRAME_att_c34, berserk_frames_attack_strike, berserk_run };
@@ -268,36 +268,36 @@ void() 	berserk_atke18	=[	$r_attb18,	berserk_run1	] {ai_run(7.8);};
 
 mframe_t berserk_frames_pain1[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t berserk_move_pain1 = { FRAME_painc1, FRAME_painc4, berserk_frames_pain1, berserk_run };
 
 
 mframe_t berserk_frames_pain2[] =
 {
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL,
-	MANIM_MISC, 0, NULL
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL},
+	{MANIM_MISC, 0, NULL}
 };
 mmove_t berserk_move_pain2 = { FRAME_painb1, FRAME_painb20, berserk_frames_pain2, berserk_run };
 
@@ -337,19 +337,19 @@ void berserk_dead(edict_t* self)
 
 mframe_t berserk_frames_death1[] =
 {
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, berserk_dead,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, berserk_dead},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL}
 
 };
 mmove_t berserk_move_death1 = { FRAME_death1, FRAME_death13, berserk_frames_death1, monster_dead_dead };
@@ -357,14 +357,14 @@ mmove_t berserk_move_death1 = { FRAME_death1, FRAME_death13, berserk_frames_deat
 
 mframe_t berserk_frames_death2[] =
 {
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, berserk_dead,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL,
-	MANIM_DEATH, 0, NULL
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, berserk_dead},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL},
+	{MANIM_DEATH, 0, NULL}
 };
 mmove_t berserk_move_death2 = { FRAME_deathc1, FRAME_deathc8, berserk_frames_death2, monster_dead_dead };
 
