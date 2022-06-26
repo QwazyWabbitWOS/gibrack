@@ -2084,10 +2084,10 @@ void SP_func_door_secret(edict_t* ent)
 	VectorClear(ent->s.angles);
 	side = 1.0 - (ent->spawnflags & SECRET_1ST_LEFT);
 	if (ent->spawnflags & SECRET_1ST_DOWN)
-		width = fabs(DotProduct(up, ent->size));
+		width = fabsf(DotProduct(up, ent->size));
 	else
-		width = fabs(DotProduct(right, ent->size));
-	length = fabs(DotProduct(forward, ent->size));
+		width = fabsf(DotProduct(right, ent->size));
+	length = fabsf(DotProduct(forward, ent->size));
 	if (ent->spawnflags & SECRET_1ST_DOWN)
 		VectorMA(ent->s.origin, -1 * width, up, ent->pos1);
 	else

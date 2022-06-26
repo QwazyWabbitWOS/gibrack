@@ -434,6 +434,9 @@ qboolean SV_Push(edict_t* pusher, vec3_t move, vec3_t amove)
 	pushed_t* p;
 	vec3_t		org, org2, move2, forward, right, up;
 
+	if (!pusher)
+		return false;
+
 	// clamp the move to 1/8 units, so the position will
 	// be accurate for client side prediction
 	for (i = 0; i < 3; i++)
@@ -924,7 +927,7 @@ void SV_Physics_Step(edict_t* ent)
 			if (!(ent->health <= 0.0 && !M_CheckBottom(ent)))
 			{
 				vel = ent->velocity;
-				speed = sqrt(vel[0] * vel[0] + vel[1] * vel[1]);
+				speed = sqrtf(vel[0] * vel[0] + vel[1] * vel[1]);
 				if (speed)
 				{
 					friction = sv_friction;
