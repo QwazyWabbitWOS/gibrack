@@ -76,6 +76,8 @@ _CrtMemState startup1;	// memory diagnostics
 
 #define MELEE_DISTANCE	80
 
+#define BODY_QUEUE_SIZE		8
+
 typedef enum
 {
 	DAMAGE_NO,

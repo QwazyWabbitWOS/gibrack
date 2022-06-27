@@ -147,7 +147,7 @@ void Sys_Error(char* error, ...)
 	vsprintf(text, error, argptr);
 	va_end(argptr);
 
-	GameError(ERR_FATAL, "%s", text);
+	gi.error(ERR_FATAL, "%s", text);
 }
 
 void Com_Printf(char* msg, ...)

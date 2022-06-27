@@ -479,9 +479,9 @@ void G_FreeEdict(edict_t* ed)
 {
 	gi.unlinkentity(ed);		// unlink from world
 
-	if ((ed - g_edicts) <= (game.maxclients * 2))
+	if ((ed - g_edicts) <= (maxclients->value + BODY_QUEUE_SIZE))
 	{
-		//		gi.dprintf("tried to free special edict\n");
+		//gi.dprintf("tried to free special edict\n");
 		return;
 	}
 

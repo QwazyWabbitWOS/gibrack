@@ -630,7 +630,6 @@ void WriteLevel(char* filename)
 	f = fopen(filename, "wb");
 	if (!f) {
 		GameError("Couldn't open %s", filename);
-		return;
 	}
 	// write out edict size for checking
 	i = sizeof(edict_t);

@@ -1117,7 +1117,6 @@ void PrecacheItem(gitem_t* it)
 		if (len >= MAX_QPATH || len < 5)
 		{
 			GameError("PrecacheItem: %s has bad precache string", it->classname);
-			return;
 		}
 
 		memcpy(data, start, len);

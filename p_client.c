@@ -1163,7 +1163,6 @@ void	SelectSpawnPoint(edict_t* ent, vec3_t origin, vec3_t angles)
 			}
 			if (!spot) {
 				GameError("Couldn't find spawn point %s\n", game.spawnpoint);
-				return;
 			}
 		}
 	}
@@ -1182,7 +1181,7 @@ void InitBodyQue(void)
 	edict_t* ent;
 
 	level.body_que = 0;
-	for (i = 0; i < maxclients->value; i++)
+	for (i = 0; i < BODY_QUEUE_SIZE; i++)
 	{
 		ent = G_Spawn();
 		ent->classname = "bodyque";
@@ -1210,7 +1209,7 @@ void CopyToBodyQue(edict_t* ent)
 
 	// grab a body que and cycle to the next one
 	body = &g_edicts[(int)maxclients->value + level.body_que + 1];
-	level.body_que = (level.body_que + 1) % game.maxclients;
+	level.body_que = (level.body_que + 1) % BODY_QUEUE_SIZE;
 
 	// FIXME: send an effect on the removed body
 
