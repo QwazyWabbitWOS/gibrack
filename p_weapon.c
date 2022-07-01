@@ -687,11 +687,11 @@ void Weapon_Grenade(edict_t* ent)
 			buffer[32] = 0;
 			buffer[0] = 29;
 			if (ent->client->grenade_time < 10)
-				buffer[31] = 130;
+				buffer[31] = (byte) 130;
 			else
 				buffer[31] = 31;
 			for (i = 1; i < 31; i++)
-				buffer[i] = 129;
+				buffer[i] = (byte) 129;
 			for (i = 1; i < 3 * ent->client->grenade_time + 1; i++)
 				buffer[i] = 30;
 			gi.centerprintf(ent, buffer);
