@@ -89,9 +89,7 @@ void ShutdownGame(void)
 
 #ifdef _WIN32
 	OutputDebugString("ShutdownGame() was called.\n");
-	OutputDebugString("Dump objects since startup.\n");
 	_CrtMemDumpAllObjectsSince(&startup1);
-	OutputDebugString("Memory stats since startup.\n");
 	_CrtMemDumpStatistics(&startup1);
 	_CrtDumpMemoryLeaks();
 #endif
@@ -186,7 +184,6 @@ void ClientEndServerFrames(void)
 			continue;
 		ClientEndServerFrame(ent);
 	}
-
 }
 
 /*
@@ -412,7 +409,6 @@ void ExitLevel(void)
 		if (ent->health > ent->client->pers.max_health)
 			ent->health = ent->client->pers.max_health;
 	}
-
 }
 
 /*
@@ -431,7 +427,6 @@ void G_RunFrame(void)
 	level.time = level.framenum * FRAMETIME;
 
 	// exit intermissions
-
 	if (level.exitintermission)
 	{
 		ExitLevel();
@@ -471,16 +466,13 @@ void G_RunFrame(void)
 			continue;
 		}
 
-		if (!deathmatch->value || !level.intermissiontime)
 			G_RunEntity(ent);
 	}
 
 	// see if it is time to end a deathmatch
 	CheckDMRules();
-
-	// see if needpass needs updated
+	// see if needpass needs updating
 	CheckNeedPass();
-
 	// build the playerstate_t structures for all players
 	ClientEndServerFrames();
 }
