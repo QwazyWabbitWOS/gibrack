@@ -16,11 +16,11 @@ char* ClientTeam(edict_t* ent)
 	if (teamplay->value)
 	{
 		// SLUGFILLER--team up using team/clan name
-		strcpy(value, Info_ValueForKey(ent->client->pers.userinfo, "team"));
+		Q_strncpyz(value, sizeof value, Info_ValueForKey(ent->client->pers.userinfo, "team"));
 		return value;
 	}
 
-	strcpy(value, Info_ValueForKey(ent->client->pers.userinfo, "skin"));
+	Q_strncpyz(value, sizeof value, Info_ValueForKey(ent->client->pers.userinfo, "skin"));
 	p = strchr(value, '/');
 	if (!p)
 		return value;
@@ -44,8 +44,8 @@ qboolean OnSameTeam(edict_t* ent1, edict_t* ent2)
 	char	ent1Team[512];
 	char	ent2Team[512];
 
-	strcpy(ent1Team, ClientTeam(ent1));
-	strcpy(ent2Team, ClientTeam(ent2));
+	Q_strncpyz(ent1Team, sizeof ent1Team, ClientTeam(ent1));
+	Q_strncpyz(ent2Team, sizeof ent2Team, ClientTeam(ent2));
 
 	if (*ent1Team && strcmp(ent1Team, ent2Team) == 0)
 		return true;
@@ -156,12 +156,12 @@ void Cmd_Give_f(edict_t* ent)
 
 	name = gi.args();
 
-	if (Q_stricmp(name, "all") == 0)
+	if (strcmp(name, "all") == 0)
 		give_all = true;
 	else
 		give_all = false;
 
-	if (give_all || Q_stricmp(gi.argv(1), "health") == 0)
+	if (give_all || strcmp(gi.argv(1), "health") == 0)
 	{
 		if (gi.argc() == 3)
 			ent->health = atoi(gi.argv(2));
@@ -177,7 +177,7 @@ void Cmd_Give_f(edict_t* ent)
 			return;
 	}
 
-	if (give_all || Q_stricmp(name, "weapons") == 0)
+	if (give_all || strcmp(name, "weapons") == 0)
 	{
 		for (i = 0; i < game.num_items; i++)
 		{
@@ -192,7 +192,7 @@ void Cmd_Give_f(edict_t* ent)
 			return;
 	}
 
-	if (give_all || Q_stricmp(name, "ammo") == 0)
+	if (give_all || strcmp(name, "ammo") == 0)
 	{
 		for (i = 0; i < game.num_items; i++)
 		{
@@ -207,7 +207,7 @@ void Cmd_Give_f(edict_t* ent)
 			return;
 	}
 
-	if (give_all || Q_stricmp(name, "armor") == 0)
+	if (give_all || strcmp(name, "armor") == 0)
 	{
 		gitem_armor_t* info;
 
@@ -241,7 +241,7 @@ void Cmd_Give_f(edict_t* ent)
 			return;
 	}
 
-	if (give_all || Q_stricmp(name, "items") == 0)
+	if (give_all || strcmp(name, "items") == 0)
 	{
 		for (i = 0; i < game.num_items; i++)
 		{
@@ -259,7 +259,7 @@ void Cmd_Give_f(edict_t* ent)
 			return;
 	}
 
-	if (give_all || Q_stricmp(name, "keys") == 0)
+	if (give_all || strcmp(name, "keys") == 0)
 	{
 		for (i = 0; i < game.num_items; i++)
 		{
@@ -744,10 +744,10 @@ void Cmd_Players_f(edict_t* ent)
 			game.clients[index[i]].pers.netname);
 		if (strlen(small) + strlen(large) > sizeof(large) - 100)
 		{	// can't print all of them in one packet
-			strcat(large, "...\n");
+			Q_strncatz(large, sizeof large, "...\n");
 			break;
 		}
-		strcat(large, small);
+		Q_strncatz(large, sizeof large, small);
 	}
 
 	gi.cprintf(ent, PRINT_HIGH, "%s\n%i players\n", large, count);
@@ -1301,8 +1301,6 @@ void Cmd_ShowTEnt_f(edict_t* ent)
 	}
 }
 
-
-
 /*
 =================
 ClientCommand
@@ -1317,27 +1315,27 @@ void ClientCommand(edict_t* ent)
 
 	cmd = gi.argv(0);
 
-	if (Q_stricmp(cmd, "players") == 0)
+	if (strcmp(cmd, "players") == 0)
 	{
 		Cmd_Players_f(ent);
 		return;
 	}
-	if (Q_stricmp(cmd, "say") == 0)
+	if (strcmp(cmd, "say") == 0)
 	{
 		Cmd_Say_f(ent, false, false);
 		return;
 	}
-	if (Q_stricmp(cmd, "say_team") == 0)
+	if (strcmp(cmd, "say_team") == 0)
 	{
 		Cmd_Say_f(ent, true, false);
 		return;
 	}
-	if (Q_stricmp(cmd, "score") == 0)
+	if (strcmp(cmd, "score") == 0)
 	{
 		Cmd_Score_f(ent);
 		return;
 	}
-	if (Q_stricmp(cmd, "help") == 0)
+	if (strcmp(cmd, "help") == 0)
 	{
 		Cmd_Help_f(ent);
 		return;
@@ -1346,67 +1344,67 @@ void ClientCommand(edict_t* ent)
 	if (ent->client->resp.exitframe || ent->health <= 0)
 		return;
 
-	if (Q_stricmp(cmd, "use") == 0)
+	if (strcmp(cmd, "use") == 0)
 		Cmd_Use_f(ent);
-	else if (Q_stricmp(cmd, "drop") == 0)
+	else if (strcmp(cmd, "drop") == 0)
 		Cmd_Drop_f(ent);
-	else if (Q_stricmp(cmd, "give") == 0)
+	else if (strcmp(cmd, "give") == 0)
 		Cmd_Give_f(ent);
-	else if (Q_stricmp(cmd, "god") == 0)
+	else if (strcmp(cmd, "god") == 0)
 		Cmd_God_f(ent);
-	else if (Q_stricmp(cmd, "notarget") == 0)
+	else if (strcmp(cmd, "notarget") == 0)
 		Cmd_Notarget_f(ent);
-	else if (Q_stricmp(cmd, "noclip") == 0)
+	else if (strcmp(cmd, "noclip") == 0)
 		Cmd_Noclip_f(ent);
-	else if (Q_stricmp(cmd, "inven") == 0)
+	else if (strcmp(cmd, "inven") == 0)
 		Cmd_Inven_f(ent);
-	else if (Q_stricmp(cmd, "invnext") == 0)
+	else if (strcmp(cmd, "invnext") == 0)
 		SelectNextItem(ent, -1);
-	else if (Q_stricmp(cmd, "invprev") == 0)
+	else if (strcmp(cmd, "invprev") == 0)
 		SelectPrevItem(ent, -1);
-	else if (Q_stricmp(cmd, "invnextw") == 0)
+	else if (strcmp(cmd, "invnextw") == 0)
 		SelectNextItem(ent, IT_WEAPON);
-	else if (Q_stricmp(cmd, "invprevw") == 0)
+	else if (strcmp(cmd, "invprevw") == 0)
 		SelectPrevItem(ent, IT_WEAPON);
-	else if (Q_stricmp(cmd, "invnextp") == 0)
+	else if (strcmp(cmd, "invnextp") == 0)
 		SelectNextItem(ent, IT_POWERUP);
-	else if (Q_stricmp(cmd, "invprevp") == 0)
+	else if (strcmp(cmd, "invprevp") == 0)
 		SelectPrevItem(ent, IT_POWERUP);
-	else if (Q_stricmp(cmd, "invuse") == 0)
+	else if (strcmp(cmd, "invuse") == 0)
 		Cmd_InvUse_f(ent);
-	else if (Q_stricmp(cmd, "invdrop") == 0)
+	else if (strcmp(cmd, "invdrop") == 0)
 		Cmd_InvDrop_f(ent);
-	else if (Q_stricmp(cmd, "weapprev") == 0)
+	else if (strcmp(cmd, "weapprev") == 0)
 		Cmd_WeapPrev_f(ent);
-	else if (Q_stricmp(cmd, "weapnext") == 0)
+	else if (strcmp(cmd, "weapnext") == 0)
 		Cmd_WeapNext_f(ent);
-	else if (Q_stricmp(cmd, "weaplast") == 0)
+	else if (strcmp(cmd, "weaplast") == 0)
 		Cmd_WeapLast_f(ent);
-	else if (Q_stricmp(cmd, "kill") == 0)
+	else if (strcmp(cmd, "kill") == 0)
 		Cmd_Kill_f(ent);
-	else if (Q_stricmp(cmd, "putaway") == 0)
+	else if (strcmp(cmd, "putaway") == 0)
 		Cmd_PutAway_f(ent);
-	else if (Q_stricmp(cmd, "wave") == 0)
+	else if (strcmp(cmd, "wave") == 0)
 		Cmd_Wave_f(ent);
-	else if (Q_stricmp(cmd, "chasecam") == 0)
+	else if (strcmp(cmd, "chasecam") == 0)
 		Cmd_Chasecam_Toggle(ent);
-	else if (Q_stricmp(cmd, "playerlist") == 0)
+	else if (strcmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
-	else if (Q_stricmp(cmd, "nexttent") == 0)
+	else if (strcmp(cmd, "nexttent") == 0)
 		Cmd_NextTEnt_f(ent);
-	else if (Q_stricmp(cmd, "prevtent") == 0)
+	else if (strcmp(cmd, "prevtent") == 0)
 		Cmd_PrevTEnt_f(ent);
-	else if (Q_stricmp(cmd, "nexttenttype") == 0)
+	else if (strcmp(cmd, "nexttenttype") == 0)
 		Cmd_NextTEntType_f(ent);
-	else if (Q_stricmp(cmd, "prevtenttype") == 0)
+	else if (strcmp(cmd, "prevtenttype") == 0)
 		Cmd_PrevTEntType_f(ent);
-	else if (Q_stricmp(cmd, "nexttentcolor") == 0)
+	else if (strcmp(cmd, "nexttentcolor") == 0)
 		Cmd_NextTEntColor_f(ent);
-	else if (Q_stricmp(cmd, "prevtentcolor") == 0)
+	else if (strcmp(cmd, "prevtentcolor") == 0)
 		Cmd_PrevTEntColor_f(ent);
-	else if (Q_stricmp(cmd, "showtent") == 0)
+	else if (strcmp(cmd, "showtent") == 0)
 		Cmd_ShowTEnt_f(ent);
-	else if (Q_stricmp(cmd, "flashlight") == 0)
+	else if (strcmp(cmd, "flashlight") == 0)
 		Cmd_Flashlight(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f(ent, false, true);

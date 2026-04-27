@@ -1041,7 +1041,7 @@ void SP_misc_explobox(edict_t* self)
 
 	self->model = "models/objects/barrels/tris.md2";
 	self->s.modelindex = gi.modelindex(self->model);
-	VectorSet(self->mins, -16, -16, 0);
+	VectorSet(self->mins, -16, -16, -40);
 	VectorSet(self->maxs, 16, 16, 40);
 
 	if (!self->mass)
@@ -1060,6 +1060,7 @@ void SP_misc_explobox(edict_t* self)
 	self->think = M_droptofloor;
 	self->nextthink = level.time + 2 * FRAMETIME;
 
+	//gi.dprintf("%s at %f %f %f\n", __func__, self->s.origin[0], self->s.origin[1], self->s.origin[2]);
 	gi.linkentity(self);
 }
 

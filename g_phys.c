@@ -347,7 +347,8 @@ retry:
 	trace = gi.trace(start, ent->mins, ent->maxs, end, ent, mask);
 
 	VectorCopy(trace.endpos, ent->s.origin);
-	gi.linkentity(ent);
+	if (ent->inuse)
+		gi.linkentity(ent); //QW// some ents are freed so don't link them
 
 	// SLUGFILLER--splash (tweaked from the fire_lead code)
 	tr = gi.trace(start, NULL, NULL, ent->s.origin, ent, MASK_WATER);
@@ -407,7 +408,7 @@ retry:
 }
 
 
-typedef struct
+typedef struct pushed_s
 {
 	edict_t* ent;
 	vec3_t	origin;
@@ -741,7 +742,7 @@ void SV_Physics_Toss(edict_t* ent)
 	if (ent->groundentity)
 		return;
 
-	VectorCopy(ent->s.origin, old_origin);
+	_VectorCopy(ent->s.origin, old_origin);
 
 	SV_CheckVelocity(ent);
 

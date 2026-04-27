@@ -6,38 +6,38 @@
 mmove_t mmove_reloc;
 
 field_t fields[] = {
-	{"classname", FOFS(classname), F_LSTRING},
-	{"model", FOFS(model), F_LSTRING},
-	{"spawnflags", FOFS(spawnflags), F_INT},
-	{"speed", FOFS(speed), F_FLOAT},
-	{"accel", FOFS(accel), F_FLOAT},
-	{"decel", FOFS(decel), F_FLOAT},
-	{"target", FOFS(target), F_LSTRING},
-	{"targetname", FOFS(targetname), F_LSTRING},
-	{"pathtarget", FOFS(pathtarget), F_LSTRING},
-	{"deathtarget", FOFS(deathtarget), F_LSTRING},
-	{"killtarget", FOFS(killtarget), F_LSTRING},
-	{"combattarget", FOFS(combattarget), F_LSTRING},
-	{"message", FOFS(message), F_LSTRING},
-	{"team", FOFS(team), F_LSTRING},
-	{"wait", FOFS(wait), F_FLOAT},
-	{"delay", FOFS(delay), F_FLOAT},
-	{"random", FOFS(random), F_FLOAT},
-	{"move_origin", FOFS(move_origin), F_VECTOR},
-	{"move_angles", FOFS(move_angles), F_VECTOR},
-	{"style", FOFS(style), F_INT},
-	{"count", FOFS(count), F_INT},
-	{"health", FOFS(health), F_INT},
-	{"sounds", FOFS(sounds), F_INT},
-	{"light", 0, F_IGNORE},
-	{"dmg", FOFS(dmg), F_INT},
-	{"mass", FOFS(mass), F_INT},
-	{"volume", FOFS(volume), F_FLOAT},
-	{"attenuation", FOFS(attenuation), F_FLOAT},
-	{"map", FOFS(map), F_LSTRING},
-	{"origin", FOFS(s.origin), F_VECTOR},
-	{"angles", FOFS(s.angles), F_VECTOR},
-	{"angle", FOFS(s.angles), F_ANGLEHACK},
+	{"classname", FOFS(classname), F_LSTRING, 0},
+	{"model", FOFS(model), F_LSTRING, 0},
+	{"spawnflags", FOFS(spawnflags), F_INT, 0},
+	{"speed", FOFS(speed), F_FLOAT, 0},
+	{"accel", FOFS(accel), F_FLOAT, 0},
+	{"decel", FOFS(decel), F_FLOAT, 0},
+	{"target", FOFS(target), F_LSTRING, 0},
+	{"targetname", FOFS(targetname), F_LSTRING, 0},
+	{"pathtarget", FOFS(pathtarget), F_LSTRING, 0},
+	{"deathtarget", FOFS(deathtarget), F_LSTRING, 0},
+	{"killtarget", FOFS(killtarget), F_LSTRING, 0},
+	{"combattarget", FOFS(combattarget), F_LSTRING, 0},
+	{"message", FOFS(message), F_LSTRING, 0},
+	{"team", FOFS(team), F_LSTRING, 0},
+	{"wait", FOFS(wait), F_FLOAT, 0},
+	{"delay", FOFS(delay), F_FLOAT, 0},
+	{"random", FOFS(random), F_FLOAT, 0},
+	{"move_origin", FOFS(move_origin), F_VECTOR, 0},
+	{"move_angles", FOFS(move_angles), F_VECTOR, 0},
+	{"style", FOFS(style), F_INT, 0},
+	{"count", FOFS(count), F_INT, 0},
+	{"health", FOFS(health), F_INT, 0},
+	{"sounds", FOFS(sounds), F_INT, 0},
+	{"light", 0, F_IGNORE, 0},
+	{"dmg", FOFS(dmg), F_INT, 0},
+	{"mass", FOFS(mass), F_INT, 0},
+	{"volume", FOFS(volume), F_FLOAT, 0},
+	{"attenuation", FOFS(attenuation), F_FLOAT, 0},
+	{"map", FOFS(map), F_LSTRING, 0},
+	{"origin", FOFS(s.origin), F_VECTOR, 0},
+	{"angles", FOFS(s.angles), F_VECTOR, 0},
+	{"angle", FOFS(s.angles), F_ANGLEHACK, 0},
 
 	{"goalentity", FOFS(goalentity), F_EDICT, FFL_NOSPAWN},
 	{"movetarget", FOFS(movetarget), F_EDICT, FFL_NOSPAWN},
@@ -84,39 +84,39 @@ field_t fields[] = {
 	{"item", STOFS(item), F_LSTRING, FFL_SPAWNTEMP},
 
 	//need for item field in edict struct, FFL_SPAWNTEMP item will be skipped on saves
-		{"item", FOFS(item), F_ITEM},
+	{"item", FOFS(item), F_ITEM, 0},
 
-		{"gravity", STOFS(gravity), F_LSTRING, FFL_SPAWNTEMP},
-		{"sky", STOFS(sky), F_LSTRING, FFL_SPAWNTEMP},
-		{"skyrotate", STOFS(skyrotate), F_FLOAT, FFL_SPAWNTEMP},
-		{"skyaxis", STOFS(skyaxis), F_VECTOR, FFL_SPAWNTEMP},
-		{"minyaw", STOFS(minyaw), F_FLOAT, FFL_SPAWNTEMP},
-		{"maxyaw", STOFS(maxyaw), F_FLOAT, FFL_SPAWNTEMP},
-		{"minpitch", STOFS(minpitch), F_FLOAT, FFL_SPAWNTEMP},
-		{"maxpitch", STOFS(maxpitch), F_FLOAT, FFL_SPAWNTEMP},
-		{"nextmap", STOFS(nextmap), F_LSTRING, FFL_SPAWNTEMP},
+	{"gravity", STOFS(gravity), F_LSTRING, FFL_SPAWNTEMP},
+	{"sky", STOFS(sky), F_LSTRING, FFL_SPAWNTEMP},
+	{"skyrotate", STOFS(skyrotate), F_FLOAT, FFL_SPAWNTEMP},
+	{"skyaxis", STOFS(skyaxis), F_VECTOR, FFL_SPAWNTEMP},
+	{"minyaw", STOFS(minyaw), F_FLOAT, FFL_SPAWNTEMP},
+	{"maxyaw", STOFS(maxyaw), F_FLOAT, FFL_SPAWNTEMP},
+	{"minpitch", STOFS(minpitch), F_FLOAT, FFL_SPAWNTEMP},
+	{"maxpitch", STOFS(maxpitch), F_FLOAT, FFL_SPAWNTEMP},
+	{"nextmap", STOFS(nextmap), F_LSTRING, FFL_SPAWNTEMP},
 
-		{0, 0, 0, 0}
+	{0, 0, 0, 0}
 
 };
 
 field_t		levelfields[] =
 {
-	{"changemap", LLOFS(changemap), F_LSTRING},
+	{"changemap", LLOFS(changemap), F_LSTRING, 0},
 
-	{"sound_entity", LLOFS(sound_entity), F_EDICT},
-	{"sound2_entity", LLOFS(sound2_entity), F_EDICT},
+	{"sound_entity", LLOFS(sound_entity), F_EDICT, 0},
+	{"sound2_entity", LLOFS(sound2_entity), F_EDICT, 0},
 
-	{NULL, 0, F_INT}
+	{NULL, 0, F_INT, 0}
 };
 
 field_t		clientfields[] =
 {
-	{"pers.weapon", CLOFS(pers.weapon), F_ITEM},
-	{"pers.lastweapon", CLOFS(pers.lastweapon), F_ITEM},
-	{"newweapon", CLOFS(newweapon), F_ITEM},
+	{"pers.weapon", CLOFS(pers.weapon), F_ITEM, 0},
+	{"pers.lastweapon", CLOFS(pers.lastweapon), F_ITEM, 0},
+	{"newweapon", CLOFS(newweapon), F_ITEM, 0},
 
-	{NULL, 0, F_INT}
+	{NULL, 0, F_INT, 0}
 };
 
 /*
@@ -134,7 +134,7 @@ void InitGame(void)
 	_CrtMemCheckpoint(&startup1);
 #endif
 
-	gi.dprintf("==== InitGame %s ====\n", GAMEVERSION);
+	gi.dprintf("==== InitGame "GAMEVERSION" "BUILD" "__DATE__" ====\n"); //QW so we have the full banner in one place in the binary
 
 	gun_x = gi.cvar("gun_x", "0", 0);
 	gun_y = gi.cvar("gun_y", "0", 0);
@@ -152,14 +152,14 @@ void InitGame(void)
 
 	// latched vars
 	sv_cheats = gi.cvar("cheats", "0", CVAR_SERVERINFO | CVAR_LATCH);
-	gi.cvar("gamename", "gibrack", CVAR_SERVERINFO | CVAR_LATCH);
+	gi.cvar("gamename", GAMEVERSION, CVAR_SERVERINFO | CVAR_LATCH);
 	gi.cvar("gamedate", __DATE__, CVAR_SERVERINFO | CVAR_LATCH);
 
 	maxclients = gi.cvar("maxclients", "4", CVAR_SERVERINFO | CVAR_LATCH);
 	maxspectators = gi.cvar("maxspectators", "4", CVAR_SERVERINFO);
 	teamplay = gi.cvar("teamplay", "0", CVAR_LATCH);
-	deathmatch = gi.cvar("deathmatch", "0", CVAR_LATCH);
-	coop = gi.cvar("coop", "0", CVAR_LATCH);
+	deathmatch = gi.cvar("deathmatch", "0", CVAR_LATCH | CVAR_SERVERINFO);
+	coop = gi.cvar("coop", "0", CVAR_LATCH | CVAR_SERVERINFO);
 	lives = gi.cvar("lives", "0", CVAR_LATCH);
 	skill = gi.cvar("skill", "1", CVAR_LATCH);
 	maxentities = gi.cvar("maxentities", "1024", CVAR_LATCH);
@@ -176,7 +176,8 @@ void InitGame(void)
 	spectator_password = gi.cvar("spectator_password", "", CVAR_USERINFO);
 	needpass = gi.cvar("needpass", "0", CVAR_SERVERINFO);
 	filterban = gi.cvar("filterban", "1", 0);
-	flashlightmode = gi.cvar("flashlightmode", "1", 0); //QW 1 = bright white, 0 = hyperblaster glow
+	flashlightmode = gi.cvar("flashlightmode", "0", 0); //QW 1 = bright white, 0 = hyperblaster glow
+	exit_any = gi.cvar("exit_any", "0", 0); //QW allow exit of any player to trigger level change.
 
 	g_select_empty = gi.cvar("g_select_empty", "0", CVAR_ARCHIVE);
 
@@ -293,7 +294,7 @@ void WriteField1(FILE* f, field_t* field, byte* base)
 
 void WriteField2(FILE* f, field_t* field, byte* base)
 {
-	int			len;
+	size_t		len;
 	void* p;
 
 	if (field->flags & FFL_SPAWNTEMP)
@@ -305,7 +306,7 @@ void WriteField2(FILE* f, field_t* field, byte* base)
 	case F_LSTRING:
 		if (*(char**)p)
 		{
-			len = (int)strlen(*(char**)p) + 1;
+			len = strlen(*(char**)p) + 1;
 			fwrite(*(char**)p, len, 1, f);
 		}
 		break;
@@ -319,6 +320,7 @@ void ReadField(FILE* f, field_t* field, byte* base)
 	void* p;
 	int			len;
 	int			index;
+	size_t	count;
 
 	if (field->flags & FFL_SPAWNTEMP)
 		return;
@@ -340,7 +342,9 @@ void ReadField(FILE* f, field_t* field, byte* base)
 		else
 		{
 			*(char**)p = gi.TagMalloc(len, TAG_LEVEL);
-			fread(*(char**)p, len, 1, f);
+			count = fread(*(char**)p, len, 1, f);
+			if (count)
+				; // don't worry, be happy
 		}
 		break;
 	case F_EDICT:
@@ -431,8 +435,11 @@ All pointer variables (except function pointers) must be handled specially.
 void ReadClient(FILE* f, gclient_t* client)
 {
 	field_t* field;
+	size_t	count;
 
-	fread(client, sizeof(*client), 1, f);
+	count = fread(client, sizeof(*client), 1, f);
+	if (count)
+		; // don't worry, be happy
 
 	for (field = clientfields; field->name; field++)
 	{
@@ -464,7 +471,8 @@ void WriteGame(char* filename, qboolean autosave)
 		SaveClientData();
 
 	f = fopen(filename, "wb");
-	if (!f) {
+	if (!f)
+	{
 		GameError("Couldn't open %s", filename);
 	}
 	memset(str, 0, sizeof(str));
@@ -486,14 +494,18 @@ void ReadGame(char* filename)
 	FILE* f;
 	int		i;
 	char	str[16] = { 0 };
+	size_t	count;
 
 	gi.FreeTags(TAG_GAME);
 
 	f = fopen(filename, "rb");
 	if (!f)
+	{
 		GameError("Couldn't open %s", filename);
-
-	fread(str, sizeof(str), 1, f);
+	}
+	count = fread(str, sizeof(str), 1, f);
+	if (count)
+		; // don't worry, be happy
 	if (strcmp(str, __DATE__))
 	{
 		fclose(f);
@@ -503,7 +515,7 @@ void ReadGame(char* filename)
 	g_edicts = gi.TagMalloc(game.maxentities * sizeof(g_edicts[0]), TAG_GAME);
 	globals.edicts = g_edicts;
 
-	fread(&game, sizeof(game), 1, f);
+	count = fread(&game, sizeof(game), 1, f);
 	game.clients = gi.TagMalloc(game.maxclients * sizeof(game.clients[0]), TAG_GAME);
 	for (i = 0; i < game.maxclients; i++)
 		ReadClient(f, &game.clients[i]);
@@ -588,8 +600,11 @@ All pointer variables (except function pointers) must be handled specially.
 void ReadEdict(FILE* f, edict_t* ent)
 {
 	field_t* field;
+	size_t	count;
 
-	fread(ent, sizeof(*ent), 1, f);
+	count = fread(ent, sizeof(*ent), 1, f);
+	if (count)
+		; // don't worry, be happy
 
 	for (field = fields; field->name; field++)
 	{
@@ -607,8 +622,11 @@ All pointer variables (except function pointers) must be handled specially.
 void ReadLevelLocals(FILE* f)
 {
 	field_t* field;
+	size_t	count;
 
-	fread(&level, sizeof(level), 1, f);
+	count = fread(&level, sizeof(level), 1, f);
+	if (count)
+		; // don't worry, be happy
 
 	for (field = levelfields; field->name; field++)
 	{
@@ -630,7 +648,8 @@ void WriteLevel(char* filename)
 	void	(*base)(void);
 
 	f = fopen(filename, "wb");
-	if (!f) {
+	if (!f)
+	{
 		GameError("Couldn't open %s", filename);
 	}
 	// write out edict size for checking
@@ -678,11 +697,12 @@ No clients are connected yet.
 */
 void ReadLevel(char* filename)
 {
-	int		entnum;
+	int		entnum = 0;
 	FILE* f;
 	int		i;
 	void* base;
 	edict_t* ent;
+	size_t	count;
 
 	f = fopen(filename, "rb");
 	if (!f)
@@ -697,7 +717,7 @@ void ReadLevel(char* filename)
 	globals.num_edicts = maxclients->value + 1;
 
 	// check edict size
-	fread(&i, sizeof(i), 1, f);
+	count = fread(&i, sizeof(i), 1, f);
 	if (i != sizeof(edict_t))
 	{
 		fclose(f);
@@ -705,7 +725,7 @@ void ReadLevel(char* filename)
 	}
 
 	// check function pointer base address
-	fread(&base, sizeof(base), 1, f);
+	count = fread(&base, sizeof(base), 1, f);
 #ifdef _WIN32
 	if (base != (void*)InitGame)
 	{
@@ -722,7 +742,8 @@ void ReadLevel(char* filename)
 	// load all the entities
 	while (1)
 	{
-		if (fread(&entnum, sizeof(entnum), 1, f) != 1)
+		count = fread(&entnum, sizeof(entnum), 1, f);
+		if (count != 1)
 		{
 			fclose(f);
 			GameError("ReadLevel: failed to read entnum");

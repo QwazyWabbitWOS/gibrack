@@ -88,7 +88,8 @@ The normal starting point for a level.
 */
 void SP_info_player_start(edict_t* self)
 {
-	if (coop->value && Q_stricmp(level.mapname, "security") == 0)
+	
+	if(coop->value && strcmp(level.mapname, "security") == 0)
 	{
 		// invoke one of our gross, ugly, disgusting hacks
 		self->think = SP_CreateCoopSpots;
@@ -650,7 +651,7 @@ LookAtKiller
 */
 void LookAtKiller(edict_t* self, edict_t* inflictor, edict_t* attacker)
 {
-	vec3_t		dir = { 0 };
+	vec3_t		dir;
 
 	if (attacker && attacker != world && attacker != self)
 	{
@@ -1162,7 +1163,7 @@ void	SelectSpawnPoint(edict_t* ent, vec3_t origin, vec3_t angles)
 				spot = G_Find(spot, FOFS(classname), "info_player_start");
 			}
 			if (!spot) {
-				GameError("Couldn't find spawn point %s\n", game.spawnpoint);
+				GameError("Couldn't find spawn point %s in %s\n", game.spawnpoint, level.mapname);
 			}
 		}
 	}
@@ -1170,6 +1171,11 @@ void	SelectSpawnPoint(edict_t* ent, vec3_t origin, vec3_t angles)
 	VectorCopy(spot->s.origin, origin);
 	origin[2] += 9;
 	VectorCopy(spot->s.angles, angles);
+
+	//gi.dprintf("%s player spawnpoint selected at %f %f %f angles %f %f %f\n", __func__,
+	//	spot->s.origin[0], spot->s.origin[1], spot->s.origin[2],
+	//	spot->s.angles[0], spot->s.angles[1], spot->s.angles[2]);
+
 }
 
 //======================================================================
@@ -1529,7 +1535,7 @@ void PutClientInServer(edict_t* ent)
 	// set the delta angle
 	for (i = 0; i < 3; i++)
 	{
-		client->ps.pmove.delta_angles[i] = ANGLE2SHORT(spawn_angles[i] - client->resp.cmd_angles[i]);
+		client->ps.pmove.delta_angles[i] = (short)ANGLE2SHORT(spawn_angles[i] - client->resp.cmd_angles[i]);
 	}
 
 	ent->s.angles[PITCH] = 0;
@@ -1627,14 +1633,14 @@ void ClientBegin(edict_t* ent)
 
 	// if there is already a body waiting for us (a loadgame), just
 	// take it, otherwise spawn one from scratch
-	if (ent->inuse)
+	if (ent->inuse == true)
 	{
 		// the client has cleared the client side viewangles upon
 		// connecting to the server, which is different than the
 		// state when the game is saved, so we need to compensate
 		// with deltaangles
 		for (i = 0; i < 3; i++)
-			ent->client->ps.pmove.delta_angles[i] = ANGLE2SHORT(ent->client->ps.viewangles[i]);
+			ent->client->ps.pmove.delta_angles[i] = (short)ANGLE2SHORT(ent->client->ps.viewangles[i]);
 	}
 	else
 	{
@@ -1831,7 +1837,7 @@ void ClientDisconnect(edict_t* ent)
 {
 	int		playernum;
 
-	if (!ent->client || !ent->inuse)
+	if (!ent->client)
 		return;
 
 	gi.bprintf(PRINT_HIGH, "%s disconnected\n", ent->client->pers.netname);

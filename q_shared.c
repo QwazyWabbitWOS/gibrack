@@ -898,7 +898,7 @@ void Com_PageInMemory(byte* buffer, int size)
 #define Q_isspace(c)    (c == ' ' || c == '\f' || c == '\n' || \
                          c == '\r' || c == '\t' || c == '\v')
 
-int Q_tolower(int c)
+inline int  Q_tolower(int c)
 {
 	if (Q_isupper(c)) {
 		c += ('a' - 'A');
@@ -1099,8 +1099,7 @@ key and returns the associated value, or an empty string.
 char* Info_ValueForKey(char* s, char* key)
 {
 	char	pkey[512];
-	static	char value[2][512];	// use two buffers so compares
-								// work without stomping on each other
+	static	char value[2][512];	// use two buffers so compares work without stomping on each other
 	static	int	valueindex;
 	char* o;
 

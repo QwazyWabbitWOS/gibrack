@@ -36,7 +36,7 @@ Better Obituary - obituary messages for any death of player or monster from any 
 
 Visible Bullets - thats for the gl players, you can see bullets flying, software users may be able to look closely enough
 
-Coop Exit - in coop all players must exit the level before the level changes, and from the same exit
+Coop Exit - in coop all players must exit the level before the level changes, and from the same exit.
 
 Weapons tweaking - inhanced power for some weapons, and go-through-wall charging railgun
 
@@ -58,7 +58,10 @@ set lives <-1,0-9> s - in single player and coop it allowes you to respawn in th
 
 set coop-
 1-"Cooperative", the standard
-2-"Quick-Run", all the rules of coop, exapt scoring is made by kill/secret/goal ratio minus time
+2-"Quick-Run", all the rules of coop, exept scoring is made by kill/secret/goal ratio minus time
+
+set exit_any-
+Set this cvar to 1 if you want to allow map exits even if other players are not within range of the exiting player. Default: 0
 
 set deathmatch-
 1-"FragFest", the standard

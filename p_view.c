@@ -54,7 +54,7 @@ void P_DamageFeedback(edict_t* player)
 	gclient_t* client;
 	float	side;
 	float	realcount, count, kick;
-	vec3_t	v;
+	vec3_t	v = { 0 };
 	int		r, l;
 	static	vec3_t	power_color = { 0.0, 1.0, 0.0 };
 	static	vec3_t	acolor = { 1.0, 1.0, 1.0 };
@@ -413,7 +413,7 @@ SV_CalcBlend
 void SV_CalcBlend(edict_t* ent)
 {
 	int		contents;
-	vec3_t	vieworg;
+	vec3_t	vieworg = { 0 };
 	int		remaining;
 
 	ent->client->ps.blend[0] = ent->client->ps.blend[1] =
@@ -516,14 +516,42 @@ void P_FallingDamage(edict_t* ent)
 	if (ent->movetype == MOVETYPE_NOCLIP)
 		return;
 
+	//QW// This DotProduct/DotProduct calculation results in delta = NaN for a stationary player
+	// (because 0/0 is undefined) and then it will completely hose the player view when 
+	// ent->velocity is used in SV_CalcViewOffset.
+	// If you hack it with if(isnan(delta)) delta = 0; per below then it works but I don't 
+	// know how this calculation can be called "better" except that it computes the actual 
+	// 3-D velocity vs only Z-velocity of the old method but for falling damage we would
+	// only care about Z velocity anyway.
+	//QW//
 	// SLUGFILLER--better delta calculation
 	delta = DotProduct(ent->velocity, ent->client->oldvelocity) / DotProduct(ent->client->oldvelocity, ent->client->oldvelocity);
 	if (delta > 1)
 		return;
+
+	if (isnan(delta)) {
+		delta = 0;
+	}
+
 	if (delta < 0)
 		delta = 0;
 	delta = VectorLength(ent->client->oldvelocity) * (1 - delta);
 	delta = delta * delta * 0.0001;
+
+	//QW// Reinserted the legacy method of calculating delta for historical purposes.
+	//if ((ent->client->oldvelocity[2] < 0) && (ent->velocity[2] > ent->client->oldvelocity[2]) && (!ent->groundentity))
+	//{
+	//	delta = ent->client->oldvelocity[2];
+	//}
+	//else
+	//{
+	//	if (!ent->groundentity)
+	//		return;
+	//	delta = ent->velocity[2] - ent->client->oldvelocity[2];
+	//}
+	//delta = delta * delta * 0.0001;
+	//gi.dprintf("delta is %f\n", delta);
+	//QW//
 
 	// SLUGFILLER--damage is not effected by the waterlevel,
 	// only the water friction reduces the damage

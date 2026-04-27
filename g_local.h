@@ -4,8 +4,8 @@
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN	//non-MFC
-#include <windows.h>
 #define _CRTDBG_MAP_ALLOC
+#include <windows.h>
 #include <stdlib.h>
 #include <crtdbg.h>
 _CrtMemState startup1;	// memory diagnostics
@@ -21,8 +21,16 @@ _CrtMemState startup1;	// memory diagnostics
 #define	GAME_INCLUDE
 #include "game.h"
 
+#include "flashlight.h" //QW Added a flashlight
+
 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"gibrack"
+#define	GAMEVERSION	"gibrack v2.0"
+
+#ifdef _DEBUG
+#define BUILD	"Debug"
+#else
+#define BUILD	"Release"
+#endif
 
 // protocol bytes that can be directly added to messages
 #define	svc_muzzleflash		1
@@ -78,14 +86,14 @@ _CrtMemState startup1;	// memory diagnostics
 
 #define BODY_QUEUE_SIZE		8
 
-typedef enum
+typedef enum damage_n
 {
 	DAMAGE_NO,
 	DAMAGE_YES,			// will take damage if hit
 	DAMAGE_AIM			// auto targeting recognizes this
 } damage_t;
 
-typedef enum
+typedef enum weaponstate_n
 {
 	WEAPON_READY,
 	WEAPON_ACTIVATING,
@@ -93,7 +101,7 @@ typedef enum
 	WEAPON_FIRING
 } weaponstate_t;
 
-typedef enum
+typedef enum ammo_n
 {
 	AMMO_BULLETS,
 	AMMO_SHELLS,
@@ -192,7 +200,7 @@ typedef enum
 
 
 // edict->movetype values
-typedef enum
+typedef enum movetype_n
 {
 	MOVETYPE_NONE,			// never moves
 	MOVETYPE_NOCLIP,		// origin and angles change with no interaction
@@ -210,7 +218,7 @@ typedef enum
 
 
 
-typedef struct
+typedef struct gitem_armor_s
 {
 	int		base_count;
 	int		max_count;
@@ -278,7 +286,7 @@ typedef struct gitem_s
 // it should be initialized at dll load time, and read/written to
 // the server.ssv file for savegames
 //
-typedef struct
+typedef struct game_locals_s
 {
 	char		helpmessage1[512];
 	char		helpmessage2[512];
@@ -309,7 +317,7 @@ typedef struct
 // this structure is cleared as each map is entered
 // it is read/written to the level.sav file for savegames
 //
-typedef struct
+typedef struct level_locals_s
 {
 	int			framenum;
 	float		time;
@@ -354,7 +362,7 @@ typedef struct
 // spawn_temp_t is only used to hold entity field values that
 // can be set from the editor, but aren't actualy present
 // in edict_t during gameplay
-typedef struct
+typedef struct spawn_temp_s
 {
 	// world vars
 	char* sky;
@@ -377,7 +385,7 @@ typedef struct
 } spawn_temp_t;
 
 
-typedef struct
+typedef struct moveinfo_s
 {
 	// fixed data
 	vec3_t		start_origin;
@@ -408,14 +416,14 @@ typedef struct
 } moveinfo_t;
 
 
-typedef struct
+typedef struct mframe_s
 {
 	int		animtype;
 	float	dist;
 	void	(*thinkfunc)(edict_t* self);
 } mframe_t;
 
-typedef struct
+typedef struct mmove_s
 {
 	int			firstframe;
 	int			lastframe;
@@ -423,7 +431,7 @@ typedef struct
 	void		(*endfunc)(edict_t* self);
 } mmove_t;
 
-typedef struct
+typedef struct monsterinfo_s
 {
 	mmove_t* currentmove;
 	int			aiflags;
@@ -547,8 +555,8 @@ extern	cvar_t* g_select_empty;
 extern	cvar_t* dedicated;
 extern	cvar_t* game_dir;
 
-extern	cvar_t* flashlightmode; //QW/ mode for flashlight code.
 extern	cvar_t* filterban;
+extern	cvar_t* exit_any;		//QW allow a single player to force exit.
 
 extern	cvar_t* sv_gravity;
 extern	cvar_t* sv_maxvelocity;
@@ -591,7 +599,7 @@ extern	cvar_t* sv_maplist;
 #define FFL_SPAWNTEMP		1
 #define FFL_NOSPAWN			2
 
-typedef enum {
+typedef enum fieldtype_n {
 	F_INT,
 	F_FLOAT,
 	F_LSTRING,			// string on disk, pointer in memory, TAG_LEVEL
@@ -606,7 +614,7 @@ typedef enum {
 	F_IGNORE
 } fieldtype_t;
 
-typedef struct
+typedef struct field_s
 {
 	char* name;
 	int		ofs;
@@ -723,7 +731,7 @@ void monster_dead_dead(edict_t* self);
 void walkmonster_start(edict_t* self);
 void swimmonster_start(edict_t* self);
 void flymonster_start(edict_t* self);
-void AttackFinished(edict_t* self, float time);
+//void AttackFinished(edict_t* self, float time);
 void monster_death_use(edict_t* self);
 void M_CatagorizePosition(edict_t* ent);
 qboolean M_CheckAttack(edict_t* self);
@@ -917,7 +925,7 @@ typedef struct client_persistent_s
 } client_persistent_t;
 
 // client data that stays across deathmatch respawns
-typedef struct
+typedef struct client_respawn_s
 {
 	client_persistent_t	coop_respawn;	// what to set client->pers to on a respawn
 	int			enterframe;			// level.framenum the client entered the game

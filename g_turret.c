@@ -345,12 +345,14 @@ void turret_driver_think(edict_t* self)
 		}
 	}
 
-	// let the turret know where we want it to aim
-	VectorCopy(self->enemy->s.origin, target);
-	target[2] += self->enemy->viewheight;
-	VectorSubtract(target, self->target_ent->s.origin, dir);
-	vectoangles(dir, self->target_ent->move_angles);
-
+	if (self->enemy)
+	{
+		// let the turret know where we want it to aim
+		VectorCopy(self->enemy->s.origin, target);
+		target[2] += self->enemy->viewheight;
+		VectorSubtract(target, self->target_ent->s.origin, dir);
+		vectoangles(dir, self->target_ent->move_angles);
+	}
 	// SLUGFILLER--decide IF we should shoot
 	if (self->monsterinfo.aiflags & AI_SOUND_TARGET)
 		return;

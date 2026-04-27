@@ -537,7 +537,7 @@ void T_Damage(edict_t* targ, edict_t* inflictor, edict_t* attacker, vec3_t dir, 
 {
 	gclient_t* client;
 	int			take;
-	int			gib_take;
+	//int			gib_take;
 	int			save;
 	int			asave;
 	int			psave;
@@ -615,7 +615,7 @@ void T_Damage(edict_t* targ, edict_t* inflictor, edict_t* attacker, vec3_t dir, 
 	}
 
 	// SLUGFILLER--new gib system
-	gib_take = damage;
+	//gib_take = damage;
 	take = damage;
 	save = 0;
 

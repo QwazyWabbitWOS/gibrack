@@ -69,9 +69,9 @@ void SP_target_speaker(edict_t* ent)
 		return;
 	}
 	if (!strstr(st.noise, ".wav"))
-		Com_sprintf(buffer, sizeof(buffer), "%s.wav", st.noise);
+		Com_sprintf(buffer, sizeof buffer, "%s.wav", st.noise);
 	else
-		strncpy(buffer, st.noise, sizeof(buffer));
+		Q_strncpyz(buffer, sizeof buffer, st.noise);
 	ent->noise_index = gi.soundindex(buffer);
 
 	if (!ent->volume)
@@ -254,8 +254,35 @@ Changes level to "map" when fired
 */
 void use_target_changelevel(edict_t* self, edict_t* other, edict_t* activator)
 {
+	edict_t* ent = NULL;
+	int player;
+	vec3_t v;
+
 	if (activator->health <= 0)
 		return;
+
+	// allow a single player to force exit, no range check this when cvar is set.
+	if (!exit_any->value) //QW// default is 0
+	{
+		// if other players are too far away, no exit
+		for (player = 1; player <= game.maxclients; player++)
+		{
+			ent = &g_edicts[player];
+			if (!ent->inuse)
+				continue;
+			if (!ent->client)
+				continue;
+			if (ent->client->pers.spectator)
+				continue;
+			if (ent->movetype == MOVETYPE_NOCLIP)
+				continue;
+
+			VectorSubtract(activator->s.origin, ent->s.origin, v);
+
+			if (VectorLength(v) > 512)
+				return;
+		}
+	}
 
 	// if noexit, do a ton of damage to <SLUGFILLER-->activator (bug fix)
 	if (deathmatch->value && !((int)dmflags->value & DF_ALLOW_EXIT) && activator != world)
@@ -411,7 +438,7 @@ void use_target_blaster(edict_t* self, edict_t* other, edict_t* activator)
 	else
 		effect = EF_BLASTER;
 
-	fire_blaster(activator, self->s.origin, self->movedir, self->dmg, self->speed, EF_BLASTER, MOD_TARGET_BLASTER);
+	fire_blaster(activator, self->s.origin, self->movedir, self->dmg, self->speed, effect, MOD_TARGET_BLASTER);
 	gi.sound(self, CHAN_VOICE, self->noise_index, 1, ATTN_NORM, 0);
 }
 

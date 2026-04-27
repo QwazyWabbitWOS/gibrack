@@ -36,7 +36,7 @@ cvar_t* dedicated;
 cvar_t* game_dir;
 
 cvar_t* filterban;
-cvar_t* flashlightmode;
+cvar_t* exit_any;
 
 cvar_t* sv_maxvelocity;
 cvar_t* sv_gravity;
@@ -68,7 +68,7 @@ void ClientUserinfoChanged(edict_t* ent, char* userinfo);
 void ClientDisconnect(edict_t* ent);
 void ClientBegin(edict_t* ent);
 void ClientCommand(edict_t* ent);
-void RunEntity(edict_t* ent);
+void G_RunEntity(edict_t* ent);
 void WriteGame(char* filename, qboolean autosave);
 void ReadGame(char* filename);
 void WriteLevel(char* filename);
@@ -142,7 +142,7 @@ void Sys_Error(char* error, ...)
 	char		text[1024];
 
 	va_start(argptr, error);
-	vsprintf(text, error, argptr);
+	vsnprintf(text, sizeof text, error, argptr);
 	va_end(argptr);
 
 	gi.error(ERR_FATAL, "%s", text);
@@ -154,7 +154,7 @@ void Com_Printf(char* msg, ...)
 	char		text[1024];
 
 	va_start(argptr, msg);
-	vsprintf(text, msg, argptr);
+	vsnprintf(text, sizeof text, msg, argptr);
 	va_end(argptr);
 
 	gi.dprintf("%s", text);
@@ -241,14 +241,14 @@ void EndDMLevel(void)
 				}
 				else
 					BeginIntermission(CreateTargetChangeLevel(t), NULL);
-				free(s);
+				gi.TagFree(s);
 				return;
 			}
 			if (!f)
 				f = t;
 			t = strtok(NULL, seps);
 		}
-		free(s);
+		gi.TagFree(s);
 	}
 
 	if (level.nextmap[0]) // go to a specific map

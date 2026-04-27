@@ -566,13 +566,13 @@ void makron_sight(edict_t* self, edict_t* other)
 void makron_attack(edict_t* self)
 {
 	vec3_t	vec;
-	float	range;
+	//float	range;
 	float	r;
 
 	r = random();
 
-	VectorSubtract(self->enemy->s.origin, self->s.origin, vec);
-	range = VectorLength(vec);
+	_VectorSubtract(self->enemy->s.origin, self->s.origin, vec);
+	//range = VectorLength(vec);
 
 
 	if (r <= 0.3)

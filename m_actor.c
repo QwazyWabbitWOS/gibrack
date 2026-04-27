@@ -573,7 +573,7 @@ void target_actor_touch(edict_t* self, edict_t* other, cplane_t* plane, csurface
 		other->monsterinfo.pausetime = 0;
 		other->monsterinfo.stand(other);
 	}
-	else if (other->movetarget == other->goalentity)
+	else if (other->movetarget && other->movetarget == other->goalentity)
 	{
 		VectorSubtract(other->movetarget->s.origin, other->s.origin, v);
 		other->ideal_pitch = 0;
