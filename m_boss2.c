@@ -371,7 +371,7 @@ void boss2_walk(edict_t* self)
 
 void boss2_attack(edict_t* self)
 {
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	float	range;
 
 	VectorSubtract(self->enemy->s.origin, self->s.origin, vec);
@@ -490,15 +490,18 @@ void boss2_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage,
 
 qboolean Boss2_CheckAttack(edict_t* self)
 {
-	vec3_t	spot1, spot2;
-	vec3_t	temp;
+	vec3_t	spot1 = { 0 }, spot2 = { 0 };
+	vec3_t	temp = { 0 };
 	float	chance;
 	trace_t	tr;
 	qboolean	is_sliding;
-	qboolean	enemy_infront;
+	//qboolean	enemy_infront;
 	int			enemy_range;
 	float		enemy_pitch;
 	float		enemy_yaw;
+
+	if (!self->enemy)
+		return false;
 
 	if (self->monsterinfo.aiflags & AI_DODGING)
 		self->monsterinfo.aiflags |= AI_SLIDING;
@@ -524,7 +527,7 @@ qboolean Boss2_CheckAttack(edict_t* self)
 			return false;
 	}
 
-	enemy_infront = infront(self, self->enemy);
+	//enemy_infront = infront(self, self->enemy);
 	enemy_range = range(self, self->enemy);
 	VectorSubtract(self->enemy->s.origin, self->s.origin, temp);
 	temp[2] += self->enemy->viewheight - self->viewheight;

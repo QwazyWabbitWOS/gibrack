@@ -33,7 +33,7 @@ void M_MonsterDodge(edict_t* self, edict_t* inflictor, edict_t* attacker, float 
 		dodger = true;
 
 	// got ourselves a new rival
-	if (!self->enemy && (attacker->client || attacker->enemy == self))
+	if (!self->enemy && attacker && (attacker->client || attacker->enemy == self))
 	{
 		self->enemy = attacker;
 		if (attacker->svflags & SVF_MONSTER)
@@ -203,7 +203,7 @@ returns the range catagorization of an entity reletive to self
 */
 int range(edict_t* self, edict_t* other)
 {
-	vec3_t	v;
+	vec3_t	v = { 0 };
 	float	len;
 
 	VectorSubtract(self->s.origin, other->s.origin, v);
@@ -226,9 +226,12 @@ returns 1 if the entity is visible to self, even if not infront ()
 */
 qboolean visible(edict_t* self, edict_t* other)
 {
-	vec3_t	spot1;
-	vec3_t	spot2;
+	vec3_t	spot1 = { 0 };
+	vec3_t	spot2 = { 0 };
 	trace_t	trace;
+
+	if (!self || !other)
+		return false;	//QW can't be visible if either is null...
 
 	VectorCopy(self->s.origin, spot1);
 	spot1[2] += self->viewheight;
@@ -251,7 +254,7 @@ returns 1 if the entity is in front (in sight) of self
 */
 qboolean infront(edict_t* self, edict_t* other)
 {
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	float	dot;
 	vec3_t	forward;
 

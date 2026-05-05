@@ -84,8 +84,6 @@ _CrtMemState startup1;	// memory diagnostics
 
 #define MELEE_DISTANCE	80
 
-#define BODY_QUEUE_SIZE		8
-
 typedef enum damage_n
 {
 	DAMAGE_NO,
@@ -254,29 +252,29 @@ typedef struct gitem_s
 {
 	char* classname;	// spawning name
 	qboolean(*pickup)(struct edict_s* ent, struct edict_s* other);
-	void		(*use)(struct edict_s* ent, struct gitem_s* item);
-	void		(*drop)(struct edict_s* ent, struct gitem_s* item);
-	void		(*weaponthink)(struct edict_s* ent);
-	char* pickup_sound;
-	char* world_model;
-	int			world_model_flags;
-	char* view_model;
+	void	(*use)(struct edict_s* ent, struct gitem_s* item);
+	void	(*drop)(struct edict_s* ent, struct gitem_s* item);
+	void	(*weaponthink)(struct edict_s* ent);
+	char*	pickup_sound;
+	char*	world_model;
+	int		world_model_flags;
+	char*	view_model;
 
 	// client side info
-	char* icon;
-	char* pickup_name;	// for printing on pickup
-	int			count_width;		// number of digits to display by icon
+	char*	icon;
+	char*	pickup_name;	// for printing on pickup
+	int		count_width;	// number of digits to display by icon
 
-	int			quantity;		// for ammo how much, for weapons how much is used per shot
-	char* ammo;			// for weapons
-	int			flags;			// IT_* flags
+	int		quantity;		// for ammo how much, for weapons how much is used per shot
+	char*	ammo;			// for weapons
+	int		flags;			// IT_* flags
 
-	int			weapmodel;		// weapon model index (for weapons)
+	int		weapmodel;		// weapon model index (for weapons)
 
-	void* info;
-	int			tag;
+	void*	info;
+	int		tag;
 
-	char* precaches;		// string of all models, sounds, and images this item will use
+	char*	precaches;		// string of all models, sounds, and images this item will use
 } gitem_t;
 
 
@@ -556,7 +554,6 @@ extern	cvar_t* dedicated;
 extern	cvar_t* game_dir;
 
 extern	cvar_t* filterban;
-extern	cvar_t* exit_any;		//QW allow a single player to force exit.
 
 extern	cvar_t* sv_gravity;
 extern	cvar_t* sv_maxvelocity;
@@ -790,7 +787,7 @@ void fire_bfg(edict_t* self, vec3_t start, vec3_t dir, int damage, int speed, fl
 void ClientObituary(edict_t* self, edict_t* inflictor, edict_t* attacker);
 void CopyToBodyQue(edict_t* self);
 void respawn(edict_t* ent);
-qboolean BeginIntermission(edict_t* targ, edict_t* activator);
+void BeginIntermission(edict_t* targ);
 void PutClientInServer(edict_t* ent);
 void InitClientPersistent(gclient_t* client);
 void InitClientResp(gclient_t* client);

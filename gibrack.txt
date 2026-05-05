@@ -60,9 +60,6 @@ set coop-
 1-"Cooperative", the standard
 2-"Quick-Run", all the rules of coop, exept scoring is made by kill/secret/goal ratio minus time
 
-set exit_any-
-Set this cvar to 1 if you want to allow map exits even if other players are not within range of the exiting player. Default: 0
-
 set deathmatch-
 1-"FragFest", the standard
 2-"DeathMatch"(literaly), you get a limited amount of lives(see #4), when you run out you go to intermission, until only one player/team remains, infinite lives are not allowed, 0 lives to make realistic killing

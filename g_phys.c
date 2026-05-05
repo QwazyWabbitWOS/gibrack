@@ -90,8 +90,16 @@ qboolean SV_RunThink(edict_t* ent)
 
 	ent->nextthink = 0;
 
-	if (!ent->think)
-		GameError("NULL ent->think");
+	if (!ent->think || !ent->inuse)
+	{
+		if (ent->classname && ent->model)
+			gi.dprintf("NULL ent->think (classname %s, model %s mapname %s)\n", ent->classname, ent->model, level.mapname);
+		else if (ent->classname)
+			gi.dprintf("NULL ent->think (classname %s mapname %s)\n", ent->classname, level.mapname);
+		else
+			gi.dprintf("NULL ent->think (mapname %s)\n", level.mapname);
+		return false;
+	}
 
 	ent->think(ent);
 	return false;
@@ -174,11 +182,13 @@ int SV_FlyMove(edict_t* ent, float time, int mask)
 	vec3_t		dir;
 	float		d;
 	int			numplanes;
-	vec3_t		planes[MAX_CLIP_PLANES];
-	vec3_t		primal_velocity, original_velocity, new_velocity;
+	vec3_t		planes[MAX_CLIP_PLANES] = { 0 };
+	vec3_t		primal_velocity = { 0 };
+	vec3_t		original_velocity = { 0 };
+	vec3_t		new_velocity;
 	int			i, j;
 	trace_t		trace;
-	vec3_t		end;
+	vec3_t		end = { 0 };
 	float		time_left;
 	int			blocked;
 
@@ -431,9 +441,9 @@ qboolean SV_Push(edict_t* pusher, vec3_t move, vec3_t amove)
 {
 	int			i, e;
 	edict_t* check, * block;
-	vec3_t		mins, maxs;
+	vec3_t		mins = { 0 }, maxs = { 0 };
 	pushed_t* p;
-	vec3_t		org, org2, move2, forward, right, up;
+	vec3_t		org = { 0 }, org2 = { 0 }, move2 = { 0 }, forward, right, up;
 
 	if (!pusher)
 		return false;
@@ -691,7 +701,7 @@ A moving object that doesn't obey physics
 void SV_Physics_Noclip(edict_t* ent)
 {
 	// regular thinking
-	if (!SV_RunThink(ent))
+	if (!ent->inuse || !SV_RunThink(ent))
 		return;
 
 	VectorMA(ent->s.angles, FRAMETIME, ent->avelocity, ent->s.angles);
@@ -725,6 +735,8 @@ void SV_Physics_Toss(edict_t* ent)
 
 	// regular thinking
 	SV_RunThink(ent);
+	if (!ent->inuse)
+		return;
 
 	// if not a team captain, so movement will be handled elsewhere
 	if (ent->flags & FL_TEAMSLAVE)
@@ -898,7 +910,7 @@ void SV_Physics_Step(edict_t* ent)
 	// friction for flying monsters that have been given vertical velocity
 	if ((ent->flags & FL_FLY) && (ent->velocity[2] != 0))
 	{
-		speed = fabs(ent->velocity[2]);
+		speed = fabsf(ent->velocity[2]);
 		control = speed < sv_stopspeed ? sv_stopspeed : speed;
 		friction = sv_friction / 3;
 		newspeed = speed - (FRAMETIME * control * friction);
@@ -911,7 +923,7 @@ void SV_Physics_Step(edict_t* ent)
 	// friction for flying monsters that have been given vertical velocity
 	if ((ent->flags & FL_SWIM) && (ent->velocity[2] != 0))
 	{
-		speed = fabs(ent->velocity[2]);
+		speed = fabsf(ent->velocity[2]);
 		control = speed < sv_stopspeed ? sv_stopspeed : speed;
 		newspeed = speed - (FRAMETIME * control * sv_waterfriction * ent->waterlevel);
 		if (newspeed < 0)
@@ -1043,6 +1055,7 @@ void G_RunEntity(edict_t* ent)
 		SV_Physics_Attach(ent);
 		break;
 	default:
-		GameError("SV_Physics: bad movetype %i", (int)ent->movetype);
+		GameError("G_RunEntity: entity #%i, bad movetype %i",
+			(int)(ent - g_edicts), (int)ent->movetype);
 	}
 }

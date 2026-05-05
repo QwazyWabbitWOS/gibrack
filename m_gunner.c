@@ -519,7 +519,10 @@ void gunner_fire_chain(edict_t* self)
 
 void gunner_refire_chain(edict_t* self)
 {
-	if (self->enemy && self->enemy->health > 0)
+	if (!self->enemy)
+		return;
+
+	if (self->enemy->health > 0)
 		if (visible(self, self->enemy))
 			if (random() <= 0.5)
 			{

@@ -154,9 +154,8 @@ void ThrowHead(edict_t* self, char* gibname, int damage, int type)
 
 	self->avelocity[YAW] = crandom() * 600;
 
-	// SLUGFILLER--removed head autoremove
-	// when the head was a body, it wasn't going to be removed anyway
-	self->nextthink = 0;
+	self->think = G_FreeEdict;
+	self->nextthink = level.time + 10 + random() * 10;
 
 	gi.linkentity(self);
 }
@@ -658,7 +657,7 @@ void SP_func_wall(edict_t* self)
 	// it must be TRIGGER_SPAWN
 	if (!(self->spawnflags & 1))
 	{
-		//		gi.dprintf("func_wall missing TRIGGER_SPAWN\n");
+		//gi.dprintf("Fixing func_wall missing TRIGGER_SPAWN\n");
 		self->spawnflags |= 1;
 	}
 
@@ -667,7 +666,7 @@ void SP_func_wall(edict_t* self)
 	{
 		if (!(self->spawnflags & 2))
 		{
-			gi.dprintf("func_wall START_ON without TOGGLE\n");
+			//gi.dprintf("Fixing func_wall START_ON without TOGGLE\n");
 			self->spawnflags |= 2;
 		}
 	}

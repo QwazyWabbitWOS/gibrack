@@ -254,53 +254,34 @@ Changes level to "map" when fired
 */
 void use_target_changelevel(edict_t* self, edict_t* other, edict_t* activator)
 {
-	edict_t* ent = NULL;
-	int player;
-	vec3_t v;
+	if (level.intermissiontime)
+		return;		// already activated
 
-	if (activator->health <= 0)
-		return;
-
-	// allow a single player to force exit, no range check this when cvar is set.
-	if (!exit_any->value) //QW// default is 0
+	if (!deathmatch->value && !coop->value)
 	{
-		// if other players are too far away, no exit
-		for (player = 1; player <= game.maxclients; player++)
-		{
-			ent = &g_edicts[player];
-			if (!ent->inuse)
-				continue;
-			if (!ent->client)
-				continue;
-			if (ent->client->pers.spectator)
-				continue;
-			if (ent->movetype == MOVETYPE_NOCLIP)
-				continue;
-
-			VectorSubtract(activator->s.origin, ent->s.origin, v);
-
-			if (VectorLength(v) > 512)
-				return;
-		}
+		if (g_edicts[1].health <= 0)
+			return;
 	}
 
-	// if noexit, do a ton of damage to <SLUGFILLER-->activator (bug fix)
-	if (deathmatch->value && !((int)dmflags->value & DF_ALLOW_EXIT) && activator != world)
+	// if noexit, do a ton of damage to other
+	if (deathmatch->value && !((int)dmflags->value & DF_ALLOW_EXIT) && other != world)
 	{
 		T_Damage(activator, self, self, vec3_origin, other->s.origin, vec3_origin, 10 * other->max_health, 10 * other->max_health, 1000, DAMAGE_NO_BLOOD, MOD_EXIT);
 		return;
 	}
 
-	if (!BeginIntermission(self, activator))
-		return;		// SLUGFILLER--cant exit or already out
-
-	// SLUGFILLER--report of any exit from the level, not just in deathmatch
-	if (activator && activator->client)
-		gi.bprintf(PRINT_HIGH, "%s exited the level\n", activator->client->pers.netname);
+	// if multiplayer, let everyone know who hit the exit
+	if (deathmatch->value)
+	{
+		if (activator && activator->client)
+			gi.bprintf(PRINT_HIGH, "%s exited the level.\n", activator->client->pers.netname);
+	}
 
 	// if going to a new unit, clear cross triggers
 	if (strstr(self->map, "*"))
 		game.serverflags &= ~(SFL_CROSS_TRIGGER_MASK);
+
+	BeginIntermission(self);
 }
 
 void SP_target_changelevel(edict_t* ent)
@@ -315,6 +296,28 @@ void SP_target_changelevel(edict_t* ent)
 	// ugly hack because *SOMEBODY* screwed up their map
 	if ((Q_stricmp(level.mapname, "fact1") == 0) && (Q_stricmp(ent->map, "fact3") == 0))
 		ent->map = "fact3$secret1";
+
+	//QW//
+	// A not too ugly hack to intercept cinematic playbacks and move to the next map at end of units.
+	// The map member of target_changelevel has this format: "eou1_.cin+*bunk1$start".
+	// Here we parse out the map name between the * and $ delimiters to use as the next level.
+	if (coop->value) {
+		if (strstr(ent->map, ".cin+*"))
+		{
+			// Trim at the $ separator first, return the full token if no $ exists
+			char* pos = strtok(ent->map, "$");
+			pos = strstr(ent->map, "*");
+			Q_strncpyz(ent->map, strlen(ent->map), ++pos); // tricky bit here. Take only what follows the *.
+		}
+		else
+		{
+			if (strstr(ent->map, "victory.pcx")) // last map of last unit
+			{
+				Q_strncpyz(ent->map, strlen(ent->map), "*base1"); // delete saved levels and recycle the server.
+			}
+		}
+	}
+	//QW//
 
 	ent->use = use_target_changelevel;
 	ent->svflags = SVF_NOCLIENT;

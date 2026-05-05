@@ -177,7 +177,6 @@ void InitGame(void)
 	needpass = gi.cvar("needpass", "0", CVAR_SERVERINFO);
 	filterban = gi.cvar("filterban", "1", 0);
 	flashlightmode = gi.cvar("flashlightmode", "0", 0); //QW 1 = bright white, 0 = hyperblaster glow
-	exit_any = gi.cvar("exit_any", "0", 0); //QW allow exit of any player to trigger level change.
 
 	g_select_empty = gi.cvar("g_select_empty", "0", CVAR_ARCHIVE);
 

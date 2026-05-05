@@ -12,7 +12,7 @@ Makron -- Final Boss
 qboolean visible(edict_t* self, edict_t* other);
 
 void MakronRailgun(edict_t* self);
-void MakronSaveloc(edict_t* self);
+//void MakronSaveloc(edict_t* self);
 void MakronHyperblaster(edict_t* self);
 void makron_step_left(edict_t* self);
 void makron_step_right(edict_t* self);
@@ -690,10 +690,13 @@ qboolean Makron_CheckAttack(edict_t* self)
 	float	chance;
 	trace_t	tr;
 	qboolean	is_sliding;
-	qboolean	enemy_infront;
+	//qboolean	enemy_infront;
 	int			enemy_range;
 	float		enemy_pitch;
 	float		enemy_yaw;
+
+	if (!self->enemy)
+		return false;
 
 	if (self->monsterinfo.aiflags & AI_DODGING)
 		self->monsterinfo.aiflags |= AI_SLIDING;
@@ -719,7 +722,7 @@ qboolean Makron_CheckAttack(edict_t* self)
 			return false;
 	}
 
-	enemy_infront = infront(self, self->enemy);
+	//enemy_infront = infront(self, self->enemy);
 	enemy_range = range(self, self->enemy);
 	VectorSubtract(self->enemy->s.origin, self->s.origin, temp);
 	temp[2] += self->enemy->viewheight - self->viewheight;

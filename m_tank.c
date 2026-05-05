@@ -429,7 +429,7 @@ void tank_reattack_blaster(edict_t* self)
 {
 	if (skill->value >= 2)
 		if (visible(self, self->enemy))
-			if (self->enemy->health > 0)
+			if (self->enemy && self->enemy->health > 0)
 				if (random() <= 0.6)
 				{
 					self->pain_debounce_time = level.time + 0.7;
@@ -600,7 +600,7 @@ void tank_refire_rocket(edict_t* self)
 {
 	// Only on hard or nightmare
 	if (skill->value >= 2)
-		if (self->enemy->health > 0)
+		if (self->enemy && self->enemy->health > 0)
 			if (visible(self, self->enemy))
 				if (random() <= 0.4)
 				{

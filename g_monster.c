@@ -92,6 +92,7 @@ static void M_FliesOff(edict_t* self)
 {
 	self->s.effects &= ~EF_FLIES;
 	self->s.sound = 0;
+	self->nextthink = 0;
 }
 
 static void M_FliesOn(edict_t* self)
@@ -404,6 +405,8 @@ void monster_think(edict_t* self)
 	M_CatagorizePosition(self);
 	M_WorldEffects(self);
 	M_SetEffects(self);
+
+	self->nextthink = level.time + FRAMETIME;
 }
 
 

@@ -70,7 +70,7 @@ SLUGFILLER--Gives an early warning for monsters to avoid projectiles
 */
 static void projectile_think(edict_t* self)
 {
-	vec3_t dir;
+	vec3_t dir = { 0 };
 
 	VectorCopy(self->velocity, dir);
 	VectorNormalize(dir);

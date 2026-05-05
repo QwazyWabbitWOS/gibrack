@@ -401,7 +401,7 @@ mmove_t hover_move_end_attack = { FRAME_attak107, FRAME_attak108, hover_frames_e
 
 void hover_reattack(edict_t* self)
 {
-	if (self->enemy->health > 0)
+	if (self->enemy && self->enemy->health > 0)
 		if (visible(self, self->enemy))
 			if (random() <= 0.6)
 			{

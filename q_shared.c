@@ -1003,69 +1003,6 @@ size_t Q_strncatz(char* dst, size_t dstSize, const char* src)
 	return (dLen + (s - src));    // returned count excludes NULL terminator
 }
 
-/* MrG{DRGN} Function Replacements TY Knightmare! */
-size_t Com_strcpy(char* dest, size_t destSize, const char* src)
-{
-	char* d = dest;
-	const char* s = src;
-	size_t		decSize = destSize;
-
-	if (!dest) {
-		return 0;
-	}
-	if (!src) {
-		return 0;
-	}
-	if (destSize < 1) {
-		return 0;
-	}
-
-	while (--decSize && *s)
-		*d++ = *s++;
-	*d = 0;
-	dest[destSize - 1] = 0;
-
-	if (decSize == 0)	// Insufficient room in dst, return count + length of remaining src
-		return (s - src - 1 + strlen(s));
-	else
-		return (s - src - 1);	// returned count excludes NULL terminator
-}
-
-size_t Com_strcat(char* dest, size_t destSize, const char* src)
-{
-	char* d = dest;
-	const char* s = src;
-	size_t		decSize = destSize;
-	size_t		dLen;
-
-	if (!dest) {
-		return 0;
-	}
-	if (!src) {
-		return 0;
-	}
-	if (destSize < 1) {
-		return 0;
-	}
-
-	while (--decSize && *d)
-		d++;
-	dLen = d - dest;
-
-	if (decSize == 0)
-		return (dLen + strlen(s));
-	else {
-		while (--decSize && *s)
-			*d++ = *s++;
-
-		*d = 0;
-	}
-	dest[destSize - 1] = 0;
-
-	return (dLen + (s - src));	// returned count excludes NULL terminator
-}
-
-
 void Com_sprintf(char* dest, int size, char* fmt, ...)
 {
 	int		len;
@@ -1099,7 +1036,7 @@ key and returns the associated value, or an empty string.
 char* Info_ValueForKey(char* s, char* key)
 {
 	char	pkey[512];
-	static	char value[2][512];	// use two buffers so compares work without stomping on each other
+	static	char value[2][MAX_INFO_STRING];	// use two buffers so compares work without stomping on each other
 	static	int	valueindex;
 	char* o;
 

@@ -411,6 +411,13 @@ void G_InitEdict(edict_t* e)
 	e->classname = "noclass";
 	e->gravity = 1.0;
 	e->s.number = e - g_edicts;
+
+	// Clear what the free-edict list may have set.
+	e->chain = NULL;
+
+	// This is another headache.
+	e->think = NULL;
+	e->nextthink = 0;
 }
 
 //
@@ -479,7 +486,7 @@ void G_FreeEdict(edict_t* ed)
 {
 	gi.unlinkentity(ed);		// unlink from world
 
-	if ((ed - g_edicts) <= (maxclients->value + BODY_QUEUE_SIZE))
+	if ((ed - g_edicts) <= (game.maxclients * 2))
 	{
 		//gi.dprintf("tried to free special edict\n");
 		return;
@@ -536,8 +543,7 @@ void	G_TouchSolids(edict_t* ent)
 	int			i, num;
 	edict_t* touch[MAX_EDICTS], * hit;
 
-	num = gi.BoxEdicts(ent->absmin, ent->absmax, touch
-		, MAX_EDICTS, AREA_SOLID);
+	num = gi.BoxEdicts(ent->absmin, ent->absmax, touch, MAX_EDICTS, AREA_SOLID);
 
 	// be careful, it is possible to have an entity in this
 	// list removed before we get to it (killtriggered)

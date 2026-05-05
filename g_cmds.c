@@ -1,12 +1,11 @@
 #include "g_local.h"
 #include "m_player.h"
-#include "flashlight.h"
 
 
 char* ClientTeam(edict_t* ent)
 {
 	char* p;
-	static char	value[512];
+	static char	value[MAX_INFO_STRING];
 
 	value[0] = 0;
 
@@ -866,9 +865,9 @@ void Cmd_Say_f(edict_t* ent, qboolean say_team, qboolean arg0)
 
 	if (arg0)
 	{
-		Com_strcat(text, sizeof(text), gi.argv(0));
-		Com_strcat(text, sizeof(text), " ");
-		Com_strcat(text, sizeof(text), gi.args());
+		Q_strncatz(text, sizeof(text), gi.argv(0));
+		Q_strncatz(text, sizeof(text), " ");
+		Q_strncatz(text, sizeof(text), gi.args());
 	}
 	else
 	{
@@ -879,14 +878,14 @@ void Cmd_Say_f(edict_t* ent, qboolean say_team, qboolean arg0)
 			p++;
 			p[strlen(p) - 1] = 0;
 		}
-		Com_strcat(text, sizeof(text), p);
+		Q_strncatz(text, sizeof(text), p);
 	}
 
 	// don't let text be too long for malicious reasons
 	if (strlen(text) > 150)
 		text[150] = 0;
 
-	Com_strcat(text, sizeof(text), "\n");
+	Q_strncatz(text, sizeof(text), "\n");
 
 	if (CheckFlood(ent))
 		return;

@@ -1187,7 +1187,7 @@ void InitBodyQue(void)
 	edict_t* ent;
 
 	level.body_que = 0;
-	for (i = 0; i < BODY_QUEUE_SIZE; i++)
+	for (i = 0; i < maxclients->value; i++)
 	{
 		ent = G_Spawn();
 		ent->classname = "bodyque";
@@ -1215,7 +1215,7 @@ void CopyToBodyQue(edict_t* ent)
 
 	// grab a body que and cycle to the next one
 	body = &g_edicts[(int)maxclients->value + level.body_que + 1];
-	level.body_que = (level.body_que + 1) % BODY_QUEUE_SIZE;
+	level.body_que = (level.body_que + 1) % game.maxclients;
 
 	// FIXME: send an effect on the removed body
 
@@ -1368,10 +1368,14 @@ void spectator_respawn(edict_t* ent)
 
 	ent->client->respawn_time = level.time;
 
-	if (ent->client->pers.spectator)
+	if (ent->client->pers.spectator) {
 		gi.bprintf(PRINT_HIGH, "%s has moved to the sidelines\n", ent->client->pers.netname);
-	else
+		ent->flags |= FL_NOTARGET; //QW// present no target to monsters in coop
+	}
+	else {
 		gi.bprintf(PRINT_HIGH, "%s joined the game\n", ent->client->pers.netname);
+		ent->flags &= ~FL_NOTARGET;
+	}
 }
 
 //==============================================================
@@ -1706,8 +1710,9 @@ void ClientUserinfoChanged(edict_t* ent, char* userinfo)
 
 	// set spectator
 	s = Info_ValueForKey(userinfo, "spectator");
-	// spectators are only supported in deathmatch
-	if (deathmatch->value && *s && strcmp(s, "0"))
+
+	//QW// Changed this to allow spectator in all modes.
+	if (*s && strcmp(s, "0")) // any value that's not 0 sets spec.
 		ent->client->pers.spectator = true;
 	else
 		ent->client->pers.spectator = false;
@@ -2120,7 +2125,7 @@ void ClientBeginServerFrame(edict_t* ent)
 	if (client->resp.exitframe)
 		return;
 
-	if (deathmatch->value &&
+	if ((deathmatch->value || coop->value) &&
 		client->pers.spectator != client->resp.spectator &&
 		(level.time - client->respawn_time) >= 5) {
 		spectator_respawn(ent);

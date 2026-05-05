@@ -12,19 +12,7 @@ INTERMISSION
 
 void MoveClientToIntermission(edict_t* ent)
 {
-	int n;
-
-	ent->client->resp.exitframe = level.framenum;
-
-	if (coop->value)
-	{
-		// SLUGFILLER--got out of the level
-		gi.WriteByte(svc_muzzleflash);
-		gi.WriteShort(ent - g_edicts);
-		gi.WriteByte(MZ_LOGOUT);
-		gi.multicast(ent->s.origin, MULTICAST_PVS);
-	}
-
+	if (deathmatch->value || coop->value)
 	ent->client->showscores = true;
 	VectorCopy(level.intermission_origin, ent->s.origin);
 	ent->client->ps.pmove.origin[0] = level.intermission_origin[0] * 8;
@@ -38,7 +26,7 @@ void MoveClientToIntermission(edict_t* ent)
 	ent->client->ps.rdflags &= ~RDF_UNDERWATER;
 
 	// clean up powerup info
-	for (n = 1; n < game.num_items; n++)
+	for (int n = 1; n < game.num_items; n++)
 		ent->client->pers.itemused[n] = false;
 
 	ent->viewheight = 0;
@@ -52,35 +40,21 @@ void MoveClientToIntermission(edict_t* ent)
 
 	// add the layout
 
+	if (deathmatch->value || coop->value)
+	{
 	DeathmatchScoreboardMessage(ent, NULL);
 	gi.unicast(ent, true);
+	}
+
 }
 
-qboolean BeginIntermission(edict_t* targ, edict_t* activator)
+void BeginIntermission (edict_t *targ)
 {
 	int		i, n;
-	edict_t* client;
+	edict_t	*ent, *client;
 
-	if (activator && activator->client && activator->client->resp.exitframe)
-		return false;		// already activated
-
-	if (coop->value)
-	{
-		if (!level.changemap)
-			level.changemap = targ->map;
-		else if (strcmp(level.changemap, targ->map) != 0)
-			return false;
-		MoveClientToIntermission(activator);
-		for (i = 0; i < maxclients->value; i++)
-		{
-			client = g_edicts + 1 + i;
-			if (!client->inuse)
-				continue;
-			if (client->client->resp.exitframe)
-				continue;
-			return true;
-		}
-	}
+	if (level.intermissiontime)
+		return;		// already activated
 
 	game.autosaved = false;
 
@@ -89,8 +63,6 @@ qboolean BeginIntermission(edict_t* targ, edict_t* activator)
 	{
 		client = g_edicts + 1 + i;
 		if (!client->inuse)
-			continue;
-		if (client->client->resp.exitframe)
 			continue;
 		if (client->health <= 0)
 			respawn(client);
@@ -122,14 +94,33 @@ qboolean BeginIntermission(edict_t* targ, edict_t* activator)
 		if (!deathmatch->value)
 		{
 			level.exitintermission = 1;		// go immediately to the next level
-			return true;
+			return;
 		}
 	}
 
 	level.exitintermission = 0;
 
-	if (coop->value)
-		return true;
+	// find an intermission spot
+	ent = G_Find(NULL, FOFS(classname), "info_player_intermission");
+	if (!ent)
+	{	// the map creator forgot to put in an intermission point...
+		ent = G_Find(NULL, FOFS(classname), "info_player_start");
+		if (!ent)
+			ent = G_Find(NULL, FOFS(classname), "info_player_deathmatch");
+	}
+	else
+	{	// chose one of four spots
+		i = rand() & 3;
+		while (i--)
+		{
+			ent = G_Find(ent, FOFS(classname), "info_player_intermission");
+			if (!ent)	// wrap around the list
+				ent = G_Find(ent, FOFS(classname), "info_player_intermission");
+		}
+	}
+
+	VectorCopy(ent->s.origin, level.intermission_origin);
+	VectorCopy(ent->s.angles, level.intermission_angle);
 
 	// move all clients to the intermission point
 	for (i = 0; i < maxclients->value; i++)
@@ -137,14 +128,8 @@ qboolean BeginIntermission(edict_t* targ, edict_t* activator)
 		client = g_edicts + 1 + i;
 		if (!client->inuse)
 			continue;
-		if (client->client->resp.exitframe)
-			continue;
-		if (deathmatch->value && client->movetype != MOVETYPE_NOCLIP)
-			CopyToBodyQue(client);
 		MoveClientToIntermission(client);
 	}
-
-	return true;
 }
 
 void TeamplayScoreboardMessage(edict_t* ent, edict_t* killer, char* string)
@@ -267,8 +252,6 @@ void TeamplayScoreboardMessage(edict_t* ent, edict_t* killer, char* string)
 	}
 }
 
-
-char* ClientTeam(edict_t* ent);
 /*
 ==================
 DeathmatchScoreboardMessage
