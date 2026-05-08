@@ -24,7 +24,7 @@ _CrtMemState startup1;	// memory diagnostics
 #include "flashlight.h" //QW Added a flashlight
 
 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"gibrack v2.0"
+#define	GAMEVERSION	"gibrack v2.1"
 
 #ifdef _DEBUG
 #define BUILD	"Debug"
