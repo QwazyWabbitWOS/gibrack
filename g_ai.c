@@ -27,7 +27,7 @@ void M_MonsterDodge(edict_t* self, edict_t* inflictor, edict_t* attacker, float 
 	if (self->health <= 0)
 		return;
 
-	if (self->monsterinfo.duck)
+	if (self->monsterinfo.duck && self->monsterinfo.unduck) //QW guard against buggy spawn functions that didn't init unduck.
 		ducker = true;
 	if (!(self->monsterinfo.aiflags & AI_STAND_GROUND))
 		dodger = true;
@@ -99,7 +99,7 @@ void M_MonsterDodge(edict_t* self, edict_t* inflictor, edict_t* attacker, float 
 			// start running
 			if (eta < 2)
 			{
-				if ((ducker) && (self->monsterinfo.aiflags & AI_DUCKED))
+				if ((ducker) && self->monsterinfo.unduck && (self->monsterinfo.aiflags & AI_DUCKED))
 					self->monsterinfo.unduck(self);
 
 				if (anim <= MANIM_DUCK && anim != MANIM_RUN)

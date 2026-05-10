@@ -590,8 +590,8 @@ void monster_death_use(edict_t* self)
 {
 	self->flags &= ~(FL_FLY | FL_SWIM);
 	// SLUGFILLER--last chance
-	if (self->monsterinfo.aiflags & AI_DUCKED)
-		self->monsterinfo.unduck(self);
+	if (self->monsterinfo.unduck && self->monsterinfo.aiflags & AI_DUCKED)
+		self->monsterinfo.unduck(self); //QW not all monsters duck/unduck.
 	self->monsterinfo.aiflags &= AI_GOOD_GUY;
 
 	if (self->mynoise) {
