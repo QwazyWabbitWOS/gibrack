@@ -694,6 +694,7 @@ void Weapon_Grenade(edict_t* ent)
 				buffer[i] = (byte) 129;
 			for (i = 1; i < 3 * ent->client->grenade_time + 1; i++)
 				buffer[i] = 30;
+			//FIXME: This needs to be a HUD object, not a centerprint.
 			gi.centerprintf(ent, buffer);
 		}
 

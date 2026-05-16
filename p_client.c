@@ -887,6 +887,7 @@ void InitClientResp(gclient_t* client)
 	memset(&client->resp, 0, sizeof(client->resp));
 	client->resp.enterframe = level.framenum;
 	client->resp.coop_respawn = client->pers;
+	client->resp.chasecam = NULL;
 }
 
 /*
@@ -2073,7 +2074,6 @@ void ClientThink(edict_t* ent, usercmd_t* ucmd)
 			}
 			else
 				GetChaseTarget(ent);
-
 		}
 		else if (!client->weapon_thunk) {
 			client->weapon_thunk = true;

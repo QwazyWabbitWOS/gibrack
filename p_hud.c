@@ -396,6 +396,7 @@ void Cmd_Score_f(edict_t* ent)
 	if (ent->client->showscores)
 	{
 		ent->client->showscores = false;
+		ent->client->update_chase = true;
 		return;
 	}
 
@@ -684,7 +685,10 @@ void G_SetStats(edict_t* ent)
 			ent->client->ps.stats[STAT_LIVES] = 9;
 	}
 
-	ent->client->ps.stats[STAT_SPECTATOR] = 0;
+	if (ent->client->pers.spectator)
+		ent->client->ps.stats[STAT_SPECTATOR] = 1;
+	else
+		ent->client->ps.stats[STAT_SPECTATOR] = 0;
 }
 
 /*
@@ -728,8 +732,7 @@ void G_SetSpectatorStats(edict_t* ent)
 		cl->ps.stats[STAT_LAYOUTS] |= 2;
 
 	if (cl->chase_target && cl->chase_target->inuse)
-		cl->ps.stats[STAT_CHASE] = CS_PLAYERSKINS +
-		(cl->chase_target - g_edicts) - 1;
+		cl->ps.stats[STAT_CHASE] = CS_PLAYERSKINS + (cl->chase_target - g_edicts) - 1;
 	else
 		cl->ps.stats[STAT_CHASE] = 0;
 }

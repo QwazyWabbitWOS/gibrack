@@ -655,234 +655,171 @@ void SpawnEntities(char* mapname, char* entities, char* spawnpoint)
 
 
 //===================================================================
+// ===================================================================
+// Unified HUD initialization by QwazyWabbit
+// ===================================================================
 
-#if 0
-	// cursor positioning
-xl <value>
-xr <value>
-yb <value>
-yt <value>
-xv <value>
-yv <value>
+// cursor positioning
+//  xl <value>      x-left side
+//  xr <value>      x-right side
+//  yb <value>      y-bottom
+//  yt <value>      y-top
+//  xv <value>      x-value
+//  yv <value>      y-value
 
 // drawing
-statpic <name>
-pic <stat>
-num <fieldwidth> <stat>
-string <stat>
+//  statpic <name>
+//  pic <stat>                Draw a pic from a stat number
+//  picn <name>               Draw a pic from a name string
+//  num <fieldwidth> <stat>   Print a number of specified width digits
+//  anum <stat>               Print the ammo count, 3 digits max, blink if low ammo
+//  hnum <stat>               Print the health count, 3 digits max, blink if low health
+//  rnum <stat>               Print the armor count, 3 digits max, blink if low armor
 
+//  client <x> <y> <index> <score> <ping> <time>    Draw a deathmatch client score block
+//  cstring <string> <x> <y>    Print a centered string
+//  cstring2 <string> <x> <y>   Print a highlighted centered string
+//  string <x> <y> <string>     Print a string at x,y
+//  string2 <x> <y> <string>    Print a highlighted string
+//  stat_string <stat>          Print a string based on index stat from client's configstrings
+//                              Used to display the item player just picked up.
+//
 // control
-if <stat>
-ifeq <stat> <value>
-ifbit <stat> <value>
-endif
+//  if <stat>               conditionally draw a number
+//  ifeq <stat> <value>     not implemented
+//  ifbit <stat> <value>    not implemented
+//  endif                   ends an "if" block
 
-#endif
+// //QW//
+// In all cases <stat> is the integer representing the status message item
+// to be presented. I've used manifest constants to keep the messages
+// properly enumerated across the game modes and they are defined in
+// q_shared.h. The code originally had these scattered about in
+// different places but it mostly used magic numbers in the messages and that just
+// made it hard to figure out exactly what was happening. They defined the constants
+// and then didn't use them. Later authors were overlapping them in their
+// mods or pulling in overlapping stat items from other mods and this creates
+// HUD conflicts. ENUM or #DEFINE, then use them. Please.
 
-char* single_statusbar =
-"yb	-24 "
+// Positioning:
+// Position 0,0 is the center of the screen with x going negative to the right.
+// Positioning is based on a 640 x 480 screen, scaled to the actual video
+// width and height of the player's current screen resolution.
+// xv, yv is relative to the center origin.
+// xl is plus counts from origin left justified.
+// xr is minus counts from origin right justified.
+// yb is minus counts from bottom. (yb -10 is bottom line)
+// yt is plus counts from 0 at top.
 
-// health
-"xv	0 "
-"hnum "
-"xv	50 "
-"pic 0 "
+/* //QW//
+A standard HUD character (conchar) is 8 screen units wide. The xl and xr origins are with
+respect to the left and right borders. Add/subract 2 units to keep a little space between
+the edge and the chars. For example, the string "FPH" is 3 chars wide, 3 * 8 = 24 units.
+If using xr, add 2 and negate, giving -26 from the right edge as the start of the
+string on the screen, "Range" is (-1)(5 * 8 + 2) = -42.
+Using xl, just use an origin of 2 to space a string 2 units from the border so it looks nice.
+*/
 
-// ammo
-"if 2 "
-"	xv	100 "
-"	anum "
-"	xv	150 "
-"	pic 2 "
-"endif "
+// //QW//
+// The big HUD characters for the counters are 16 units wide but
+// their origin is already offset by 2.
+// They are positioned at 0 on the left and at (n * 16)-2 on the right
+// when n is the number of digits you want to display.
+//
+// Printing big chars on the left is problematic, they are right-justfied inside their
+// block so printing them on the left will gap them from the edge when the value doesn't
+// fill the full range of digits. Negative signs will probably be clipped if you don't
+// allow an extra space for them.
+// You should layout for signed values on the right side or midline where negative
+// values aren't a problem.
+// Layout for unsigned on the left if you don't mind having right-justfied
+// blocks there. Allow space only for the number of digits you expect to
+// display to keep the HUD packet as small as possible.
 
-// armor
-"if 4 "
-"	xv	200 "
-"	rnum "
-"	xv	250 "
-"	pic 4 "
-"endif "
+// I think I first saw an integrated HUD as a function in the CTC mod.
+// I took it a little further by integrating the game modes and collecting
+// the stat constants in one place.
 
-// selected item
-"if 6 "
-"	xv	296 "
-"	pic 6 "
-"endif "
+/* //QW//
+Big HUD chars are 24 units tall and conchars are 8 for a total of 32 plus
+vertical spacing of 3 units to make it 35 units for a per-line increment
+on the big chars. I use a 25 unit vertical offset for the conchars label
+below it. This seems to give a nice uniform leading between lines.
+*/
+/*
+Once initialized, the status bar is a (mostly) unchanging configstring. The client displays
+elements of the statusbar string according to the values in the client->ps.stats array.
+A svc_configstring message can be used to modify it but it's rarely used and requires
+the game dll to have carnal knowledge of the server protocol.
+*/
+// ===================================================================
 
-"yb	-50 "
+char statusbar[1390];	// this is the status bar (HUD) buffer for all game modes //QW//
 
-// picked up item
-"if 7 "
-"	xv	0 "
-"	pic 7 "
-"	xv	26 "
-"	yb	-42 "
-"	stat_string 8 "
-"	yb	-50 "
-"endif "
+// This function is executed once in SP_worldspawn
+void CreateStatusBar(void)
+{
+	char Bar[256] = { 0 }; // temporary storage buffer
 
-// timer
-"if 9 "
-"	xv	262 "
-"	num	2	10 "
-"	xv	296 "
-"	pic	9 "
-"endif "
+	memset(statusbar, 0, sizeof(statusbar)); // the actual status bar
 
-//  help / weapon icon 
-"if 11 "
-"	xv	148 "
-"	pic	11 "
-"endif "
-;
+	sprintf(Bar, "if %d yb -24 xv 0 hnum xv 50 pic %d ", STAT_HEALTH_ICON, STAT_HEALTH_ICON);
+	strcat(statusbar, Bar);
 
-char* single_statusbar_lives =
-"yb	-24 "
+	sprintf(Bar, "if %d xv 100 anum xv 150 pic %d endif ", STAT_AMMO_ICON, STAT_AMMO_ICON);
+	strcat(statusbar, Bar);
 
-// health
-"xv	0 "
-"hnum "
-"xv	50 "
-"pic 0 "
+	sprintf(Bar, "if %d xv 200 rnum xv 250 pic %d endif ", STAT_ARMOR_ICON, STAT_ARMOR_ICON);
+	strcat(statusbar, Bar);
 
-// ammo
-"if 2 "
-"	xv	100 "
-"	anum "
-"	xv	150 "
-"	pic 2 "
-"endif "
+	sprintf(Bar, "if %d xv 296 pic %d endif ", STAT_SELECTED_ICON, STAT_SELECTED_ICON);
+	strcat(statusbar, Bar);
 
-// armor
-"if 4 "
-"	xv	200 "
-"	rnum "
-"	xv	250 "
-"	pic 4 "
-"endif "
+	sprintf(Bar, "yb -50 if %d xv 0 pic %d xv 26 yb -42 stat_string %d yb -50 endif ", STAT_PICKUP_ICON, STAT_PICKUP_ICON, STAT_PICKUP_STRING);
+	strcat(statusbar, Bar);
 
-// selected item
-"if 6 "
-"	xv	296 "
-"	pic 6 "
-"endif "
+	//QW// Keep the timer value close to the icon in all modes.
+	sprintf(Bar, "if %d xv 262 num 2 %d xv 296 pic %d endif ", STAT_TIMER_ICON, STAT_TIMER, STAT_TIMER_ICON);
+	strcat(statusbar, Bar);
 
-"yb	-50 "
+	sprintf(Bar, "if %d xv 148 pic %d endif ", STAT_HELPICON, STAT_HELPICON);
+	strcat(statusbar, Bar);
 
-// picked up item
-"if 7 "
-"	xv	0 "
-"	pic 7 "
-"	xv	26 "
-"	yb	-42 "
-"	stat_string 8 "
-"	yb	-50 "
-"endif "
+	//QW This line copied verbatim from slugfiller's original.
+	// But deathmatch can never be > 1 in any mods unless he was using a special engine.
+	// I don't see support for modes 2 or 3 in r1q2ded, q2proded or the original quake2 3.21 code.
+	// My testing shows if you set deathmatch to anything but 0 or 1 the engines all set it to 1.
+	if (deathmatch->value && deathmatch->value != 2 && deathmatch->value != 3)
+	{
+		sprintf(Bar, "xr -50 yt 2 num 3 %d ", STAT_FRAGS); //player frag count
+		strcat(statusbar, Bar);
+	}
+	else if (floorf(lives->value) > 0) //SLUGFILLER - replace frag count with lives left & icon
+	{
+		sprintf(Bar, "if %d yt 2 xr -25 pic %d xr -50 num 1 %d endif ", STAT_LIVES_ICON, STAT_LIVES_ICON, STAT_LIVES);
+		strcat(statusbar, Bar);
+	}
 
-// timer
-"if 9 "
-"	xv	262 "
-"	num	2	10 "
-"	xv	296 "
-"	pic	9 "
-"endif "
+	//QW spectator and chasecam are supported in all modes
+	// spectator
+	sprintf(Bar, "if %d xv 0 yb -58 string2 \"SPECTATOR MODE\" endif ", STAT_SPECTATOR);
+	strcat(statusbar, Bar);
 
-//  help / weapon icon 
-"if 11 "
-"	xv	148 "
-"	pic	11 "
-"endif "
+	// chase camera
+	sprintf(Bar, "if %d xv 0 yb -68 string \"Chasing\" xv 64 stat_string %d endif ", STAT_CHASE, STAT_CHASE);
+	strcat(statusbar, Bar);
 
-// SLUGFILLER--lives
-"if 18 "
-"yt 2 "
-"xr -25 "
-"pic 18 "
-"xr -50 "
-"num 1 19"
-"endif "
-;
+	// Make sure we don't blow anything out of the water
+	size_t s = strlen(statusbar);
+	if (s > sizeof(statusbar))
+	{
+		gi.dprintf("%s: Statusbar overflow %lu\n", __func__, strlen(statusbar)); //to the log
+		statusbar[1023] = 0;
+	}
+	gi.configstring(CS_STATUSBAR, statusbar);
+}
 
-char* dm_statusbar =
-"yb	-24 "
-
-// health
-"xv	0 "
-"hnum "
-"xv	50 "
-"pic 0 "
-
-// ammo
-"if 2 "
-"	xv	100 "
-"	anum "
-"	xv	150 "
-"	pic 2 "
-"endif "
-
-// armor
-"if 4 "
-"	xv	200 "
-"	rnum "
-"	xv	250 "
-"	pic 4 "
-"endif "
-
-// selected item
-"if 6 "
-"	xv	296 "
-"	pic 6 "
-"endif "
-
-"yb	-50 "
-
-// picked up item
-"if 7 "
-"	xv	0 "
-"	pic 7 "
-"	xv	26 "
-"	yb	-42 "
-"	stat_string 8 "
-"	yb	-50 "
-"endif "
-
-// timer
-"if 9 "
-"	xv	246 "
-"	num	2	10 "
-"	xv	296 "
-"	pic	9 "
-"endif "
-
-//  help / weapon icon 
-"if 11 "
-"	xv	148 "
-"	pic	11 "
-"endif "
-
-//  frags
-"xr	-50 "
-"yt 2 "
-"num 3 14 "
-
-// spectator
-"if 17 "
-"xv 0 "
-"yb -58 "
-"string2 \"SPECTATOR MODE\" "
-"endif "
-
-// chase camera
-"if 16 "
-"xv 0 "
-"yb -68 "
-"string \"Chasing\" "
-"xv 64 "
-"stat_string 16 "
-"endif "
-;
-
+// end HUD initialization
 
 /*QUAKED worldspawn (0 0 0) ?
 
@@ -939,13 +876,8 @@ void SP_worldspawn(edict_t * ent)
 
 	gi.configstring(CS_MAXCLIENTS, va("%i", (int)(maxclients->value)));
 
-	// status bar program
-	if (deathmatch->value && deathmatch->value != 2 && deathmatch->value != 3)
-		gi.configstring(CS_STATUSBAR, dm_statusbar);
-	else if (floorf(lives->value) > 0)
-		gi.configstring(CS_STATUSBAR, single_statusbar_lives);
-	else
-		gi.configstring(CS_STATUSBAR, single_statusbar);
+	//QW// status bar program
+	CreateStatusBar(); // Single status bar initialization.
 
 	//---------------
 

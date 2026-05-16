@@ -36,8 +36,6 @@ Better Obituary - obituary messages for any death of player or monster from any 
 
 Visible Bullets - thats for the gl players, you can see bullets flying, software users may be able to look closely enough
 
-Coop Exit - in coop all players must exit the level before the level changes, and from the same exit.
-
 Weapons tweaking - inhanced power for some weapons, and go-through-wall charging railgun
 
 Wall climbing - player can now climb almost any ledge or crack in a wall, hold jump to grab, press forward to climb
