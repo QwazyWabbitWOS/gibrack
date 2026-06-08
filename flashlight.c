@@ -126,7 +126,7 @@ void Use_Flashlight(edict_t* player)
 void Cmd_Flashlight(edict_t* ent)
 {
 
-	if (!ent->client || ent->health <= 0)
+	if (!ent->client || ent->health <= 0 || ent->client->resp.spectator)
 		return;
 
 	if (ent->client->flashlight == NULL)
