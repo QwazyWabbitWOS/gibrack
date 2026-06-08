@@ -756,6 +756,11 @@ the game dll to have carnal knowledge of the server protocol.
 
 char statusbar[1390];	// this is the status bar (HUD) buffer for all game modes //QW//
 
+// chasecam status plate
+//static char rectangle[] =	"\22\23\23\23\23\23\23\23\23\23\23\23\23\24\n"
+//							"\25\26\26\26\26\26\26\26\26\26\26\26\26\27\n"
+//							"\30\31\31\31\31\31\31\31\31\31\31\31\31\32";
+
 // This function is executed once in SP_worldspawn
 void CreateStatusBar(void)
 {
@@ -804,6 +809,12 @@ void CreateStatusBar(void)
 	// spectator
 	sprintf(Bar, "if %d xv 0 yb -58 string2 \"SPECTATOR MODE\" endif ", STAT_SPECTATOR);
 	strcat(statusbar, Bar);
+
+	//sprintf(Bar, "if %d xv 0 yb -90 cstring \"%s\" endif ", STAT_SPECTATOR, rectangle);
+	//strcat(statusbar, Bar);
+	//FIXME: Find a way to display chase mode string from chase_modenames[]
+	//sprintf(Bar, "if %d xv 0 yb -94 cstring \"\n%d\" endif ", STAT_SPECTATOR, STAT_MODE);
+	//strcat(statusbar, Bar);
 
 	// chase camera
 	sprintf(Bar, "if %d xv 0 yb -68 string \"Chasing\" xv 64 stat_string %d endif ", STAT_CHASE, STAT_CHASE);

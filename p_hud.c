@@ -724,7 +724,7 @@ void G_SetSpectatorStats(edict_t* ent)
 
 	cl->ps.stats[STAT_SPECTATOR] = 1;
 
-	// layouts are independant in spectator
+	// layouts are independent in spectator
 	cl->ps.stats[STAT_LAYOUTS] = 0;
 	if (cl->pers.health <= 0 || level.intermissiontime || cl->showscores)
 		cl->ps.stats[STAT_LAYOUTS] |= 1;
@@ -732,8 +732,14 @@ void G_SetSpectatorStats(edict_t* ent)
 		cl->ps.stats[STAT_LAYOUTS] |= 2;
 
 	if (cl->chase_target && cl->chase_target->inuse)
+	{
 		cl->ps.stats[STAT_CHASE] = CS_PLAYERSKINS + (cl->chase_target - g_edicts) - 1;
+		cl->ps.stats[STAT_MODE] = cl->chase_mode;
+	}
 	else
+	{
 		cl->ps.stats[STAT_CHASE] = 0;
+		cl->ps.stats[STAT_MODE] = 0;
+	}
 }
 

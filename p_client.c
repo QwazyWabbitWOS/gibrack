@@ -1607,9 +1607,9 @@ void ClientBeginDeathmatch(edict_t* ent)
 		gi.WriteShort(ent - g_edicts);
 		gi.WriteByte(MZ_LOGIN);
 		gi.multicast(ent->s.origin, MULTICAST_PVS);
-	}
 
-	gi.bprintf(PRINT_HIGH, "%s entered the game\n", ent->client->pers.netname);
+		gi.bprintf(PRINT_HIGH, "%s entered the game\n", ent->client->pers.netname);
+	}
 
 	// make sure all view stuff is valid
 	ClientEndServerFrame(ent);
@@ -1940,113 +1940,125 @@ void ClientThink(edict_t* ent, usercmd_t* ucmd)
 
 	pm_passent = ent;
 
+	//QW Add this block to rotate chase_mode on BUTTON_ATTACK press, trapdooring the attack button.
+	if (ent->client->resp.spectator && !client->buttons && (ucmd->buttons & BUTTON_ATTACK)) {
+		SwitchModeChaseCam(ent);
+	}
+
+	//
+	//ZOID
 	if (ent->client->chase_target)
 	{
 		client->resp.cmd_angles[0] = SHORT2ANGLE(ucmd->angles[0]);
 		client->resp.cmd_angles[1] = SHORT2ANGLE(ucmd->angles[1]);
 		client->resp.cmd_angles[2] = SHORT2ANGLE(ucmd->angles[2]);
+
+		// this buttons stuff is copied from further below in ClientThink...
+		client->oldbuttons = client->buttons;
+		client->buttons = ucmd->buttons;
+		client->latched_buttons |= client->buttons & ~client->oldbuttons;
 		return;
+		//
 	}
-	else {
+	//ZOID
 
-		// set up for pmove
-		memset(&pm, 0, sizeof(pm));
+	// set up for pmove
+	memset(&pm, 0, sizeof(pm));
 
-		if (ent->movetype == MOVETYPE_NOCLIP)
-			client->ps.pmove.pm_type = PM_SPECTATOR;
-		else if (ent->s.modelindex != 255)
-			client->ps.pmove.pm_type = PM_GIB;
-		else if (ent->deadflag)
-			client->ps.pmove.pm_type = PM_DEAD;
-		else
-			client->ps.pmove.pm_type = PM_NORMAL;
 
-		client->ps.pmove.gravity = sv_gravity->value;
-		pm.s = client->ps.pmove;
+	if (ent->movetype == MOVETYPE_NOCLIP)
+		client->ps.pmove.pm_type = PM_SPECTATOR;
+	else if (ent->s.modelindex != 255)
+		client->ps.pmove.pm_type = PM_GIB;
+	else if (ent->deadflag)
+		client->ps.pmove.pm_type = PM_DEAD;
+	else
+		client->ps.pmove.pm_type = PM_NORMAL;
 
-		for (i = 0; i < 3; i++)
-		{
-			pm.s.origin[i] = ent->s.origin[i] * 8;
-			pm.s.velocity[i] = ent->velocity[i] * 8;
-		}
+	client->ps.pmove.gravity = sv_gravity->value;
+	pm.s = client->ps.pmove;
 
-		if (memcmp(&client->old_pmove, &pm.s, sizeof(pm.s)))
-		{
-			pm.snapinitial = true;
-			//		gi.dprintf ("pmove changed!\n");
-		}
+	for (i = 0; i < 3; i++)
+	{
+		pm.s.origin[i] = ent->s.origin[i] * 8;
+		pm.s.velocity[i] = ent->velocity[i] * 8;
+	}
 
-		pm.cmd = *ucmd;
+	if (memcmp(&client->old_pmove, &pm.s, sizeof(pm.s)))
+	{
+		pm.snapinitial = true;
+		//		gi.dprintf ("pmove changed!\n");
+	}
 
-		pm.trace = PM_trace;	// adds default parms
-		pm.pointcontents = gi.pointcontents;
+	pm.cmd = *ucmd;
 
-		// perform a pmove
-		gi.Pmove(&pm);
+	pm.trace = PM_trace;	// adds default parms
+	pm.pointcontents = gi.pointcontents;
 
-		// save results of pmove
-		client->ps.pmove = pm.s;
-		client->old_pmove = pm.s;
+	// perform a pmove
+	gi.Pmove(&pm);
 
-		for (i = 0; i < 3; i++)
-		{
-			ent->s.origin[i] = pm.s.origin[i] * 0.125;
-			ent->velocity[i] = pm.s.velocity[i] * 0.125;
-		}
+	// save results of pmove
+	client->ps.pmove = pm.s;
+	client->old_pmove = pm.s;
 
-		VectorCopy(pm.mins, ent->mins);
-		VectorCopy(pm.maxs, ent->maxs);
-		ent->headmins[2] = 2 * pm.viewheight - ent->maxs[2];
-		ent->headmaxs[2] = ent->maxs[2];
+	for (i = 0; i < 3; i++)
+	{
+		ent->s.origin[i] = pm.s.origin[i] * 0.125;
+		ent->velocity[i] = pm.s.velocity[i] * 0.125;
+	}
 
-		client->resp.cmd_angles[0] = SHORT2ANGLE(ucmd->angles[0]);
-		client->resp.cmd_angles[1] = SHORT2ANGLE(ucmd->angles[1]);
-		client->resp.cmd_angles[2] = SHORT2ANGLE(ucmd->angles[2]);
+	VectorCopy(pm.mins, ent->mins);
+	VectorCopy(pm.maxs, ent->maxs);
+	ent->headmins[2] = 2 * pm.viewheight - ent->maxs[2];
+	ent->headmaxs[2] = ent->maxs[2];
 
-		if (ent->groundentity && !pm.groundentity && (pm.cmd.upmove >= 10) && (pm.waterlevel == 0))
-		{
-			gi.sound(ent, CHAN_VOICE, gi.soundindex("*jump1.wav"), 1, ATTN_NORM, 0);
-			PlayerNoise(ent, ent->s.origin, PNOISE_SELF);
-		}
+	client->resp.cmd_angles[0] = SHORT2ANGLE(ucmd->angles[0]);
+	client->resp.cmd_angles[1] = SHORT2ANGLE(ucmd->angles[1]);
+	client->resp.cmd_angles[2] = SHORT2ANGLE(ucmd->angles[2]);
 
-		ent->viewheight = pm.viewheight;
-		ent->waterlevel = pm.waterlevel;
-		ent->watertype = pm.watertype;
-		ent->groundentity = pm.groundentity;
-		if (pm.groundentity)
-			ent->groundentity_linkcount = pm.groundentity->linkcount;
+	if (ent->groundentity && !pm.groundentity && (pm.cmd.upmove >= 10) && (pm.waterlevel == 0))
+	{
+		gi.sound(ent, CHAN_VOICE, gi.soundindex("*jump1.wav"), 1, ATTN_NORM, 0);
+		PlayerNoise(ent, ent->s.origin, PNOISE_SELF);
+	}
 
-		if (ent->deadflag)
-		{
-			client->ps.viewangles[ROLL] = 40;
-			client->ps.viewangles[PITCH] = -15;
-			client->ps.viewangles[YAW] = client->killer_yaw;
-		}
-		else
-		{
-			VectorCopy(pm.viewangles, client->v_angle);
-			VectorCopy(pm.viewangles, client->ps.viewangles);
-		}
+	ent->viewheight = pm.viewheight;
+	ent->waterlevel = pm.waterlevel;
+	ent->watertype = pm.watertype;
+	ent->groundentity = pm.groundentity;
+	if (pm.groundentity)
+		ent->groundentity_linkcount = pm.groundentity->linkcount;
 
-		gi.linkentity(ent);
+	if (ent->deadflag)
+	{
+		client->ps.viewangles[ROLL] = 40;
+		client->ps.viewangles[PITCH] = -15;
+		client->ps.viewangles[YAW] = client->killer_yaw;
+	}
+	else
+	{
+		VectorCopy(pm.viewangles, client->v_angle);
+		VectorCopy(pm.viewangles, client->ps.viewangles);
+	}
 
-		if (ent->movetype != MOVETYPE_NOCLIP)
-			G_TouchTriggers(ent);
+	gi.linkentity(ent);
 
-		// touch other objects
-		for (i = 0; i < pm.numtouch; i++)
-		{
-			other = pm.touchents[i];
-			for (j = 0; j < i; j++)
-				if (pm.touchents[j] == other)
-					break;
-			if (j != i)
-				continue;	// duplicated
-			if (!other->touch)
-				continue;
-			other->touch(other, ent, NULL, NULL);
-		}
+	if (ent->movetype != MOVETYPE_NOCLIP)
+		G_TouchTriggers(ent);
 
+	// touch other objects
+	for (i = 0; i < pm.numtouch; i++)
+	{
+		other = pm.touchents[i];
+		for (j = 0; j < i; j++)
+			if (pm.touchents[j] == other)
+				break;
+		if (j != i)
+			continue;	// duplicated
+		if (!other->touch)
+			continue;
+		other->touch(other, ent, NULL, NULL);
 	}
 
 	client->oldbuttons = client->buttons;
@@ -2062,37 +2074,13 @@ void ClientThink(edict_t* ent, usercmd_t* ucmd)
 		P_CheckClimbJump(ent, (ucmd->forwardmove >= 10));
 
 	// fire weapon from final position if needed
-	if (client->latched_buttons & BUTTON_ATTACK)
+	if (client->latched_buttons & BUTTON_ATTACK && ent->movetype != MOVETYPE_NOCLIP)
 	{
-		if (client->resp.spectator) {
-
-			client->latched_buttons = 0;
-
-			if (client->chase_target) {
-				client->chase_target = NULL;
-				client->ps.pmove.pm_flags &= ~PMF_NO_PREDICTION;
-			}
-			else
-				GetChaseTarget(ent);
-		}
-		else if (!client->weapon_thunk) {
+		if (!client->weapon_thunk)
+		{
 			client->weapon_thunk = true;
 			Think_Weapon(ent);
 		}
-	}
-
-	if (client->resp.spectator) {
-		if (ucmd->upmove >= 10) {
-			if (!(client->ps.pmove.pm_flags & PMF_JUMP_HELD)) {
-				client->ps.pmove.pm_flags |= PMF_JUMP_HELD;
-				if (client->chase_target)
-					ChaseNext(ent);
-				else
-					GetChaseTarget(ent);
-			}
-		}
-		else
-			client->ps.pmove.pm_flags &= ~PMF_JUMP_HELD;
 	}
 
 	// update chase cam if being followed
@@ -2101,6 +2089,10 @@ void ClientThink(edict_t* ent, usercmd_t* ucmd)
 		if (other->inuse && other->client->chase_target == ent)
 			UpdateChaseCam(other);
 	}
+
+	if (ent->client->chase_target != NULL)
+		UpdateChaseCam(ent);
+
 }
 
 

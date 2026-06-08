@@ -22,9 +22,10 @@ _CrtMemState startup1;	// memory diagnostics
 #include "game.h"
 
 #include "flashlight.h" //QW Added a flashlight
+#include "g_chase.h"
 
 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"gibrack v2.2"
+#define	GAMEVERSION	"gibrack v2.3"
 
 #ifdef _DEBUG
 #define BUILD	"Debug"
@@ -1020,6 +1021,8 @@ struct gclient_s
 
 	edict_t* chase_target;		// player we are chasing
 	qboolean	update_chase;		// need to update chase info?
+	char*		chasename;		//QW// added
+	int			chase_mode;
 };
 
 

@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="flashlight.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="g_chase.h" />
     <ClInclude Include="g_local.h" />
     <ClInclude Include="m_actor.h" />
     <ClInclude Include="m_berserk.h" />

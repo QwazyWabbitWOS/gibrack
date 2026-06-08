@@ -971,6 +971,7 @@ typedef enum
 #define STAT_SPECTATOR			17
 #define STAT_LIVES_ICON			18
 #define STAT_LIVES				19
+#define STAT_MODE				20
 
 #define	MAX_STATS				32
 
