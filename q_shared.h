@@ -24,11 +24,6 @@
 typedef unsigned char 		byte;
 typedef enum { false, true }	qboolean;
 
-#ifdef _WIN32
-#ifndef __func__	// C++11 mandated identifier
-#define __func__ __FUNCTION__ // else use the ANSI C (C9x)
-#endif
-#endif
 
 // angle indexes
 #define	PITCH				0		// up / down
