@@ -972,13 +972,13 @@ typedef enum
 
 
 // gibflags->value flags
-#define	GF_REAL_DAMAGE		0x00000001	// 1
-#define	GF_COOP_RESPAWN		0x00000002	// 2
-#define	GF_WITH_MONSTERS	0x00000004	// 4
-#define	GF_MUST_USE			0x00000008	// 8
-#define	GF_MUST_LOOK		0x00000010	// 16
-#define	GF_BEAM_BLASTER		0x00000020	// 32
-#define	GF_BEAM_BULLETS		0x00000040	// 64
+#define	GF_REAL_DAMAGE		0x00000001	// 1 all damage is 4 times stronger, even from monsters, quad is disabled(too strong)
+#define	GF_COOP_RESPAWN		0x00000002	// 2 in single player when you die(and finish your lives) you respawn like in coop
+#define	GF_WITH_MONSTERS	0x00000004	// 4 for deathmatch with monsters, monsters don't count as frags
+#define	GF_MUST_USE			0x00000008	// 8 Must Use-doors, buttons, and step on platforms must be activated with +use(see bindings)
+#define	GF_MUST_LOOK		0x00000010	// 16 Must Look-when activating doors, and buttons you must look at them(don't open with your back)
+#define	GF_BEAM_BLASTER		0x00000020	// 32 Changes the look of the blaster bolts.
+#define	GF_BEAM_BULLETS		0x00000040	// 64 Changes lead projectiles into a red particle beam.
 
 // dmflags->value flags
 #define	DF_NO_HEALTH		0x00000001	// 1
