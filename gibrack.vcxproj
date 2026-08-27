@@ -88,7 +88,6 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
       <ImageHasSafeExceptionHandlers />
@@ -102,9 +101,9 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AssemblerOutput>All</AssemblerOutput>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
       <ImageHasSafeExceptionHandlers />
@@ -122,7 +121,6 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
     </Link>
@@ -136,7 +134,6 @@
       <AssemblerOutput>All</AssemblerOutput>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
     </Link>

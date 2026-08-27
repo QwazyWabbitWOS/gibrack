@@ -737,8 +737,8 @@ void button_touch(edict_t* self, edict_t* other, cplane_t* plane, csurface_t* su
 	if (other->health <= 0)
 		return;
 
-	if (((int)gibflags->value & GF_MUST_USE) && !(other->client->buttons & BUTTON_USE))
-		return;
+	//if (((int)gibflags->value & GF_MUST_USE) && !(other->client->buttons & BUTTON_USE))
+	//	return;
 
 	if ((int)gibflags->value & GF_MUST_LOOK)
 	{
@@ -1054,6 +1054,11 @@ void Touch_DoorTrigger(edict_t* self, edict_t* other, cplane_t* plane, csurface_
 	if (level.time < self->touch_debounce_time)
 		return;
 	self->touch_debounce_time = level.time + 1.0;
+
+	if (((int)gibflags->value & GF_MUST_USE) && (other->client)) {
+		gi.bprintf(PRINT_HIGH, "%s said the magic words\n", other->client->pers.netname);
+		gi.sound(self->owner, CHAN_AUTO, gi.soundindex("misc/openses.wav"), 1, ATTN_NORM, 0);
+	}
 
 	door_use(self->owner, other, other);
 }

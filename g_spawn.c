@@ -914,6 +914,8 @@ void SP_worldspawn(edict_t * ent)
 	gi.soundindex("misc/pc_up.wav");
 	gi.soundindex("misc/talk1.wav");
 
+	gi.soundindex("misc/openses.wav"); //QW Open sesame for using doors with +use bind
+
 	gi.soundindex("misc/udeath.wav");
 
 	// gibs

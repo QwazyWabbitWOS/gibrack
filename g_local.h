@@ -25,7 +25,7 @@ _CrtMemState startup1;	// memory diagnostics
 #include "g_chase.h"
 
 // the "gameversion" client command will print this plus compile date
-#define	GAMEVERSION	"gibrack v2.3"
+#define	GAMEVERSION	"gibrack v2.4"
 
 #ifdef _DEBUG
 #define BUILD	"Debug"
