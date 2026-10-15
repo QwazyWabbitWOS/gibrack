@@ -396,12 +396,21 @@ void M_MoveFrame(edict_t* self)
 void monster_think(edict_t* self)
 {
 	M_MoveFrame(self);
+
+	//QW// Check if entity is still valid after frame processing
+	if (!self || !self->inuse || self->svflags & SVF_DEADMONSTER)
+	{
+		return;
+	}
+
 	M_RunThink(self);
+
 	if (self->linkcount != self->monsterinfo.linkcount)
 	{
 		self->monsterinfo.linkcount = self->linkcount;
 		M_CheckGround(self);
 	}
+
 	M_CatagorizePosition(self);
 	M_WorldEffects(self);
 	M_SetEffects(self);
