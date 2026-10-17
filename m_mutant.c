@@ -235,7 +235,7 @@ void mutant_run(edict_t* self)
 
 void mutant_hit_left(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, self->mins[0], 8);
 	if (fire_hit(self, aim, (10 + (rand() % 5)), 20))
@@ -246,7 +246,7 @@ void mutant_hit_left(edict_t* self)
 
 void mutant_hit_right(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, self->maxs[0], 8);
 	if (fire_hit(self, aim, (10 + (rand() % 5)), 20))
@@ -299,7 +299,7 @@ void mutant_jump_touch(edict_t* self, edict_t* other, cplane_t* plane, csurface_
 		if (VectorLength(self->velocity) > 400)
 		{
 			vec3_t	point;
-			vec3_t	normal;
+			vec3_t	normal = { 0 };
 			int		damage;
 
 			VectorCopy(self->velocity, normal);
@@ -386,7 +386,7 @@ qboolean mutant_check_melee(edict_t* self)
 
 qboolean mutant_check_jump(edict_t* self)
 {
-	vec3_t	v;
+	vec3_t	v = { 0 };
 	float	distance;
 
 	if (self->absmin[2] > (self->enemy->absmin[2] + 0.75 * self->enemy->size[2]))

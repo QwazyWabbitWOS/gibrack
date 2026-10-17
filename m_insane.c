@@ -67,7 +67,7 @@ void fix_bbox6(edict_t* self)
 
 void fix_bbox7(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 2;
@@ -110,7 +110,7 @@ void fix_bbox10(edict_t* self)
 
 void fix_bbox11(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 10;
@@ -130,7 +130,7 @@ void fix_bbox11(edict_t* self)
 
 void fix_bbox12(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -149,7 +149,7 @@ void fix_bbox12(edict_t* self)
 
 void fix_bbox13(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -168,7 +168,7 @@ void fix_bbox13(edict_t* self)
 
 void fix_bbox14(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -188,7 +188,7 @@ void fix_bbox14(edict_t* self)
 
 void fix_bbox15(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 6;
@@ -215,7 +215,7 @@ void fix_bbox16(edict_t* self)
 
 void fix_bbox17(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 2;
@@ -267,7 +267,7 @@ void fix_bbox21(edict_t* self)
 
 void fix_bbox22(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 6;
@@ -286,7 +286,7 @@ void fix_bbox22(edict_t* self)
 
 void fix_bbox23(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -305,7 +305,7 @@ void fix_bbox23(edict_t* self)
 
 void fix_bbox24(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 8;
@@ -359,7 +359,7 @@ void fix_bbox28(edict_t* self)
 
 void fix_bbox29(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -378,7 +378,7 @@ void fix_bbox29(edict_t* self)
 
 void fix_bbox30(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 8;
@@ -398,7 +398,7 @@ void fix_bbox30(edict_t* self)
 
 void fix_bbox31(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 2;
@@ -417,7 +417,7 @@ void fix_bbox31(edict_t* self)
 
 void fix_bbox32(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 10;
@@ -471,7 +471,7 @@ void fix_bbox36(edict_t* self)
 
 void fix_bbox37(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 6;
@@ -490,7 +490,7 @@ void fix_bbox37(edict_t* self)
 
 void fix_bbox38(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 4;
@@ -510,7 +510,7 @@ void fix_bbox38(edict_t* self)
 
 void fix_bbox39(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 2;
@@ -545,7 +545,7 @@ void fix_bbox41(edict_t* self)
 
 void fix_bbox42(edict_t* self)
 {
-	vec3_t	end;
+	vec3_t	end = { 0 };
 	trace_t	trace;
 	VectorCopy(self->s.origin, end);
 	end[2] += 8;

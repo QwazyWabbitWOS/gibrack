@@ -206,7 +206,7 @@ void SV_CalcViewOffset(edict_t* ent)
 	float		bob;
 	float		ratio;
 	float		delta;
-	vec3_t		v;
+	vec3_t		v = { 0 };
 
 
 	//===================================
@@ -508,7 +508,7 @@ void P_FallingDamage(edict_t* ent)
 {
 	float	delta;
 	int		damage;
-	vec3_t	dir;
+	vec3_t	dir = { 0 };
 
 	if (ent->s.modelindex != 255)
 		return;		// not in the player model
@@ -803,7 +803,7 @@ P_CheckClimbJump
 */
 void P_CheckClimbJump(edict_t* ent, qboolean climb)
 {
-	vec3_t start, end, mins, maxs;
+	vec3_t start, end = { 0 }, mins = { 0 }, maxs = { 0 };
 	trace_t trace;
 
 	// SLUGFILLER--check for climb on ledge

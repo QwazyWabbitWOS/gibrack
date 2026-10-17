@@ -488,7 +488,7 @@ void MakronRailgun(edict_t* self)
 // FIXME: This is all wrong. He's not firing at the proper angles.
 void MakronHyperblaster(edict_t* self)
 {
-	vec3_t	dir;
+	vec3_t	dir = { 0 };
 	vec3_t	start;
 	vec3_t	forward, right;
 	int		flash_number;
@@ -685,8 +685,8 @@ void makron_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage
 
 qboolean Makron_CheckAttack(edict_t* self)
 {
-	vec3_t	spot1, spot2;
-	vec3_t	temp;
+	vec3_t	spot1 = { 0 }, spot2 = { 0 };
+	vec3_t	temp = { 0 };
 	float	chance;
 	trace_t	tr;
 	qboolean	is_sliding;
@@ -887,7 +887,7 @@ void makron_start_go(edict_t* self)
 
 void MakronSpawn(edict_t* self)
 {
-	vec3_t		vec;
+	vec3_t		vec = { 0 };
 	edict_t* player;
 
 	// SLUGFILLER--the new makron will start in his jumping frame

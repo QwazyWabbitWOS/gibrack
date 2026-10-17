@@ -360,7 +360,7 @@ void TankRocket(edict_t* self)
 
 void TankMachineGun(edict_t* self)
 {
-	vec3_t	dir;
+	vec3_t	dir = { 0 };
 	vec3_t	start;
 	vec3_t	forward, right;
 	int		flash_number;
@@ -620,7 +620,7 @@ void tank_doattack_rocket(edict_t* self)
 
 void tank_attack(edict_t* self)
 {
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	float	range;
 	float	r;
 

@@ -524,7 +524,7 @@ void supertankMachineGun(edict_t* self)
 
 void supertank_attack(edict_t* self)
 {
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	float	range;
 	//float	r;
 
@@ -576,7 +576,7 @@ void supertank_dead(edict_t* self)
 
 void BossExplode(edict_t* self)
 {
-	vec3_t	org;
+	vec3_t	org = { 0 };
 
 	self->think = BossExplode;
 	VectorCopy(self->s.origin, org);

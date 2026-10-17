@@ -100,7 +100,7 @@ edict_t* G_PickTarget(char* targetname)
 {
 	edict_t* ent = NULL;
 	int		num_choices = 0;
-	edict_t* choice[MAXCHOICES];
+	edict_t* choice[MAXCHOICES] = { 0 };
 
 	if (!targetname)
 	{
@@ -486,7 +486,7 @@ void G_FreeEdict(edict_t* ed)
 {
 	gi.unlinkentity(ed);		// unlink from world
 
-	if ((ed - g_edicts) <= (game.maxclients * 2))
+	if ((ed - g_edicts) <= (game.maxclients))
 	{
 		//gi.dprintf("tried to free special edict\n");
 		return;

@@ -450,7 +450,7 @@ void soldier_fire(edict_t* self, int flash_number)
 {
 	vec3_t	start;
 	vec3_t	forward, right, up;
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 	vec3_t	dir;
 	vec3_t	end;
 	float	r, u;

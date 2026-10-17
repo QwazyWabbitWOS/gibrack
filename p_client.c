@@ -651,7 +651,7 @@ LookAtKiller
 */
 void LookAtKiller(edict_t* self, edict_t* inflictor, edict_t* attacker)
 {
-	vec3_t		dir;
+	vec3_t		dir = { 0 };
 
 	if (attacker && attacker != world && attacker != self)
 	{

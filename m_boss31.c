@@ -550,8 +550,8 @@ void jorg_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, 
 
 qboolean Jorg_CheckAttack(edict_t* self)
 {
-	vec3_t	spot1, spot2;
-	vec3_t	temp;
+	vec3_t	spot1 = { 0 }, spot2 = { 0 };
+	vec3_t	temp = { 0 };
 	float	chance;
 	trace_t	tr;
 	//qboolean	enemy_infront;

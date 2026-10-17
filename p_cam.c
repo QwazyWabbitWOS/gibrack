@@ -66,7 +66,7 @@ void ChasecamResume(edict_t* ent)
 void ChasecamThink(edict_t* ent)
 {
 	trace_t	tr;
-	vec3_t	spot, org;
+	vec3_t	spot, org = { 0 };
 	vec3_t	forward;
 	float	dist;
 

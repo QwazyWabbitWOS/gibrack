@@ -13,7 +13,7 @@ void weapon_grenade_fire(edict_t* ent);
 // SLUGFILLER--move to q_shared?
 void P_ProjectSource(gclient_t* client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
 {
-	vec3_t	_distance;
+	vec3_t	_distance = { 0 };
 
 	VectorCopy(distance, _distance);
 	if (client->pers.hand == LEFT_HANDED)
@@ -240,7 +240,7 @@ static void check_dodge(edict_t* self, vec3_t start, vec3_t dir)
 {
 	edict_t* ent;
 	trace_t tr;
-	vec3_t	v, v1;
+	vec3_t	v = { 0 }, v1;
 
 	for (ent = g_edicts; ent < &g_edicts[globals.num_edicts]; ent++)
 	{
@@ -293,7 +293,7 @@ Called by ClientBeginServerFrame and ClientThink
 */
 void Think_Weapon(edict_t* ent)
 {
-	vec3_t	offset, start, forward, right, up;
+	vec3_t	offset = { 0 }, start, forward, right, up;
 
 	// if just died, put the weapon away
 	if (ent->health <= 0)
@@ -578,7 +578,7 @@ GRENADE
 
 void weapon_grenade_fire(edict_t* ent)
 {
-	vec3_t	offset;
+	vec3_t	offset = { 0 };
 	vec3_t	forward, right;
 	vec3_t	start;
 	int		damage = 125;
@@ -674,7 +674,7 @@ void Weapon_Grenade(edict_t* ent)
 		// SLUGFILLER--charge grenade for throw
 		if (ent->client->buttons & BUTTON_ATTACK)
 		{
-			char buffer[33];
+			char buffer[33] = { 0 };
 			int i;
 
 			if (ent->client->grenade_time == 10)
@@ -736,7 +736,7 @@ GRENADE LAUNCHER
 
 void weapon_grenadelauncher_fire(edict_t* ent)
 {
-	vec3_t	offset;
+	vec3_t	offset = { 0 };
 	vec3_t	forward, right;
 	vec3_t	start;
 	int		damage = 120;
@@ -790,7 +790,7 @@ ROCKET
 
 void Weapon_RocketLauncher_Fire(edict_t* ent)
 {
-	vec3_t	offset, start;
+	vec3_t	offset = { 0 }, start;
 	vec3_t	forward, right;
 	int		damage;
 	float	damage_radius;
@@ -851,9 +851,9 @@ BLASTER / HYPERBLASTER
 
 void Blaster_Fire(edict_t* ent, vec3_t g_offset, int damage, qboolean hyper, int effect)
 {
-	vec3_t	forward, right, up, dir;
+	vec3_t	forward, right, up, dir = { 0 };
 	vec3_t	start;
-	vec3_t	offset;
+	vec3_t	offset = { 0 };
 
 	if (is_quad && !((int)(gibflags->value) & GF_REAL_DAMAGE))
 		damage *= 4;
@@ -912,7 +912,7 @@ void Weapon_Blaster(edict_t* ent)
 void Weapon_HyperBlaster_Fire(edict_t* ent)
 {
 	float	rotation;
-	vec3_t	offset;
+	vec3_t	offset = { 0 };
 	int		effect;
 
 	ent->client->weapon_sound = gi.soundindex("weapons/hyprbl1a.wav");
@@ -998,10 +998,10 @@ void Machinegun_Fire(edict_t* ent)
 	int	i;
 	vec3_t		start;
 	vec3_t		forward, right;
-	vec3_t		angles;
+	vec3_t		angles = { 0 };
 	int			damage = 15;
 	int			kick = 30;
-	vec3_t		offset;
+	vec3_t		offset = { 0 };
 
 	if (!(ent->client->buttons & BUTTON_ATTACK))
 	{
@@ -1091,7 +1091,7 @@ void Chaingun_Fire(edict_t* ent)
 	int			shots;
 	vec3_t		start;
 	vec3_t		forward, right, up;
-	vec3_t		offset;
+	vec3_t		offset = { 0 };
 	int			damage = 8;
 	int			kick = 16;
 
@@ -1213,7 +1213,7 @@ void weapon_shotgun_fire(edict_t* ent)
 {
 	vec3_t		start;
 	vec3_t		forward, right;
-	vec3_t		offset;
+	vec3_t		offset = { 0 };
 	int			damage = 4;
 	int			kick = 8;
 
@@ -1269,7 +1269,7 @@ void weapon_supershotgun_fire(edict_t* ent)
 {
 	vec3_t		start;
 	vec3_t		forward, right;
-	vec3_t		offset;
+	vec3_t		offset = { 0 };
 	int			damage = 4;
 	int			kick = 8;
 
@@ -1327,7 +1327,7 @@ void weapon_railgun_fire(edict_t* ent)
 {
 	vec3_t		start;
 	vec3_t		forward, right;
-	vec3_t		offset;
+	vec3_t		offset = { 0 };
 	int			kick;
 	int			range;
 	float		volume = 1;
@@ -1426,7 +1426,7 @@ BFG10K
 
 void weapon_bfg_fire(edict_t* ent)
 {
-	vec3_t	offset, start;
+	vec3_t	offset = { 0 }, start;
 	vec3_t	forward, right;
 	int		damage;
 	float	damage_radius = 1000;

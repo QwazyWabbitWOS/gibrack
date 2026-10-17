@@ -501,8 +501,8 @@ void floater_zap(edict_t* self)
 {
 	vec3_t	forward, right;
 	vec3_t	origin;
-	vec3_t	dir;
-	vec3_t	offset;
+	vec3_t	dir = { 0 };
+	vec3_t	offset = { 0 };
 	trace_t	tr;
 
 	VectorSubtract(self->enemy->s.origin, self->s.origin, dir);

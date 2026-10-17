@@ -64,7 +64,7 @@ void M_MonsterDodge(edict_t* self, edict_t* inflictor, edict_t* attacker, float 
 		// ducking won't do us any good or we need to adjust our dodge
 		if ((self->monsterinfo.aiflags & AI_DODGING) || (tr->endpos[2] <= height))
 		{
-			vec3_t right, diff;
+			vec3_t right, diff = { 0 };
 
 			AngleVectors(self->s.angles, NULL, right, NULL);
 			VectorSubtract(tr->endpos, self->s.origin, diff);
@@ -399,7 +399,7 @@ qboolean FindTarget(edict_t* self)
 {
 	edict_t* client;
 	int			r, i;
-	vec3_t	temp;
+	vec3_t	temp = { 0 };
 
 	if (self->monsterinfo.aiflags & AI_GOOD_GUY)
 	{
@@ -621,7 +621,7 @@ qboolean FacingIdeal(edict_t* self)
 
 qboolean M_CheckAttack(edict_t* self)
 {
-	vec3_t		spot1, spot2;
+	vec3_t		spot1 = { 0 }, spot2 = { 0 };
 	float		chance;
 	trace_t		tr;
 	qboolean	is_sliding;
@@ -761,7 +761,7 @@ Makes sure that there's a valid, living enemy
 */
 qboolean ai_checkenemy(edict_t* self)
 {
-	vec3_t		temp;
+	vec3_t		temp = { 0 };
 	qboolean	hesDeadJim;
 
 	enemy_vis = false;
@@ -866,7 +866,7 @@ qboolean ai_checkattack(edict_t* self)
 
 void M_RunThink(edict_t* self)
 {
-	vec3_t		v;
+	vec3_t		v = { 0 };
 	edict_t* tempgoal;
 	edict_t* save;
 	qboolean	new;
@@ -968,7 +968,7 @@ void M_RunThink(edict_t* self)
 	// SLUGFILLER--fire?
 	if (self->monsterinfo.attack_state && self->enemy)
 	{
-		if (self->monsterinfo.attack_state == AS_MISSILE)
+		if ((self->monsterinfo.attack) && self->monsterinfo.attack_state == AS_MISSILE)
 		{
 			if (FacingIdeal(self))
 			{
@@ -976,7 +976,7 @@ void M_RunThink(edict_t* self)
 				self->monsterinfo.attack_state = AS_NONE;
 			}
 		}
-		else if (self->monsterinfo.attack_state == AS_MELEE)
+		else if ((self->monsterinfo.melee) && self->monsterinfo.attack_state == AS_MELEE) //QW Some monsters (e.g., misc_insane) don't have melee functions.
 		{
 			if (FacingIdeal(self) && range(self, self->enemy) == RANGE_MELEE)
 			{

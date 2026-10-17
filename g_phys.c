@@ -339,8 +339,8 @@ Does not change the entities velocity at all
 trace_t SV_PushEntity(edict_t* ent, vec3_t push)
 {
 	trace_t	trace;
-	vec3_t	start;
-	vec3_t	end;
+	vec3_t	start = { 0 };
+	vec3_t	end = { 0 };
 	int		mask;
 	trace_t	tr;
 	int		color;

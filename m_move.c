@@ -17,7 +17,7 @@ int c_yes, c_no;
 
 qboolean M_CheckBottom(edict_t* ent)
 {
-	vec3_t	mins, maxs, start, stop;
+	vec3_t	mins = { 0 }, maxs = { 0 }, start = { 0 }, stop = { 0 };
 	trace_t	trace;
 	int		x, y;
 	float	mid, bottom;
@@ -93,11 +93,11 @@ pr_global_struct->trace_normal is set to the normal of the blocking wall
 qboolean SV_movestep(edict_t* ent, vec3_t move, qboolean relink)
 {
 	float		dz;
-	vec3_t		oldorg, neworg, end;
+	vec3_t		oldorg = { 0 }, neworg = { 0 }, end = { 0 };
 	trace_t		trace;
 	int			i;
 	float		stepsize;
-	vec3_t		test;
+	vec3_t		test = { 0 };
 	int			contents;
 
 	// try the move	
@@ -379,7 +379,7 @@ facing it.
 */
 qboolean SV_StepDirection(edict_t* ent, float yaw, float dist)
 {
-	vec3_t		move, oldorigin;
+	vec3_t		move = { 0 }, oldorigin = { 0 };
 	float		delta;
 
 	ent->ideal_yaw = yaw;
@@ -418,7 +418,7 @@ Check ability to move in a specific direction
 */
 qboolean M_CheckMove(edict_t* ent, float yaw, float dist)
 {
-	vec3_t		move, oldorigin;
+	vec3_t		move = { 0 }, oldorigin = { 0 };
 
 	yaw = yaw * M_PI * 2 / 360;
 	move[0] = cos(yaw) * dist;
@@ -458,7 +458,7 @@ SV_NewChaseDir
 void SV_NewChaseDir(edict_t* actor, edict_t* enemy, float dist)
 {
 	float	deltax, deltay;
-	float	d[3];
+	float	d[3] = { 0 };
 	float	tdir, olddir, turnaround;
 
 	//FIXME: how did we get here with no enemy
@@ -596,7 +596,7 @@ M_walkmove
 */
 qboolean M_walkmove(edict_t* ent, float yaw, float dist)
 {
-	vec3_t	move;
+	vec3_t	move = { 0 };
 
 	if (!ent->groundentity && !(ent->flags & (FL_FLY | FL_SWIM)))
 		return false;

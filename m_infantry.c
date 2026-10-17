@@ -266,7 +266,7 @@ void InfantryMachineGun(edict_t* self)
 {
 	vec3_t	start;
 	vec3_t	forward, right;
-	vec3_t	vec;
+	vec3_t	vec = { 0 };
 	int		flash_number;
 
 	if (self->s.frame == FRAME_attak111)
@@ -313,7 +313,7 @@ void SpawnDamage(int type, vec3_t origin, vec3_t normal, int damage);
 // SLUGFILLER--got blood spilling from where his head was
 void InfantryBlood(edict_t* self)
 {
-	vec3_t	org, vec;
+	vec3_t	org = { 0 }, vec = { 0 };
 
 	VectorSet(vec, crandom() * 20, crandom() * 20, 300);
 	VectorCopy(self->s.origin, org);
@@ -530,7 +530,7 @@ void infantry_swing(edict_t* self)
 
 void infantry_smack(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, 0, 0);
 	if (fire_hit(self, aim, (5 + (rand() % 5)), 10))

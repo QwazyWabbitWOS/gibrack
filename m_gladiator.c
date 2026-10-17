@@ -109,7 +109,7 @@ void gladiator_run(edict_t* self)
 
 void GaldiatorMelee(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, self->mins[0], -4);
 	if (fire_hit(self, aim, (20 + (rand() % 5)), 60))
@@ -179,7 +179,7 @@ mmove_t gladiator_move_attack_gun = { FRAME_attack1, FRAME_attack9, gladiator_fr
 void gladiator_attack(edict_t* self)
 {
 	float	range;
-	vec3_t	v;
+	vec3_t	v = { 0 };
 
 	// a small safe zone
 	VectorSubtract(self->s.origin, self->enemy->s.origin, v);

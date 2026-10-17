@@ -553,9 +553,9 @@ static vec3_t	medic_cable_offsets[] =
 
 void medic_cable_attack(edict_t* self)
 {
-	vec3_t	offset, start, end, f, r;
+	vec3_t	offset = { 0 }, start, end = { 0 }, f, r;
 	trace_t	tr;
-	vec3_t	dir, angles;
+	vec3_t	dir = { 0 }, angles;
 	float	distance;
 
 	if (!self->enemy->inuse)
@@ -710,9 +710,9 @@ qboolean medic_checkattack(edict_t* self)
 	{
 		// TITANIUM--we don't want to shoot for nothing
 		// so check if we can even shoot
-		vec3_t	offset, start, f, r;
+		vec3_t	offset = { 0 }, start, f, r;
 		trace_t	tr;
-		vec3_t	dir, angles;
+		vec3_t	dir = { 0 }, angles;
 		float	distance;
 
 		if (!self->enemy->inuse)

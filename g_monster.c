@@ -120,7 +120,7 @@ void M_FlyCheck(edict_t* self)
 
 void M_CheckGround(edict_t* ent)
 {
-	vec3_t		point;
+	vec3_t		point = { 0 };
 	trace_t		trace;
 
 	if (ent->flags & (FL_SWIM | FL_FLY))
@@ -162,7 +162,7 @@ void M_CheckGround(edict_t* ent)
 
 void M_CatagorizePosition(edict_t* ent)
 {
-	vec3_t		point;
+	vec3_t		point = { 0 };
 	int			cont;
 
 	//
@@ -289,7 +289,7 @@ void M_WorldEffects(edict_t* ent)
 
 void M_droptofloor(edict_t* ent)
 {
-	vec3_t		end;
+	vec3_t		end = { 0 };
 	trace_t		trace;
 
 	ent->s.origin[2] += 1;
@@ -344,6 +344,11 @@ void M_MoveFrame(edict_t* self)
 	int		index;
 
 	move = self->monsterinfo.currentmove;
+	if (!move)
+	{
+		return;
+	}
+
 	self->nextthink = level.time + FRAMETIME;
 
 	if ((self->monsterinfo.nextframe) && (self->monsterinfo.nextframe >= move->firstframe) && (self->monsterinfo.nextframe <= move->lastframe))
@@ -398,7 +403,7 @@ void monster_think(edict_t* self)
 	M_MoveFrame(self);
 
 	//QW// Check if entity is still valid after frame processing
-	if (!self || !self->inuse || self->svflags & SVF_DEADMONSTER)
+	if (!self || !self->inuse || (self->svflags & SVF_DEADMONSTER))
 	{
 		return;
 	}
@@ -695,7 +700,7 @@ qboolean monster_start(edict_t* self)
 
 void monster_start_go(edict_t* self)
 {
-	vec3_t	v;
+	vec3_t	v = { 0 };
 
 	if (self->health <= 0)
 		return;

@@ -277,7 +277,7 @@ void parasite_pain(edict_t* self, edict_t* other, float kick, int damage)
 
 static qboolean parasite_drain_attack_ok(vec3_t start, vec3_t end)
 {
-	vec3_t	dir;
+	vec3_t	dir = { 0 };
 
 	// check for max distance
 	VectorSubtract(start, end, dir);
@@ -291,7 +291,7 @@ static qboolean parasite_drain_attack_ok(vec3_t start, vec3_t end)
 // SLUGFILLER--if not ok then the cable might go through the parasite
 static qboolean parasite_drain_angle_ok(vec3_t start, vec3_t end)
 {
-	vec3_t	dir, angles;
+	vec3_t	dir = { 0 }, angles;
 
 	VectorSubtract(start, end, dir);
 

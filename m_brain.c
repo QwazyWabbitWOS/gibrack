@@ -356,7 +356,7 @@ void brain_swing_right(edict_t* self)
 
 void brain_hit_right(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, self->maxs[0], 8);
 	if (fire_hit(self, aim, (15 + (rand() % 5)), 8))
@@ -370,7 +370,7 @@ void brain_swing_left(edict_t* self)
 
 void brain_hit_left(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, self->mins[0], 8);
 	if (fire_hit(self, aim, (15 + (rand() % 5)), 8))
@@ -409,7 +409,7 @@ void brain_chest_open(edict_t* self)
 
 void brain_tentacle_attack(edict_t* self)
 {
-	vec3_t	aim;
+	vec3_t	aim = { 0 };
 
 	VectorSet(aim, MELEE_DISTANCE, 0, 8);
 	if (fire_hit(self, aim, (10 + (rand() % 5)), -120) && skill->value > 0)
